@@ -69,7 +69,7 @@ export default async function Image({
           maxWidth: 900,
         }}
       >
-        {event.name}
+        {event.event.name}
       </div>
 
       <div
@@ -78,7 +78,7 @@ export default async function Image({
           fontSize: 32,
         }}
       >
-        {event.date}
+        {event.event.date}
       </div>
     </div>,
     {
