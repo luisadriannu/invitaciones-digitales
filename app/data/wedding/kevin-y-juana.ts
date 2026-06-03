@@ -1,28 +1,27 @@
 import type { EventData } from "@/app/types/EventData";
 
-const camila: EventData = {
-  tipo: "bautizo",
+const kevinyjuana: EventData = {
+  tipo: "boda",
   suscription: "classic",
   seo: {
-    title: "🎀 Bautizo de Camila",
-    description:
-      "Mis papás y yo estaremos muy felices de compartir contigo este hermoso día.",
-    image: "/pictures/christening/camila/camila-1.jpg",
+    title: "Boda de Kevin y Juana",
+    description: "Estaremos muy felices de compartir contigo este hermoso día.",
+    image: "/pictures/wedding/kevin-y-juana/kevin-y-juana-1.jpg",
   },
   event: {
-    name: "Camila Rivera Vega",
+    name: "Kevin Mariano y Juana Reynoso",
     date: "07 Junio 2026",
     ceremonyHour: "11:00 AM",
     partyHour: "2:30 PM",
     dressCode: "Formal",
   },
   media: {
-    coverImage: "/pictures/christening/camila/camila-4.jpg",
+    coverImage: "/pictures/wedding/kevin-y-juana/kevin-y-juana-1.jpg",
     gallery: [
-      "/pictures/christening/camila/camila-1.jpg",
-      "/pictures/christening/camila/camila-2.jpg",
-      "/pictures/christening/camila/camila-3.jpg",
-      "/pictures/christening/camila/camila-4.jpg",
+      "/pictures/wedding/kevin-y-juana/kevin-y-juana-1.jpg",
+      "/pictures/wedding/kevin-y-juana/kevin-y-juana-2.jpg",
+      "/pictures/wedding/kevin-y-juana/kevin-y-juana-3.jpg",
+      "/pictures/wedding/kevin-y-juana/kevin-y-juana-4.jpg",
     ],
     music: "/music/mi-princesita.mp3",
   },
@@ -53,4 +52,4 @@ const camila: EventData = {
   },
 };
 
-export default camila;
+export default kevinyjuana;

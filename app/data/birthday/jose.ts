@@ -32,16 +32,7 @@ const jose: EventData = {
   contact: {
     phone: "5266337283",
   },
-  family: {
-    // parents: {
-    //   mother: "C.P Erika De Jesús Carlos",
-    //   father: "Doc. Vicente Junior Rivas Negrete",
-    // },
-    // godparents: {
-    //   man: "Lic. Juan Rivera Mendoza",
-    //   woman: "Mtra. Yaritza Betancourt Higuera",
-    // },
-  },
+
   design: {
     variant: "base",
     colors: {
