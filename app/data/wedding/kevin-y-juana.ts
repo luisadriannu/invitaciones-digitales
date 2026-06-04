@@ -14,6 +14,32 @@ const kevinyjuana: EventData = {
     ceremonyHour: "11:00 AM",
     partyHour: "2:30 PM",
     dressCode: "Formal",
+    itinerary: [
+      {
+        hour: "5:00 PM",
+        title: "Ceremonia Religiosa",
+        description: "Catedral San Juan Bautista",
+      },
+      {
+        hour: "6:30 PM",
+        title: "Recepción",
+        description: "Bienvenida a invitados",
+      },
+      {
+        hour: "7:30 PM",
+        title: "Cena",
+        description: "Servicio de alimentos",
+      },
+      {
+        hour: "9:00 PM",
+        title: "Primer Baile",
+      },
+      {
+        hour: "10:00 PM",
+        title: "Fiesta",
+        description: "¡A celebrar toda la noche!",
+      },
+    ],
   },
   media: {
     coverImage: "/pictures/wedding/kevin-y-juana/kevin-y-juana-1.jpg",

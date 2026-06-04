@@ -25,6 +25,11 @@ export interface EventInfo {
   partyHour: string;
   phrase?: string;
   dressCode: string;
+  itinerary?: {
+    hour: string;
+    title: string;
+    description?: string;
+  }[];
 }
 
 export interface MediaInfo {

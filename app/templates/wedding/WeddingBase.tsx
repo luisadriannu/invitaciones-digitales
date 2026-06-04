@@ -525,8 +525,72 @@ export default function WeddingBase({ data }: Props) {
           <LocationMaps data={data} />
         </section>
 
+        {data.event.itinerary && (
+          <section className="py-14 px-6 dark-bg">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-center mb-14"
+            >
+              <p className="outfit text-[#C8956A]/70 tracking-[0.2em] text-xs uppercase mb-2">
+                Celebremos juntos
+              </p>
+
+              <h2 className="text-3xl md:text-4xl font-light italic">
+                Itinerario del Evento
+              </h2>
+            </motion.div>
+
+            <div className="max-w-3xl mx-auto">
+              <div className="space-y-6">
+                {data.event.itinerary.map((item, index) => (
+                  <motion.div
+                    key={`${item.hour}-${index}`}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.1 }}
+                    className="glass-card flex gap-5 items-start"
+                  >
+                    <div
+                      className="
+                        min-w-20
+                        text-center
+                      "
+                    >
+                      <p
+                        className="
+                  outfit
+                  text-[#C8956A]
+                  text-sm
+                  tracking-wider
+                "
+                      >
+                        {item.hour}
+                      </p>
+                    </div>
+
+                    <div>
+                      <h3 className="text-xl font-light text-[#F0E8DC]">
+                        {item.title}
+                      </h3>
+
+                      {item.description && (
+                        <p className="outfit text-[#F0E8DC]/60 text-sm mt-1">
+                          {item.description}
+                        </p>
+                      )}
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
         {/* ════════════════ GALERÍA ════════════════ */}
-        <section className="py-24 px-6 dark-bg">
+        <section className="py-14 px-6 dark-bg">
           <div className="rose-divider mb-14">
             <span>✦</span>
           </div>

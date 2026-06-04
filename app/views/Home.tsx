@@ -1,6 +1,6 @@
 "use client";
 
-import { ExternalLink, MessageCircle } from "lucide-react";
+import { MessageCircle } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -44,147 +44,188 @@ Quiero más información acerca de las invitaciones.`;
   ];
 
   return (
-    <div
-      className="
-        min-h-screen
-        bg-linear-to-br
-        from-purple-900
-        via-blue-900
-        to-indigo-900
-        flex
-        items-center
-        justify-center
-        p-6
-        overflow-hidden
-        relative
-      "
-    >
-      <div
-        className="
-          absolute
-          inset-0
-          opacity-20
-          bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCI+PC9zdmc+')]
-        "
-      />
-
-      <div className="relative z-10 text-center max-w-2xl">
-        <div className="mb-8">
-          <div className="inline-block animate-bounce mb-4">
-            <svg
-              className="w-20 h-20 mx-auto text-pink-400"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-            >
-              <path d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" />
-            </svg>
-          </div>
+    <main className="min-h-screen bg-[#FAF8F4]">
+      <div className="max-w-7xl mx-auto px-6 py-16">
+        {/* HERO */}
+        <section className="text-center mb-20">
+          <span
+            className="
+              block
+              uppercase
+              tracking-[0.6em]
+              text-[11px]
+              text-[#B8860B]
+              mb-6
+            "
+          >
+            Invitaciones Digitales
+          </span>
 
           <h1
             className="
               text-5xl
-              md:text-6xl
-              font-bold
-              text-white
+              md:text-7xl
+              font-light
+              text-[#2B2927]
               leading-tight
-              mb-4
+              mb-8
             "
           >
-            Bienvenido a
+            Diseños elegantes para
             <br />
-            <span
+            momentos inolvidables
+          </h1>
+
+          <div className="w-24 h-px bg-[#D4AF37] mx-auto mb-8" />
+
+          <p
+            className="
+              text-[#6A635C]
+              text-lg
+              max-w-2xl
+              mx-auto
+              leading-relaxed
+            "
+          >
+            Invitaciones digitales personalizadas para bodas, XV años, bautizos,
+            graduaciones, cumpleaños y celebraciones especiales.
+          </p>
+        </section>
+
+        {/* GALERÍA */}
+        <section className="mb-20">
+          <div className="flex items-center justify-center gap-4 mb-12">
+            <div className="w-16 h-px bg-[#D4AF37]/40" />
+            <h2
               className="
-                bg-linear-to-r
-                from-pink-400
-                via-purple-400
-                to-blue-400
-                bg-clip-text
-                text-transparent
+                text-[#2B2927]
+                text-2xl
+                md:text-3xl
+                font-light
               "
             >
-              Invitaciones Digitales
-            </span>
-          </h1>
-        </div>
+              Muestras
+            </h2>
+            <div className="w-16 h-px bg-[#D4AF37]/40" />
+          </div>
 
-        <div className="mt-10">
-          <h2 className="text-white text-xl font-semibold mb-6">
-            Ver ejemplos de invitaciones
-          </h2>
-
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
             {samples.map((sample) => (
               <Link
                 key={sample.href}
                 href={sample.href}
                 className="
                   group
-                  relative
-                  overflow-hidden
-                  rounded-2xl
-                  aspect-3/4
                   block
                 "
               >
-                <Image
-                  src={sample.image}
-                  alt={sample.title}
-                  fill
-                  sizes="(max-width:768px) 50vw, 33vw"
-                  className="
-                    object-cover
-                    transition-transform
-                    duration-500
-                    group-hover:scale-110
-                  "
-                />
-
                 <div
                   className="
-                    absolute
-                    inset-0
-                    bg-black/15
-                    flex
-                    items-end
-                    p-4
+                    relative
+                    overflow-hidden
+                    aspect-[3/4]
+                    mb-4
+                    bg-[#F2ECE4]
                   "
                 >
-                  <p className="text-white font-semibold">{sample.title}</p>
+                  <Image
+                    src={sample.image}
+                    alt={sample.title}
+                    fill
+                    sizes="(max-width:768px) 50vw, 33vw"
+                    className="
+                      object-cover
+                      transition-all
+                      duration-700
+                      group-hover:scale-105
+                    "
+                  />
+                </div>
+
+                <div className="text-center">
+                  <p
+                    className="
+                      uppercase
+                      tracking-[0.25em]
+                      text-[12px]
+                      text-[#B8860B]
+                      mb-1
+                    "
+                  >
+                    Invitación
+                  </p>
+
+                  <h3
+                    className="
+                      text-[#2B2927]
+                      text-lg
+                      font-medium
+                    "
+                  >
+                    {sample.title}
+                  </h3>
                 </div>
               </Link>
             ))}
           </div>
-        </div>
+        </section>
 
-        <br />
+        {/* CTA */}
+        <section className="text-center">
+          <div className="w-24 h-px bg-[#D4AF37] mx-auto mb-8" />
 
-        <p className="text-white mb-2">Para cotizar tu invitacion &#8595;</p>
+          <p
+            className="
+              text-[#6A635C]
+              text-lg
+              mb-3
+            "
+          >
+            ¿Te gustó algún diseño?
+          </p>
 
-        <a
-          href={`https://api.whatsapp.com/send?phone=522206283499&text=${encodedMessage}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="
-            inline-flex
-            items-center
-            gap-2
-            px-8
-            py-4
-            rounded-full
-            bg-green-500
-            hover:bg-green-600
-            text-white
-            font-semibold
-            transition-all
-            duration-300
-            hover:scale-105
-            shadow-lg
-          "
-        >
-          <MessageCircle size={20} />
-          Contáctanos por WhatsApp
-        </a>
+          <p
+            className="
+              text-[#B8860B]
+              uppercase
+              tracking-[0.2em]
+              text-sm
+              mb-8
+            "
+          >
+            Solicita tu cotización personalizada
+          </p>
+
+          <a
+            href={`https://api.whatsapp.com/send?phone=522206283499&text=${encodedMessage}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="
+              inline-flex
+              items-center
+              gap-3
+
+              px-10
+              py-4
+
+              border
+              border-[#D4AF37]
+
+              text-[#2B2927]
+              font-medium
+
+              hover:bg-[#D4AF37]
+              hover:text-white
+
+              transition-all
+              duration-300
+            "
+          >
+            <MessageCircle size={20} />
+            Cotizar por WhatsApp
+          </a>
+        </section>
       </div>
-    </div>
+    </main>
   );
 }
