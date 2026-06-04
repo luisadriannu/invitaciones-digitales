@@ -4,7 +4,7 @@ import camila from "@/app/data/christening/camila";
 import kevinyjuana from "@/app/data/wedding/kevin-y-juana";
 import valentina from "@/app/data/xv/valentina";
 import karina from "@/app/data/graduation/karina";
-import alan from "@/app/data/firstcommunion/sofia";
+import sofia from "@/app/data/firstcommunion/sofia";
 
 const events: Record<string, EventData> = {
   camila,
@@ -12,7 +12,7 @@ const events: Record<string, EventData> = {
   kevinyjuana,
   valentina,
   karina,
-  alan,
+  sofia,
 };
 
 export default events;

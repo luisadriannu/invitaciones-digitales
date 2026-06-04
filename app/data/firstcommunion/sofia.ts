@@ -1,6 +1,6 @@
 import type { EventData } from "@/app/types/EventData";
 
-const alan: EventData = {
+const sofia: EventData = {
   tipo: "primeracomunion",
   suscription: "premiun",
   seo: {
@@ -11,8 +11,8 @@ const alan: EventData = {
   },
   event: {
     name: "Sofia Rodriguez",
-    date: "07 Junio 2026",
-    ceremonyHour: "11:00 AM",
+    date: "21 Diciembre 2026",
+    ceremonyHour: "6:00 PM",
     partyHour: "2:30 PM",
     dressCode: "Formal",
   },
@@ -53,4 +53,4 @@ const alan: EventData = {
   },
 };
 
-export default alan;
+export default sofia;
