@@ -178,7 +178,7 @@ export default function FirstCommunionTemplate({ data }: Props) {
         </section>
 
         {/* --- FAMILIARES (Animación Cascada / Stagger) --- */}
-        <section className="py-28 px-6 bg-[#F4F1EA]/60">
+        <section className="py-18 px-6 bg-[#F4F1EA]/60">
           <motion.div
             variants={staggerContainer}
             initial="hidden"
@@ -201,6 +201,7 @@ export default function FirstCommunionTemplate({ data }: Props) {
               </h3>
               <div className="space-y-2 text-[#54504A] font-serif text-lg font-light">
                 <p>{data.family?.parents?.mother}</p>
+                <span>Y</span>
                 <p>{data.family?.parents?.father}</p>
               </div>
             </motion.div>
@@ -220,6 +221,7 @@ export default function FirstCommunionTemplate({ data }: Props) {
               </h3>
               <div className="space-y-2 text-[#54504A] font-serif text-lg font-light">
                 <p>{data.family?.godparents?.woman}</p>
+                <span>Y</span>
                 <p>{data.family?.godparents?.man}</p>
               </div>
             </motion.div>
@@ -294,7 +296,7 @@ export default function FirstCommunionTemplate({ data }: Props) {
         </section>
 
         {/* --- GALERÍA --- */}
-        <section className="py-32 bg-[#FAF9F6] relative overflow-hidden">
+        <section className="py-16 bg-[#FAF9F6] relative overflow-hidden">
           <Flower2
             size={120}
             className="absolute left-10 top-20 text-[#D4AF37]/5"
@@ -318,7 +320,7 @@ export default function FirstCommunionTemplate({ data }: Props) {
           </div>
         </section>
 
-        <section className="relative py-40 px-6 text-center bg-white overflow-hidden">
+        <section className="relative py-30 px-6 text-center bg-white overflow-hidden">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}

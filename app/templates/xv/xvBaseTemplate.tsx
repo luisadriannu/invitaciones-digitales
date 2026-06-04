@@ -230,6 +230,7 @@ export default function QuinceaneraInvitation({ data }: Props) {
                 Con la bendición de mis padres
               </h3>
               <p className="text-2xl mb-2">{data.family?.parents?.mother}</p>
+              <span>Y</span>
               <p className="text-2xl">{data.family?.parents?.father}</p>
             </motion.div>
 
@@ -239,16 +240,17 @@ export default function QuinceaneraInvitation({ data }: Props) {
               className="glass-card p-12 text-center border-t border-[#C8956A]/20"
             >
               <h3 className="montserrat text-[#C8956A] text-xs uppercase tracking-[0.3em] mb-8">
-                Y mis padrinos
+                PADRINOS
               </h3>
-              <p className="text-2xl mb-2">{data.family?.parents?.mother}</p>
-              <p className="text-2xl">{data.family?.parents?.father}</p>
+              <p className="text-2xl mb-2">{data.family?.godparents?.woman}</p>
+              <span>Y</span>
+              <p className="text-2xl">{data.family?.godparents?.man}</p>
             </motion.div>
           </div>
         </section>
 
         {/* ════════════════ DETALLES DEL EVENTO ════════════════ */}
-        <section className="py-24 px-6 relative">
+        <section className="py-10 px-6 relative">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-5xl italic mb-16 gold-text">
               ¿Dónde & Cuándo?
@@ -295,7 +297,7 @@ export default function QuinceaneraInvitation({ data }: Props) {
         </section>
 
         {/* ════════════════ RSVP ════════════════ */}
-        <section className="py-32 px-6 text-center celestial-bg relative">
+        <section className="py-14 px-6 text-center celestial-bg relative">
           <Star
             className="mx-auto mb-8 text-[#C8956A] opacity-40 animate-pulse"
             size={40}

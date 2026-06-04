@@ -509,7 +509,7 @@ export default function GraduationBase({ data }: Props) {
                   Acto Académico
                 </p>
                 <p className="jost text-white font-light">
-                  {data.location.church} {/* Mapeado al campo original */}
+                  {data.location.event}
                 </p>
               </div>
             </motion.div>

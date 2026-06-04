@@ -36,12 +36,12 @@ const sofia: EventData = {
   },
   family: {
     parents: {
-      mother: "C.P Maria Vicenta",
-      father: "Doc. Felipe De Jesús",
+      mother: "Rebeca Alvarado Vela",
+      father: "Luis Rodriguez Urieta",
     },
     godparents: {
-      man: "Lic. Juan Alberto Peréz",
-      woman: "Mtra. Mariana Vega",
+      man: "Alan Gonzalez Gomez",
+      woman: "Ana Mendoza Mendoza",
     },
   },
   design: {

@@ -36,6 +36,7 @@ export interface MediaInfo {
 export interface LocationInfo {
   mapUrl: string;
   church?: string;
+  event?: string;
   reception?: string;
 }
 

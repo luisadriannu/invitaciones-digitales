@@ -11,7 +11,7 @@ const camila: EventData = {
   },
   event: {
     name: "Maria Valentina",
-    date: "07 Junio 2026",
+    date: "16 Agosto 2026",
     ceremonyHour: "11:00 AM",
     partyHour: "2:30 PM",
     dressCode: "Formal",
@@ -36,12 +36,12 @@ const camila: EventData = {
   },
   family: {
     parents: {
-      mother: "C.P Maria Vicenta",
-      father: "Doc. Felipe De Jesús",
+      mother: "Mtra. Maria Mercedes Juarez",
+      father: "Doc. Adrian Velvet Mendoza",
     },
     godparents: {
-      man: "Lic. Juan Alberto Peréz",
-      woman: "Mtra. Mariana Vega",
+      man: "Lic. Juan Aurelio Pérez",
+      woman: "Mtra. Antonia Lucide Rena",
     },
   },
   design: {
