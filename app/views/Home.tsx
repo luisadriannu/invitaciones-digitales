@@ -1,12 +1,47 @@
 "use client";
 
 import { ExternalLink, MessageCircle } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   const message = `Hola 👋
 Quiero más información acerca de las invitaciones.`;
 
   const encodedMessage = encodeURIComponent(message);
+
+  const samples = [
+    {
+      title: "Primera Comunión",
+      image: "/pictures/firstcommunion/sofia/sofia-1.jpg",
+      href: "/primeracomunion/sofia",
+    },
+    {
+      title: "Graduación",
+      image: "/pictures/graduation/karina/graduation-1.jpg",
+      href: "/graduacion/karina",
+    },
+    {
+      title: "XV Años",
+      image: "/pictures/xv/valentina/xv-1.jpeg",
+      href: "/xv/valentina",
+    },
+    {
+      title: "Cumpleaños",
+      image: "/pictures/birthday/jose/jose-1.jpg",
+      href: "/cumple/jose",
+    },
+    {
+      title: "Boda",
+      image: "/pictures/wedding/kevin-y-juana/kevin-y-juana-1.jpg",
+      href: "/boda/kevinyjuana",
+    },
+    {
+      title: "Bautizo",
+      image: "/pictures/christening/camila/camila-1.jpg",
+      href: "/bautizo/camila",
+    },
+  ];
 
   return (
     <div
@@ -70,27 +105,58 @@ Quiero más información acerca de las invitaciones.`;
               Invitaciones Digitales
             </span>
           </h1>
-
-          <p className="text-white/90 text-lg">
-            Las muestras ahora están en{" "}
-            <a
-              href="https://invitaciones-muestra.vercel.app/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="
-                text-pink-400
-                hover:text-pink-300
-                font-semibold
-                inline-flex
-                items-center
-                gap-2
-              "
-            >
-              invitaciones-muestra.vercel.app
-              <ExternalLink size={18} />
-            </a>
-          </p>
         </div>
+
+        <div className="mt-10">
+          <h2 className="text-white text-xl font-semibold mb-6">
+            Ver ejemplos de invitaciones
+          </h2>
+
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+            {samples.map((sample) => (
+              <Link
+                key={sample.href}
+                href={sample.href}
+                className="
+                  group
+                  relative
+                  overflow-hidden
+                  rounded-2xl
+                  aspect-3/4
+                  block
+                "
+              >
+                <Image
+                  src={sample.image}
+                  alt={sample.title}
+                  fill
+                  sizes="(max-width:768px) 50vw, 33vw"
+                  className="
+                    object-cover
+                    transition-transform
+                    duration-500
+                    group-hover:scale-110
+                  "
+                />
+
+                <div
+                  className="
+                    absolute
+                    inset-0
+                    bg-black/15
+                    flex
+                    items-end
+                    p-4
+                  "
+                >
+                  <p className="text-white font-semibold">{sample.title}</p>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+
+        <br />
 
         <p className="text-white mb-2">Para cotizar tu invitacion &#8595;</p>
 
