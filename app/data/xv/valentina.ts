@@ -1,28 +1,27 @@
 import type { EventData } from "@/app/types/EventData";
 
 const camila: EventData = {
-  tipo: "bautizo",
+  tipo: "xv",
   suscription: "premiun",
   seo: {
-    title: "🎀 Bautizo de Camila",
+    title: "🎀 XV de Valentina",
     description:
       "Mis papás y yo estaremos muy felices de compartir contigo este hermoso día.",
-    image: "/pictures/christening/camila/camila-1.jpg",
+    image: "/pictures/xv/valentina/xv-1.jpeg",
   },
   event: {
-    name: "Camila Rivera Vega",
+    name: "Maria Valentina",
     date: "07 Junio 2026",
     ceremonyHour: "11:00 AM",
     partyHour: "2:30 PM",
     dressCode: "Formal",
   },
   media: {
-    coverImage: "/pictures/christening/camila/camila-4.jpg",
+    coverImage: "/pictures/xv/valentina/xv-1.jpeg",
     gallery: [
-      "/pictures/christening/camila/camila-1.jpg",
-      "/pictures/christening/camila/camila-2.jpg",
-      "/pictures/christening/camila/camila-3.jpg",
-      "/pictures/christening/camila/camila-4.jpg",
+      "/pictures/xv/valentina/xv-1.jpeg",
+      "/pictures/xv/valentina/xv-2.jpeg",
+      "/pictures/xv/valentina/xv-3.jpeg",
     ],
     music: "/music/mi-princesita.mp3",
   },

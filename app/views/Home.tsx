@@ -92,6 +92,8 @@ Quiero más información acerca de las invitaciones.`;
           </p>
         </div>
 
+        <p className="text-white mb-2">Para cotizar tu invitacion &#8595;</p>
+
         <a
           href={`https://api.whatsapp.com/send?phone=522206283499&text=${encodedMessage}`}
           target="_blank"

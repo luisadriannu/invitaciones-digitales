@@ -1,8 +1,15 @@
-export type EventType = "cumple" | "boda" | "xv" | "babyshower" | "bautizo";
+export type EventType =
+  | "cumple"
+  | "boda"
+  | "xv"
+  | "babyshower"
+  | "bautizo"
+  | "graduacion"
+  | "primeracomunion";
 
 export type EventVariant = "base" | "elegant" | "modern" | "personalized";
 
-export type Suscription = "classic" | "intermediary" | "premiun";
+export type Suscription = "classic" | "premiun";
 
 export interface SeoInfo {
   title: string;

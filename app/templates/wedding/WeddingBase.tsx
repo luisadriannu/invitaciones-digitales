@@ -8,6 +8,7 @@ import CountDown from "@/app/components/CountDown";
 import MusicButton from "@/app/components/MusicButton";
 import type { EventData } from "@/app/types/EventData";
 import { MapPin, Church, Utensils, Heart, Clock3 } from "lucide-react";
+import LocationMaps from "@/app/components/LocationMaps";
 
 type InfoItem = {
   icon: React.ReactNode;
@@ -521,17 +522,7 @@ export default function WeddingBase({ data }: Props) {
             ))}
           </div>
 
-          <div className="text-center mt-10">
-            <a
-              href={data.location.mapUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="map-link outfit"
-            >
-              <MapPin size={14} />
-              Ver ubicación en el mapa
-            </a>
-          </div>
+          <LocationMaps data={data} />
         </section>
 
         {/* ════════════════ GALERÍA ════════════════ */}

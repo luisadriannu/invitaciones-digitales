@@ -3,8 +3,10 @@ import BirthdayBase from "@/app/templates/birthday/BirthdayBase";
 // import BirthdayModern from "@/templates/birthday/BirthdayModern";
 import WeddingBase from "@/app/templates/wedding/WeddingBase";
 // import BabyShowerBase from "@/templates/babyshower/BabyShowerBase";
-// import XVBaseTemplate from "@/templates/xv/XVTemplate";
+import xvBaseTemplate from "@/app/templates/xv/xvBaseTemplate";
 import ChristeningBase from "@/app/templates/christening/ChristeningBase";
+import GraduationBase from "@/app/templates/graduation/GraduationBase";
+import FirstCommunionTemplate from "@/app/templates/firstcommunion/FirstCommunionTemplate";
 
 export const templates = {
   cumple: {
@@ -18,9 +20,15 @@ export const templates = {
   // babyshower: {
   //   base: BabyShowerBase,
   // },
-  // xv: {
-  //   base: XVBaseTemplate,
-  // },
+  primeracomunion: {
+    base: FirstCommunionTemplate,
+  },
+  graduacion: {
+    base: GraduationBase,
+  },
+  xv: {
+    base: xvBaseTemplate,
+  },
   bautizo: {
     base: ChristeningBase,
   },

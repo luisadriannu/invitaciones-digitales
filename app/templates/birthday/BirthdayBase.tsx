@@ -3,7 +3,6 @@
 import { useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "motion/react";
-import { CalendarDays, Clock3, MapPin } from "lucide-react";
 import type { CSSProperties } from "react";
 
 import Gallery from "@/app/components/Gallery";
@@ -11,6 +10,7 @@ import CountDown from "@/app/components/CountDown";
 import MusicButton from "@/app/components/MusicButton";
 
 import type { EventData } from "@/app/types/EventData";
+import LocationMaps from "@/app/components/LocationMaps";
 
 interface Props {
   data: EventData;
@@ -544,17 +544,7 @@ export default function BirthdayCandy({ data }: Props) {
             ))}
           </div>
 
-          <div className="text-center mt-8">
-            <a
-              href={data.location.mapUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="map-candy"
-            >
-              <MapPin size={15} />
-              Ver ubicación
-            </a>
-          </div>
+          <LocationMaps data={data} />
         </section>
 
         {/* ── Wavy divider ── */}

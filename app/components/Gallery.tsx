@@ -29,14 +29,27 @@ export default function Gallery({ images }: GalleryProps) {
       >
         {images.map((src, index) => (
           <SwiperSlide key={index}>
-            <div className="relative w-full aspect-4/3">
+            <div className="relative w-full h-[60vh] overflow-hidden rounded-3xl">
+              <Image
+                src={src}
+                alt=""
+                fill
+                className="
+                  object-cover
+                  blur-2xl
+                  scale-110
+                  opacity-40
+                "
+              />
+
               <Image
                 src={src}
                 alt={`Imagen ${index + 1}`}
                 fill
                 className="
-                  object-cover
-                  rounded-2xl
+                  object-contain
+                  relative
+                  z-10
                 "
                 sizes="100vw"
                 priority={index === 0}

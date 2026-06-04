@@ -1,34 +1,33 @@
 import type { EventData } from "@/app/types/EventData";
 
-const camila: EventData = {
-  tipo: "bautizo",
+const alan: EventData = {
+  tipo: "primeracomunion",
   suscription: "premiun",
   seo: {
-    title: "🎀 Bautizo de Camila",
+    title: "Mi primera comunion",
     description:
       "Mis papás y yo estaremos muy felices de compartir contigo este hermoso día.",
-    image: "/pictures/christening/camila/camila-1.jpg",
+    image: "/pictures/firstcommunion/sofia/sofia-1.jpg",
   },
   event: {
-    name: "Camila Rivera Vega",
+    name: "Sofia Rodriguez",
     date: "07 Junio 2026",
     ceremonyHour: "11:00 AM",
     partyHour: "2:30 PM",
     dressCode: "Formal",
   },
   media: {
-    coverImage: "/pictures/christening/camila/camila-4.jpg",
+    coverImage: "/pictures/firstcommunion/sofia/sofia-1.jpg",
     gallery: [
-      "/pictures/christening/camila/camila-1.jpg",
-      "/pictures/christening/camila/camila-2.jpg",
-      "/pictures/christening/camila/camila-3.jpg",
-      "/pictures/christening/camila/camila-4.jpg",
+      "/pictures/firstcommunion/sofia/sofia-1.jpg",
+      "/pictures/firstcommunion/sofia/sofia-2.jpg",
+      "/pictures/firstcommunion/sofia/sofia-3.jpg",
     ],
     music: "/music/mi-princesita.mp3",
   },
   location: {
     mapUrl:
-      "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3472.6923662318954!2d-100.67883969509384!3d18.347381216724678!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x84332da6fe403ecb%3A0x8755ab0e6aaa4441!2s%22Quinta%20Andrea%22%20Jardin%20de%20eventos%20sociales!5e0!3m2!1ses-419!2smx!4v1780586835113!5m2!1ses-419!2smx",
+      "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3574.111720940047!2d-100.67111340952003!3d18.363724293530588!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x84332daac2bfd091%3A0x3e6aa83b763e2e73!2sDi%C3%B3cesis%20de%20Ciudad%20Altamirano!5e0!3m2!1ses-419!2smx!4v1780602433128!5m2!1ses-419!2smx",
     church: "Catedral San Juan Bautista",
     reception: "Salón Quinta Karen",
   },
@@ -54,4 +53,4 @@ const camila: EventData = {
   },
 };
 
-export default camila;
+export default alan;
