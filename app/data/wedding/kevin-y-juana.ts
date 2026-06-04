@@ -2,7 +2,7 @@ import type { EventData } from "@/app/types/EventData";
 
 const kevinyjuana: EventData = {
   tipo: "boda",
-  suscription: "classic",
+  suscription: "premiun",
   seo: {
     title: "Boda de Kevin y Juana",
     description: "Estaremos muy felices de compartir contigo este hermoso día.",
@@ -52,7 +52,8 @@ const kevinyjuana: EventData = {
     music: "/music/mi-princesita.mp3",
   },
   location: {
-    mapUrl: "https://maps.app.goo.gl/KnuqwoAN5kMtcyqu5",
+    mapUrl:
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d18013.74004616533!2d-100.67711961370904!3d18.35082625678385!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x84332dc455373601%3A0xff220e710b3b4582!2sQuinta%20Maya!5e0!3m2!1ses-419!2smx!4v1780610112793!5m2!1ses-419!2smx",
     church: "Catedral San Juan Bautista",
     reception: "Salón Quinta Karen",
   },
@@ -61,12 +62,12 @@ const kevinyjuana: EventData = {
   },
   family: {
     parents: {
-      mother: "C.P Maria Vicenta",
-      father: "Doc. Felipe De Jesús",
+      mother: "Dra. Federica Reynoso Tapia",
+      father: "Dr. Carlos Beltran Gomez",
     },
     godparents: {
-      man: "Lic. Juan Alberto Peréz",
-      woman: "Mtra. Mariana Vega",
+      man: "Lic. Edgar Madero Peña",
+      woman: "Lic. Mercedes Maria Gonzalez Gelba",
     },
   },
   design: {
