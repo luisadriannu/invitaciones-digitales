@@ -8,6 +8,7 @@ import CountDown from "@/app/components/CountDown";
 import MusicButton from "@/app/components/MusicButton";
 import LocationMaps from "@/app/components/LocationMaps";
 import type { EventData } from "@/app/types/EventData";
+import type { Variants } from "motion/react";
 import {
   Church,
   Cross,
@@ -23,7 +24,7 @@ interface Props {
 }
 
 // Variantes de animación reutilizables para limpieza de código
-const fadeInUp = {
+const fadeInUp: Variants = {
   hidden: { opacity: 0, y: 30 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
 };
@@ -166,7 +167,8 @@ export default function FirstCommunionTemplate({ data }: Props) {
             </div>
 
             <p className="font-serif text-3xl italic leading-relaxed text-[#4A433D]">
-              "Yo soy el pan de vida; el que viene a mí nunca tendrá hambre."
+              &quot;Yo soy el pan de vida; el que viene a mí nunca tendrá
+              hambre.&quot;
             </p>
 
             <span className="block mt-8 uppercase tracking-[0.3em] text-xs text-[#A2947D]">
