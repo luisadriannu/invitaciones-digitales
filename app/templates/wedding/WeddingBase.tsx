@@ -7,8 +7,9 @@ import Gallery from "@/app/components/Gallery";
 import CountDown from "@/app/components/CountDown";
 import MusicButton from "@/app/components/MusicButton";
 import type { EventData } from "@/app/types/EventData";
-import { MapPin, Church, Utensils, Heart, Clock3 } from "lucide-react";
+import { Church, Utensils, Heart, Clock3 } from "lucide-react";
 import LocationMaps from "@/app/components/LocationMaps";
+import { Great_Vibes } from "next/font/google";
 
 type InfoItem = {
   icon: React.ReactNode;
@@ -16,11 +17,44 @@ type InfoItem = {
   value?: string;
 };
 
+const greatVibes = Great_Vibes({
+  subsets: ["latin"],
+  weight: "400",
+});
+
 interface Props {
   data: EventData;
 }
 
-/* ── Rose petals ── */
+/* ── Tailwind shorthand constants ── */
+const darkBg =
+  "bg-[#0C0A08] [background-image:radial-gradient(ellipse_at_15%_20%,rgba(120,40,60,0.18)_0%,transparent_50%),radial-gradient(ellipse_at_85%_75%,rgba(80,30,50,0.15)_0%,transparent_50%)]";
+
+const warmBg =
+  "bg-[#110E0A] [background-image:radial-gradient(ellipse_at_50%_50%,rgba(100,35,50,0.12)_0%,transparent_60%)]";
+
+const glassCard =
+  "bg-[rgba(255,248,240,0.04)] border border-[rgba(200,149,106,0.15)] rounded-3xl p-8 backdrop-blur-sm transition-all duration-300 hover:border-[rgba(200,149,106,0.35)] hover:shadow-[0_8px_40px_rgba(200,149,106,0.1)] hover:-translate-y-0.5";
+
+/* Rose divider: vertical line + symbol + vertical line via flex-col */
+function RoseDivider({ symbol }: { symbol: string }) {
+  return (
+    <div className="flex flex-col items-center">
+      <div className="w-px h-11 bg-linear-to-b from-transparent via-[rgba(200,149,106,0.35)] to-transparent" />
+      <span className="text-[rgba(200,149,106,0.5)] text-lg py-1">
+        {symbol}
+      </span>
+      <div className="w-px h-11 bg-linear-to-b from-transparent via-[rgba(200,149,106,0.35)] to-transparent" />
+    </div>
+  );
+}
+
+/* Small horizontal divider */
+function SmallDivider() {
+  return <div className="w-10 h-px bg-[rgba(200,149,106,0.25)] mx-auto my-4" />;
+}
+
+/* Rose petals */
 const PETALS = Array.from({ length: 16 }, (_, i) => ({
   id: i,
   x: 3 + ((i * 6.1) % 94),
@@ -77,193 +111,6 @@ export default function WeddingBase({ data }: Props) {
         className="relative overflow-hidden"
         id="wedding-main"
       >
-        <style>{`
-          @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Great+Vibes&family=Outfit:wght@300;400;500&display=swap');
-
-          #wedding-main {
-            background-color: #0C0A08;
-            color: #F0E8DC;
-          }
-
-          .outfit { font-family: 'Outfit', sans-serif; }
-          .script  { font-family: 'Great Vibes', cursive; }
-
-          /* Deep rose noise bg */
-          .dark-bg {
-            background-color: #0C0A08;
-            background-image:
-              radial-gradient(ellipse at 15% 20%, rgba(120,40,60,0.18) 0%, transparent 50%),
-              radial-gradient(ellipse at 85% 75%, rgba(80,30,50,0.15) 0%, transparent 50%);
-          }
-
-          .warm-bg {
-            background-color: #110E0A;
-            background-image:
-              radial-gradient(ellipse at 50% 50%, rgba(100,35,50,0.12) 0%, transparent 60%);
-          }
-
-          /* Petal fall */
-          @keyframes petalDrift {
-            0%   { transform: translateY(-40px) rotate(0deg) translateX(0);   opacity: 0; }
-            8%   { opacity: 1; }
-            92%  { opacity: 0.5; }
-            100% { transform: translateY(105vh) rotate(480deg) translateX(30px); opacity: 0; }
-          }
-          .petal {
-            position: fixed;
-            top: 0;
-            pointer-events: none;
-            z-index: 1;
-            animation: petalDrift ease-in-out infinite;
-            border-radius: 50% 0 50% 0;
-          }
-
-          /* Name in script */
-          @keyframes roseShimmer {
-            0%   { background-position: -300% center; }
-            100% { background-position:  300% center; }
-          }
-          .name-gold {
-            background: linear-gradient(90deg, #C8956A 15%, #F0D080 50%, #C8956A 85%);
-            background-size: 300% auto;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: roseShimmer 6s linear infinite;
-          }
-
-          /* Ornament line */
-          .orn-line {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-          }
-          .orn-line::before,
-          .orn-line::after {
-            content: '';
-            flex: 1;
-            height: 1px;
-            background: linear-gradient(to right, transparent, rgba(200,149,106,0.35), transparent);
-          }
-          .orn-line span { color: rgba(200,149,106,0.55); font-size: 0.85rem; }
-
-          /* Glass card */
-          .glass-card {
-            background: rgba(255,248,240,0.04);
-            border: 1px solid rgba(200,149,106,0.15);
-            border-radius: 24px;
-            padding: 2rem 2.25rem;
-            backdrop-filter: blur(6px);
-            transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
-          }
-          .glass-card:hover {
-            border-color: rgba(200,149,106,0.35);
-            box-shadow: 0 8px 40px rgba(200,149,106,0.1);
-            transform: translateY(-2px);
-          }
-          .glass-card .icon-wrap {
-            width: 46px; height: 46px;
-            border-radius: 14px;
-            background: rgba(200,149,106,0.1);
-            border: 1px solid rgba(200,149,106,0.2);
-            display: flex; align-items: center; justify-content: center;
-            flex-shrink: 0;
-            color: #C8956A;
-          }
-
-          /* Family block */
-          .couple-name {
-            font-size: 1.8rem;
-            line-height: 1.1;
-            color: #F0E8DC;
-            font-weight: 400;
-          }
-          .couple-parents {
-            font-size: 0.85rem;
-            color: rgba(240,232,220,0.45);
-            letter-spacing: 0.04em;
-            margin-top: 0.35rem;
-          }
-
-          /* Divider */
-          .rose-divider {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-          }
-          .rose-divider::before,
-          .rose-divider::after {
-            content: '';
-            display: block;
-            width: 1px;
-            height: 44px;
-            background: linear-gradient(to bottom, transparent, rgba(200,149,106,0.35), transparent);
-          }
-          .rose-divider span {
-            font-size: 1.1rem;
-            color: rgba(200,149,106,0.5);
-            display: block;
-            padding: 4px 0;
-          }
-
-          /* RSVP btn */
-          .rsvp-btn {
-            padding: 1.1rem 3.5rem;
-            border-radius: 999px;
-            background: linear-gradient(135deg, #8B3A52, #C8956A);
-            color: #FFF8F0;
-            font-size: 0.9rem;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 8px 40px rgba(139,58,82,0.4);
-            transition: transform 0.2s, box-shadow 0.2s;
-          }
-          .rsvp-btn:hover { transform: translateY(-2px); box-shadow: 0 14px 50px rgba(139,58,82,0.55); }
-
-          /* Map link */
-          .map-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.8rem 2rem;
-            border-radius: 999px;
-            border: 1px solid rgba(200,149,106,0.25);
-            background: transparent;
-            color: #C8956A;
-            font-size: 0.85rem;
-            letter-spacing: 0.06em;
-            text-decoration: none;
-            transition: background 0.3s, border-color 0.3s;
-          }
-          .map-link:hover { background: rgba(200,149,106,0.08); border-color: rgba(200,149,106,0.45); }
-
-          /* Verse */
-          .verse-block {
-            position: relative;
-            padding: 1.5rem 2rem 1.5rem 3.5rem;
-            border-left: 1px solid rgba(200,149,106,0.3);
-          }
-          .verse-block::before {
-            content: '"';
-            position: absolute;
-            left: 0.6rem;
-            top: 0.5rem;
-            font-size: 3.5rem;
-            line-height: 1;
-            color: rgba(200,149,106,0.25);
-            font-family: Georgia, serif;
-          }
-
-          /* Heart pulse */
-          @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50%       { transform: scale(1.18); }
-          }
-          .heart-pulse { animation: pulse 2s ease-in-out infinite; }
-        `}</style>
-
         {/* Petals */}
         {PETALS.map((p) => (
           <div
@@ -282,7 +129,9 @@ export default function WeddingBase({ data }: Props) {
         ))}
 
         {/* ════════════════ HERO ════════════════ */}
-        <section className="relative min-h-screen flex flex-col items-center justify-center dark-bg">
+        <section
+          className={`relative min-h-screen flex flex-col items-center justify-center ${darkBg}`}
+        >
           <div className="absolute inset-0 z-0">
             <Image
               src={coverImage}
@@ -291,7 +140,7 @@ export default function WeddingBase({ data }: Props) {
               priority
               className="object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-b from-black/65 via-black/40 to-[#0C0A08]" />
+            <div className="absolute inset-0 bg-linear-to-b from-black/65 via-black/40 to-[#0C0A08]" />
           </div>
 
           <div className="relative z-10 text-center px-8 flex flex-col items-center">
@@ -304,44 +153,30 @@ export default function WeddingBase({ data }: Props) {
               Nos casamos
             </motion.p>
 
-            {/* Couple names in script */}
             <motion.h1
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 1.1 }}
-              className="script name-gold leading-none"
-              style={{ fontSize: "clamp(3rem, 12vw, 7rem)" }}
+              className={`${greatVibes.className} name-gold leading-tight`}
+              style={{ fontSize: "clamp(3rem, 12vw, 10rem)" }}
             >
               {data.event.name}
             </motion.h1>
 
-            {/* Ornament with heart */}
             <motion.div
               initial={{ opacity: 0, scaleX: 0 }}
               animate={{ opacity: 1, scaleX: 1 }}
               transition={{ delay: 0.9, duration: 0.8 }}
               className="flex items-center gap-4 my-8"
             >
-              <div
-                style={{
-                  width: 70,
-                  height: 1,
-                  background: "rgba(200,149,106,0.35)",
-                }}
-              />
+              <div className="w-17.5 h-px bg-[rgba(200,149,106,0.35)]" />
               <Heart
                 size={14}
                 fill="#8B3A52"
                 color="#8B3A52"
                 className="heart-pulse"
               />
-              <div
-                style={{
-                  width: 70,
-                  height: 1,
-                  background: "rgba(200,149,106,0.35)",
-                }}
-              />
+              <div className="w-17.5 h-px bg-[rgba(200,149,106,0.35)]" />
             </motion.div>
 
             <motion.p
@@ -371,9 +206,9 @@ export default function WeddingBase({ data }: Props) {
         </section>
 
         {/* ════════════════ FRASE ════════════════ */}
-        <section className="relative z-10 py-24 px-6 dark-bg">
-          <div className="rose-divider mb-14">
-            <span>✦</span>
+        <section className={`relative z-10 py-24 px-6 ${darkBg}`}>
+          <div className="mb-14">
+            <RoseDivider symbol="✦" />
           </div>
 
           <motion.div
@@ -392,13 +227,13 @@ export default function WeddingBase({ data }: Props) {
             </p>
           </motion.div>
 
-          <div className="rose-divider mt-14">
-            <span>♡</span>
+          <div className="mt-14">
+            <RoseDivider symbol="♡" />
           </div>
         </section>
 
         {/* ════════════════ COUNTDOWN ════════════════ */}
-        <section className="py-24 px-6 warm-bg">
+        <section className={`py-24 px-6 ${warmBg}`}>
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -414,9 +249,9 @@ export default function WeddingBase({ data }: Props) {
           </motion.div>
         </section>
 
-        {/* ════════════════ NOVIOS / FAMILIA ════════════════ */}
+        {/* ════════════════ FAMILIA ════════════════ */}
         {(data.family?.parents || data.family?.godparents) && (
-          <section className="py-24 px-6 dark-bg">
+          <section className={`py-24 px-6 ${darkBg}`}>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -437,20 +272,13 @@ export default function WeddingBase({ data }: Props) {
                   initial={{ opacity: 0, x: -30 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  className="glass-card text-center"
+                  className={`text-center ${glassCard}`}
                 >
                   <p className="outfit text-[#C8956A]/70 text-xs tracking-[0.2em] uppercase mb-5">
                     Padres
                   </p>
                   <p className="couple-name">{data.family.parents.mother}</p>
-                  <div
-                    style={{
-                      width: 40,
-                      height: 1,
-                      background: "rgba(200,149,106,0.25)",
-                      margin: "1rem auto",
-                    }}
-                  />
+                  <SmallDivider />
                   <p className="couple-name">{data.family.parents.father}</p>
                 </motion.div>
               )}
@@ -460,20 +288,13 @@ export default function WeddingBase({ data }: Props) {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.12 }}
-                  className="glass-card text-center"
+                  className={`text-center ${glassCard}`}
                 >
                   <p className="outfit text-[#C8956A]/70 text-xs tracking-[0.2em] uppercase mb-5">
                     Padrinos
                   </p>
                   <p className="couple-name">{data.family.godparents.woman}</p>
-                  <div
-                    style={{
-                      width: 40,
-                      height: 1,
-                      background: "rgba(200,149,106,0.25)",
-                      margin: "1rem auto",
-                    }}
-                  />
+                  <SmallDivider />
                   <p className="couple-name">{data.family.godparents.man}</p>
                 </motion.div>
               )}
@@ -482,7 +303,7 @@ export default function WeddingBase({ data }: Props) {
         )}
 
         {/* ════════════════ EVENTO ════════════════ */}
-        <section className="py-24 px-6 warm-bg">
+        <section className={`py-24 px-6 ${warmBg}`}>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -505,15 +326,15 @@ export default function WeddingBase({ data }: Props) {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="glass-card flex items-center gap-4"
+                className={`flex items-center gap-4 ${glassCard}`}
               >
-                <div className="icon-wrap">{item.icon}</div>
-
+                <div className="w-11.5 h-11.5 rounded-[14px] bg-[rgba(200,149,106,0.1)] border border-[rgba(200,149,106,0.2)] flex items-center justify-center shrink-0 text-[#C8956A]">
+                  {item.icon}
+                </div>
                 <div>
                   <p className="outfit text-[#C8956A]/60 text-xs uppercase tracking-widest mb-0.5">
                     {item.label}
                   </p>
-
                   <p className="outfit text-[#F0E8DC] font-medium text-sm">
                     {item.value}
                   </p>
@@ -525,8 +346,9 @@ export default function WeddingBase({ data }: Props) {
           <LocationMaps data={data} />
         </section>
 
+        {/* ════════════════ ITINERARIO ════════════════ */}
         {data.event.itinerary && (
-          <section className="py-14 px-6 dark-bg">
+          <section className={`py-24 px-6 ${darkBg}`}>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -536,63 +358,46 @@ export default function WeddingBase({ data }: Props) {
               <p className="outfit text-[#C8956A]/70 tracking-[0.2em] text-xs uppercase mb-2">
                 Celebremos juntos
               </p>
-
               <h2 className="text-3xl md:text-4xl font-light italic">
                 Itinerario del Evento
               </h2>
             </motion.div>
 
-            <div className="max-w-3xl mx-auto">
-              <div className="space-y-6">
-                {data.event.itinerary.map((item, index) => (
-                  <motion.div
-                    key={`${item.hour}-${index}`}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.1 }}
-                    className="glass-card flex gap-5 items-start"
-                  >
-                    <div
-                      className="
-                        min-w-20
-                        text-center
-                      "
-                    >
-                      <p
-                        className="
-                  outfit
-                  text-[#C8956A]
-                  text-sm
-                  tracking-wider
-                "
-                      >
-                        {item.hour}
+            <div className="max-w-3xl mx-auto space-y-6">
+              {data.event.itinerary.map((item, index) => (
+                <motion.div
+                  key={`${item.hour}-${index}`}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  className={`flex gap-5 items-start ${glassCard}`}
+                >
+                  <div className="min-w-20 text-center">
+                    <p className="outfit text-[#C8956A] text-sm tracking-wider">
+                      {item.hour}
+                    </p>
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-light text-[#F0E8DC]">
+                      {item.title}
+                    </h3>
+                    {item.description && (
+                      <p className="outfit text-[#F0E8DC]/60 text-sm mt-1">
+                        {item.description}
                       </p>
-                    </div>
-
-                    <div>
-                      <h3 className="text-xl font-light text-[#F0E8DC]">
-                        {item.title}
-                      </h3>
-
-                      {item.description && (
-                        <p className="outfit text-[#F0E8DC]/60 text-sm mt-1">
-                          {item.description}
-                        </p>
-                      )}
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
+                    )}
+                  </div>
+                </motion.div>
+              ))}
             </div>
           </section>
         )}
 
         {/* ════════════════ GALERÍA ════════════════ */}
-        <section className="py-14 px-6 dark-bg">
-          <div className="rose-divider mb-14">
-            <span>✦</span>
+        <section className={`py-14 px-6 ${darkBg}`}>
+          <div className="mb-14">
+            <RoseDivider symbol="✦" />
           </div>
 
           <motion.div
@@ -615,9 +420,9 @@ export default function WeddingBase({ data }: Props) {
         </section>
 
         {/* ════════════════ RSVP ════════════════ */}
-        <section className="py-28 px-6 text-center warm-bg">
-          <div className="rose-divider mb-14">
-            <span>♡</span>
+        <section className={`py-28 px-6 text-center ${warmBg}`}>
+          <div className="mb-14">
+            <RoseDivider symbol="♡" />
           </div>
 
           <motion.div
@@ -642,7 +447,9 @@ export default function WeddingBase({ data }: Props) {
         </section>
 
         {/* ════════════════ FOOTER ════════════════ */}
-        <footer className="py-10 text-center dark-bg border-t border-[rgba(200,149,106,0.1)]">
+        <footer
+          className={`py-10 text-center ${darkBg} border-t border-[rgba(200,149,106,0.1)]`}
+        >
           <p className="script text-[#C8956A]/50 text-xl">{data.event.name}</p>
           <p className="outfit text-[#F0E8DC]/20 text-xs tracking-widest mt-1">
             {data.event.date}

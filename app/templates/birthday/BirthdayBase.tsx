@@ -3,61 +3,63 @@
 import { useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "motion/react";
-import { MapPin } from "lucide-react";
-
+import { MapPin, Clock, CalendarDays, PartyPopper } from "lucide-react";
 import Gallery from "@/app/components/Gallery";
 import CountDown from "@/app/components/CountDown";
 import MusicButton from "@/app/components/MusicButton";
-
 import type { EventData } from "@/app/types/EventData";
+
+/* ─────────────────────────────────────────
+   🎨 PERSONALIZACIÓN — cambia estos valores
+───────────────────────────────────────── */
+const THEME = {
+  accent1: "#FF6B9D", // rosa vibrante
+  accent2: "#A78BFA", // púrpura
+  accent3: "#FFE66D", // amarillo neón
+  emoji: "🎂",
+  rsvpEmoji: "🎊",
+};
 
 interface Props {
   data: EventData;
 }
 
-/* ─────────────────────────────────────────
-   🎨 PERSONALIZACIÓN RÁPIDA
-   Cambia estos valores para cada invitación
-───────────────────────────────────────── */
-const THEME = {
-  primary: "#F4436C", // color principal (botones, countdown, wave)
-  secondary: "#FFC947", // color secundario (badges, íconos)
-  tertiary: "#4ECDC4", // color terciario (sección galería)
-  bg: "#fffcf7b5", // fondo general
-  card: "#FFFFFF", // fondo de tarjetas
-  ink: "#1A1A2E", // color de texto
-  emoji: "🎂", // emoji principal del hero
-  rsvpEmoji: "🎊", // emoji del RSVP
-  modalEmoji: "🥳", // emoji del modal
-  confetti: "🎉", // emoji del scroll hint
-};
-
-/* ── Decorative floating dots ── */
-const DOTS = Array.from({ length: 22 }, (_, i) => ({
+/* ── Confetti pieces ── */
+const CONFETTI = Array.from({ length: 18 }, (_, i) => ({
   id: i,
-  x: 3 + ((i * 4.3) % 94),
-  y: 2 + ((i * 3.9) % 96),
+  x: 4 + ((i * 5.4) % 93),
+  delay: (i * 0.35) % 6,
+  duration: 6 + (i % 5),
   size: 5 + (i % 4) * 3,
-  delay: (i * 0.3) % 5,
-  duration: 4 + (i % 4),
-  shape: i % 3,
+  opacity: 0.35 + (i % 3) * 0.15,
+  round: i % 3 === 0,
+  colors: ["#FF6B9D", "#A78BFA", "#FFE66D", "#4ECDC4", "#FF9F43"],
 }));
 
-const DOT_COLORS = (primary: string, secondary: string, tertiary: string) => [
-  primary,
-  secondary,
-  tertiary,
-  "#A78BFA",
-  "#FB923C",
-];
+/* ── Wave SVG ── */
+function Wave({ fill, bg }: { fill: string; bg: string }) {
+  return (
+    <div style={{ background: bg, lineHeight: 0 }}>
+      <svg
+        viewBox="0 0 1440 56"
+        preserveAspectRatio="none"
+        style={{ display: "block", height: 56, width: "100%" }}
+      >
+        <path
+          d="M0,28 C240,56 480,0 720,32 C960,60 1200,8 1440,28 L1440,0 L0,0 Z"
+          fill={fill}
+        />
+      </svg>
+    </div>
+  );
+}
 
-export default function BirthdayBaseV2({ data }: Props) {
+export default function BirthdayBase({ data }: Props) {
   const [showModal, setShowModal] = useState(false);
-  const dotColors = DOT_COLORS(THEME.primary, THEME.secondary, THEME.tertiary);
 
   const confirmAttendance = () => {
     const message = encodeURIComponent(
-      `Hola ${THEME.confetti} Confirmo mi asistencia al cumpleaños de ${data.event.name}`,
+      `¡Hola! 🎉 Confirmo mi asistencia al cumpleaños de ${data.event.name}`,
     );
     window.open(
       `https://api.whatsapp.com/send?phone=${data.contact.phone}&text=${message}`,
@@ -65,189 +67,47 @@ export default function BirthdayBaseV2({ data }: Props) {
     );
   };
 
+  const infoItems = [
+    {
+      icon: <CalendarDays size={20} />,
+      label: "Fecha",
+      value: data.event.date,
+    },
+    { icon: <Clock size={20} />, label: "Hora", value: data.event.partyHour },
+    {
+      icon: <MapPin size={20} />,
+      label: "Lugar",
+      value: data.location.reception,
+    },
+  ];
+
   return (
     <>
       {data.media.music && <MusicButton src={data.media.music} />}
 
-      <main
-        id="bday-v2"
-        style={{
-          // @ts-expect-error custom css variables
-          "--c1": THEME.primary,
-          "--c2": THEME.secondary,
-          "--c3": THEME.tertiary,
-          "--bg": THEME.bg,
-          "--card": THEME.card,
-          "--ink": THEME.ink,
-        }}
-      >
-        <style>{`
-          @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,600;0,700;0,800;1,400&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;1,9..144,400;1,9..144,700&display=swap');
-
-          #bday-v2 {
-            background: var(--bg);
-            color: var(--ink);
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            overflow: hidden;
-            position: relative;
-          }
-
-          .frc { font-family: 'Fraunces', Georgia, serif; }
-
-          /* ── Floating dots ── */
-          @keyframes dotFloat {
-            0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.5; }
-            50%       { transform: translateY(-16px) rotate(180deg); opacity: 0.85; }
-          }
-          .dot-bg {
-            position: fixed;
-            pointer-events: none;
-            z-index: 0;
-            animation: dotFloat ease-in-out infinite;
-          }
-
-          /* ── Hero name ── */
-          .hero-name {
-            font-family: 'Fraunces', serif;
-            font-style: italic;
-            font-size: clamp(2.8rem, 12vw, 7rem);
-            line-height: 1.0;
-            letter-spacing: -0.02em;
-            color: var(--ink);
-          }
-
-          /* ── Age pill ── */
-          .age-pill {
-            display: inline-flex;
-            align-items: baseline;
-            gap: 0.25rem;
-            background: var(--c2);
-            color: var(--ink);
-            border-radius: 999px;
-            padding: 0.4rem 1.25rem;
-            font-weight: 800;
-            border: 2px solid var(--ink);
-            box-shadow: 3px 3px 0 var(--ink);
-          }
-          .age-num { font-family: 'Fraunces', serif; font-size: 2rem; line-height: 1; font-style: italic; }
-          .age-lbl { font-size: 0.75rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.6; }
-
-          /* ── Section label ── */
-          .s-label {
-            display: inline-block;
-            font-size: 0.67rem;
-            font-weight: 800;
-            letter-spacing: 0.18em;
-            text-transform: uppercase;
-            padding: 0.28rem 0.9rem;
-            border-radius: 999px;
-            border: 2px solid currentColor;
-          }
-
-          /* ── Wave ── */
-          .wave { line-height: 0; overflow: hidden; width: 100%; }
-
-          /* ── Info cards ── */
-          .i-card {
-            background: var(--card);
-            border: 2px solid var(--ink);
-            border-radius: 20px;
-            padding: 1.25rem 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 1.1rem;
-            box-shadow: 4px 4px 0 var(--ink);
-            transition: transform 0.15s, box-shadow 0.15s;
-          }
-          .i-card:hover { transform: translate(-2px,-2px); box-shadow: 6px 6px 0 var(--ink); }
-          .i-icon {
-            width: 46px; height: 46px;
-            border-radius: 14px;
-            background: var(--c2);
-            display: flex; align-items: center; justify-content: center;
-            font-size: 1.25rem;
-            flex-shrink: 0;
-            border: 1.5px solid var(--ink);
-          }
-
-          /* ── RSVP btn ── */
-          .rsvp-v2 {
-            display: inline-block;
-            padding: 1.1rem 3rem;
-            border-radius: 999px;
-            background: var(--c1);
-            color: white;
-            font-size: 1rem;
-            font-weight: 800;
-            letter-spacing: 0.04em;
-            border: 2.5px solid var(--ink);
-            cursor: pointer;
-            box-shadow: 5px 5px 0 var(--ink);
-            transition: transform 0.15s, box-shadow 0.15s;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-          }
-          .rsvp-v2:hover  { transform: translate(-2px,-2px); box-shadow: 7px 7px 0 var(--ink); }
-          .rsvp-v2:active { transform: translate(2px,2px);  box-shadow: 2px 2px 0 var(--ink); }
-
-          /* ── Map btn ── */
-          .map-v2 {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.75rem 1.75rem;
-            border-radius: 999px;
-            border: 2px solid var(--ink);
-            background: var(--card);
-            color: var(--ink);
-            font-size: 0.85rem;
-            font-weight: 700;
-            text-decoration: none;
-            box-shadow: 3px 3px 0 var(--ink);
-            transition: transform 0.15s, box-shadow 0.15s;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-          }
-          .map-v2:hover { transform: translate(-2px,-2px); box-shadow: 5px 5px 0 var(--ink); }
-
-          /* ── Footer ── */
-          .footer-v2 {
-            background: var(--ink);
-            color: var(--bg);
-            padding: 1.75rem 2rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 1rem;
-          }
-        `}</style>
-
-        {/* ── Floating dots ── */}
-        {DOTS.map((d) => (
+      <main id="bday-main">
+        {/* ── Confetti ── */}
+        {CONFETTI.map((c) => (
           <div
-            key={d.id}
-            className="dot-bg"
+            key={c.id}
+            className="bday-confetti"
             style={{
-              left: `${d.x}%`,
-              top: `${d.y}%`,
-              width: d.size,
-              height: d.size,
-              background: dotColors[d.id % dotColors.length],
-              borderRadius: d.shape === 0 ? "50%" : d.shape === 1 ? "3px" : "0",
-              transform: d.shape === 2 ? "rotate(45deg)" : undefined,
-              animationDelay: `${d.delay}s`,
-              animationDuration: `${d.duration}s`,
-              opacity: 0.4,
+              left: `${c.x}%`,
+              width: c.size,
+              height: c.size,
+              borderRadius: c.round ? "50%" : "2px",
+              background: c.colors[c.id % c.colors.length],
+              animationDelay: `${c.delay}s`,
+              animationDuration: `${c.duration}s`,
+              opacity: c.opacity,
             }}
           />
         ))}
 
-        {/* ════════ HERO ════════ */}
-        <section
-          className="relative min-h-screen flex flex-col"
-          style={{ background: THEME.bg }}
-        >
-          {/* Top image */}
-          <div className="relative w-full" style={{ height: "52svh" }}>
+        {/* ════════════════ HERO ════════════════ */}
+        <section className="relative min-h-screen flex flex-col">
+          {/* Cover image — top 55% */}
+          <div className="relative w-full" style={{ height: "55svh" }}>
             <Image
               src={data.media.coverImage}
               alt={data.event.name}
@@ -255,53 +115,53 @@ export default function BirthdayBaseV2({ data }: Props) {
               priority
               className="object-cover"
             />
-            <div
-              className="absolute inset-0"
-              style={{
-                background: `linear-gradient(to bottom, rgba(0,0,0,0.08), ${THEME.bg})`,
-              }}
-            />
+            <div className="absolute inset-0 bg-gradient-to-b from-[#0D0D1A]/30 via-transparent to-[#0D0D1A]" />
           </div>
 
-          {/* Hero text */}
-          <div className="relative z-10 flex flex-col items-center text-center px-6 pb-16 -mt-8">
+          {/* Hero content */}
+          <div className="relative z-10 flex flex-col items-center text-center px-6 pb-20 -mt-10">
             <motion.div
-              initial={{ scale: 0, rotate: -20 }}
+              initial={{ scale: 0, rotate: -25 }}
               animate={{ scale: 1, rotate: 0 }}
-              transition={{ type: "spring", bounce: 0.55 }}
-              className="text-6xl mb-4"
+              transition={{ type: "spring", bounce: 0.6 }}
+              className="text-6xl mb-5"
             >
               {THEME.emoji}
             </motion.div>
 
-            <motion.p
-              initial={{ opacity: 0, y: -8 }}
+            <motion.span
+              initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="s-label mb-3"
-              style={{ color: THEME.primary, borderColor: THEME.primary }}
+              className="bday-jakarta text-[10px] font-extrabold tracking-[0.25em] uppercase mb-4 px-4 py-1.5 rounded-full border border-white/20 bg-white/5"
+              style={{ color: THEME.accent1 }}
             >
               Estás invitado
-            </motion.p>
+            </motion.span>
 
             <motion.h1
-              initial={{ opacity: 0, y: 28 }}
+              initial={{ opacity: 0, y: 32 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.45, duration: 0.7 }}
-              className="hero-name mb-5"
+              transition={{ delay: 0.45, duration: 0.8 }}
+              className="bday-name mb-5"
+              style={{ fontSize: "clamp(3rem, 13vw, 7rem)" }}
             >
               {data.event.name}
             </motion.h1>
 
             {data.event.age && (
               <motion.div
-                initial={{ opacity: 0, scale: 0.6 }}
+                initial={{ opacity: 0, scale: 0.5 }}
                 animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.7, type: "spring", bounce: 0.5 }}
-                className="age-pill mb-4"
+                transition={{ delay: 0.7, type: "spring", bounce: 0.55 }}
+                className="bday-age-badge mb-5"
               >
-                <span className="age-num">{data.event.age}</span>
-                <span className="age-lbl">años</span>
+                <span className="bday-fraunces italic text-4xl font-bold text-white leading-none">
+                  {data.event.age}
+                </span>
+                <span className="bday-jakarta text-xs font-extrabold uppercase tracking-widest text-white/50">
+                  años
+                </span>
               </motion.div>
             )}
 
@@ -309,115 +169,111 @@ export default function BirthdayBaseV2({ data }: Props) {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1 }}
-              className="text-sm font-semibold opacity-35 tracking-widest uppercase"
+              className="bday-jakarta text-xs font-semibold uppercase tracking-[0.25em] text-white/35"
             >
               {data.event.date}
             </motion.p>
 
             <motion.div
-              animate={{ y: [0, 7, 0] }}
-              transition={{ duration: 1.8, repeat: Infinity, delay: 1.5 }}
-              className="mt-10 text-sm font-bold opacity-25 tracking-widest uppercase"
+              animate={{ y: [0, 8, 0] }}
+              transition={{ duration: 2, repeat: Infinity, delay: 1.6 }}
+              className="mt-12 bday-jakarta text-xs font-bold uppercase tracking-widest text-white/20"
             >
               ↓ desliza
             </motion.div>
           </div>
         </section>
 
-        {/* Wave down */}
-        <div className="wave" style={{ background: THEME.primary }}>
-          <svg
-            viewBox="0 0 1440 50"
-            preserveAspectRatio="none"
-            style={{ display: "block", height: 50 }}
-          >
-            <path
-              d="M0,25 C360,50 720,0 1080,35 C1260,48 1380,12 1440,25 L1440,0 L0,0 Z"
-              fill={THEME.bg}
-            />
-          </svg>
-        </div>
+        {/* ════════════════ COUNTDOWN ════════════════ */}
+        <Wave fill="#0D0D1A" bg="rgba(167,139,250,0.15)" />
 
-        {/* ════════ COUNTDOWN ════════ */}
-        <section className="py-20 px-6" style={{ background: THEME.primary }}>
+        <section
+          className="relative py-24 px-6 overflow-hidden"
+          style={{
+            background:
+              "linear-gradient(135deg, rgba(255,107,157,0.12) 0%, rgba(167,139,250,0.18) 100%)",
+          }}
+        >
+          {/* Glow orbs */}
+          <div
+            className="absolute top-0 left-1/4 w-64 h-64 rounded-full blur-3xl pointer-events-none"
+            style={{ background: `${THEME.accent1}18` }}
+          />
+          <div
+            className="absolute bottom-0 right-1/4 w-64 h-64 rounded-full blur-3xl pointer-events-none"
+            style={{ background: `${THEME.accent2}18` }}
+          />
+
           <motion.div
-            initial={{ opacity: 0, y: 25 }}
+            initial={{ opacity: 0, y: 28 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center"
+            className="relative text-center"
           >
             <span
-              className="s-label mb-3 inline-block"
-              style={{ color: "white", borderColor: "white" }}
+              className="bday-jakarta text-[10px] font-extrabold tracking-[0.25em] uppercase px-4 py-1.5 rounded-full border inline-block mb-4"
+              style={{
+                color: THEME.accent3,
+                borderColor: `${THEME.accent3}50`,
+              }}
             >
               Cuenta regresiva
             </span>
-            <h2
-              className="frc text-4xl md:text-5xl italic mt-2 mb-12"
-              style={{ color: "white" }}
-            >
+            <h2 className="bday-fraunces italic text-4xl md:text-5xl font-light text-white mb-12">
               La fiesta empieza en…
             </h2>
             <CountDown data={data} />
           </motion.div>
         </section>
 
-        {/* Wave up */}
-        <div className="wave" style={{ background: THEME.bg }}>
-          <svg
-            viewBox="0 0 1440 50"
-            preserveAspectRatio="none"
-            style={{ display: "block", height: 50 }}
-          >
-            <path
-              d="M0,0 C360,50 720,0 1080,40 C1260,55 1380,10 1440,0 L1440,50 L0,50 Z"
-              fill={THEME.primary}
-            />
-          </svg>
-        </div>
+        <Wave fill="rgba(167,139,250,0.15)" bg="#0D0D1A" />
 
-        {/* ════════ INFO ════════ */}
-        <section className="py-16 px-6" style={{ background: THEME.bg }}>
+        {/* ════════════════ INFO ════════════════ */}
+        <section className="py-20 px-6 bg-[#0D0D1A]">
           <motion.div
-            initial={{ opacity: 0, y: 25 }}
+            initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-10"
+            className="text-center mb-12"
           >
             <span
-              className="s-label"
-              style={{ color: THEME.primary, borderColor: THEME.primary }}
+              className="bday-jakarta text-[10px] font-extrabold tracking-[0.25em] uppercase px-4 py-1.5 rounded-full border inline-block mb-4"
+              style={{
+                color: THEME.accent1,
+                borderColor: `${THEME.accent1}50`,
+              }}
             >
               Detalles
             </span>
-            <h2 className="frc text-4xl md:text-5xl italic mt-2">
+            <h2 className="bday-fraunces italic text-4xl md:text-5xl font-light text-white">
               ¿Cuándo y dónde?
             </h2>
           </motion.div>
 
           <div className="max-w-md mx-auto flex flex-col gap-4">
-            {[
-              { icon: "📅", label: "Fecha", value: data.event.date },
-              { icon: "⏰", label: "Hora", value: data.event.ceremonyHour },
-              { icon: "📍", label: "Lugar", value: data.location.reception },
-            ].map((item, i) => (
+            {infoItems.map((item, i) => (
               <motion.div
                 key={item.label}
                 initial={{ opacity: 0, x: -24 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="i-card"
+                className="bday-glass-card flex items-center gap-4 p-5"
               >
-                <div className="i-icon">{item.icon}</div>
+                <div
+                  className="w-12 h-12 rounded-2xl flex items-center justify-center shrink-0"
+                  style={{
+                    background: `${THEME.accent2}25`,
+                    color: THEME.accent2,
+                  }}
+                >
+                  {item.icon}
+                </div>
                 <div>
-                  <p
-                    className="text-xs uppercase tracking-widest mb-0.5 opacity-40"
-                    style={{ fontWeight: 800 }}
-                  >
+                  <p className="bday-jakarta text-[10px] font-extrabold uppercase tracking-widest mb-0.5 text-white/35">
                     {item.label}
                   </p>
-                  <p className="text-base" style={{ fontWeight: 700 }}>
+                  <p className="bday-jakarta text-base font-700 text-white font-bold">
                     {item.value}
                   </p>
                 </div>
@@ -430,7 +286,12 @@ export default function BirthdayBaseV2({ data }: Props) {
               href={data.location.mapUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="map-v2"
+              className="bday-jakarta inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-bold border transition-all hover:-translate-y-0.5"
+              style={{
+                color: THEME.accent2,
+                borderColor: `${THEME.accent2}50`,
+                background: `${THEME.accent2}10`,
+              }}
             >
               <MapPin size={14} />
               Ver en el mapa
@@ -438,119 +299,118 @@ export default function BirthdayBaseV2({ data }: Props) {
           </div>
         </section>
 
-        {/* Wave to gallery */}
-        <div className="wave" style={{ background: THEME.tertiary }}>
-          <svg
-            viewBox="0 0 1440 50"
-            preserveAspectRatio="none"
-            style={{ display: "block", height: 50 }}
-          >
-            <path
-              d="M0,20 C480,50 960,0 1440,30 L1440,0 L0,0 Z"
-              fill={THEME.bg}
-            />
-          </svg>
-        </div>
+        {/* ════════════════ GALERÍA ════════════════ */}
+        <Wave fill="#0D0D1A" bg="rgba(255,107,157,0.12)" />
 
-        {/* ════════ GALERÍA ════════ */}
-        <section className="py-20 px-6" style={{ background: THEME.tertiary }}>
+        <section
+          className="py-20 px-6"
+          style={{
+            background:
+              "linear-gradient(180deg, rgba(255,107,157,0.12) 0%, rgba(167,139,250,0.12) 100%)",
+          }}
+        >
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-10"
+            className="text-center mb-12"
           >
             <span
-              className="s-label"
-              style={{ color: "white", borderColor: "white" }}
+              className="bday-jakarta text-[10px] font-extrabold tracking-[0.25em] uppercase px-4 py-1.5 rounded-full border inline-block mb-4"
+              style={{
+                color: THEME.accent3,
+                borderColor: `${THEME.accent3}50`,
+              }}
             >
               Momentos
             </span>
-            <h2
-              className="frc text-4xl md:text-5xl italic mt-1"
-              style={{ color: "white" }}
-            >
+            <h2 className="bday-fraunces italic text-4xl md:text-5xl font-light text-white">
               Galería 📸
             </h2>
           </motion.div>
+
           <Gallery images={data.media.gallery} />
-          <p
-            className="text-center text-xs font-bold tracking-widest uppercase mt-6"
-            style={{ color: "rgba(255,255,255,0.45)" }}
-          >
+
+          <p className="bday-jakarta text-center text-[10px] font-bold tracking-widest uppercase text-white/25 mt-6">
             Desliza para ver más
           </p>
         </section>
 
-        {/* Wave to RSVP */}
-        <div className="wave" style={{ background: THEME.bg }}>
-          <svg
-            viewBox="0 0 1440 50"
-            preserveAspectRatio="none"
-            style={{ display: "block", height: 50 }}
-          >
-            <path
-              d="M0,0 C300,50 700,0 1100,40 C1280,52 1400,8 1440,0 L1440,50 L0,50 Z"
-              fill={THEME.tertiary}
-            />
-          </svg>
-        </div>
+        <Wave fill="rgba(167,139,250,0.12)" bg="#0D0D1A" />
 
-        {/* ════════ RSVP ════════ */}
-        <section
-          className="py-28 px-6 text-center"
-          style={{ background: THEME.bg }}
-        >
+        {/* ════════════════ RSVP ════════════════ */}
+        <section className="py-28 px-6 text-center bg-[#0D0D1A] relative overflow-hidden">
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+            <div
+              className="w-[500px] h-[500px] rounded-full blur-[100px] opacity-20"
+              style={{
+                background: `radial-gradient(circle, ${THEME.accent2}, ${THEME.accent1})`,
+              }}
+            />
+          </div>
+
           <motion.div
             initial={{ opacity: 0, scale: 0.88 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            transition={{ type: "spring", bounce: 0.38 }}
+            transition={{ type: "spring", bounce: 0.35 }}
+            className="relative"
           >
-            <div className="text-5xl mb-4">{THEME.rsvpEmoji}</div>
+            <div className="text-5xl mb-5">{THEME.rsvpEmoji}</div>
             <span
-              className="s-label"
-              style={{ color: THEME.primary, borderColor: THEME.primary }}
+              className="bday-jakarta text-[10px] font-extrabold tracking-[0.25em] uppercase px-4 py-1.5 rounded-full border inline-block mb-4"
+              style={{
+                color: THEME.accent1,
+                borderColor: `${THEME.accent1}50`,
+              }}
             >
               ¿Nos acompañas?
             </span>
-            <h2 className="frc text-4xl md:text-5xl italic mt-3 mb-8">
+            <h2 className="bday-fraunces italic text-4xl md:text-5xl font-light text-white mt-2 mb-10">
               ¡Confirma tu lugar!
             </h2>
-            <button className="rsvp-v2" onClick={() => setShowModal(true)}>
+            <button
+              className="bday-rsvp-btn"
+              onClick={() => setShowModal(true)}
+            >
               Confirmar asistencia
             </button>
           </motion.div>
         </section>
 
-        {/* ════════ FOOTER ════════ */}
-        <footer className="footer-v2">
+        {/* ════════════════ FOOTER ════════════════ */}
+        <footer
+          className="py-8 px-6 flex items-center justify-between flex-wrap gap-4"
+          style={{
+            background: "rgba(255,255,255,0.03)",
+            borderTop: "1px solid rgba(255,255,255,0.06)",
+          }}
+        >
           <span
-            className="frc italic"
-            style={{ fontSize: "clamp(1.5rem, 5vw, 2.5rem)" }}
+            className="bday-fraunces italic"
+            style={{
+              fontSize: "clamp(1.4rem, 5vw, 2.2rem)",
+              color: THEME.accent1,
+            }}
           >
             {data.event.name}
           </span>
           <div className="flex items-center gap-3">
-            <span className="text-xs font-bold tracking-widest uppercase opacity-40">
+            <span className="bday-jakarta text-xs font-bold tracking-widest uppercase text-white/25">
               {data.event.date}
             </span>
             <span className="text-2xl">{THEME.emoji}</span>
           </div>
         </footer>
 
-        {/* ════════ MODAL ════════ */}
+        {/* ════════════════ MODAL ════════════════ */}
         <AnimatePresence>
           {showModal && (
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 z-50 flex items-end md:items-center justify-center p-4 md:p-6"
-              style={{
-                background: "rgba(0,0,0,0.45)",
-                backdropFilter: "blur(6px)",
-              }}
+              className="fixed inset-0 z-50 flex items-end md:items-center justify-center p-4 md:p-6 bg-black/50 backdrop-blur-[6px]"
               onClick={() => setShowModal(false)}
             >
               <motion.div
@@ -559,33 +419,23 @@ export default function BirthdayBaseV2({ data }: Props) {
                 exit={{ y: 60, opacity: 0 }}
                 transition={{ type: "spring", bounce: 0.32 }}
                 onClick={(e) => e.stopPropagation()}
-                style={{
-                  background: THEME.card,
-                  borderRadius: "28px",
-                  padding: "2.5rem",
-                  maxWidth: "400px",
-                  width: "100%",
-                  border: `2.5px solid ${THEME.ink}`,
-                  boxShadow: `6px 6px 0 ${THEME.ink}`,
-                }}
+                className="bday-glass-card w-full max-w-sm p-10 text-center"
+                style={{ background: "rgba(20,15,35,0.95)" }}
               >
-                <div className="text-center mb-5">
-                  <div className="text-5xl mb-3">{THEME.modalEmoji}</div>
-                  <h3 className="frc text-2xl italic mb-2">¡Qué emoción!</h3>
-                  <p className="text-sm font-medium opacity-50">
-                    Te redirigiremos a WhatsApp para confirmar tu lugar en la
-                    fiesta de <strong>{data.event.name}</strong>.
-                  </p>
-                </div>
-                <div className="flex gap-3 mt-6">
+                <div className="text-5xl mb-4">🥳</div>
+                <h3 className="bday-fraunces italic text-2xl text-white mb-2">
+                  ¡Qué emoción!
+                </h3>
+                <p className="bday-jakarta text-sm text-white/50 mb-8 leading-relaxed">
+                  Te redirigiremos a WhatsApp para confirmar tu lugar en la
+                  fiesta de{" "}
+                  <strong className="text-white/80">{data.event.name}</strong>.
+                </p>
+
+                <div className="flex gap-3">
                   <button
                     onClick={() => setShowModal(false)}
-                    className="flex-1 py-3 rounded-full text-sm font-bold"
-                    style={{
-                      border: `2px solid ${THEME.ink}`,
-                      color: THEME.ink,
-                      background: "transparent",
-                    }}
+                    className="bday-jakarta flex-1 py-3 rounded-full text-sm font-bold border border-white/15 text-white/50 hover:bg-white/5 transition"
                   >
                     Cancelar
                   </button>
@@ -594,14 +444,10 @@ export default function BirthdayBaseV2({ data }: Props) {
                       confirmAttendance();
                       setShowModal(false);
                     }}
-                    className="flex-1 py-3 rounded-full text-sm font-bold text-white"
-                    style={{
-                      background: THEME.primary,
-                      border: `2px solid ${THEME.ink}`,
-                      boxShadow: `3px 3px 0 ${THEME.ink}`,
-                    }}
+                    className="bday-rsvp-btn flex-1 py-3 !px-0 text-sm"
+                    style={{ padding: "0.75rem 0" }}
                   >
-                    ¡Confirmar! {THEME.confetti}
+                    Confirmar 🎉
                   </button>
                 </div>
               </motion.div>

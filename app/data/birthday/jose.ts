@@ -22,7 +22,6 @@ const jose: EventData = {
       "/pictures/birthday/jose/jose-2.jpg",
       "/pictures/birthday/jose/jose-3.jpg",
     ],
-    // music: "/music/mi-princesita.mp3",
   },
   location: {
     mapUrl: "https://maps.app.goo.gl/KnuqwoAN5kMtcyqu5",

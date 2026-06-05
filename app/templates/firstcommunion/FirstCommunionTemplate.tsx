@@ -23,7 +23,15 @@ interface Props {
   data: EventData;
 }
 
-// Variantes de animación reutilizables para limpieza de código
+const PARTICLES = [
+  { id: 0, left: 12, size: 8, delay: 0, duration: 10 },
+  { id: 1, left: 25, size: 10, delay: 1, duration: 12 },
+  { id: 2, left: 38, size: 7, delay: 2, duration: 9 },
+  { id: 3, left: 52, size: 12, delay: 1.5, duration: 14 },
+  { id: 4, left: 70, size: 8, delay: 3, duration: 11 },
+  { id: 5, left: 85, size: 10, delay: 0.5, duration: 13 },
+];
+
 const fadeInUp: Variants = {
   hidden: { opacity: 0, y: 30 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
@@ -72,9 +80,35 @@ export default function FirstCommunionTemplate({ data }: Props) {
               className="object-cover"
             />
           </motion.div>
+          <div className="absolute inset-0 z-20 pointer-events-none">
+            {PARTICLES.map((p) => (
+              <motion.div
+                key={p.id}
+                className="absolute rounded-full"
+                style={{
+                  left: `${p.left}%`,
+                  bottom: "-20px",
+                  width: p.size,
+                  height: p.size,
+                  background: "#fff",
+                  boxShadow: "0 0 20px rgba(255,255,255,.9)",
+                }}
+                animate={{
+                  y: [0, -1000],
+                  opacity: [0, 1, 1, 0],
+                }}
+                transition={{
+                  duration: p.duration,
+                  repeat: Infinity,
+                  delay: p.delay,
+                  ease: "linear",
+                }}
+              />
+            ))}
+          </div>
 
           {/* Capas superpuestas para un degradado fotográfico fino */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#FAF9F6] via-black/30 to-black/20" />
+          <div className="absolute inset-0 bg-linear-to-t from-[#FAF9F6] via-black/30 to-black/20" />
 
           {/* Caja flotante de cristal (Vellum Paper Effect) */}
           <motion.div
@@ -91,7 +125,7 @@ export default function FirstCommunionTemplate({ data }: Props) {
               {data.event.name}
             </h1>
 
-            <div className="w-12 h-[1px] bg-[#D4AF37] mx-auto mb-6" />
+            <div className="w-12 h-px bg-[#D4AF37] mx-auto mb-6" />
 
             <p className="font-serif italic text-lg md:text-xl text-[#FAF9F6]/90 font-light">
               {data.event.date}
@@ -104,9 +138,35 @@ export default function FirstCommunionTemplate({ data }: Props) {
             transition={{ repeat: Infinity, duration: 2 }}
             className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10 hidden md:block"
           >
-            <div className="w-[1px] h-12 bg-[#3D3A36]/40 mx-auto" />
+            <div className="w-px h-12 bg-[#3D3A36]/40 mx-auto" />
           </motion.div>
         </section>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="relative pt-10 flex items-center justify-center"
+        >
+          <div className="w-20 h-px bg-[#D4AF37]/40" />
+
+          <div className="mx-6 relative">
+            <div
+              className="
+                w-16
+                h-16
+                flex
+                items-center
+                justify-center
+              "
+            >
+              <span className="text-[#D4AF37] text-2xl">✞</span>
+            </div>
+          </div>
+
+          <div className="w-20 h-px bg-[#D4AF37]/40" />
+        </motion.div>
 
         {/* --- FRASE ESPIRITUAL (Revelado al hacer Scroll simulado/suave) --- */}
         <motion.section
@@ -114,12 +174,8 @@ export default function FirstCommunionTemplate({ data }: Props) {
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
           variants={fadeInUp}
-          className="py-32 px-6 text-center max-w-3xl mx-auto"
+          className="pb-22 px-6 text-center max-w-3xl mx-auto"
         >
-          <div className="text-center mb-6">
-            <span className="text-[#D4AF37] text-4xl">✞</span>
-          </div>
-
           <h2 className="text-3xl md:text-4xl font-serif text-[#2B2927] font-light leading-relaxed mb-8">
             “Hoy recibo a Jesús en mi corazón por primera vez, dejando que su
             luz guíe mi camino.”
@@ -133,38 +189,64 @@ export default function FirstCommunionTemplate({ data }: Props) {
 
         {/* --- CUENTA REGRESIVA --- */}
         <motion.section
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="py-10 bg-white border-y border-[#ECE7DD]"
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="py-16 bg-white"
         >
-          <div className="text-center mb-6">
-            <span className="block text-[10px] uppercase tracking-[0.5em] text-[#A89A82] mb-4">
-              Cuenta Regresiva
-            </span>
-
-            <h2 className="font-serif text-5xl md:text-6xl text-[#2B2927] font-light italic">
-              Solo faltan
-            </h2>
-
-            <div className="flex items-center justify-center mt-6">
-              <div className="w-16 h-px bg-[#D4AF37]/30" />
-
-              <div className="text-center mb-6">
-                <span className="text-[#D4AF37] text-3xl">✞</span>
-              </div>
-
-              <div className="w-16 h-px bg-[#D4AF37]/30" />
+          <div className="max-w-2xl mx-auto px-6 text-center">
+            {/* Línea decorativa superior */}
+            <div className="flex items-center justify-center gap-4 mb-8">
+              <div className="h-px flex-1 max-w-20 bg-[#D4AF37]/40" />
+              <span className="text-[9px] uppercase tracking-[0.6em] text-[#A89A82]">
+                Cuenta Regresiva
+              </span>
+              <div className="h-px flex-1 max-w-20 bg-[#D4AF37]/40" />
             </div>
+
+            {/* Encabezado */}
+            <h2 className="font-serif text-4xl md:text-5xl text-[#2B2927] font-light italic leading-snug mb-2">
+              El tiempo se acerca
+            </h2>
+            <p className="text-[11px] uppercase tracking-[0.4em] text-[#C4A96A] mb-10">
+              faltan solo
+            </p>
+
+            <CountDown data={data} />
+
+            {/* Detalle inferior */}
+            <div className="mt-10 w-12 h-px bg-[#D4AF37]/30 mx-auto" />
           </div>
-          <CountDown data={data} />
         </motion.section>
 
         <section className="py-24 px-6 relative overflow-hidden">
           <div className="max-w-3xl mx-auto text-center">
-            <div className="text-center mb-6">
-              <span className="text-[#D4AF37] text-3xl">✞</span>
-            </div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="relative flex items-center justify-center"
+            >
+              <div className="w-20 h-px bg-[#D4AF37]/40" />
+
+              <div className="mx-6 relative">
+                <div
+                  className="
+                    w-16
+                    h-16
+                    flex
+                    items-center
+                    justify-center
+                  "
+                >
+                  <span className="text-[#D4AF37] text-2xl">✞</span>
+                </div>
+              </div>
+
+              <div className="w-20 h-px bg-[#D4AF37]/40" />
+            </motion.div>
 
             <p className="font-serif text-3xl italic leading-relaxed text-[#4A433D]">
               &quot;Yo soy el pan de vida; el que viene a mí nunca tendrá
@@ -177,59 +259,77 @@ export default function FirstCommunionTemplate({ data }: Props) {
           </div>
         </section>
 
-        {/* --- FAMILIARES (Animación Cascada / Stagger) --- */}
-        <section className="py-18 px-6 bg-[#F4F1EA]/60">
+        {/* --- FAMILIARES --- */}
+        <section className="py-24 px-6 bg-white overflow-hidden">
           <motion.div
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-50px" }}
-            className="max-w-4xl mx-auto grid md:grid-cols-2 gap-10"
+            className="max-w-lg mx-auto text-center"
           >
-            {/* Tarjeta Padres */}
-            <motion.div
+            {/* Label */}
+            <motion.span
               variants={fadeInUp}
-              className="bg-white p-12 text-center relative rounded-xl border border-[#E6E1D5] shadow-sm hover:shadow-md transition-shadow duration-300"
+              className="text-[9px] uppercase tracking-[0.7em] block mb-16 flex items-center justify-center gap-4 "
             >
-              <div className="absolute inset-4 border border-[#E6E1D5]/50 rounded-lg pointer-events-none" />
-              <Heart
-                className="mx-auto mb-4 text-[#D4AF37]/40 stroke-[1.5]"
-                size={18}
-              />
-              <h3 className="text-[10px] uppercase tracking-[0.4em] text-[#C49F2D] font-semibold mb-6">
+              <div className="h-px flex-1 max-w-20 bg-[#D4AF37]/40" />
+              <span className="text-[9px] uppercase tracking-[0.6em] text-[#A89A82]">
+                Familia
+              </span>
+              <div className="h-px flex-1 max-w-20 bg-[#D4AF37]/40" />
+            </motion.span>
+
+            {/* Padres */}
+            <motion.div variants={fadeInUp} className="mb-12">
+              <p className="text-[10px] uppercase tracking-[0.5em] text-[#A89A82] mb-8">
                 Con la bendición de mis padres
-              </h3>
-              <div className="space-y-2 text-[#54504A] font-serif text-lg font-light">
-                <p>{data.family?.parents?.mother}</p>
-                <span>Y</span>
-                <p>{data.family?.parents?.father}</p>
-              </div>
+              </p>
+              <p className="font-serif text-3xl md:text-4xl font-light italic leading-relaxed">
+                {data.family?.parents?.mother}
+              </p>
+              <p className="text-[#D4AF37]/50 text-xs tracking-[0.4em] uppercase my-4">
+                y
+              </p>
+              <p className="font-serif text-3xl md:text-4xl font-light italic leading-relaxed">
+                {data.family?.parents?.father}
+              </p>
             </motion.div>
 
-            {/* Tarjeta Padrinos */}
+            {/* Separador ornamental */}
             <motion.div
               variants={fadeInUp}
-              className="bg-white p-12 text-center relative rounded-xl border border-[#E6E1D5] shadow-sm hover:shadow-md transition-shadow duration-300"
+              className="flex items-center justify-center gap-3 my-12"
             >
-              <div className="absolute inset-4 border border-[#E6E1D5]/50 rounded-lg pointer-events-none" />
-              <Sparkles
-                className="mx-auto mb-4 text-[#D4AF37]/40 stroke-[1.5]"
-                size={18}
-              />
-              <h3 className="text-[10px] uppercase tracking-[0.4em] text-[#C49F2D] font-semibold mb-6">
+              <div className="h-px w-12 bg-[#D4AF37]/25" />
+              <div className="w-1 h-1 rounded-full bg-[#D4AF37]/40" />
+              <div className="h-px w-4 bg-[#D4AF37]/25" />
+              <div className="w-1.5 h-1.5 rounded-full bg-[#D4AF37]/60" />
+              <div className="h-px w-4 bg-[#D4AF37]/25" />
+              <div className="w-1 h-1 rounded-full bg-[#D4AF37]/40" />
+              <div className="h-px w-12 bg-[#D4AF37]/25" />
+            </motion.div>
+
+            {/* Padrinos */}
+            <motion.div variants={fadeInUp} className="mb-4">
+              <p className="text-[10px] uppercase tracking-[0.5em] text-[#A89A82] mb-8">
                 Guiado por mis padrinos
-              </h3>
-              <div className="space-y-2 text-[#54504A] font-serif text-lg font-light">
-                <p>{data.family?.godparents?.woman}</p>
-                <span>Y</span>
-                <p>{data.family?.godparents?.man}</p>
-              </div>
+              </p>
+              <p className="font-serif text-3xl md:text-4xl font-light italic leading-relaxed">
+                {data.family?.godparents?.woman}
+              </p>
+              <p className="text-[#D4AF37]/50 text-xs tracking-[0.4em] uppercase my-4">
+                y
+              </p>
+              <p className="font-serif text-3xl md:text-4xl  font-light italic leading-relaxed">
+                {data.family?.godparents?.man}
+              </p>
             </motion.div>
           </motion.div>
         </section>
 
         {/* --- UBICACIONES (Diseño Limpio y Minimalista) --- */}
-        <section className="py-28 px-6 bg-white">
+        <section className="py-28 px-6 ">
           <div className="max-w-4xl mx-auto">
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
@@ -250,7 +350,7 @@ export default function FirstCommunionTemplate({ data }: Props) {
                 className="text-center md:text-right md:pr-10 md:border-r border-[#ECE7DD]"
               >
                 <Church
-                  className="mx-auto md:mr-0 mb-4 text-[#D4AF37] stroke-[1]"
+                  className="mx-auto md:mr-0 mb-4 text-[#D4AF37] stroke-1"
                   size={28}
                 />
                 <h3 className="font-serif text-2xl font-light text-[#2B2927] mb-3">
@@ -270,7 +370,7 @@ export default function FirstCommunionTemplate({ data }: Props) {
                 className="text-center md:text-left md:pl-10"
               >
                 <Sparkles
-                  className="mx-auto md:ml-0 mb-4 text-[#D4AF37] stroke-[1]"
+                  className="mx-auto md:ml-0 mb-4 text-[#D4AF37] stroke-1"
                   size={28}
                 />
                 <h3 className="font-serif text-2xl font-light text-[#2B2927] mb-3">
@@ -327,9 +427,31 @@ export default function FirstCommunionTemplate({ data }: Props) {
             viewport={{ once: true }}
             className="max-w-3xl mx-auto"
           >
-            <div className="text-center mb-6">
-              <span className="text-[#D4AF37] text-3xl">✞</span>
-            </div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="relative pt-10 pb-6 flex items-center justify-center"
+            >
+              <div className="w-20 h-px bg-[#D4AF37]/40" />
+
+              <div className="mx-6 relative">
+                <div
+                  className="
+                    w-16
+                    h-16
+                    flex
+                    items-center
+                    justify-center
+                  "
+                >
+                  <span className="text-[#D4AF37] text-2xl">✞</span>
+                </div>
+              </div>
+
+              <div className="w-20 h-px bg-[#D4AF37]/40" />
+            </motion.div>
 
             <h2 className="font-serif text-5xl md:text-6xl text-[#2B2927] mb-8">
               Gracias por acompañarme
