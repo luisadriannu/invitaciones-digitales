@@ -11,19 +11,26 @@ const jose: EventData = {
   event: {
     name: "Juan Diego",
     date: "18 Julio 2026",
-    partyHour: "2:30 PM",
+    partyHour: "5:00 PM",
     dressCode: "Casual",
+    age: 2,
   },
   media: {
     coverImage: "/pictures/birthday/juanDiego/dinosaurios.jpeg",
-    gallery: ["/pictures/birthday/juanDiego/dinosaurios.jpeg"],
+    gallery: [
+      "/pictures/birthday/juanDiego/dinosaurios.jpeg",
+      "/pictures/birthday/juanDiego/juan-diego-1.jpeg",
+      "/pictures/birthday/juanDiego/juan-diego-2.jpeg",
+      "/pictures/birthday/juanDiego/juan-diego-3.jpeg",
+    ],
   },
   location: {
-    mapUrl: "https://maps.app.goo.gl/KnuqwoAN5kMtcyqu5",
-    reception: "Salón Quinta Karen",
+    // mapUrl: "https://maps.app.goo.gl/KnuqwoAN5kMtcyqu5",
+    reception: "Domicilio conocido",
+    place: "Arroyo grande gro.",
   },
   contact: {
-    phone: "5266337283",
+    phone: "527671160792",
   },
 
   design: {

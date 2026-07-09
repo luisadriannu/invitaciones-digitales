@@ -39,9 +39,21 @@ const Footprint = React.memo(function Footprint({
     >
       <g fill="currentColor">
         <ellipse cx="12" cy="16.2" rx="5" ry="4" />
-        <ellipse cx="6.6" cy="8.4" rx="2" ry="3.2" transform="rotate(-20 6.6 8.4)" />
+        <ellipse
+          cx="6.6"
+          cy="8.4"
+          rx="2"
+          ry="3.2"
+          transform="rotate(-20 6.6 8.4)"
+        />
         <ellipse cx="12" cy="6.2" rx="2" ry="3.6" />
-        <ellipse cx="17.4" cy="8.4" rx="2" ry="3.2" transform="rotate(20 17.4 8.4)" />
+        <ellipse
+          cx="17.4"
+          cy="8.4"
+          rx="2"
+          ry="3.2"
+          transform="rotate(20 17.4 8.4)"
+        />
       </g>
     </svg>
   );
@@ -204,12 +216,14 @@ const INFO_ITEMS = [
   { index: "01", label: "Fecha", key: "date" as const },
   { index: "02", label: "Hora", key: "partyHour" as const },
   { index: "03", label: "Lugar", key: "reception" as const },
+  { index: "04", label: "Direccion", key: "place" as const },
 ] as const;
 
 const INFO_ICONS = {
   date: <CalendarDays size={18} />,
   partyHour: <Clock size={18} />,
   reception: <MapPin size={18} />,
+  place: <MapPin size={18} />,
 } as const;
 
 export default function BirthdayDinosaur({ data }: Props) {
@@ -238,8 +252,9 @@ export default function BirthdayDinosaur({ data }: Props) {
       date: data.event.date,
       partyHour: data.event.partyHour,
       reception: data.location.reception ?? "",
+      place: data.location.place ?? "",
     }),
-    [data.event.date, data.event.partyHour, data.location.reception],
+    [data.event.date, data.event.partyHour, data.location.reception, data.location.place],
   );
 
   return (
@@ -254,8 +269,14 @@ export default function BirthdayDinosaur({ data }: Props) {
           className="relative min-h-screen flex flex-col overflow-hidden"
           style={{ background: T.inkDeep }}
         >
-          <FernCluster className="fern-corner fern-corner-left" style={{ color: T.fern }} />
-          <FernCluster className="fern-corner fern-corner-right" style={{ color: T.fern }} />
+          <FernCluster
+            className="fern-corner fern-corner-left"
+            style={{ color: T.fern }}
+          />
+          <FernCluster
+            className="fern-corner fern-corner-right"
+            style={{ color: T.fern }}
+          />
 
           <div className="relative w-full" style={{ height: "52svh" }}>
             <Image
@@ -302,7 +323,7 @@ export default function BirthdayDinosaur({ data }: Props) {
                 <span className="bday-fraunces italic dino-seal-age">
                   {data.event.age}
                 </span>
-                <span className="bday-jakarta dino-seal-label">anios</span>
+                <span className="bday-jakarta dino-seal-label">años</span>
               </motion.div>
             )}
 
@@ -323,7 +344,7 @@ export default function BirthdayDinosaur({ data }: Props) {
               style={{ maxWidth: 340 }}
             >
               <Image
-                src="/pictures/birthday/juanDiego/dino-hero.png"
+                src="/pictures/birthday/juanDiego/dinosaurio-2.png"
                 alt="Dinosaurio"
                 width={340}
                 height={220}
@@ -349,7 +370,10 @@ export default function BirthdayDinosaur({ data }: Props) {
 
         {/* ════════════════ COUNTDOWN ════════════════ */}
         <section className="relative py-20 px-6">
-          <div className="dino-glow" style={{ background: T.amber, top: -60, left: "20%" }} />
+          <div
+            className="dino-glow"
+            style={{ background: T.amber, top: -60, left: "20%" }}
+          />
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -378,9 +402,7 @@ export default function BirthdayDinosaur({ data }: Props) {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <span className="specimen-tag dino-section-tag">
-              Coordenadas
-            </span>
+            <span className="specimen-tag dino-section-tag">Coordenadas</span>
             <h2 className="bday-fraunces italic dino-section-title">
               ¿Dónde y cuándo?
             </h2>
@@ -398,17 +420,19 @@ export default function BirthdayDinosaur({ data }: Props) {
             ))}
           </div>
 
-          <div className="text-center mt-10">
-            <a
-              href={data.location.mapUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="dino-pill-link"
-            >
-              <MapPin size={14} />
-              Ver ruta en el mapa
-            </a>
-          </div>
+          {data.location.mapUrl && (
+            <div className="text-center mt-10">
+              <a
+                href={data.location.mapUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="dino-pill-link"
+              >
+                <MapPin size={14} />
+                Ver ruta en el mapa
+              </a>
+            </div>
+          )}
         </section>
 
         <TrailDivider tone={T.rust} />
@@ -421,9 +445,7 @@ export default function BirthdayDinosaur({ data }: Props) {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <span className="specimen-tag dino-section-tag">
-              Hallazgos
-            </span>
+            <span className="specimen-tag dino-section-tag">Hallazgos</span>
             <h2 className="bday-fraunces italic dino-section-title">
               Galería de fotos
             </h2>
@@ -440,7 +462,10 @@ export default function BirthdayDinosaur({ data }: Props) {
 
         {/* ════════════════ RSVP ════════════════ */}
         <section className="relative py-24 px-6 text-center overflow-hidden">
-          <div className="dino-glow" style={{ background: T.rust, bottom: -80, right: "15%" }} />
+          <div
+            className="dino-glow"
+            style={{ background: T.rust, bottom: -80, right: "15%" }}
+          />
           <FernCluster
             className="fern-corner fern-corner-left"
             style={{ color: T.fern, opacity: 0.1 }}
@@ -453,9 +478,7 @@ export default function BirthdayDinosaur({ data }: Props) {
             transition={{ type: "spring", bounce: 0.35 }}
             className="relative max-w-sm mx-auto"
           >
-            <span className="specimen-tag dino-section-tag">
-              Confirmación
-            </span>
+            <span className="specimen-tag dino-section-tag">Confirmación</span>
             <h2 className="bday-fraunces italic dino-section-title mb-10">
               Guarda tu lugar en la manada
             </h2>
@@ -503,7 +526,9 @@ export default function BirthdayDinosaur({ data }: Props) {
                 className="dino-field-frame w-full max-w-sm p-10 text-center"
               >
                 <div className="dino-seal-outline mx-auto mb-4">
-                  <Footprint style={{ width: 20, height: 20, color: T.amber }} />
+                  <Footprint
+                    style={{ width: 20, height: 20, color: T.amber }}
+                  />
                 </div>
                 <h3 className="bday-fraunces italic dino-modal-title mb-2">
                   ¡Genial!
@@ -511,20 +536,21 @@ export default function BirthdayDinosaur({ data }: Props) {
                 <p className="bday-jakarta dino-modal-text mb-8">
                   Te llevaremos a WhatsApp para confirmar tu lugar en la fiesta
                   de{" "}
-                  <strong className="dino-modal-name">{data.event.name}</strong>.
+                  <strong className="dino-modal-name">{data.event.name}</strong>
+                  .
                 </p>
 
                 <div className="flex gap-3">
                   <button
                     onClick={closeModal}
-                    className="bday-jakarta flex-1 py-3 rounded-full text-sm font-bold transition dino-cancel-btn"
+                    className="bday-jakarta flex-1 py-3 rounded-full text-sm font-bold transition dino-cancel-btn text-white"
                   >
                     Cancelar
                   </button>
                   <button
                     onClick={handleConfirm}
                     className="dino-ticket-btn flex-1"
-                    style={{ padding: "0.75rem 0" }}
+                    style={{ padding: "0.75rem 0", color: "#fff" }}
                   >
                     Confirmar
                   </button>

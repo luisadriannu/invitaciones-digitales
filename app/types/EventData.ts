@@ -7,7 +7,12 @@ export type EventType =
   | "graduacion"
   | "primeracomunion";
 
-export type EventVariant = "base" | "elegant" | "modern" | "personalized" | "dinosaur";
+export type EventVariant =
+  | "base"
+  | "elegant"
+  | "modern"
+  | "personalized"
+  | "dinosaur";
 
 export type Suscription = "classic" | "premiun";
 
@@ -39,10 +44,11 @@ export interface MediaInfo {
 }
 
 export interface LocationInfo {
-  mapUrl: string;
+  mapUrl?: string;
   church?: string;
   event?: string;
   reception?: string;
+  place?: string;
 }
 
 export interface ContactInfo {
