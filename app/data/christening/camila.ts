@@ -11,7 +11,7 @@ const camila: EventData = {
   },
   event: {
     name: "Camila Rivera Vega",
-    date: "07 Junio 2026",
+    date: "07 Diciembre 2026",
     ceremonyHour: "11:00 AM",
     partyHour: "2:30 PM",
     dressCode: "Formal",

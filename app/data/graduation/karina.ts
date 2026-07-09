@@ -11,7 +11,7 @@ const alan: EventData = {
   },
   event: {
     name: "Karina Garcia",
-    date: "06 Julio 2026",
+    date: "17 Agosto 2026",
     partyHour: "3:30 PM",
     dressCode: "Formal",
   },

@@ -9,15 +9,7 @@ import MusicButton from "@/app/components/MusicButton";
 import LocationMaps from "@/app/components/LocationMaps";
 import type { EventData } from "@/app/types/EventData";
 import type { Variants } from "motion/react";
-import {
-  Church,
-  Cross,
-  Sparkles,
-  Calendar,
-  X,
-  Heart,
-  Flower2,
-} from "lucide-react";
+import { Church, Sparkles, Calendar, X, Flower2 } from "lucide-react";
 
 interface Props {
   data: EventData;

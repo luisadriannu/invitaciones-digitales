@@ -7,7 +7,6 @@ import Gallery from "@/app/components/Gallery";
 import CountDown from "@/app/components/CountDown";
 import MusicButton from "@/app/components/MusicButton";
 import type { EventData } from "@/app/types/EventData";
-import { Church, Utensils } from "lucide-react";
 import LocationMaps from "@/app/components/LocationMaps";
 
 interface Props {

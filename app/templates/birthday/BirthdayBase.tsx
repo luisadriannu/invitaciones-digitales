@@ -115,7 +115,7 @@ export default function BirthdayBase({ data }: Props) {
               priority
               className="object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-b from-[#0D0D1A]/30 via-transparent to-[#0D0D1A]" />
+            <div className="absolute inset-0 bg-linear-to-b from-[#0D0D1A]/30 via-transparent to-[#0D0D1A]" />
           </div>
 
           {/* Hero content */}
@@ -342,7 +342,7 @@ export default function BirthdayBase({ data }: Props) {
         <section className="py-28 px-6 text-center bg-[#0D0D1A] relative overflow-hidden">
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
             <div
-              className="w-[500px] h-[500px] rounded-full blur-[100px] opacity-20"
+              className="w-125 h-125 rounded-full blur-[100px] opacity-20"
               style={{
                 background: `radial-gradient(circle, ${THEME.accent2}, ${THEME.accent1})`,
               }}
@@ -444,7 +444,7 @@ export default function BirthdayBase({ data }: Props) {
                       confirmAttendance();
                       setShowModal(false);
                     }}
-                    className="bday-rsvp-btn flex-1 py-3 !px-0 text-sm"
+                    className="bday-rsvp-btn flex-1 py-3 px-0! text-sm"
                     style={{ padding: "0.75rem 0" }}
                   >
                     Confirmar 🎉

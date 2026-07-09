@@ -7,7 +7,7 @@ export type EventType =
   | "graduacion"
   | "primeracomunion";
 
-export type EventVariant = "base" | "elegant" | "modern" | "personalized";
+export type EventVariant = "base" | "elegant" | "modern" | "personalized" | "dinosaur";
 
 export type Suscription = "classic" | "premiun";
 

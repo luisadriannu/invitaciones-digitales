@@ -1,4 +1,5 @@
 import BirthdayBase from "@/app/templates/birthday/BirthdayBase";
+import BirthdayDinosaur from "@/app/templates/birthday/BirthdayDinosaur";
 // import BirthdayElegant from "@/templates/birthday/BirthdayElegant";
 // import BirthdayModern from "@/templates/birthday/BirthdayModern";
 import WeddingBase from "@/app/templates/wedding/WeddingBase";
@@ -11,6 +12,7 @@ import FirstCommunionTemplate from "@/app/templates/firstcommunion/FirstCommunio
 export const templates = {
   cumple: {
     base: BirthdayBase,
+    dinosaur: BirthdayDinosaur,
     // elegant: BirthdayElegant,
     // modern: BirthdayModern,
   },

@@ -10,7 +10,7 @@ const kevinyjuana: EventData = {
   },
   event: {
     name: "Kevin Mariano y Juana Reynoso",
-    date: "07 Junio 2026",
+    date: "26 Diciembre 2026",
     ceremonyHour: "11:00 AM",
     partyHour: "2:30 PM",
     dressCode: "Formal",
