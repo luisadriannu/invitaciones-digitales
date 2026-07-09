@@ -254,7 +254,12 @@ export default function BirthdayDinosaur({ data }: Props) {
       reception: data.location.reception ?? "",
       place: data.location.place ?? "",
     }),
-    [data.event.date, data.event.partyHour, data.location.reception, data.location.place],
+    [
+      data.event.date,
+      data.event.partyHour,
+      data.location.reception,
+      data.location.place,
+    ],
   );
 
   return (

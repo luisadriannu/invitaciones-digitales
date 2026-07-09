@@ -27,7 +27,7 @@ const jose: EventData = {
   location: {
     // mapUrl: "https://maps.app.goo.gl/KnuqwoAN5kMtcyqu5",
     reception: "Domicilio conocido",
-    place: "Arroyo grande gro.",
+    place: "Ciudad Altamirano gro.",
   },
   contact: {
     phone: "527671160792",
