@@ -15,7 +15,7 @@ const gianniyjoey: EventData = {
     partyHour: "5:00 PM",
     dressCode: "Formal",
     phrase:
-      "Hoy se cierra un capírulo, pero comienza unahistoria llena de éxitos y sueños cumplidos",
+      "Hoy se cierra un capítulo, pero comienza una historia llena de éxitos y sueños cumplidos",
   },
   media: {
     coverImage: "/pictures/graduation/gianniyjoey/gianniyjoey-2.jpeg",
