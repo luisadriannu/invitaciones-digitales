@@ -31,7 +31,7 @@ const gianniyjoey: EventData = {
     event: "Domicilio conocido. Arroyo grande Gro.",
   },
   contact: {
-    phone: "527671160792",
+    phone: "527671061209",
   },
   design: {
     variant: "base",

@@ -463,6 +463,23 @@ export default function GraduationBase({ data }: Props) {
           </p>
         </section>
 
+        {/* ════════════════ NO FALTES ════════════════ */}
+        <section className="py-16 px-6 bg-[#0f2a4a] text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <p className="text-2xl md:text-3xl font-light italic text-white mb-2">
+              No faltes
+            </p>
+            <p className="jost text-[#D4AF37] text-sm tracking-widest uppercase font-medium">
+              habrá payasos
+            </p>
+          </motion.div>
+        </section>
+
         {/* ════════════════ RSVP ════════════════ */}
         <section className="py-22 px-6 text-center bg-[#0f2a4a]">
           <div className="academic-divider mb-14">
