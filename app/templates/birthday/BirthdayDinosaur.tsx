@@ -231,7 +231,7 @@ export default function BirthdayDinosaur({ data }: Props) {
 
   const confirmAttendance = useCallback(() => {
     const message = encodeURIComponent(
-      `Hola! Confirmo mi asistencia al cumpleaños de ${data.event.name}`,
+      `Hola! Confirmo mi asistencia al cumpleaños7 de ${data.event.name}`,
     );
     window.open(
       `https://api.whatsapp.com/send?phone=${data.contact.phone}&text=${message}`,
