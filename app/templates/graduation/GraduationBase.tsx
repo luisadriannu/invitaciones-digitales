@@ -7,7 +7,7 @@ import Gallery from "@/app/components/Gallery";
 import CountDown from "@/app/components/CountDown";
 import MusicButton from "@/app/components/MusicButton";
 import type { EventData } from "@/app/types/EventData";
-import { MapPin, Award, Utensils, Crown, Gem } from "lucide-react";
+import { MapPin, Award, Utensils, Crown, Gem, Clock } from "lucide-react";
 
 interface Props {
   data: EventData;
@@ -52,7 +52,11 @@ const ROYAL_PATTERN_SVG = encodeURIComponent(`
 `);
 const ROYAL_PATTERN_BG = `url("data:image/svg+xml,${ROYAL_PATTERN_SVG})`;
 
-const RoyalPattern = memo(function RoyalPattern({ opacity = 0.05 }: { opacity?: number }) {
+const RoyalPattern = memo(function RoyalPattern({
+  opacity = 0.05,
+}: {
+  opacity?: number;
+}) {
   return (
     <div
       aria-hidden="true"
@@ -183,6 +187,17 @@ export default function GraduationBase({ data }: Props) {
             >
               {data.event.date}
             </motion.p>
+
+            {data.event.partyHour && (
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1.2, duration: 0.8 }}
+                className="jost text-[#D4AF37] text-sm tracking-widest uppercase font-light mt-2"
+              >
+                {data.event.partyHour}
+              </motion.p>
+            )}
 
             <motion.div
               initial={{ opacity: 0 }}
@@ -329,6 +344,28 @@ export default function GraduationBase({ data }: Props) {
           </motion.div>
 
           <div className="max-w-xl mx-auto flex flex-col gap-4">
+            {data.event.partyHour && (
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+                className="location-card"
+              >
+                <div className="icon-wrap">
+                  <Clock size={20} />
+                </div>
+                <div>
+                  <p className="jost text-[#D4AF37] text-xs uppercase tracking-widest mb-0.5 font-medium">
+                    Hora
+                  </p>
+                  <p className="jost text-white font-light">
+                    {data.event.partyHour}
+                  </p>
+                </div>
+              </motion.div>
+            )}
+
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -444,10 +481,7 @@ export default function GraduationBase({ data }: Props) {
             <h2 className="text-3xl md:text-4xl font-light italic mb-10 text-white">
               Confirma tu Pase de Gala
             </h2>
-            <button
-              className="grad-rsvp-btn jost"
-              onClick={handleOpenModal}
-            >
+            <button className="grad-rsvp-btn jost" onClick={handleOpenModal}>
               Confirmar Asistencia
             </button>
           </motion.div>
@@ -456,7 +490,7 @@ export default function GraduationBase({ data }: Props) {
         {/* ════════════════ FOOTER ════════════════ */}
         <footer className="py-10 text-center academic-bg border-t border-white/5">
           <p className="jost text-[#E5BA73]/70 text-xs tracking-widest uppercase">
-            Clase de Graduación — {data.event.name}
+            Fiesta de graduación — {data.event.name}
           </p>
         </footer>
 
