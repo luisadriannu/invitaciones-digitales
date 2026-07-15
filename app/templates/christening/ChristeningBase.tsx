@@ -75,7 +75,7 @@ export default function ChristeningBase({ data }: Props) {
         <section className="relative h-screen paper-bg flex flex-col items-center justify-center overflow-hidden">
           <div className="absolute inset-0 z-0">
             <Image
-              src={data.media.coverImage}
+              src={data.media.gallery[0]}
               alt={data.event.name}
               fill
               priority

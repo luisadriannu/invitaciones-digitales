@@ -1084,3 +1084,72 @@
     opacity: 0 !important;
   }
 }
+
+/* ── Christening Pre-Invite (Itzia) ── */
+#chr-pre {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  background: #0e0b14;
+  color: #f5eef8;
+  overflow: hidden;
+  position: relative;
+  min-height: 100svh;
+}
+
+@keyframes floatPetal {
+  0%   { transform: translateY(-30px) rotate(0deg) translateX(0);   opacity: 0; }
+  8%   { opacity: 1; }
+  92%  { opacity: 0.5; }
+  100% { transform: translateY(105vh) rotate(500deg) translateX(20px); opacity: 0; }
+}
+.pre-petal {
+  position: fixed;
+  top: 0;
+  pointer-events: none;
+  z-index: 1;
+  border-radius: 50% 0 50% 0;
+  animation: floatPetal ease-in-out infinite;
+}
+
+@keyframes preShimmer {
+  0%   { background-position: -300% center; }
+  100% { background-position:  300% center; }
+}
+.pre-name {
+  background: linear-gradient(90deg, #e8c4e0 10%, #fff0fb 45%, #c9a0dc 75%, #e8c4e0 100%);
+  background-size: 300% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: preShimmer 6s linear infinite;
+}
+
+.pre-glass {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(232, 196, 224, 0.18);
+  border-radius: 28px;
+  backdrop-filter: blur(14px);
+}
+
+.pre-wishes-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 1.1rem 2.8rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #c9a0dc, #e8c4e0);
+  color: #1a0d22;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.1rem;
+  font-style: italic;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 8px 35px rgba(201, 160, 220, 0.4);
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.pre-wishes-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 50px rgba(201, 160, 220, 0.55);
+}

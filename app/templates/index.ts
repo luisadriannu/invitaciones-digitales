@@ -6,6 +6,7 @@ import WeddingBase from "@/app/templates/wedding/WeddingBase";
 // import BabyShowerBase from "@/templates/babyshower/BabyShowerBase";
 import xvBaseTemplate from "@/app/templates/xv/xvBaseTemplate";
 import ChristeningBase from "@/app/templates/christening/ChristeningBase";
+import ChristeningPreInvite from "@/app/templates/christening/ChristeningPreInvite";
 import GraduationBase from "@/app/templates/graduation/GraduationBase";
 import FirstCommunionTemplate from "@/app/templates/firstcommunion/FirstCommunionTemplate";
 
@@ -33,5 +34,6 @@ export const templates = {
   },
   bautizo: {
     base: ChristeningBase,
+    personalized: ChristeningPreInvite,
   },
 } as const;
