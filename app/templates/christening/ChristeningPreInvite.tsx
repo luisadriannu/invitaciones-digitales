@@ -169,7 +169,7 @@ export default function ChristeningPreInvite({ data }: Props) {
   const [photo1, photo2] = data.media.gallery;
 
   const whatsappUrl = `https://api.whatsapp.com/send?phone=${data.contact.phone}&text=${encodeURIComponent(
-    `Hola, quiero enviar mis mejores deseos para el bautizo de ${data.event.name}.`,
+    `Esperamos contar con su presencia, ya que al recibir esta invitación eres parte de mi festejo. Favor de confirmar tu asistencia.`,
   )}`;
 
   return (
