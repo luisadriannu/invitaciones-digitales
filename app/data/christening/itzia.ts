@@ -30,7 +30,7 @@ const itzia: EventData = {
     reception: "Salón de Eventos",
   },
   contact: {
-    phone: "0000000000",
+    phone: "529516535688",
   },
   family: {
     parents: {
