@@ -223,7 +223,7 @@ export default function ChristeningPreInvite({ data }: Props) {
                 color: "#c98fa8",
               }}
             >
-              Sacramento del Bautismo
+              Bautizo y Presentación
             </p>
 
             <div
@@ -270,7 +270,7 @@ export default function ChristeningPreInvite({ data }: Props) {
                 color: "#8a6b76",
               }}
             >
-              será bautizada
+              será bautizada y presentada
             </p>
           </motion.div>
 

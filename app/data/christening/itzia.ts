@@ -4,9 +4,9 @@ const itzia: EventData = {
   tipo: "bautizo",
   suscription: "premiun",
   seo: {
-    title: "🎀 Bautizo de Itzia Sarai",
+    title: "🎀 Bautizo y Presentación de Itzia Sarai",
     description:
-      "Mis papás y yo estaremos muy felices de compartir contigo este hermoso día.",
+      "Mis papás y yo estaremos muy felices de compartir contigo el bautizo y presentación de nuestra pequeña.",
     image: "/pictures/christening/itzia/itzia-1.jpeg",
   },
   event: {
