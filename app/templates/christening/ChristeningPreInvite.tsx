@@ -87,29 +87,47 @@ function LaurelSprig({
 }
 
 const MESES: Record<string, number> = {
-  Enero: 0, Febrero: 1, Marzo: 2, Abril: 3, Mayo: 4, Junio: 5,
-  Julio: 6, Agosto: 7, Septiembre: 8, Octubre: 9, Noviembre: 10, Diciembre: 11,
+  Enero: 0,
+  Febrero: 1,
+  Marzo: 2,
+  Abril: 3,
+  Mayo: 4,
+  Junio: 5,
+  Julio: 6,
+  Agosto: 7,
+  Septiembre: 8,
+  Octubre: 9,
+  Noviembre: 10,
+  Diciembre: 11,
 };
 
 function PreCountDown({ data }: { data: EventData }) {
   const [dia, mes, año] = data.event.date.split(" ");
   const [hora, periodo] = data.event.partyHour.split(" ");
   const [hh, mm] = hora.split(":").map(Number);
-  const hora24 = periodo === "PM" && hh !== 12 ? hh + 12 : hh === 12 && periodo === "AM" ? 0 : hh;
+  const hora24 =
+    periodo === "PM" && hh !== 12
+      ? hh + 12
+      : hh === 12 && periodo === "AM"
+        ? 0
+        : hh;
   const target = new Date(Number(año), MESES[mes], Number(dia), hora24, mm);
   const { days, hours, minutes, seconds } = useCountdown(target);
   const finished = days === 0 && hours === 0 && minutes === 0 && seconds === 0;
 
   const units = [
-    { value: days,    label: "Días" },
-    { value: hours,   label: "Horas" },
+    { value: days, label: "Días" },
+    { value: hours, label: "Horas" },
     { value: minutes, label: "Minutos" },
     { value: seconds, label: "Segundos" },
   ];
 
   if (finished) {
     return (
-      <p className="italic text-2xl" style={{ fontFamily: "var(--font-display)", color: "#2f2b24" }}>
+      <p
+        className="italic text-2xl"
+        style={{ fontFamily: "var(--font-display)", color: "#5a3a48" }}
+      >
         ¡Hoy es el gran día!
       </p>
     );
@@ -124,7 +142,7 @@ function PreCountDown({ data }: { data: EventData }) {
             style={{
               fontFamily: "var(--font-display)",
               fontSize: "clamp(2.6rem, 10vw, 3.8rem)",
-              color: "#2f2b24",
+              color: "#5a3a48",
               letterSpacing: "-0.02em",
             }}
           >
@@ -136,7 +154,7 @@ function PreCountDown({ data }: { data: EventData }) {
               fontSize: "0.6rem",
               letterSpacing: "0.22em",
               textTransform: "uppercase",
-              color: "#a3855a",
+              color: "#c98fa8",
             }}
           >
             {label}
@@ -163,7 +181,7 @@ export default function ChristeningPreInvite({ data }: Props) {
         className={`${display.variable} ${utility.variable} relative min-h-screen overflow-hidden`}
         style={{
           background:
-            "radial-gradient(ellipse at 50% -10%, #fffdf8 0%, #f8f2e6 45%, #efe7d5 100%)",
+            "radial-gradient(ellipse at 50% -10%, #fffbfc 0%, #fdf1f5 45%, #f8dfe9 100%)",
         }}
       >
         {/* Motas de luz */}
@@ -185,7 +203,7 @@ export default function ChristeningPreInvite({ data }: Props) {
         <div
           className="pointer-events-none fixed inset-0 z-0"
           style={{
-            boxShadow: "inset 0 0 140px rgba(122,110,74,0.10)",
+            boxShadow: "inset 0 0 140px rgba(160,90,115,0.10)",
           }}
         />
 
@@ -202,7 +220,7 @@ export default function ChristeningPreInvite({ data }: Props) {
               style={{
                 fontFamily: "var(--font-utility)",
                 letterSpacing: "0.32em",
-                color: "#a3855a",
+                color: "#c98fa8",
               }}
             >
               Sacramento del Bautismo
@@ -210,16 +228,16 @@ export default function ChristeningPreInvite({ data }: Props) {
 
             <div
               className="flex items-center justify-center gap-3 mb-5"
-              style={{ color: "#8a9a86" }}
+              style={{ color: "#e0a8bf" }}
             >
               <div
                 className="h-px w-9"
-                style={{ background: "rgba(163,133,90,0.35)" }}
+                style={{ background: "rgba(201,143,168,0.35)" }}
               />
               <DoveMark className="w-7 h-5" />
               <div
                 className="h-px w-9"
-                style={{ background: "rgba(163,133,90,0.35)" }}
+                style={{ background: "rgba(201,143,168,0.35)" }}
               />
             </div>
 
@@ -228,7 +246,7 @@ export default function ChristeningPreInvite({ data }: Props) {
               style={{
                 fontFamily: "var(--font-display)",
                 fontSize: "0.95rem",
-                color: "#6b6455",
+                color: "#8a6b76",
               }}
             >
               Con la bendición de Dios
@@ -238,7 +256,7 @@ export default function ChristeningPreInvite({ data }: Props) {
               style={{
                 fontFamily: "var(--font-display)",
                 fontSize: "clamp(3rem, 13vw, 5.5rem)",
-                color: "#2f2b24",
+                color: "#5a3a48",
                 lineHeight: 1.05,
               }}
             >
@@ -249,7 +267,7 @@ export default function ChristeningPreInvite({ data }: Props) {
               style={{
                 fontFamily: "var(--font-display)",
                 fontSize: "1.15rem",
-                color: "#6b6455",
+                color: "#8a6b76",
               }}
             >
               será bautizada
@@ -269,7 +287,8 @@ export default function ChristeningPreInvite({ data }: Props) {
                 className="relative flex-1 rounded-2xl overflow-hidden"
                 style={{
                   aspectRatio: "3/4",
-                  boxShadow: "0 0 0 1px rgba(184,147,90,0.4), 0 20px 50px rgba(70,60,40,0.18)",
+                  boxShadow:
+                    "0 0 0 1px rgba(224,168,191,0.4), 0 20px 50px rgba(150,90,115,0.18)",
                 }}
               >
                 <Image
@@ -289,7 +308,8 @@ export default function ChristeningPreInvite({ data }: Props) {
                 className="relative flex-1 rounded-2xl overflow-hidden mt-8"
                 style={{
                   aspectRatio: "3/4",
-                  boxShadow: "0 0 0 1px rgba(184,147,90,0.4), 0 20px 50px rgba(70,60,40,0.18)",
+                  boxShadow:
+                    "0 0 0 1px rgba(224,168,191,0.4), 0 20px 50px rgba(150,90,115,0.18)",
                 }}
               >
                 <Image
@@ -311,9 +331,9 @@ export default function ChristeningPreInvite({ data }: Props) {
             transition={{ duration: 0.9 }}
             className="relative w-full max-w-sm p-9 text-center"
             style={{
-              background: "#fffaf0",
+              background: "#fff6f9",
               boxShadow:
-                "0 0 0 1px rgba(184,147,90,0.4), 0 0 0 5px #fffaf0, 0 0 0 6px rgba(184,147,90,0.25), 0 20px 45px rgba(70,60,40,0.1)",
+                "0 0 0 1px rgba(224,168,191,0.4), 0 0 0 5px #fff6f9, 0 0 0 6px rgba(224,168,191,0.25), 0 20px 45px rgba(150,90,115,0.1)",
             }}
           >
             {/* esquinas ornamentales */}
@@ -327,7 +347,7 @@ export default function ChristeningPreInvite({ data }: Props) {
                 key={i}
                 viewBox="0 0 20 20"
                 className={`absolute w-4 h-4 ${pos}`}
-                style={{ color: "#b8935a" }}
+                style={{ color: "#d98cae" }}
               >
                 <path
                   d="M1 1v7M1 1h7"
@@ -342,7 +362,7 @@ export default function ChristeningPreInvite({ data }: Props) {
               style={{
                 fontFamily: "var(--font-display)",
                 fontSize: "1.6rem",
-                color: "#2f2b24",
+                color: "#5a3a48",
               }}
             >
               Cuenta Regresiva
@@ -352,7 +372,7 @@ export default function ChristeningPreInvite({ data }: Props) {
               style={{
                 fontFamily: "var(--font-utility)",
                 letterSpacing: "0.28em",
-                color: "#a3855a",
+                color: "#c98fa8",
               }}
             >
               El gran día llega en
@@ -364,7 +384,7 @@ export default function ChristeningPreInvite({ data }: Props) {
               style={{
                 fontFamily: "var(--font-display)",
                 fontSize: "0.85rem",
-                color: "#8a7f68",
+                color: "#a3818c",
                 letterSpacing: "0.02em",
               }}
             >
@@ -378,7 +398,7 @@ export default function ChristeningPreInvite({ data }: Props) {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             className="flex items-center gap-4"
-            style={{ color: "#8a9a86" }}
+            style={{ color: "#e0a8bf" }}
           >
             <LaurelSprig className="w-12 h-4" />
             <DoveMark className="w-6 h-4" />
@@ -398,7 +418,7 @@ export default function ChristeningPreInvite({ data }: Props) {
               style={{
                 fontFamily: "var(--font-display)",
                 fontSize: "1.05rem",
-                color: "#6b6455",
+                color: "#8a6b76",
               }}
             >
               Muy pronto recibirás la invitación con todos los detalles de este
@@ -423,8 +443,8 @@ export default function ChristeningPreInvite({ data }: Props) {
             border-radius: 9999px;
             background: radial-gradient(
               circle,
-              rgba(184, 147, 90, 0.55),
-              rgba(184, 147, 90, 0)
+              rgba(224, 168, 191, 0.55),
+              rgba(224, 168, 191, 0)
             );
             animation: chr-drift linear infinite;
             pointer-events: none;
@@ -455,17 +475,17 @@ export default function ChristeningPreInvite({ data }: Props) {
             font-size: 0.72rem;
             letter-spacing: 0.18em;
             text-transform: uppercase;
-            color: #6b5a35;
+            color: #8a4f68;
             background: transparent;
-            border: 1px solid rgba(184, 147, 90, 0.55);
+            border: 1px solid rgba(224, 168, 191, 0.6);
             border-radius: 2px;
             transition:
               background 0.35s ease,
               color 0.35s ease;
           }
           .chr-cta:hover {
-            background: #b8935a;
-            color: #fffaf0;
+            background: #d98cae;
+            color: #fff6f9;
           }
           @media (prefers-reduced-motion: reduce) {
             .chr-mote {
