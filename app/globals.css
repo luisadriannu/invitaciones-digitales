@@ -1153,3 +1153,270 @@
   transform: translateY(-3px);
   box-shadow: 0 14px 50px rgba(201, 160, 220, 0.55);
 }
+
+/* ── Graduation Elegant Template (Exclusive) ── */
+.eleg-main {
+  font-family: "Jost", sans-serif;
+  background-color: #1a0e14;
+  background-image:
+    radial-gradient(
+      ellipse at 30% 15%,
+      rgba(155, 107, 122, 0.12) 0%,
+      transparent 55%
+    ),
+    radial-gradient(
+      ellipse at 75% 85%,
+      rgba(107, 45, 62, 0.08) 0%,
+      transparent 50%
+    );
+  color: #fdf5f0;
+}
+
+.eleg-section-alt {
+  background-color: rgba(107, 45, 62, 0.12);
+}
+
+.eleg-label {
+  color: #9b6b7a;
+  font-family: "Jost", sans-serif;
+}
+
+.eleg-cap-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(107, 45, 62, 0.3);
+  color: #c9a0a8;
+  border: 1.5px solid rgba(155, 107, 122, 0.4);
+}
+
+.eleg-divider {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin: 0 auto;
+  color: rgba(155, 107, 122, 0.4);
+}
+
+.eleg-divider-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, transparent, rgba(155, 107, 122, 0.35), transparent);
+}
+
+@keyframes elegFloat {
+  0% {
+    transform: translateY(-60px) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(110vh) translateX(20px);
+    opacity: 0;
+  }
+}
+.eleg-particle {
+  position: fixed;
+  top: 0;
+  pointer-events: none;
+  z-index: 0;
+  animation: elegFloat ease-in-out infinite;
+}
+
+@keyframes elegShimmer {
+  0% {
+    background-position: -300% center;
+  }
+  100% {
+    background-position: 300% center;
+  }
+}
+.eleg-name-shimmer {
+  background: linear-gradient(
+    90deg,
+    #9b6b7a 15%,
+    #e8c8d0 35%,
+    #c9a0a8 55%,
+    #fdf5f0 75%,
+    #9b6b7a 100%
+  );
+  background-size: 300% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: elegShimmer 7s linear infinite;
+}
+
+.eleg-portrait-ring {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  margin: 0 auto;
+}
+
+.eleg-portrait-hex {
+  position: absolute;
+  inset: 0;
+  border-radius: 30% 70% 70% 30% / 50% 50% 50% 50%;
+  overflow: hidden;
+  border: 3px solid rgba(155, 107, 122, 0.5);
+  box-shadow:
+    0 0 0 8px rgba(155, 107, 122, 0.08),
+    0 12px 40px rgba(0, 0, 0, 0.4);
+}
+
+.eleg-portrait-ring::before {
+  content: "";
+  position: absolute;
+  inset: -12px;
+  border-radius: 30% 70% 70% 30% / 50% 50% 50% 50%;
+  border: 1px solid rgba(155, 107, 122, 0.2);
+}
+
+.eleg-portrait-ring::after {
+  content: "";
+  position: absolute;
+  inset: -22px;
+  border-radius: 30% 70% 70% 30% / 50% 50% 50% 50%;
+  border: 1px dashed rgba(155, 107, 122, 0.1);
+}
+
+.eleg-verse {
+  position: relative;
+  padding: 2rem 2.5rem;
+  text-align: center;
+}
+.eleg-verse::before {
+  content: "\201C";
+  position: absolute;
+  top: -1.5rem;
+  left: 1.5rem;
+  font-size: 6rem;
+  line-height: 1;
+  color: rgba(155, 107, 122, 0.1);
+  font-family: Georgia, serif;
+}
+
+.eleg-glass-card {
+  background: rgba(107, 45, 62, 0.18);
+  border: 1px solid rgba(155, 107, 122, 0.18);
+  border-radius: 20px;
+  padding: 1.75rem 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  backdrop-filter: blur(8px);
+  transition: box-shadow 0.3s, transform 0.3s, background 0.3s;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+}
+.eleg-glass-card:hover {
+  background: rgba(107, 45, 62, 0.28);
+  box-shadow: 0 8px 35px rgba(155, 107, 122, 0.12);
+  transform: translateY(-2px);
+}
+
+.eleg-icon-wrap {
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+  background: rgba(155, 107, 122, 0.12);
+  border: 1px solid rgba(155, 107, 122, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #c9a0a8;
+}
+
+.eleg-map-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 2rem;
+  border-radius: 999px;
+  border: 1px solid rgba(155, 107, 122, 0.35);
+  background: transparent;
+  color: #c9a0a8;
+  font-size: 0.875rem;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  transition: background 0.3s, color 0.3s;
+}
+.eleg-map-btn:hover {
+  background: rgba(155, 107, 122, 0.1);
+  color: #fdf5f0;
+}
+
+.eleg-rsvp-btn {
+  padding: 1.1rem 3.5rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #6b2d3e, #9b6b7a, #c9a0a8);
+  background-size: 200% auto;
+  color: #fdf5f0;
+  font-family: "Jost", sans-serif;
+  font-weight: 500;
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 8px 30px rgba(107, 45, 62, 0.35);
+  transition: transform 0.2s, box-shadow 0.2s, background-position 0.5s;
+}
+.eleg-rsvp-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 40px rgba(107, 45, 62, 0.5);
+  background-position: right center;
+}
+
+.eleg-modal-card {
+  position: relative;
+  background: rgba(26, 14, 20, 0.95);
+  border: 1px solid rgba(155, 107, 122, 0.25);
+  border-radius: 24px;
+  padding: 2.5rem;
+  text-align: center;
+  backdrop-filter: blur(16px);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+}
+.eleg-modal-card::before {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  border: 1px solid rgba(155, 107, 122, 0.1);
+  border-radius: 18px;
+  pointer-events: none;
+}
+
+@keyframes elegFalling {
+  0% {
+    transform: translateY(-8vh) rotate(0deg);
+    opacity: 0;
+  }
+  8% {
+    opacity: 1;
+  }
+  92% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(105vh) rotate(540deg);
+    opacity: 0;
+  }
+}
+.eleg-falling {
+  position: fixed;
+  top: 0;
+  pointer-events: none;
+  z-index: 1;
+  animation: elegFalling ease-in-out infinite;
+}

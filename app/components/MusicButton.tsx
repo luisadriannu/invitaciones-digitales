@@ -4,9 +4,10 @@ import { useEffect, useRef, useState } from "react";
 
 interface Props {
   src: string;
+  autoPlay?: boolean;
 }
 
-export default function MusicButton({ src }: Props) {
+export default function MusicButton({ src, autoPlay }: Props) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [playing, setPlaying] = useState(false);
 
@@ -17,12 +18,16 @@ export default function MusicButton({ src }: Props) {
 
     audioRef.current = audio;
 
+    if (autoPlay) {
+      audio.play().then(() => setPlaying(true)).catch(() => {});
+    }
+
     return () => {
       audio.pause();
       audio.currentTime = 0;
       audioRef.current = null;
     };
-  }, [src]);
+  }, [src, autoPlay]);
 
   const toggleMusic = async () => {
     if (!audioRef.current) return;

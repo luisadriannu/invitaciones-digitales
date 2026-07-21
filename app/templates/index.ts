@@ -8,6 +8,7 @@ import xvBaseTemplate from "@/app/templates/xv/xvBaseTemplate";
 import ChristeningBase from "@/app/templates/christening/ChristeningBase";
 import ChristeningPreInvite from "@/app/templates/christening/ChristeningPreInvite";
 import GraduationBase from "@/app/templates/graduation/GraduationBase";
+import GraduationElegant from "@/app/templates/graduation/GraduationElegant";
 import FirstCommunionTemplate from "@/app/templates/firstcommunion/FirstCommunionTemplate";
 
 export const templates = {
@@ -28,6 +29,7 @@ export const templates = {
   },
   graduacion: {
     base: GraduationBase,
+    elegant: GraduationElegant,
   },
   xv: {
     base: xvBaseTemplate,
