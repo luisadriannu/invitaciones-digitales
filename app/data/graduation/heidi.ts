@@ -15,7 +15,7 @@ const heidi: EventData = {
     partyHour: "2:30 PM",
     dressCode: "Formal",
     phrase:
-      "Hoy se cierra un capítulo, pero comienza una historia llena de éxitos y sueños cumplidos",
+      "Gracias a Jehová y a mis padres eh culminado una etapa más en mi vida te invito a que celebremos 🎉",
   },
   media: {
     coverImage: "/pictures/graduation/heidi/heidi-1.jpeg",

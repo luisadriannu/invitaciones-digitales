@@ -57,30 +57,9 @@ const FloatingParticles = memo(function FloatingParticles() {
             animationDelay: `${p.delay}s`,
             animationDuration: `${p.duration}s`,
             background: PALETTE.gold,
-            borderRadius: "50%",
-            opacity: 0.35,
-            position: "absolute",
           }}
         />
       ))}
-      <style jsx>{`
-        .grad-particle {
-          animation-name: gradFloat;
-          animation-timing-function: ease-in-out;
-          animation-iteration-count: infinite;
-        }
-        @keyframes gradFloat {
-          0%,
-          100% {
-            transform: translateY(0);
-            opacity: 0.15;
-          }
-          50% {
-            transform: translateY(-40px);
-            opacity: 0.45;
-          }
-        }
-      `}</style>
     </>
   );
 });
@@ -232,10 +211,12 @@ export default function GraduationElegant({ data }: Props) {
                   backgroundImage: `radial-gradient(circle at 80% 50%, ${PALETTE.gold}08, transparent 60%)`,
                 }}
               />
-              <div className="absolute right-0 top-0 h-full w-px" style={{ background: `linear-gradient(to bottom, transparent, ${PALETTE.gold}40, transparent)` }} />
-              <div className="relative z-10 pr-4 text-right">
-                <ChevronLeft size={28} strokeWidth={1.2} style={{ color: PALETTE.gold, opacity: 0.6 }} />
-              </div>
+              <div
+                className="absolute right-0 top-0 h-full w-px"
+                style={{
+                  background: `linear-gradient(to bottom, transparent, ${PALETTE.gold}40, transparent)`,
+                }}
+              />
             </motion.div>
 
             {/* Right door */}
@@ -254,23 +235,33 @@ export default function GraduationElegant({ data }: Props) {
                   backgroundImage: `radial-gradient(circle at 20% 50%, ${PALETTE.gold}08, transparent 60%)`,
                 }}
               />
-              <div className="absolute left-0 top-0 h-full w-px" style={{ background: `linear-gradient(to bottom, transparent, ${PALETTE.gold}40, transparent)` }} />
-              <div className="relative z-10 pl-4">
-                <ChevronRight size={28} strokeWidth={1.2} style={{ color: PALETTE.gold, opacity: 0.6 }} />
-              </div>
+              <div
+                className="absolute left-0 top-0 h-full w-px"
+                style={{
+                  background: `linear-gradient(to bottom, transparent, ${PALETTE.gold}40, transparent)`,
+                }}
+              />
             </motion.div>
 
             {/* Center content — click to open */}
             <motion.button
               initial={{ opacity: 0, scale: 0.85 }}
-              animate={doorsOpen ? { opacity: 0, scale: 0.9 } : { opacity: 1, scale: 1 }}
+              animate={
+                doorsOpen
+                  ? { opacity: 0, scale: 0.9 }
+                  : { opacity: 1, scale: 1 }
+              }
               transition={{ duration: 0.4 }}
               onClick={handleOpenDoors}
               className="relative z-10 flex flex-col items-center gap-6 cursor-pointer bg-transparent border-none outline-none"
             >
               <motion.div
                 animate={{ scale: [1, 1.08, 1] }}
-                transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+                transition={{
+                  duration: 2.5,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
                 className="w-20 h-20 rounded-full flex items-center justify-center"
                 style={{
                   border: `1.5px solid ${PALETTE.gold}`,
@@ -290,11 +281,8 @@ export default function GraduationElegant({ data }: Props) {
                   Has sido invitado a
                 </p>
                 <p
-                  className="text-2xl md:text-3xl italic font-light"
-                  style={{
-                    fontFamily: "'Playfair Display', Georgia, serif",
-                    color: PALETTE.parchment,
-                  }}
+                  className="eleg-font-display text-2xl md:text-3xl italic font-light"
+                  style={{ color: PALETTE.parchment }}
                 >
                   {data.event.name}
                 </p>
@@ -302,7 +290,11 @@ export default function GraduationElegant({ data }: Props) {
 
               <motion.div
                 animate={{ opacity: [0.4, 1, 0.4] }}
-                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
                 className="flex flex-col items-center gap-1 mt-2"
               >
                 <p
@@ -373,20 +365,6 @@ export default function GraduationElegant({ data }: Props) {
           />
 
           <div className="relative z-10 text-center px-8 pb-24 flex flex-col items-center">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.7 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.9, ease: "easeOut" }}
-              className="w-14 h-14 rounded-full flex items-center justify-center mb-7"
-              style={{
-                border: `1px solid ${PALETTE.gold}`,
-                background: `${PALETTE.ink}66`,
-                color: PALETTE.goldBright,
-              }}
-            >
-              <GraduationCap size={24} strokeWidth={1.4} />
-            </motion.div>
-
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -401,11 +379,8 @@ export default function GraduationElegant({ data }: Props) {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.55, duration: 1, ease: "easeOut" }}
-              className="text-5xl md:text-7xl leading-tight mb-7"
-              style={{
-                fontFamily: "'Playfair Display', Georgia, serif",
-                color: PALETTE.parchment,
-              }}
+              className="eleg-font-display text-5xl md:text-7xl leading-tight mb-7"
+              style={{ color: PALETTE.parchment }}
             >
               <span className="italic font-light block">{data.event.name}</span>
             </motion.h1>
@@ -509,11 +484,8 @@ export default function GraduationElegant({ data }: Props) {
             className="max-w-xl mx-auto mt-12 text-center"
           >
             <p
-              className="text-[1.3rem] italic font-light leading-relaxed"
-              style={{
-                fontFamily: "'Playfair Display', Georgia, serif",
-                color: PALETTE.rose,
-              }}
+              className="eleg-font-display text-[1.3rem] italic font-light leading-relaxed"
+              style={{ color: PALETTE.rose }}
             >
               &ldquo;{data.event.phrase}&rdquo;
             </p>
@@ -536,11 +508,8 @@ export default function GraduationElegant({ data }: Props) {
           >
             <Eyebrow>Falta poco para el gran logro</Eyebrow>
             <h2
-              className="text-center text-3xl md:text-4xl font-light italic mb-12"
-              style={{
-                fontFamily: "'Playfair Display', Georgia, serif",
-                color: PALETTE.parchment,
-              }}
+              className="eleg-font-display text-center text-3xl md:text-4xl font-light italic mb-12"
+              style={{ color: PALETTE.parchment }}
             >
               Cuenta Regresiva
             </h2>
@@ -558,11 +527,8 @@ export default function GraduationElegant({ data }: Props) {
           >
             <Eyebrow>Detalles</Eyebrow>
             <h2
-              className="text-center text-3xl md:text-4xl font-light italic"
-              style={{
-                fontFamily: "'Playfair Display', Georgia, serif",
-                color: PALETTE.parchment,
-              }}
+              className="eleg-font-display text-center text-3xl md:text-4xl font-light italic"
+              style={{ color: PALETTE.parchment }}
             >
               Información del Evento
             </h2>
@@ -603,13 +569,7 @@ export default function GraduationElegant({ data }: Props) {
                     border: `1px solid ${PALETTE.gold}30`,
                   }}
                 >
-                  <div
-                    className="w-10 h-10 rounded-full flex items-center justify-center shrink-0"
-                    style={{
-                      border: `1px solid ${PALETTE.gold}`,
-                      color: PALETTE.goldBright,
-                    }}
-                  >
+                  <div className="eleg-gold-circle">
                     <row.icon size={17} strokeWidth={1.5} />
                   </div>
                   <div>
@@ -633,11 +593,8 @@ export default function GraduationElegant({ data }: Props) {
           {data.location.mapUrl && (
             <div className="text-center mt-12">
               <h3
-                className="text-3xl md:text-4xl font-light italic mb-6"
-                style={{
-                  fontFamily: "'Playfair Display', Georgia, serif",
-                  color: PALETTE.parchment,
-                }}
+                className="eleg-font-display text-3xl md:text-4xl font-light italic mb-6"
+                style={{ color: PALETTE.parchment }}
               >
                 Ubicación
               </h3>
@@ -680,11 +637,8 @@ export default function GraduationElegant({ data }: Props) {
           >
             <Eyebrow>Momentos Especiales</Eyebrow>
             <h2
-              className="text-center text-3xl md:text-4xl font-light italic"
-              style={{
-                fontFamily: "'Playfair Display', Georgia, serif",
-                color: PALETTE.parchment,
-              }}
+              className="eleg-font-display text-center text-3xl md:text-4xl font-light italic"
+              style={{ color: PALETTE.parchment }}
             >
               Galería de Fotos
             </h2>
@@ -712,11 +666,8 @@ export default function GraduationElegant({ data }: Props) {
             transition={{ duration: 0.6 }}
           >
             <p
-              className="text-2xl md:text-3xl font-light italic mb-3"
-              style={{
-                fontFamily: "'Playfair Display', Georgia, serif",
-                color: PALETTE.parchment,
-              }}
+              className="eleg-font-display text-2xl md:text-3xl font-light italic mb-3"
+              style={{ color: PALETTE.parchment }}
             >
               No faltes
             </p>
@@ -741,16 +692,7 @@ export default function GraduationElegant({ data }: Props) {
             className="mt-14"
           >
             <Eyebrow>Confirma tu Asistencia</Eyebrow>
-            <h2
-              className="text-3xl md:text-4xl font-light italic mb-10"
-              style={{
-                fontFamily: "'Playfair Display', Georgia, serif",
-                color: PALETTE.parchment,
-              }}
-            >
-              RSVP
-            </h2>
-
+            <br />
             {/* Wax-seal button — the deliberate signature moment */}
             <button
               onClick={handleOpenModal}
@@ -781,10 +723,7 @@ export default function GraduationElegant({ data }: Props) {
           className="py-10 text-center"
           style={{ borderTop: `1px solid ${PALETTE.gold}30` }}
         >
-          <p
-            className="text-[11px] tracking-widest uppercase opacity-60"
-            style={{ color: PALETTE.gold }}
-          >
+          <p className="eleg-footer-text">
             Fiesta de graduación — {data.event.name}
           </p>
         </footer>
@@ -796,11 +735,7 @@ export default function GraduationElegant({ data }: Props) {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 z-50 flex items-center justify-center p-6"
-              style={{
-                background: "rgba(28,23,18,0.9)",
-                backdropFilter: "blur(8px)",
-              }}
+              className="eleg-modal-overlay"
             >
               <motion.div
                 initial={{ scale: 0.88, y: 30 }}
@@ -824,11 +759,8 @@ export default function GraduationElegant({ data }: Props) {
                   <GraduationCap size={22} strokeWidth={1.4} />
                 </div>
                 <h3
-                  className="text-2xl font-light italic mb-2"
-                  style={{
-                    color: PALETTE.parchment,
-                    fontFamily: "'Playfair Display', Georgia, serif",
-                  }}
+                  className="eleg-font-display text-2xl font-light italic mb-2"
+                  style={{ color: PALETTE.parchment }}
                 >
                   Confirmar Asistencia
                 </h3>
@@ -849,19 +781,16 @@ export default function GraduationElegant({ data }: Props) {
                   <select
                     value={selectedPasses}
                     onChange={(e) => setSelectedPasses(Number(e.target.value))}
-                    className="w-full py-3 px-4 rounded-xl text-sm font-light appearance-none cursor-pointer"
-                    style={{
-                      background: `${PALETTE.parchment}10`,
-                      border: `1px solid ${PALETTE.gold}40`,
-                      color: PALETTE.parchment,
-                      outline: "none",
-                    }}
+                    className="eleg-select"
                   >
                     {Array.from({ length: 10 }, (_, i) => i + 1).map((n) => (
                       <option
                         key={n}
                         value={n}
-                        style={{ background: PALETTE.ink, color: PALETTE.parchment }}
+                        style={{
+                          background: PALETTE.ink,
+                          color: PALETTE.parchment,
+                        }}
                       >
                         {n} {n === 1 ? "pase" : "pases"}
                       </option>
