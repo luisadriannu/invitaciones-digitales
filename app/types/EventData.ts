@@ -12,7 +12,8 @@ export type EventVariant =
   | "elegant"
   | "modern"
   | "personalized"
-  | "dinosaur";
+  | "dinosaur"
+  | "sirena";
 
 export type Suscription = "classic" | "premiun";
 

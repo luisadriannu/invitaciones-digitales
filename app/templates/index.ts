@@ -1,5 +1,6 @@
 import BirthdayBase from "@/app/templates/birthday/BirthdayBase";
 import BirthdayDinosaur from "@/app/templates/birthday/BirthdayDinosaur";
+import BirthdaySirena from "@/app/templates/birthday/BirthdaySirena";
 // import BirthdayElegant from "@/templates/birthday/BirthdayElegant";
 // import BirthdayModern from "@/templates/birthday/BirthdayModern";
 import WeddingBase from "@/app/templates/wedding/WeddingBase";
@@ -15,6 +16,7 @@ export const templates = {
   cumple: {
     base: BirthdayBase,
     dinosaur: BirthdayDinosaur,
+    sirena: BirthdaySirena,
     // elegant: BirthdayElegant,
     // modern: BirthdayModern,
   },

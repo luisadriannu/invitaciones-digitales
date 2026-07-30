@@ -1420,3 +1420,14 @@
   z-index: 1;
   animation: elegFalling ease-in-out infinite;
 }
+
+/* ── Sirena Template ── */
+#sirena-main {
+  min-height: 100svh;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sirena-tide-horizon path {
+    animation: none !important;
+  }
+}
