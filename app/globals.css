@@ -1096,10 +1096,20 @@
 }
 
 @keyframes floatPetal {
-  0%   { transform: translateY(-30px) rotate(0deg) translateX(0);   opacity: 0; }
-  8%   { opacity: 1; }
-  92%  { opacity: 0.5; }
-  100% { transform: translateY(105vh) rotate(500deg) translateX(20px); opacity: 0; }
+  0% {
+    transform: translateY(-30px) rotate(0deg) translateX(0);
+    opacity: 0;
+  }
+  8% {
+    opacity: 1;
+  }
+  92% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(105vh) rotate(500deg) translateX(20px);
+    opacity: 0;
+  }
 }
 .pre-petal {
   position: fixed;
@@ -1111,11 +1121,21 @@
 }
 
 @keyframes preShimmer {
-  0%   { background-position: -300% center; }
-  100% { background-position:  300% center; }
+  0% {
+    background-position: -300% center;
+  }
+  100% {
+    background-position: 300% center;
+  }
 }
 .pre-name {
-  background: linear-gradient(90deg, #e8c4e0 10%, #fff0fb 45%, #c9a0dc 75%, #e8c4e0 100%);
+  background: linear-gradient(
+    90deg,
+    #e8c4e0 10%,
+    #fff0fb 45%,
+    #c9a0dc 75%,
+    #e8c4e0 100%
+  );
   background-size: 300% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -1147,7 +1167,9 @@
   cursor: pointer;
   box-shadow: 0 8px 35px rgba(201, 160, 220, 0.4);
   text-decoration: none;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
 }
 .pre-wishes-btn:hover {
   transform: translateY(-3px);
@@ -1205,7 +1227,12 @@
 .eleg-divider-line {
   width: 1px;
   height: 40px;
-  background: linear-gradient(to bottom, transparent, rgba(155, 107, 122, 0.35), transparent);
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(155, 107, 122, 0.35),
+    transparent
+  );
 }
 
 @keyframes elegFloat {
@@ -1315,7 +1342,10 @@
   align-items: center;
   gap: 1.25rem;
   backdrop-filter: blur(8px);
-  transition: box-shadow 0.3s, transform 0.3s, background 0.3s;
+  transition:
+    box-shadow 0.3s,
+    transform 0.3s,
+    background 0.3s;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
 }
 .eleg-glass-card:hover {
@@ -1349,7 +1379,9 @@
   font-size: 0.875rem;
   letter-spacing: 0.05em;
   text-decoration: none;
-  transition: background 0.3s, color 0.3s;
+  transition:
+    background 0.3s,
+    color 0.3s;
 }
 .eleg-map-btn:hover {
   background: rgba(155, 107, 122, 0.1);
@@ -1370,7 +1402,10 @@
   border: none;
   cursor: pointer;
   box-shadow: 0 8px 30px rgba(107, 45, 62, 0.35);
-  transition: transform 0.2s, box-shadow 0.2s, background-position 0.5s;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s,
+    background-position 0.5s;
 }
 .eleg-rsvp-btn:hover {
   transform: translateY(-2px);
