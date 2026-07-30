@@ -16,12 +16,14 @@ const isabella: EventData = {
     dressCode: "Casual",
   },
   media: {
-    coverImage: "/pictures/birthday/isabella/la-sirenita.jpeg",
+    coverImage: "/pictures/birthday/isabella/la-sirenita-4.jpg",
     gallery: [
       "/pictures/birthday/isabella/la-sirenita.jpeg",
-      "/pictures/birthday/isabella/isabella-2.jpg",
-      "/pictures/birthday/isabella/isabella-3.jpg",
+      "/pictures/birthday/isabella/la-sirenita-2.jpg",
+      "/pictures/birthday/isabella/la-sirenita-3.jpeg",
+      "/pictures/birthday/isabella/la-sirenita-4.jpg",
     ],
+    music: "/music/la-sirenita.mp3",
   },
   location: {
     reception: "Quinta Karen",

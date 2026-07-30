@@ -3,28 +3,22 @@
 import { useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "motion/react";
-import { MapPin, Clock, CalendarDays } from "lucide-react";
+import { MapPin, Clock, CalendarDays, ChevronDown } from "lucide-react";
 import { Cormorant_Garamond, Jost } from "next/font/google";
 import Gallery from "@/app/components/Gallery";
 import CountDown from "@/app/components/CountDown";
 import MusicButton from "@/app/components/MusicButton";
 import type { EventData } from "@/app/types/EventData";
 
-/* ────────────────────────────────────────────────────────────
-   Concept: "Atlas de la Sirena" — una lámina de naturalista
-   marino antiguo, no una fiesta de burbujas. Líneas doradas
-   finas, camafeos grabados, tipografía editorial. Sin emojis.
-   ──────────────────────────────────────────────────────────── */
-
 const display = Cormorant_Garamond({
   subsets: ["latin"],
-  weight: ["500", "600"],
+  weight: ["500", "600", "700"],
   variable: "--font-sirena-display",
 });
 
 const body = Jost({
   subsets: ["latin"],
-  weight: ["300", "400", "500"],
+  weight: ["300", "400", "500", "600"],
   variable: "--font-sirena-body",
 });
 
@@ -35,88 +29,9 @@ const P = {
   seafoam: "#7FB5AE",
   coral: "#D97B5D",
   gold: "#C6A15B",
+  pop: "#E8A87C",
+  deep: "#1B2D45",
 };
-
-/* ── Ornamentación de línea (reemplaza emojis / formas sólidas) ── */
-
-function TideRule({ color = P.gold }: { color?: string }) {
-  return (
-    <svg viewBox="0 0 400 16" className="w-40 h-4 mx-auto" aria-hidden="true">
-      <path
-        d="M0 8 C40 0, 60 16, 100 8 C140 0, 160 16, 200 8 C240 0, 260 16, 300 8 C340 0, 360 16, 400 8"
-        fill="none"
-        stroke={color}
-        strokeWidth="1"
-        strokeLinecap="round"
-      />
-    </svg>
-  );
-}
-
-function TideHorizon({ color }: { color: string }) {
-  return (
-    <svg
-      viewBox="0 0 1440 40"
-      preserveAspectRatio="none"
-      className="sirena-tide-horizon"
-      style={{ display: "block", width: "100%", height: 40 }}
-      aria-hidden="true"
-    >
-      <path
-        d="M0 20 C 180 5, 360 35, 540 20 C 720 5, 900 35, 1080 20 C 1260 5, 1440 35, 1440 20"
-        fill="none"
-        stroke={color}
-        strokeWidth="1"
-      />
-    </svg>
-  );
-}
-
-function CameoFrame({ size = 132 }: { size?: number }) {
-  return (
-    <svg
-      viewBox="0 0 132 160"
-      width={size}
-      height={size * (160 / 132)}
-      aria-hidden="true"
-    >
-      <ellipse
-        cx="66"
-        cy="80"
-        rx="58"
-        ry="74"
-        fill="none"
-        stroke={P.gold}
-        strokeWidth="1.25"
-      />
-      <ellipse
-        cx="66"
-        cy="80"
-        rx="50"
-        ry="65"
-        fill="none"
-        stroke={P.gold}
-        strokeWidth="0.5"
-        opacity="0.55"
-      />
-      {/* remolinos tipo cola de sirena, dibujo lineal */}
-      <path
-        d="M40 118 C 48 100, 44 84, 56 70 C 68 56, 66 40, 58 26"
-        fill="none"
-        stroke={P.gold}
-        strokeWidth="0.75"
-        opacity="0.5"
-      />
-      <path
-        d="M92 118 C 84 100, 88 84, 76 70 C 64 56, 66 40, 74 26"
-        fill="none"
-        stroke={P.gold}
-        strokeWidth="0.75"
-        opacity="0.5"
-      />
-    </svg>
-  );
-}
 
 function ShellMark({
   className,
@@ -148,17 +63,17 @@ function ShellMark({
   );
 }
 
-const BUBBLES = Array.from({ length: 16 }, (_, i) => ({
+const BUBBLES = Array.from({ length: 24 }, (_, i) => ({
   id: i,
-  left: 3 + ((i * 6.3) % 94),
-  delay: (i * 0.85) % 11,
-  duration: 11 + (i % 4) * 4,
-  size: 4 + (i % 5) * 3,
+  left: 2 + ((i * 4.1) % 96),
+  delay: (i * 0.6) % 12,
+  duration: 10 + (i % 5) * 3,
+  size: 3 + (i % 6) * 3,
+  color: i % 3 === 0 ? P.coral : i % 3 === 1 ? P.seafoam : P.gold,
+  opacity: 0.4 + (i % 3) * 0.2,
 }));
 
-/** Burbujas ambientales — trazo fino, no relleno sólido, para que
- *  acompañen sin competir con el resto del sistema editorial. */
-function SeaBubbles({ tone = P.seafoam }: { tone?: string }) {
+function SeaBubbles() {
   return (
     <div
       className="absolute inset-0 overflow-hidden pointer-events-none"
@@ -172,9 +87,10 @@ function SeaBubbles({ tone = P.seafoam }: { tone?: string }) {
             left: `${b.left}%`,
             width: b.size,
             height: b.size,
-            borderColor: tone,
+            borderColor: b.color,
             animationDelay: `${b.delay}s`,
             animationDuration: `${b.duration}s`,
+            opacity: b.opacity,
           }}
         />
       ))}
@@ -182,22 +98,41 @@ function SeaBubbles({ tone = P.seafoam }: { tone?: string }) {
   );
 }
 
-/** Resplandores sutiles tipo "rayos de luz" filtrándose bajo el agua. */
-function SeaGlow() {
+function SectionTitle({
+  label,
+  title,
+  labelColor = P.coral,
+  titleColor = P.pearl,
+}: {
+  label: string;
+  title: string;
+  labelColor?: string;
+  titleColor?: string;
+}) {
   return (
-    <div
-      className="absolute inset-0 overflow-hidden pointer-events-none"
-      aria-hidden="true"
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-60px" }}
+      className="text-center mb-14"
     >
-      <div
-        className="sirena-glow"
-        style={{ top: "-8%", left: "6%", background: P.seafoam }}
-      />
-      <div
-        className="sirena-glow"
-        style={{ bottom: "-12%", right: "2%", background: P.gold }}
-      />
-    </div>
+      <span
+        className="text-xs uppercase tracking-[0.3em]"
+        style={{ color: labelColor }}
+      >
+        {label}
+      </span>
+      <h2
+        className="text-4xl md:text-5xl mt-3"
+        style={{
+          fontFamily: "var(--font-sirena-display)",
+          color: titleColor,
+          fontWeight: 600,
+        }}
+      >
+        {title}
+      </h2>
+    </motion.div>
   );
 }
 
@@ -216,17 +151,17 @@ export default function BirthdaySirena({ data }: Props) {
 
   const infoItems = [
     {
-      icon: <CalendarDays size={17} strokeWidth={1.3} />,
+      icon: <CalendarDays size={18} strokeWidth={1.5} />,
       label: "Fecha",
       value: data.event.date,
     },
     {
-      icon: <Clock size={17} strokeWidth={1.3} />,
+      icon: <Clock size={18} strokeWidth={1.5} />,
       label: "Hora",
       value: data.event.partyHour,
     },
     {
-      icon: <MapPin size={17} strokeWidth={1.3} />,
+      icon: <MapPin size={18} strokeWidth={1.5} />,
       label: "Lugar",
       value: data.location.reception,
     },
@@ -236,16 +171,15 @@ export default function BirthdaySirena({ data }: Props) {
     <div className={`${display.variable} ${body.variable}`}>
       {data.media.music && <MusicButton src={data.media.music} />}
 
-      <main id="sirena-main" style={{ fontFamily: "var(--font-sirena-body)" }}>
-        {/* ════════════════ HERO ════════════════ */}
+      <main style={{ fontFamily: "var(--font-sirena-body)" }}>
+        {/* ═══ HERO ═══ */}
         <section
           className="relative min-h-screen flex flex-col overflow-hidden"
           style={{ background: P.abyss }}
         >
-          <SeaGlow />
           <SeaBubbles />
 
-          <div className="relative w-full" style={{ height: "58svh" }}>
+          <div className="absolute inset-0">
             <Image
               src={data.media.coverImage}
               alt={data.event.name}
@@ -256,31 +190,35 @@ export default function BirthdaySirena({ data }: Props) {
             <div
               className="absolute inset-0"
               style={{
-                background: `linear-gradient(to bottom, ${P.abyss}55 0%, transparent 45%, ${P.abyss} 100%)`,
+                background: `linear-gradient(to bottom,
+                  ${P.abyss}88 0%,
+                  ${P.abyss}22 35%,
+                  ${P.abyss}44 65%,
+                  ${P.abyss}F0 100%)`,
               }}
             />
           </div>
 
-          <div className="relative z-10 flex flex-col items-center text-center px-6 pb-16 -mt-6">
+          <div className="relative z-10 flex flex-col items-center justify-center text-center px-6 min-h-screen">
             <motion.span
-              initial={{ opacity: 0, y: -8 }}
+              initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.25 }}
-              className="text-[11px] uppercase tracking-[0.35em] mb-5"
-              style={{ color: P.seafoam }}
+              transition={{ delay: 0.2 }}
+              className="text-xs uppercase tracking-[0.4em] mb-6"
+              style={{ color: "#fff" }}
             >
               Una celebración bajo el mar
             </motion.span>
 
             <motion.h1
-              initial={{ opacity: 0, y: 24 }}
+              initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4, duration: 0.7 }}
-              className="text-[3rem] md:text-[4.2rem] leading-[1.02]"
+              transition={{ delay: 0.35, duration: 0.8 }}
+              className="text-5xl md:text-7xl leading-[1.05] max-w-2xl"
               style={{
                 fontFamily: "var(--font-sirena-display)",
                 color: P.pearl,
-                fontWeight: 600,
+                fontWeight: 700,
               }}
             >
               {data.event.name}
@@ -288,25 +226,31 @@ export default function BirthdaySirena({ data }: Props) {
 
             {data.event.age && (
               <motion.div
-                initial={{ opacity: 0, scale: 0.85 }}
+                initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.65, duration: 0.6 }}
-                className="relative flex items-center justify-center mt-4"
+                transition={{ delay: 0.6, duration: 0.5 }}
+                className="mt-8"
               >
-                <CameoFrame size={118} />
-                <div className="absolute flex flex-col items-center">
+                <div
+                  className="flex items-center gap-3 px-6 py-3 rounded-full"
+                  style={{
+                    background: `${P.pearl}15`,
+                    backdropFilter: "blur(8px)",
+                    border: `1px solid ${P.gold}44`,
+                  }}
+                >
                   <span
-                    className="text-[2.2rem] leading-none"
+                    className="text-3xl"
                     style={{
                       fontFamily: "var(--font-sirena-display)",
-                      color: P.gold,
+                      color: "#fff",
                       fontWeight: 600,
                     }}
                   >
                     {data.event.age}
                   </span>
                   <span
-                    className="text-[10px] uppercase tracking-[0.3em] mt-1"
+                    className="text-sm tracking-[0.25em] uppercase"
                     style={{ color: P.pearl }}
                   >
                     años
@@ -318,219 +262,186 @@ export default function BirthdaySirena({ data }: Props) {
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.95 }}
-              className="mt-6"
+              transition={{ delay: 0.9 }}
+              className="mt-8"
             >
-              <TideRule />
               <p
-                className="text-sm tracking-[0.15em] mt-3"
-                style={{ color: P.pearl, opacity: 0.85 }}
+                className="text-base tracking-[0.2em]"
+                style={{ color: P.pearl, opacity: 0.8 }}
               >
                 {data.event.date}
               </p>
             </motion.div>
 
             <motion.div
-              animate={{ opacity: [0.4, 1, 0.4] }}
-              transition={{ duration: 2.6, repeat: Infinity }}
-              className="mt-14 flex flex-col items-center gap-2"
-              style={{ color: P.seafoam }}
-            >
-              <span className="text-[10px] uppercase tracking-[0.3em]">
-                Desciende
-              </span>
-              <span className="text-lg">⌄</span>
-            </motion.div>
-          </div>
-
-          <TideHorizon color={P.gold} />
-        </section>
-
-        {/* ════════════════ COUNTDOWN ════════════════ */}
-        <section
-          className="relative py-24 px-6 text-center overflow-hidden"
-          style={{ background: P.abyss }}
-        >
-          <SeaGlow />
-          <SeaBubbles />
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="relative z-10"
-          >
-            <span
-              className="text-[11px] uppercase tracking-[0.35em]"
+              animate={{ y: [0, 8, 0] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+              className="absolute bottom-10 flex flex-col items-center gap-2"
               style={{ color: P.coral }}
             >
-              Cuenta regresiva
-            </span>
-            <h2
-              className="text-3xl md:text-4xl mt-3 mb-10"
-              style={{
-                fontFamily: "var(--font-sirena-display)",
-                color: P.pearl,
-                fontWeight: 600,
-              }}
-            >
-              La marea sube en
-            </h2>
-            <div
-              className="max-w-md mx-auto p-8"
-              style={{ border: `1px solid ${P.gold}55`, color: P.pearl }}
-            >
-              <CountDown data={data} />
-            </div>
-          </motion.div>
+              <span className="text-[10px] uppercase tracking-[0.3em] opacity-70">
+                Descubre más
+              </span>
+              <ChevronDown size={20} />
+            </motion.div>
+          </div>
         </section>
 
-        {/* ════════════════ INFO ════════════════ */}
+        {/* ═══ COUNTDOWN ═══ */}
         <section
-          className="relative py-24 px-6 overflow-hidden"
-          style={{ background: P.abyss }}
+          className="relative py-28 px-6 text-center overflow-hidden"
+          style={{ background: P.deep }}
         >
-          <SeaGlow />
           <SeaBubbles />
+
+          <SectionTitle
+            label="Cuenta regresiva"
+            title="La marea sube en"
+            labelColor={P.coral}
+            titleColor={P.pearl}
+          />
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="relative z-10 text-center mb-14"
+            className="relative z-10 max-w-md mx-auto"
+            style={{
+              background: `${P.pearl}10`,
+              backdropFilter: "blur(12px)",
+              border: `1px solid ${P.coral}33`,
+              borderRadius: 24,
+              padding: "2.5rem 2rem",
+              color: "#fff",
+            }}
           >
-            <span
-              className="text-[11px] uppercase tracking-[0.35em]"
-              style={{ color: P.seafoam }}
-            >
-              Detalles
-            </span>
-            <h2
-              className="text-3xl md:text-4xl mt-3"
-              style={{
-                fontFamily: "var(--font-sirena-display)",
-                color: P.pearl,
-                fontWeight: 600,
-              }}
-            >
-              Cuándo y dónde
-            </h2>
+            <CountDown data={data} />
           </motion.div>
+        </section>
 
-          {/* línea vertical: el orden aquí sí importa (fecha → hora → lugar) */}
-          <div className="relative z-10 max-w-sm mx-auto pl-8">
-            <div
-              className="absolute left-[7px] top-1 bottom-1 w-px"
-              style={{ background: `${P.gold}55` }}
-            />
+        {/* ═══ INFO ═══ */}
+        <section
+          className="relative py-28 px-6 overflow-hidden"
+          style={{ background: P.abyss }}
+        >
+          <SeaBubbles />
+
+          <SectionTitle
+            label="Detalles"
+            title="Cuándo y dónde"
+            labelColor={P.seafoam}
+            titleColor={P.pearl}
+          />
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="relative z-10 max-w-lg mx-auto grid gap-5"
+          >
             {infoItems.map((item, i) => (
               <motion.div
                 key={item.label}
-                initial={{ opacity: 0, x: -16 }}
+                initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.12 }}
-                className="relative mb-9 last:mb-0"
+                transition={{ delay: i * 0.1 }}
+                className="flex items-center gap-5 p-5 rounded-2xl"
+                style={{
+                  background: `${P.pearl}08`,
+                  border: `1px solid ${P.gold}22`,
+                }}
               >
-                <span
-                  className="absolute -left-8 top-0.5 w-3.5 h-3.5 rounded-full flex items-center justify-center"
-                  style={{ background: P.abyss, border: `1px solid ${P.gold}` }}
-                />
-                <p
-                  className="text-[10px] uppercase tracking-[0.3em] mb-1"
-                  style={{ color: P.gold }}
+                <div
+                  className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0"
+                  style={{ background: `${P.coral}22`, color: P.coral }}
                 >
-                  {item.label}
-                </p>
-                <p
-                  className="text-lg flex items-center gap-2"
-                  style={{ color: P.pearl }}
-                >
-                  <span style={{ color: P.seafoam }}>{item.icon}</span>
-                  {item.value}
-                </p>
+                  {item.icon}
+                </div>
+                <div className="text-left">
+                  <p
+                    className="text-[10px] uppercase tracking-[0.3em] mb-0.5"
+                    style={{ color: P.gold }}
+                  >
+                    {item.label}
+                  </p>
+                  <p className="text-lg" style={{ color: P.pearl }}>
+                    {item.value}
+                  </p>
+                </div>
               </motion.div>
             ))}
-          </div>
 
-          {data.location.mapUrl && (
-            <div className="relative z-10 text-center mt-10">
-              <a
-                href={data.location.mapUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-xs uppercase tracking-[0.25em] pb-1"
-                style={{ color: P.gold, borderBottom: `1px solid ${P.gold}55` }}
+            {data.location.mapUrl && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                className="text-center mt-4"
               >
-                Ver ubicación
-              </a>
-            </div>
-          )}
+                <a
+                  href={data.location.mapUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.25em] py-3 px-8 rounded-full transition-all hover:opacity-80"
+                  style={{
+                    color: P.pearl,
+                    background: `${P.seafoam}22`,
+                    border: `1px solid ${P.seafoam}55`,
+                  }}
+                >
+                  <MapPin size={14} />
+                  Ver ubicación
+                </a>
+              </motion.div>
+            )}
+          </motion.div>
         </section>
 
-        {/* ════════════════ GALERÍA ════════════════ */}
+        {/* ═══ GALERÍA ═══ */}
         <section
-          className="relative py-24 px-6 overflow-hidden"
-          style={{ background: P.abyss }}
+          className="relative py-28 px-6 overflow-hidden"
+          style={{ background: P.deep }}
         >
-          <SeaGlow />
           <SeaBubbles />
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="relative z-10 text-center mb-12"
-          >
-            <span
-              className="text-[11px] uppercase tracking-[0.35em]"
-              style={{ color: P.coral }}
-            >
-              Postales
-            </span>
-            <h2
-              className="text-3xl md:text-4xl mt-3"
-              style={{
-                fontFamily: "var(--font-sirena-display)",
-                color: P.pearl,
-                fontWeight: 600,
-              }}
-            >
-              Del fondo del mar
-            </h2>
-          </motion.div>
+          <SectionTitle
+            label="Postales"
+            title="Del fondo del mar"
+            labelColor={P.coral}
+            titleColor={P.pearl}
+          />
 
-          <div className="relative z-10">
+          <div className="relative z-10 max-w-3xl mx-auto">
             <Gallery images={data.media.gallery} />
           </div>
         </section>
 
-        {/* ════════════════ RSVP ════════════════ */}
+        {/* ═══ RSVP ═══ */}
         <section
-          className="py-28 px-6 text-center relative overflow-hidden"
-          style={{ background: P.current }}
+          className="relative py-32 px-6 text-center overflow-hidden"
+          style={{ background: P.abyss }}
         >
-          <SeaGlow />
-          <SeaBubbles tone={P.gold} />
+          <SeaBubbles />
 
           <motion.div
-            initial={{ opacity: 0, y: 16 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="relative z-10"
           >
             <ShellMark
-              className="mx-auto mb-6"
-              style={{ width: 30, height: 30, color: P.gold }}
+              className="mx-auto mb-8"
+              style={{ width: 32, height: 32, color: P.coral }}
             />
             <span
-              className="text-[11px] uppercase tracking-[0.35em]"
+              className="text-xs uppercase tracking-[0.35em]"
               style={{ color: P.seafoam }}
             >
               Nos encantaría verte ahí
             </span>
             <h2
-              className="text-3xl md:text-4xl mt-3 mb-9"
+              className="text-4xl md:text-5xl mt-3 mb-10"
               style={{
                 fontFamily: "var(--font-sirena-display)",
                 color: P.pearl,
@@ -539,34 +450,40 @@ export default function BirthdaySirena({ data }: Props) {
             >
               Confirma tu lugar
             </h2>
-            <button
+
+            <motion.button
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
               onClick={() => setShowModal(true)}
-              className="px-10 py-3.5 text-sm uppercase tracking-[0.25em] transition-opacity hover:opacity-90"
-              style={{ background: P.coral, color: P.abyss, fontWeight: 500 }}
+              className="px-12 py-4 text-sm uppercase tracking-[0.25em] font-medium rounded-full transition-all"
+              style={{ background: P.coral, color: P.abyss }}
             >
               Confirmar asistencia
-            </button>
+            </motion.button>
           </motion.div>
         </section>
 
-        {/* ════════════════ FOOTER ════════════════ */}
+        {/* ═══ FOOTER ═══ */}
         <footer
-          className="py-10 flex flex-col items-center gap-2"
-          style={{ background: P.abyss, color: P.pearl }}
+          className="py-12 flex flex-col items-center gap-3"
+          style={{ background: P.abyss, borderTop: `1px solid ${P.gold}22` }}
         >
-          <ShellMark style={{ width: 20, height: 20, color: P.gold }} />
+          <ShellMark style={{ width: 22, height: 22, color: P.gold }} />
           <span
-            className="text-sm tracking-[0.1em]"
-            style={{ fontFamily: "var(--font-sirena-display)" }}
+            className="text-base tracking-[0.1em]"
+            style={{ fontFamily: "var(--font-sirena-display)", color: P.pearl }}
           >
             {data.event.name}
           </span>
-          <span className="text-[11px] tracking-[0.2em] opacity-60">
+          <span
+            className="text-xs tracking-[0.2em]"
+            style={{ color: P.pearl, opacity: 0.5 }}
+          >
             {data.event.date}
           </span>
         </footer>
 
-        {/* ════════════════ MODAL ════════════════ */}
+        {/* ═══ MODAL ═══ */}
         <AnimatePresence>
           {showModal && (
             <motion.div
@@ -584,20 +501,20 @@ export default function BirthdaySirena({ data }: Props) {
                 initial={{ y: 40, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 exit={{ y: 40, opacity: 0 }}
-                transition={{ duration: 0.35 }}
+                transition={{ duration: 0.3 }}
                 onClick={(e) => e.stopPropagation()}
-                className="w-full max-w-sm p-10 text-center"
-                style={{ background: P.pearl }}
+                className="w-full max-w-sm p-10 text-center rounded-3xl"
+                style={{ background: P.deep, border: `1px solid ${P.gold}33` }}
               >
                 <ShellMark
                   className="mx-auto mb-5"
-                  style={{ width: 26, height: 26, color: P.coral }}
+                  style={{ width: 28, height: 28, color: P.coral }}
                 />
                 <h3
-                  className="text-2xl mb-4"
+                  className="text-3xl mb-3"
                   style={{
                     fontFamily: "var(--font-sirena-display)",
-                    color: P.abyss,
+                    color: P.pearl,
                     fontWeight: 600,
                   }}
                 >
@@ -605,18 +522,17 @@ export default function BirthdaySirena({ data }: Props) {
                 </h3>
                 <p
                   className="text-sm mb-8"
-                  style={{ color: P.abyss, opacity: 0.75 }}
+                  style={{ color: P.pearl, opacity: 0.7 }}
                 >
                   Te llevaremos a WhatsApp para confirmar tu lugar en la fiesta
-                  de{" "}
-                  <strong style={{ color: P.coral }}>{data.event.name}</strong>.
+                  de <span style={{ color: P.coral }}>{data.event.name}</span>.
                 </p>
 
                 <div className="flex gap-3">
                   <button
                     onClick={() => setShowModal(false)}
-                    className="flex-1 py-3 text-xs uppercase tracking-[0.2em]"
-                    style={{ border: `1px solid ${P.abyss}33`, color: P.abyss }}
+                    className="flex-1 py-3.5 text-xs uppercase tracking-[0.2em] rounded-xl transition-opacity hover:opacity-70"
+                    style={{ border: `1px solid ${P.pearl}33`, color: P.pearl }}
                   >
                     Cancelar
                   </button>
@@ -625,12 +541,8 @@ export default function BirthdaySirena({ data }: Props) {
                       confirmAttendance();
                       setShowModal(false);
                     }}
-                    className="flex-1 py-3 text-xs uppercase tracking-[0.2em]"
-                    style={{
-                      background: P.coral,
-                      color: P.abyss,
-                      fontWeight: 500,
-                    }}
+                    className="flex-1 py-3.5 text-xs uppercase tracking-[0.2em] rounded-xl font-medium transition-opacity hover:opacity-80"
+                    style={{ background: P.coral, color: P.abyss }}
                   >
                     Confirmar
                   </button>
@@ -642,76 +554,39 @@ export default function BirthdaySirena({ data }: Props) {
       </main>
 
       <style jsx global>{`
-        .sirena-tide-horizon path {
-          animation: sirenaTideDrift 9s ease-in-out infinite;
-        }
-        @keyframes sirenaTideDrift {
-          0%,
-          100% {
-            stroke-dashoffset: 0;
-            opacity: 0.55;
-          }
-          50% {
-            stroke-dashoffset: 20;
-            opacity: 0.9;
-          }
-        }
-
         .sirena-bubble {
           position: absolute;
           bottom: -24px;
           border-radius: 9999px;
-          border: 1px solid;
+          border: 1.5px solid;
           background: transparent;
           opacity: 0;
           animation-name: sirenaBubbleRise;
-          animation-timing-function: ease-in;
+          animation-timing-function: ease-in-out;
           animation-iteration-count: infinite;
         }
         @keyframes sirenaBubbleRise {
           0% {
-            transform: translateY(0) translateX(0);
+            transform: translateY(0) translateX(0) scale(0.6);
             opacity: 0;
           }
-          8% {
-            opacity: 0.55;
+          10% {
+            opacity: 0.6;
+            transform: translateY(-40px) translateX(6px) scale(1);
           }
-          92% {
-            opacity: 0.3;
+          85% {
+            opacity: 0.35;
           }
           100% {
-            transform: translateY(-720px) translateX(16px);
+            transform: translateY(-800px) translateX(-12px) scale(0.8);
             opacity: 0;
-          }
-        }
-
-        .sirena-glow {
-          position: absolute;
-          width: 420px;
-          height: 420px;
-          border-radius: 9999px;
-          filter: blur(90px);
-          opacity: 0.14;
-          animation: sirenaGlowDrift 14s ease-in-out infinite;
-        }
-        @keyframes sirenaGlowDrift {
-          0%,
-          100% {
-            transform: translate(0, 0) scale(1);
-          }
-          50% {
-            transform: translate(20px, -16px) scale(1.06);
           }
         }
 
         @media (prefers-reduced-motion: reduce) {
-          .sirena-tide-horizon path,
-          .sirena-bubble,
-          .sirena-glow {
-            animation: none;
-          }
           .sirena-bubble {
-            opacity: 0.25;
+            animation: none;
+            opacity: 0.15;
           }
         }
       `}</style>
