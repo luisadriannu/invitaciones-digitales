@@ -29,7 +29,7 @@ const isabella: EventData = {
     reception: "Quinta Karen",
   },
   contact: {
-    phone: "5266337283",
+    phone: "527671083050",
   },
 
   design: {
