@@ -13,7 +13,8 @@ export type EventVariant =
   | "modern"
   | "personalized"
   | "dinosaur"
-  | "sirena";
+  | "sirena"
+  | "itzia";
 
 export type Suscription = "classic" | "premiun";
 
@@ -31,6 +32,8 @@ export interface EventInfo {
   partyHour: string;
   phrase?: string;
   dressCode: string;
+  dressCodeNote?: string;
+  specialMusic?: string;
   itinerary?: {
     hour: string;
     title: string;

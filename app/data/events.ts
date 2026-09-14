@@ -1,28 +1,24 @@
 import type { EventData } from "@/app/types/EventData";
 import jose from "@/app/data/birthday/jose";
+import vicente from "@/app/data/birthday/vicente";
+import mateo from "@/app/data/birthday/mateo";
 import camila from "@/app/data/christening/camila";
 import kevinyjuana from "@/app/data/wedding/kevin-y-juana";
 import valentina from "@/app/data/xv/valentina";
 import karina from "@/app/data/graduation/karina";
 import sofia from "@/app/data/firstcommunion/sofia";
-import juandiego from "@/app/data/birthday/juanDiego";
-import gianniyjoey from "@/app/data/graduation/gianniyjoey";
 import itzia from "@/app/data/christening/itzia";
-import heidi from "@/app/data/graduation/heidi";
-import isabella from "@/app/data/birthday/isabella";
 
 const events: Record<string, EventData> = {
   camila,
   jose,
+  vicente,
+  mateo,
   kevinyjuana,
   valentina,
   karina,
   sofia,
-  juandiego,
-  gianniyjoey,
   itzia,
-  heidi,
-  isabella,
 };
 
 export default events;

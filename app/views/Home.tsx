@@ -1,6 +1,6 @@
 "use client";
 
-import { MessageCircle } from "lucide-react";
+import { MessageCircle, Eye, ExternalLink } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "motion/react";
@@ -40,6 +40,11 @@ Quiero más información acerca de las invitaciones.`;
 
   const samples = [
     {
+      title: "Invitaciones Flash",
+      image: "/pictures/graduation/karina/graduation-1.jpg",
+      href: "/flash",
+    },
+    {
       title: "Primera Comunión",
       image: "/pictures/firstcommunion/sofia/sofia-1.jpg",
       href: "/primeracomunion/sofia",
@@ -68,6 +73,11 @@ Quiero más información acerca de las invitaciones.`;
       title: "Bautizo",
       image: "/pictures/christening/camila/camila-1.jpg",
       href: "/bautizo/camila",
+    },
+    {
+      title: "Cumpleaños Dinosaurios",
+      image: "/pictures/birthday/vicente/Jurassic_Park.svg",
+      href: "/cumple/mateo",
     },
   ];
 
@@ -188,6 +198,28 @@ Quiero más información acerca de las invitaciones.`;
             />
           </div>
 
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="
+              text-center
+              text-[#6A635C]
+              text-sm
+              md:text-base
+              -mt-6
+              mb-12
+              flex
+              items-center
+              justify-center
+              gap-2
+              underline
+            "
+          >
+            Toca cualquiera de las muestras para abrir la invitación
+          </motion.p>
+
           <motion.div
             variants={stagger}
             initial="hidden"
@@ -233,6 +265,36 @@ Quiero más información acerca de las invitaciones.`;
                         group-hover:scale-110
                       "
                     />
+
+                    <span
+                      className="
+                        absolute
+                        bottom-3
+                        left-1/2
+                        -translate-x-1/2
+                        inline-flex
+                        items-center
+                        gap-1.5
+                        bg-white/90
+                        backdrop-blur
+                        text-[#2B2927]
+                        text-[11px]
+                        uppercase
+                        tracking-[0.12em]
+                        font-medium
+                        px-4
+                        py-1.5
+                        rounded-full
+                        shadow-sm
+                        transition-all
+                        duration-300
+                        group-hover:bg-[#D4AF37]
+                        group-hover:text-white
+                      "
+                    >
+                      <ExternalLink size={13} />
+                      Abrir
+                    </span>
                   </div>
 
                   <div className="text-center">

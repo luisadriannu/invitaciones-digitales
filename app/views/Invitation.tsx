@@ -26,7 +26,8 @@ export default function Invitation({ tipo, slug }: InvitationProps) {
     | "modern"
     | "dinosaur"
     | "sirena"
-    | "personalized";
+    | "personalized"
+    | "itzia";
 
   const Template = templatesByType?.[variant as keyof typeof templatesByType];
 
