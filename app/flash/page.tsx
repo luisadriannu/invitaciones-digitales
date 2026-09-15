@@ -22,7 +22,7 @@ export default function FlashGallery() {
             </Link>
           ))}
         </nav>
-        <p className={styles.note}>Diseños de muestra con nombres, fechas y lugares de ejemplo.</p>
+<p className={styles.note}>Diseños de muestra con nombres, fechas y lugares de ejemplo.</p>
         <Link href="/" className={styles.back}>Volver al inicio</Link>
       </div>
     </main>

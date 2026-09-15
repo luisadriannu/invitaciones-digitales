@@ -1,0 +1,224 @@
+.page {
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: #270d18;
+  color: #f8eae2;
+  font-family: "Outfit", sans-serif;
+}
+.card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  width: min(100%, 460px);
+  border: 1px solid #bd945c80;
+  background: radial-gradient(ellipse at 50% 30%, #792c49, #4b172d 75%);
+  box-shadow: 0 18px 60px #16071070;
+  padding: 36px 28px 30px;
+}
+.card::after {
+  content: "";
+  position: absolute;
+  inset: 9px;
+  border: 1px solid #d6b27950;
+  pointer-events: none;
+}
+.content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+.flowersTop,
+.flowersBottom {
+  position: absolute;
+  width: 260px;
+  height: 260px;
+  background: url("/pictures/flash/flores-vino.svg") center / contain no-repeat;
+  pointer-events: none;
+}
+.flowersTop {
+  top: -72px;
+  left: -88px;
+  transform: rotate(18deg);
+}
+.flowersBottom {
+  bottom: -90px;
+  right: -90px;
+  transform: rotate(195deg);
+  opacity: 0.8;
+}
+.eyebrow {
+  max-width: 235px;
+  margin: 0 auto 12px;
+  font-size: 10px;
+  line-height: 1.8;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #e8cba8;
+}
+.age {
+  margin: 0;
+  font:
+    400 clamp(92px, 23vw, 122px)/0.95 "Cormorant Garamond",
+    Georgia,
+    serif;
+  color: #e8cba8;
+}
+.age span {
+  display: block;
+  margin-top: 3px;
+  font-size: 27px;
+  font-style: italic;
+  letter-spacing: 0.12em;
+}
+.photoFrame {
+  position: relative;
+  width: min(100%, 250px);
+  aspect-ratio: 3 / 4;
+  margin: 18px auto 4px;
+  border: 5px solid #f8eae2;
+  outline: 1px solid #d6b27980;
+  border-radius: 120px 120px 8px 8px;
+  box-shadow: 0 12px 32px #16071060;
+  overflow: hidden;
+}
+.photoFrame img {
+  object-fit: cover;
+  object-position: center top;
+}
+.divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 13px auto;
+  color: #dbbc89;
+}
+.divider::before,
+.divider::after {
+  content: "";
+  width: 48px;
+  height: 1px;
+  background: #dbbc8970;
+}
+.content h1 {
+  margin: 0;
+  font:
+    400 clamp(37px, 11vw, 52px)/1.1 "Cormorant Garamond",
+    Georgia,
+    serif;
+}
+.message {
+  margin: 13px 0 19px;
+  font-size: 12px;
+  line-height: 1.8;
+  color: #f0d8d5;
+}
+.date {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 19px;
+  padding: 12px 0;
+  border-block: 1px solid #d6b27950;
+}
+.date span {
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.date strong {
+  font:
+    400 44px/1 "Cormorant Garamond",
+    Georgia,
+    serif;
+  color: #e8cba8;
+}
+.schedule {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  padding: 17px 0 8px;
+}
+.schedule p {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  font-size: 10px;
+  color: #e8cba8;
+  text-align: left;
+}
+.schedule strong {
+  display: block;
+  margin-top: 4px;
+  color: #fff0e7;
+  font-size: 14px;
+  font-weight: 400;
+}
+.venue {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 14px 0 20px;
+  font-size: 15px;
+}
+.actions {
+  display: grid;
+  gap: 9px;
+}
+.actions a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 10px;
+  border: 1px solid #d6b27980;
+  border-radius: 4px;
+  font-size: 12px;
+  color: #f8eae2;
+  text-decoration: none;
+}
+.actions .confirm {
+  background: #eed5b0;
+  color: #4b172d;
+  font-weight: 600;
+}
+.actions a:hover {
+  background: #fff0e7;
+  color: #4b172d;
+}
+.actions a:focus-visible {
+  outline: 3px solid #fff0e7;
+  outline-offset: 4px;
+}
+.footer {
+  margin: 19px 0 0;
+  font:
+    italic 17px/1.4 "Cormorant Garamond",
+    Georgia,
+    serif;
+  color: #e8cba8;
+}
+.preview {
+  --paper: #551b33;
+  --ink: #f8eae2;
+  --line: #d6b27970;
+}
+@media (max-width: 360px) {
+  .page {
+    padding: 10px;
+  }
+  .card {
+    padding: 30px 20px 24px;
+  }
+  .schedule {
+    gap: 18px;
+  }
+  .date {
+    gap: 13px;
+  }
+}
