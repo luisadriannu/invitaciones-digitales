@@ -20,11 +20,7 @@ export default function Invitation({ tipo, slug }: InvitationProps) {
 
   const templatesByType = templates[data.tipo as keyof typeof templates];
 
-  const variant = (data.design?.variant ?? "base") as
-    | "base"
-    | "elegant"
-    | "modern"
-    | "dinosaur";
+  const variant = data.design?.variant ?? "base";
 
   const Template = templatesByType?.[variant as keyof typeof templatesByType];
 

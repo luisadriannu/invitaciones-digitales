@@ -12,7 +12,12 @@ export type EventVariant =
   | "elegant"
   | "modern"
   | "personalized"
-  | "dinosaur";
+  | "dinosaur"
+  | "light"
+  | "pastel"
+  | "pop"
+  | "dinoParty"
+  | "flash";
 
 export type Suscription = "classic" | "premiun";
 
@@ -26,6 +31,7 @@ export interface EventInfo {
   name: string;
   age?: number;
   date: string;
+  startsAt?: string;
   ceremonyHour?: string;
   partyHour: string;
   phrase?: string;

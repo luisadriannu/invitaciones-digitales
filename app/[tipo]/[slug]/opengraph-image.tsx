@@ -59,7 +59,7 @@ export default async function Image({
           marginBottom: 20,
         }}
       >
-        Bautizo
+        {{ cumple: "Cumpleaños", bautizo: "Bautizo", graduacion: "Graduación", boda: "Boda", xv: "XV años", babyshower: "Baby shower", primeracomunion: "Primera comunión" }[event.tipo]}
       </div>
 
       <div

@@ -40,36 +40,100 @@ Quiero más información acerca de las invitaciones.`;
 
   const samples = [
     {
+      category: "Flash",
+      title: "Cumpleaños Flash",
+      subtitle: "Cumpleaños",
+      image: "/pictures/birthday/victoria/victoria-4.jpg",
+      href: "/cumple/cumple-flash",
+    },
+    {
+      category: "Flash",
+      title: "Bautizo Flash",
+      subtitle: "Bautizo",
+      image: "/pictures/christening/camila/camila-4.jpg",
+      href: "/bautizo/bautizo-flash",
+    },
+    {
+      category: "Flash",
+      title: "Graduación Flash",
+      subtitle: "Graduación",
+      image: "/pictures/graduation/karina/graduation-1.jpg",
+      href: "/graduacion/graduacion-flash",
+    },
+    {
+      category: "Cumpleaños",
+      title: "Cumpleaños de Mateo",
+      subtitle: "Jurásica",
+      image: "/pictures/birthday/mateo/jurassic-expedition.png",
+      href: "/cumple/mateo",
+    },
+    {
+      category: "Cumpleaños",
+      title: "Cumpleaños de Mía",
+      subtitle: "Guerreras pop",
+      image: "/pictures/birthday/mia/guerreras-pop-hd.png",
+      href: "/cumple/mia",
+    },
+    {
+      category: "Primera Comunión",
       title: "Primera Comunión",
       image: "/pictures/firstcommunion/sofia/sofia-1.jpg",
       href: "/primeracomunion/sofia",
     },
     {
+      category: "Graduación",
       title: "Graduación",
       image: "/pictures/graduation/karina/graduation-1.jpg",
       href: "/graduacion/karina",
     },
     {
+      category: "XV Años",
       title: "XV Años",
       image: "/pictures/xv/valentina/xv-1.jpeg",
       href: "/xv/valentina",
     },
     {
+      category: "Cumpleaños",
       title: "Cumpleaños",
+      subtitle: "Clásica",
       image: "/pictures/birthday/jose/jose-1.jpg",
       href: "/cumple/jose",
     },
     {
-      title: "Boda",
+      category: "Cumpleaños",
+      title: "Cumpleaños Victoria",
+      subtitle: "Pastel",
+      image: "/pictures/birthday/victoria/victoria-4.jpg",
+      href: "/cumple/victoria",
+    },
+    {
+      category: "Boda",
+      title: "Boda Clásica",
+      subtitle: "Clásica",
       image: "/pictures/wedding/kevin-y-juana/kevin-y-juana-1.jpg",
       href: "/boda/kevinyjuana",
     },
     {
+      category: "Boda",
+      title: "Boda Light",
+      subtitle: "Light",
+      image: "/pictures/wedding/kevin-y-juana/kevin-y-juana-5.jpg",
+      href: "/boda/kevinyjuanalight",
+    },
+    {
+      category: "Bautizo",
       title: "Bautizo",
       image: "/pictures/christening/camila/camila-1.jpg",
       href: "/bautizo/camila",
     },
   ];
+
+  const groups = Object.values(
+    samples.reduce<Record<string, typeof samples>>((acc, sample) => {
+      (acc[sample.category] ??= []).push(sample);
+      return acc;
+    }, {}),
+  );
 
   return (
     <main className="min-h-screen bg-[#FAF8F4] relative overflow-hidden">
@@ -195,72 +259,161 @@ Quiero más información acerca de las invitaciones.`;
             viewport={{ once: true }}
             className="grid grid-cols-2 md:grid-cols-3 gap-6"
           >
-            {samples.map((sample) => (
-              <motion.div
-                key={sample.href}
-                variants={fadeUp}
-                whileHover={{
-                  y: -6,
-                }}
-              >
-                <Link
-                  href={sample.href}
-                  className="
-                    group
-                    block
-                  "
+            {groups.map((group) =>
+              group.length >= 2 ? (
+                <motion.div
+                  key={group[0].category}
+                  variants={fadeUp}
+                  whileHover={{
+                    y: -6,
+                  }}
+                  className="h-full"
                 >
                   <div
                     className="
-                      relative
+                      flex
+                      h-full
+                      flex-col
                       overflow-hidden
-                      aspect-3/4
-                      mb-4
-                      bg-[#F2ECE4]
                       rounded-xl
+                      border
+                      border-[#D4AF37]/30
+                      bg-[#2B2927]
                     "
                   >
-                    <Image
-                      src={sample.image}
-                      alt={sample.title}
-                      fill
-                      sizes="(max-width:768px) 50vw, 33vw"
-                      className="
-                        object-cover
-                        transition-all
-                        duration-700
-                        ease-out
-                        group-hover:scale-110
-                      "
-                    />
-                  </div>
+                    <div className="px-4 pt-5 pb-4 text-center">
+                      <p
+                        className="
+                          uppercase
+                          tracking-[0.25em]
+                          text-[10px]
+                          text-[#B8860B]
+                          mb-1
+                        "
+                      >
+                        Invitaciones
+                      </p>
 
-                  <div className="text-center">
-                    <p
+                      <h3 className="text-[#F6EFE2] text-lg font-medium">
+                        {group[0].category}
+                      </h3>
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-3 p-3 pt-0 flex-1">
+                      {group.map((member) => (
+                        <Link
+                          key={member.href}
+                          href={member.href}
+                          className="group block"
+                        >
+                          <div
+                            className="
+                              relative
+                              overflow-hidden
+                              aspect-square
+                              rounded-md
+                              bg-[#F2ECE4]
+                            "
+                          >
+                            <Image
+                              src={member.image}
+                              alt={member.subtitle ?? member.title}
+                              fill
+                              sizes="(max-width:768px) 25vw, 15vw"
+                              className="
+                                object-cover
+                                transition-all
+                                duration-700
+                                ease-out
+                                group-hover:scale-110
+                              "
+                            />
+                          </div>
+
+                          <p
+                            className="
+                              mt-2
+                              text-center
+                              uppercase
+                              tracking-[0.15em]
+                              text-[10px]
+                              text-[#D4AF37]
+                            "
+                          >
+                            {member.subtitle ?? member.title}
+                          </p>
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                </motion.div>
+              ) : (
+                <motion.div
+                  key={group[0].href}
+                  variants={fadeUp}
+                  whileHover={{
+                    y: -6,
+                  }}
+                >
+                  <Link
+                    href={group[0].href}
+                    className="
+                      group
+                      block
+                    "
+                  >
+                    <div
                       className="
-                        uppercase
-                        tracking-[0.25em]
-                        text-[12px]
-                        text-[#B8860B]
-                        mb-1
+                        relative
+                        overflow-hidden
+                        aspect-3/4
+                        mb-4
+                        bg-[#F2ECE4]
+                        rounded-xl
                       "
                     >
-                      Invitación
-                    </p>
+                      <Image
+                        src={group[0].image}
+                        alt={group[0].title}
+                        fill
+                        sizes="(max-width:768px) 50vw, 33vw"
+                        className="
+                          object-cover
+                          transition-all
+                          duration-700
+                          ease-out
+                          group-hover:scale-110
+                        "
+                      />
+                    </div>
 
-                    <h3
-                      className="
-                        text-[#2B2927]
-                        text-lg
-                        font-medium
-                      "
-                    >
-                      {sample.title}
-                    </h3>
-                  </div>
-                </Link>
-              </motion.div>
-            ))}
+                    <div className="text-center">
+                      <p
+                        className="
+                          uppercase
+                          tracking-[0.25em]
+                          text-[12px]
+                          text-[#B8860B]
+                          mb-1
+                        "
+                      >
+                        Invitación
+                      </p>
+
+                      <h3
+                        className="
+                          text-[#2B2927]
+                          text-lg
+                          font-medium
+                        "
+                      >
+                        {group[0].title}
+                      </h3>
+                    </div>
+                  </Link>
+                </motion.div>
+              ),
+            )}
           </motion.div>
         </section>
 
