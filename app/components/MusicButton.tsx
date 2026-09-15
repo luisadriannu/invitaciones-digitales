@@ -12,7 +12,9 @@ export default function MusicButton({ src, autoPlay }: Props) {
   const [playing, setPlaying] = useState(false);
 
   useEffect(() => {
-    const audio = new Audio(src);
+    const audio = new Audio();
+    audio.preload = "none";
+    audio.src = src;
 
     audio.loop = true;
 
@@ -24,7 +26,8 @@ export default function MusicButton({ src, autoPlay }: Props) {
 
     return () => {
       audio.pause();
-      audio.currentTime = 0;
+      audio.removeAttribute("src");
+      audio.load();
       audioRef.current = null;
     };
   }, [src, autoPlay]);

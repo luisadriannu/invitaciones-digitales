@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import events from "@/app/data/events";
-import { templates } from "@/app/templates";
+import TemplateRenderer from "@/app/templates/TemplateRenderer";
 
 interface InvitationProps {
   tipo: string;
@@ -18,15 +18,5 @@ export default function Invitation({ tipo, slug }: InvitationProps) {
     notFound();
   }
 
-  const templatesByType = templates[data.tipo as keyof typeof templates];
-
-  const variant = data.design?.variant ?? "base";
-
-  const Template = templatesByType?.[variant as keyof typeof templatesByType];
-
-  if (!Template) {
-    notFound();
-  }
-
-  return <Template data={data} />;
+  return <TemplateRenderer data={data} />;
 }

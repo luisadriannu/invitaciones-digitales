@@ -1,13 +1,15 @@
 import type { EventData } from "@/app/types/EventData";
 
+// Datos ficticios de muestra; fotografías ilustrativas.
+
 const birthday: EventData = {
   tipo: "cumple",
   suscription: "classic",
   design: { variant: "flash" },
-  seo: { title: "Cumpleaños de Victoria · Flash", description: "Te invito a mi cumpleaños. ¡Victoria cumple 9 años!", image: "/pictures/birthday/victoria/victoria-4.jpg" },
-  event: { name: "Victoria", age: 9, date: "20 Septiembre 2026", partyHour: "2:30 PM", dressCode: "" },
+  seo: { title: "Cumpleaños de Daniela · Flash", description: "Te invito a mi cumpleaños. ¡Daniela cumple 7 años!", image: "/pictures/birthday/victoria/victoria-4.jpg" },
+  event: { name: "Daniela Ríos", age: 7, date: "08 Mayo 2027", partyHour: "4:00 PM", dressCode: "" },
   media: { coverImage: "/pictures/birthday/victoria/victoria-4.jpg", gallery: [] },
-  location: { reception: "Salón Quinta Karen" },
+  location: { reception: "Jardín Mariposas · Toluca" },
   contact: { phone: "" },
 };
 

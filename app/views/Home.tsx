@@ -1,10 +1,13 @@
 "use client";
 
-import { MessageCircle } from "lucide-react";
+import { ArrowUpRight, MessageCircle } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "motion/react";
 import type { Variants } from "motion/react";
+import { flashEvents } from "@/app/flash/data";
+import flashStyles from "@/app/flash/flash.module.css";
+import InvitationCardAction from "@/app/components/InvitationCardAction";
 
 const fadeUp: Variants = {
   hidden: {
@@ -39,32 +42,6 @@ Quiero más información acerca de las invitaciones.`;
   const encodedMessage = encodeURIComponent(message);
 
   const samples = [
-    {
-      title: "Invitaciones Flash",
-      image: "/pictures/graduation/karina/graduation-1.jpg",
-      href: "/flash",
-    },
-    {
-      category: "Flash",
-      title: "Cumpleaños Flash",
-      subtitle: "Cumpleaños",
-      image: "/pictures/birthday/victoria/victoria-4.jpg",
-      href: "/cumple/cumple-flash",
-    },
-    {
-      category: "Flash",
-      title: "Bautizo Flash",
-      subtitle: "Bautizo",
-      image: "/pictures/christening/camila/camila-4.jpg",
-      href: "/bautizo/bautizo-flash",
-    },
-    {
-      category: "Flash",
-      title: "Graduación Flash",
-      subtitle: "Graduación",
-      image: "/pictures/graduation/karina/graduation-1.jpg",
-      href: "/graduacion/graduacion-flash",
-    },
     {
       category: "Cumpleaños",
       title: "Cumpleaños de Mateo",
@@ -278,25 +255,27 @@ Quiero más información acerca de las invitaciones.`;
           </motion.p>
 
           <motion.div
-            variants={stagger}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
             className="grid grid-cols-2 md:grid-cols-3 gap-6"
           >
             {samples.map((sample) => (
               <motion.div
                 key={sample.href}
                 variants={fadeUp}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "0px 0px 80px 0px" }}
                 whileHover={{
                   y: -6,
                 }}
               >
                 <Link
                   href={sample.href}
+                  prefetch={false}
+                  aria-label={`Ver invitación: ${sample.title}`}
                   className="
                     group
                     block
+                    rounded-xl focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#B8860B]
                   "
                 >
                   <div
@@ -313,7 +292,7 @@ Quiero más información acerca de las invitaciones.`;
                       src={sample.image}
                       alt={sample.title}
                       fill
-                      sizes="(max-width:768px) 50vw, 33vw"
+                      sizes="(max-width: 767px) calc((100vw - 72px) / 2), (max-width: 1279px) calc((100vw - 96px) / 3), 395px"
                       className="
                         object-cover
                         transition-all
@@ -346,11 +325,62 @@ Quiero más información acerca de las invitaciones.`;
                     >
                       {sample.title}
                     </h3>
+                    <div className="text-[#8A6508]"><InvitationCardAction /></div>
                   </div>
                 </Link>
               </motion.div>
             ))}
           </motion.div>
+        </section>
+
+        <section aria-labelledby="flash-heading" className="mb-24">
+          <div className="text-center mb-10">
+            <div className="w-20 h-px bg-[#D4AF37]/40 mx-auto mb-6" />
+            <h2
+              id="flash-heading"
+              className="text-3xl md:text-5xl font-light text-[#2B2927]"
+            >
+              Invitaciones Flash
+            </h2>
+            <p className="mt-5 text-sm md:text-base text-[#6A635C]">
+              Toda la emoción y lo esencial, en una sola vista.
+              Elige un diseño para abrir la invitación.
+            </p>
+          </div>
+
+          <nav aria-label="Invitaciones Flash" className={flashStyles.previews}>
+            {Object.entries(flashEvents).map(([slug, event]) => (
+              <Link
+                key={slug}
+                href={`/flash/${slug}`}
+                prefetch={false}
+                aria-label={`Ver invitación: ${event.designLabel ?? event.title} de ${event.name}`}
+                className={`${flashStyles.preview} ${flashStyles[event.theme]} ${event.design ? flashStyles[event.design] : ""} rounded-xl text-center focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#B8860B]`}
+              >
+                <div className={flashStyles.previewPhoto}>
+                  <Image
+                    src={event.photo}
+                    alt={event.name}
+                    fill
+                    sizes="150px"
+                  />
+                </div>
+                <span>{event.designLabel ?? event.title}</span>
+                <strong>{event.name.split(" ")[0]}</strong>
+                <InvitationCardAction />
+              </Link>
+            ))}
+          </nav>
+
+          <div className="text-center mt-8">
+            <Link
+              href="/flash"
+              className="inline-flex items-center gap-2 text-sm text-[#8A6508] underline underline-offset-4"
+            >
+              Ver la colección Flash
+              <ArrowUpRight size={16} aria-hidden="true" />
+            </Link>
+          </div>
         </section>
 
         {/* CTA */}

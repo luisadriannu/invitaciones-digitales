@@ -4,6 +4,13 @@ import events from "@/app/data/events";
 import Invitation from "@/app/views/Invitation";
 import MobileOnly from "@/app/components/MobileOnly";
 
+export function generateStaticParams() {
+  return Object.entries(events).map(([slug, event]) => ({
+    tipo: event.tipo,
+    slug,
+  }));
+}
+
 export async function generateMetadata({
   params,
 }: {

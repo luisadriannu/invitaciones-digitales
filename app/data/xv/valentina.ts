@@ -1,19 +1,21 @@
 import type { EventData } from "@/app/types/EventData";
 
+// Horarios y lugares de ejemplo para diferenciar esta muestra.
+
 const camila: EventData = {
   tipo: "xv",
   suscription: "premiun",
   seo: {
     title: "🎀 XV de Valentina",
     description:
-      "Mis papás y yo estaremos muy felices de compartir contigo este hermoso día.",
+      "Quince años de sueños y una noche para brillar. ¡Celebra conmigo!",
     image: "/pictures/xv/valentina/xv-1.jpeg",
   },
   event: {
     name: "Maria Valentina",
     date: "16 Agosto 2027",
-    ceremonyHour: "11:00 AM",
-    partyHour: "2:30 PM",
+    ceremonyHour: "5:00 PM",
+    partyHour: "7:00 PM",
     dressCode: "Formal",
   },
   media: {
@@ -26,10 +28,9 @@ const camila: EventData = {
     music: "/music/mi-princesita.mp3",
   },
   location: {
-    mapUrl:
-      "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3472.6923662318954!2d-100.67883969509384!3d18.347381216724678!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x84332da6fe403ecb%3A0x8755ab0e6aaa4441!2s%22Quinta%20Andrea%22%20Jardin%20de%20eventos%20sociales!5e0!3m2!1ses-419!2smx!4v1780586835113!5m2!1ses-419!2smx",
-    church: "Catedral San Juan Bautista",
-    reception: "Salón Quinta Karen",
+    mapUrl: "",
+    church: "Capilla del Rosario",
+    reception: "Salón Cielo de Cristal · Morelia",
   },
   contact: {
     phone: "5223123232",

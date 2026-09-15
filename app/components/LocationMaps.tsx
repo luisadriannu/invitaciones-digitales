@@ -6,6 +6,8 @@ interface Props {
 }
 
 export default function LocationMaps({ data }: Props) {
+  if (!data.location.mapUrl) return null;
+
   return (
     <div className="text-center mt-10">
       <p className="text-3xl md:text-4xl font-light italic mb-6">Ubicación</p>

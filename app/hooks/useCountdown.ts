@@ -9,43 +9,40 @@ interface TimeLeft {
   seconds: number;
 }
 
+const EMPTY: TimeLeft = { days: 0, hours: 0, minutes: 0, seconds: 0 };
+
 export const useCountdown = (targetDate: Date) => {
-  const calculateTimeLeft = (): TimeLeft => {
-    const difference = targetDate.getTime() - new Date().getTime();
-
-    if (difference > 0) {
-      return {
-        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-        minutes: Math.floor((difference / (1000 * 60)) % 60),
-        seconds: Math.floor((difference / 1000) % 60),
-      };
-    }
-
-    return {
-      days: 0,
-      hours: 0,
-      minutes: 0,
-      seconds: 0,
-    };
-  };
-
-  const [timeLeft, setTimeLeft] = useState<TimeLeft>({
-    days: 0,
-    hours: 0,
-    minutes: 0,
-    seconds: 0,
-  });
+  const target = targetDate.getTime();
+  const [timeLeft, setTimeLeft] = useState<TimeLeft>(EMPTY);
 
   useEffect(() => {
-    setTimeLeft(calculateTimeLeft());
-
-    const timer = setInterval(() => {
-      setTimeLeft(calculateTimeLeft());
-    }, 1000);
-
-    return () => clearInterval(timer);
-  }, [targetDate.getTime()]);
+    let timer: ReturnType<typeof setTimeout> | undefined;
+    const update = () => {
+      const difference = target - Date.now();
+      const next = difference > 0 ? {
+        days: Math.floor(difference / 86400000),
+        hours: Math.floor((difference / 3600000) % 24),
+        minutes: Math.floor((difference / 60000) % 60),
+        seconds: Math.floor((difference / 1000) % 60),
+      } : EMPTY;
+      setTimeLeft((previous) =>
+        previous.days === next.days && previous.hours === next.hours &&
+        previous.minutes === next.minutes && previous.seconds === next.seconds
+          ? previous : next,
+      );
+      if (difference > 0 && !document.hidden) timer = setTimeout(update, 1000);
+    };
+    const syncVisibility = () => {
+      clearTimeout(timer);
+      if (!document.hidden) timer = setTimeout(update, 0);
+    };
+    syncVisibility();
+    document.addEventListener("visibilitychange", syncVisibility);
+    return () => {
+      clearTimeout(timer);
+      document.removeEventListener("visibilitychange", syncVisibility);
+    };
+  }, [target]);
 
   return timeLeft;
 };

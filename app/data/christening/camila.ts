@@ -1,5 +1,7 @@
 import type { EventData } from "@/app/types/EventData";
 
+// Horarios y lugares de ejemplo para diferenciar esta muestra.
+
 const camila: EventData = {
   tipo: "bautizo",
   suscription: "premiun",
@@ -13,7 +15,7 @@ const camila: EventData = {
     name: "Camila Rivera Vega",
     date: "07 Diciembre 2026",
     ceremonyHour: "11:00 AM",
-    partyHour: "2:30 PM",
+    partyHour: "1:00 PM",
     dressCode: "Formal",
   },
   media: {
@@ -27,10 +29,9 @@ const camila: EventData = {
     music: "/music/mi-princesita.mp3",
   },
   location: {
-    mapUrl:
-      "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3472.6923662318954!2d-100.67883969509384!3d18.347381216724678!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x84332da6fe403ecb%3A0x8755ab0e6aaa4441!2s%22Quinta%20Andrea%22%20Jardin%20de%20eventos%20sociales!5e0!3m2!1ses-419!2smx!4v1780586835113!5m2!1ses-419!2smx",
-    church: "Catedral San Juan Bautista",
-    reception: "Salón Quinta Karen",
+    mapUrl: "",
+    church: "Parroquia de los Ángeles",
+    reception: "Jardín Las Camelias · Puebla",
   },
   contact: {
     phone: "5223123232",

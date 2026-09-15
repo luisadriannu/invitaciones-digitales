@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import InvitationCardAction from "@/app/components/InvitationCardAction";
 import { flashEvents } from "./data";
 import styles from "./flash.module.css";
 
@@ -16,13 +16,13 @@ export default function FlashGallery() {
         <p>Toda la emoción y lo esencial, en una sola vista.</p>
         <nav aria-label="Diseños de invitaciones Flash" className={styles.previews}>
           {Object.entries(flashEvents).map(([key, event]) => (
-            <Link href={`/flash/${key}`} key={key} className={`${styles.preview} ${styles[event.theme]} ${event.design ? styles[event.design] : ""}`}>
+            <Link href={`/flash/${key}`} key={key} prefetch={false} aria-label={`Ver invitación: ${event.designLabel ?? event.title} de ${event.name}`} className={`${styles.preview} ${styles[event.theme]} ${event.design ? styles[event.design] : ""}`}>
               <div className={styles.previewPhoto}><Image src={event.photo} alt={event.name} fill sizes="180px" /></div>
-              <span>{event.designLabel ?? event.title}</span><strong>{event.name.split(" ")[0]}</strong><ArrowUpRight size={20} />
+              <span>{event.designLabel ?? event.title}</span><strong>{event.name.split(" ")[0]}</strong><InvitationCardAction />
             </Link>
           ))}
         </nav>
-        <p className={styles.note}>Muestras con datos existentes. La edad se muestra cuando está registrada.</p>
+        <p className={styles.note}>Diseños de muestra con nombres, fechas y lugares de ejemplo.</p>
         <Link href="/" className={styles.back}>Volver al inicio</Link>
       </div>
     </main>

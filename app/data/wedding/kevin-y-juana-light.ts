@@ -1,24 +1,26 @@
 import type { EventData } from "@/app/types/EventData";
 
+// Datos ficticios de muestra; fotografías ilustrativas.
+
 const kevinyjuanalight: EventData = {
   tipo: "boda",
   suscription: "premiun",
   seo: {
-    title: "Boda de Kevin y Juana",
-    description: "Estaremos muy felices de compartir contigo este hermoso día.",
+    title: "Boda de Clara y Diego",
+    description: "Una nueva historia comienza. Acompaña a Clara y Diego a celebrar su boda.",
     image: "/pictures/wedding/kevin-y-juana/kevin-y-juana-1.jpg",
   },
   event: {
-    name: "Kevin Mariano y Juana Reynoso",
-    date: "26 Diciembre 2026",
-    ceremonyHour: "11:00 AM",
-    partyHour: "2:30 PM",
+    name: "Clara Montes y Diego Salazar",
+    date: "15 Mayo 2027",
+    ceremonyHour: "5:00 PM",
+    partyHour: "6:30 PM",
     dressCode: "Formal",
     itinerary: [
       {
         hour: "5:00 PM",
         title: "Ceremonia Religiosa",
-        description: "Catedral San Juan Bautista",
+        description: "Capilla Los Olivos",
       },
       {
         hour: "6:30 PM",
@@ -53,22 +55,21 @@ const kevinyjuanalight: EventData = {
     music: "/music/mi-princesita.mp3",
   },
   location: {
-    mapUrl:
-      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d18013.74004616533!2d-100.67711961370904!3d18.35082625678385!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x84332dc455373601%3A0xff220e710b3b4582!2sQuinta%20Maya!5e0!3m2!1ses-419!2smx!4v1780610112793!5m2!1ses-419!2smx",
-    church: "Catedral San Juan Bautista",
-    reception: "Salón Quinta Karen",
+    mapUrl: "",
+    church: "Capilla Los Olivos",
+    reception: "Hacienda Las Bugambilias · Cuernavaca",
   },
   contact: {
     phone: "5223123232",
   },
   family: {
     parents: {
-      mother: "Dra. Federica Reynoso Tapia",
-      father: "Dr. Carlos Beltran Gomez",
+      mother: "Mariana Montes Herrera",
+      father: "Alberto Salazar Luna",
     },
     godparents: {
-      man: "Lic. Edgar Madero Peña",
-      woman: "Lic. Mercedes Maria Gonzalez Gelba",
+      man: "Gabriel Ortega",
+      woman: "Isabel Fuentes",
     },
   },
   design: {

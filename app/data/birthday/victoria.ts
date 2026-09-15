@@ -1,18 +1,20 @@
 import type { EventData } from "@/app/types/EventData";
 
+// Horarios y lugares de ejemplo para diferenciar esta muestra.
+
 const victoria: EventData = {
   tipo: "cumple",
   suscription: "classic",
   seo: {
     title: "Cumpleaños de Victoria",
     description: "Te invito a celebrar este día tan especial conmigo.😁",
-    image: "/pictures/birthday/jose/jose-1.jpg",
+    image: "/pictures/birthday/victoria/victoria-4.jpg",
   },
   event: {
     name: "Victoria",
-    date: "20 Septiembre 2026",
+    date: "28 Noviembre 2026",
     // ceremonyHour: "11:00 AM",
-    partyHour: "2:30 PM",
+    partyHour: "4:30 PM",
     dressCode: "Casual",
   },
   media: {
@@ -25,9 +27,9 @@ const victoria: EventData = {
     ],
   },
   location: {
-    mapUrl: "https://maps.app.goo.gl/KnuqwoAN5kMtcyqu5",
+    mapUrl: "",
     // church: "Catedral San Juan Bautista",
-    reception: "Salón Quinta Karen",
+    reception: "Terraza Dulce Jardín · Pachuca",
   },
   contact: {
     phone: "5266337283",

@@ -303,7 +303,7 @@ export default function BirthdayPastel({ data }: Props) {
             ))}
           </div>
 
-          <div className="text-center mt-8 relative">
+          {data.location.mapUrl && <div className="text-center mt-8 relative">
             <a
               href={data.location.mapUrl}
               target="_blank"
@@ -318,7 +318,7 @@ export default function BirthdayPastel({ data }: Props) {
               <MapPin size={14} />
               Ver en el mapa
             </a>
-          </div>
+          </div>}
         </section>
 
         {/* ════════════════ GALERÍA ════════════════ */}

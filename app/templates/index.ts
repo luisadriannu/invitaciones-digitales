@@ -1,21 +1,24 @@
-import BirthdayBase from "@/app/templates/birthday/BirthdayBase";
-import BirthdayDino from "@/app/templates/birthday/BirthdayDino";
-import BirthdayPastel from "@/app/templates/birthday/BirthdayPastel";
-import BirthdayPop from "@/app/templates/birthday/BirthdayPop";
-import BirthdayDinoParty from "@/app/templates/birthday/BirthdayDinoParty";
-import BirthdayFlash from "@/app/templates/flash/BirthdayFlash";
-import ChristeningFlash from "@/app/templates/flash/ChristeningFlash";
-import GraduationFlash from "@/app/templates/flash/GraduationFlash";
+"use client";
+
+import dynamic from "next/dynamic";
+const BirthdayBase = dynamic(() => import("@/app/templates/birthday/BirthdayBase"));
+const BirthdayDino = dynamic(() => import("@/app/templates/birthday/BirthdayDino"));
+const BirthdayPastel = dynamic(() => import("@/app/templates/birthday/BirthdayPastel"));
+const BirthdayPop = dynamic(() => import("@/app/templates/birthday/BirthdayPop"));
+const BirthdayDinoParty = dynamic(() => import("@/app/templates/birthday/BirthdayDinoParty"));
+const BirthdayFlash = dynamic(() => import("@/app/templates/flash/BirthdayFlash"));
+const ChristeningFlash = dynamic(() => import("@/app/templates/flash/ChristeningFlash"));
+const GraduationFlash = dynamic(() => import("@/app/templates/flash/GraduationFlash"));
 // import BirthdayElegant from "@/templates/birthday/BirthdayElegant";
 // import BirthdayModern from "@/templates/birthday/BirthdayModern";
-import WeddingBase from "@/app/templates/wedding/WeddingBase";
-import WeddingLight from "@/app/templates/wedding/WeddingLight";
+const WeddingBase = dynamic(() => import("@/app/templates/wedding/WeddingBase"));
+const WeddingLight = dynamic(() => import("@/app/templates/wedding/WeddingLight"));
 // import BabyShowerBase from "@/templates/babyshower/BabyShowerBase";
-import xvBaseTemplate from "@/app/templates/xv/xvBaseTemplate";
-import ChristeningBase from "@/app/templates/christening/ChristeningBase";
-import ChristeningItzia from "@/app/templates/christening/ChristeningItzia";
-import GraduationBase from "@/app/templates/graduation/GraduationBase";
-import FirstCommunionTemplate from "@/app/templates/firstcommunion/FirstCommunionTemplate";
+const xvBaseTemplate = dynamic(() => import("@/app/templates/xv/xvBaseTemplate"));
+const ChristeningBase = dynamic(() => import("@/app/templates/christening/ChristeningBase"));
+const ChristeningItzia = dynamic(() => import("@/app/templates/christening/ChristeningItzia"));
+const GraduationBase = dynamic(() => import("@/app/templates/graduation/GraduationBase"));
+const FirstCommunionTemplate = dynamic(() => import("@/app/templates/firstcommunion/FirstCommunionTemplate"));
 
 export const templates = {
   cumple: {
