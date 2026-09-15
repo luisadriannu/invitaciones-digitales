@@ -1,5 +1,5 @@
 import BirthdayBase from "@/app/templates/birthday/BirthdayBase";
-import BirthdayDinosaur from "@/app/templates/birthday/BirthdayDinosaur";
+import BirthdayDino from "@/app/templates/birthday/BirthdayDino";
 import BirthdayPastel from "@/app/templates/birthday/BirthdayPastel";
 import BirthdayPop from "@/app/templates/birthday/BirthdayPop";
 import BirthdayDinoParty from "@/app/templates/birthday/BirthdayDinoParty";
@@ -13,15 +13,14 @@ import WeddingLight from "@/app/templates/wedding/WeddingLight";
 // import BabyShowerBase from "@/templates/babyshower/BabyShowerBase";
 import xvBaseTemplate from "@/app/templates/xv/xvBaseTemplate";
 import ChristeningBase from "@/app/templates/christening/ChristeningBase";
-import ChristeningPreInvite from "@/app/templates/christening/ChristeningPreInvite";
+import ChristeningItzia from "@/app/templates/christening/ChristeningItzia";
 import GraduationBase from "@/app/templates/graduation/GraduationBase";
-import GraduationElegant from "@/app/templates/graduation/GraduationElegant";
 import FirstCommunionTemplate from "@/app/templates/firstcommunion/FirstCommunionTemplate";
 
 export const templates = {
   cumple: {
     base: BirthdayBase,
-    dinosaur: BirthdayDinosaur,
+    dinosaur: BirthdayDino,
     pastel: BirthdayPastel,
     pop: BirthdayPop,
     dinoParty: BirthdayDinoParty,
@@ -42,7 +41,6 @@ export const templates = {
   graduacion: {
     flash: GraduationFlash,
     base: GraduationBase,
-    elegant: GraduationElegant,
   },
   xv: {
     base: xvBaseTemplate,
@@ -50,6 +48,6 @@ export const templates = {
   bautizo: {
     flash: ChristeningFlash,
     base: ChristeningBase,
-    personalized: ChristeningPreInvite,
+    itzia: ChristeningItzia,
   },
 } as const;

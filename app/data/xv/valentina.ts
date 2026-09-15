@@ -11,7 +11,7 @@ const camila: EventData = {
   },
   event: {
     name: "Maria Valentina",
-    date: "16 Agosto 2026",
+    date: "16 Agosto 2027",
     ceremonyHour: "11:00 AM",
     partyHour: "2:30 PM",
     dressCode: "Formal",

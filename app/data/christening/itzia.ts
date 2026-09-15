@@ -11,10 +11,12 @@ const itzia: EventData = {
   },
   event: {
     name: "Itzia Sarai Palacios Mondragon",
-    date: "17 Octubre 2026",
-    ceremonyHour: "11:00 AM",
-    partyHour: "2:30 PM",
-    dressCode: "Formal",
+    date: "10 Octubre 2026",
+    ceremonyHour: "9:00 AM",
+    partyHour: "6:00 PM",
+    dressCode: "Sin código de vestimenta",
+    dressCodeNote: "Sin código de vestimenta",
+    specialMusic: "Mi Cenicienta — Voz de Mando",
   },
   media: {
     coverImage: "/pictures/christening/itzia/itzia-4.jpg",
@@ -22,28 +24,28 @@ const itzia: EventData = {
       "/pictures/christening/itzia/itzia-1.jpeg",
       "/pictures/christening/itzia/itzia-2.jpeg",
     ],
-    // music: "/music/mi-princesita.mp3",
+    // music: "/music/mi-cenicienta.mp3",
   },
   location: {
     mapUrl: "",
-    church: "Nombre de la Iglesia",
-    reception: "Salón de Eventos",
+    church: "Catedral",
+    reception: "Salón Kinta Karen",
   },
   contact: {
     phone: "529516535688",
   },
   family: {
     parents: {
-      mother: "Madre",
-      father: "Padre",
+      father: "Christopher Martín Palacios Mejía",
+      mother: "Itzel Saray Mondragon Narciso",
     },
     godparents: {
-      man: "Padrino",
-      woman: "Madrina",
+      man: "Alejandro Cruz Carbajal",
+      woman: "Gypzy Zuleika Mancera Pérez",
     },
   },
   design: {
-    variant: "personalized",
+    variant: "itzia",
     colors: {
       primary: "#c9a0dc",
       secondary: "#e8c4e0",

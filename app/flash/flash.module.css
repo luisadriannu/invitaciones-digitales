@@ -1,0 +1,151 @@
+.page, .gallery { font-family: 'Outfit', sans-serif; box-sizing: border-box; }
+.cumple { --paper: #faeedd; --ink: #70334c; --accent: #b04b64; --line: #70334c30; --outer: #e8d5c6; }
+.graduacion { --paper: #173930; --ink: #f4ead4; --accent: #e0bc79; --line: #e0bc7940; --outer: #10271f; }
+.bautizo { --paper: #f5f4ec; --ink: #3f5b50; --accent: #7c9278; --line: #7c927840; --outer: #e0e7dc; }
+.page { height: 100dvh; min-height: 100svh; background: var(--outer); color: var(--ink); display: grid; place-items: center; padding: 16px; }
+.card { width: min(100%, 430px); height: 100%; max-height: 900px; padding: 22px 28px 16px; display: flex; flex-direction: column; align-items: center; justify-content: space-between; gap: 10px; background: var(--paper); border: 1px solid var(--line); box-shadow: 0 18px 80px #18221b20; position: relative; isolation: isolate; }
+.header { width: 100%; display: flex; justify-content: space-between; align-items: center; font-size: 8px; letter-spacing: 2px; flex-shrink: 0; }
+.header a { color: inherit; text-decoration: none; font-size: 14px; letter-spacing: -1px; }
+.header a span { color: var(--accent); }
+.portrait { position: relative; width: 100%; flex: 1; min-height: 85px; max-height: 290px; display: grid; place-items: center; padding: 10px 0 16px; }
+.photoFrame { position: relative; height: 100%; aspect-ratio: 4 / 5; max-width: 75%; border-radius: 110px 110px 8px 8px; border: 5px solid var(--paper); outline: 1px solid var(--line); box-shadow: 0 8px 25px #00000012; overflow: hidden; }
+.photo { object-fit: cover; object-position: center 35%; }
+.ornament { position: absolute; right: 5%; top: 8%; font-size: 65px; line-height: 1; color: var(--accent); z-index: 2; transform: rotate(-15deg); }
+.photoLabel { position: absolute; bottom: 4px; left: 50%; transform: translateX(-50%) rotate(-4deg); background: var(--ink); color: var(--paper); padding: 6px 13px; font-size: 8px; letter-spacing: 2px; white-space: nowrap; }
+.age { position: absolute; left: 4%; bottom: 16%; background: var(--accent); color: var(--paper); width: 65px; height: 65px; display: flex; flex-direction: column; align-items: center; justify-content: center; border-radius: 50%; font-size: 9px; letter-spacing: 1px; transform: rotate(-10deg); }
+.age strong { font: 32px/1 'Cormorant Garamond', Georgia, serif; }
+.heading { text-align: center; flex-shrink: 0; }
+.eyebrow { font-size: 8px; letter-spacing: 2px; font-weight: 500; margin: 0 0 9px; }
+.title { font: 24px/1.1 'Cormorant Garamond', Georgia, serif; margin: 0 0 4px; font-style: italic; }
+.heading h1 { font: 400 clamp(30px, 4.6dvh, 42px)/1.03 'Cormorant Garamond', Georgia, serif; color: var(--accent); margin: 0 auto; max-width: 340px; text-wrap: balance; }
+.message { font-size: 11px; line-height: 1.4; margin: 9px auto 0; max-width: 280px; opacity: .85; }
+.details { width: 100%; text-align: center; flex-shrink: 0; }
+.date { display: flex; justify-content: center; align-items: center; gap: 14px; padding: 10px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.date strong { font: 40px/1 'Cormorant Garamond', Georgia, serif; }
+.date span { font-size: 12px; text-align: left; }
+.date small { display: block; font-size: 8px; letter-spacing: 1.5px; margin-top: 3px; }
+.date i { width: 1px; height: 28px; margin: 0 6px; background: var(--line); }
+.venue { display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 11px; line-height: 1.3; margin: 9px 0 0; }
+.venue svg { flex-shrink: 0; }
+.actions { width: 100%; display: flex; gap: 9px; flex-shrink: 0; }
+.actions a { flex: 1; min-height: 44px; display: flex; justify-content: center; align-items: center; gap: 6px; border: 1px solid var(--line); color: inherit; text-decoration: none; border-radius: 4px; font-size: 12px; }
+.actions .confirm { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.actions a:hover { filter: brightness(.9); }
+.page a:focus-visible, .gallery a:focus-visible { outline: 3px solid var(--accent, #b04b64); outline-offset: 4px; }
+.footer { font-size: 7px; letter-spacing: 1.7px; flex-shrink: 0; text-align: center; }
+.footer span { margin: 0 8px; }
+.graduacion .card { background: radial-gradient(ellipse at 50% 0, #325b48, transparent 60%), var(--paper); }
+.graduacion .photoFrame { border-radius: 2px; transform: rotate(-3deg); border-width: 6px; }
+.graduacion .confirm { color: var(--paper); background: var(--accent); border-color: var(--accent); }
+.bautizo .photoFrame { border-radius: 120px; outline-offset: 5px; }
+.bautizo .ornament { font-size: 85px; font-weight: 300; }
+.bautizo .photoLabel { background: #e4e9dc; color: var(--ink); transform: translateX(-50%); }
+.gallery { min-height: 100dvh; display: grid; place-items: center; background: #f6f1e8; color: #49383d; padding: 28px 20px; text-align: center; }
+.galleryContent { width: min(100%, 800px); }
+.gallery h1 { font: 400 clamp(42px, 7vw, 72px)/1.05 'Cormorant Garamond', Georgia, serif; margin: 20px 0; }
+.gallery h1 em { color: #a15568; font-weight: 400; }
+.gallery p { font-size: 13px; }
+.previews { display: flex; gap: 18px; margin: 30px 0 22px; }
+.preview { flex: 1; min-width: 0; display: flex; flex-direction: column; align-items: center; gap: 8px; background: var(--paper); color: var(--ink); padding: 20px 15px; border: 1px solid var(--line); text-decoration: none; transition: transform .2s; }
+.preview:hover { transform: translateY(-4px); }
+.previewPhoto { position: relative; width: 100%; max-width: 150px; aspect-ratio: 4/5; border-radius: 80px 80px 0 0; overflow: hidden; margin-bottom: 8px; }
+.previewPhoto img { object-fit: cover; object-position: center 35%; }
+.preview span { font-size: 11px; }
+.preview strong { font: 32px/1.1 'Cormorant Garamond', Georgia, serif; }
+.gallery .note { font-size: 10px; }
+.back { display: inline-block; color: inherit; font-size: 12px; margin-top: 15px; }
+@media(max-width:480px) {
+  .page { padding: 0; }
+  .card { max-height: none; border: 0; padding-top: max(18px, env(safe-area-inset-top)); padding-bottom: max(15px, env(safe-area-inset-bottom)); }
+  .previews { gap: 8px; }
+  .preview { padding: 12px 8px; }
+  .preview strong { font-size: 26px; }
+}
+@media(max-height:700px) {
+  .card { padding: 14px 22px; gap: 8px; }
+  .portrait { max-height: 180px; min-height: 70px; padding-top: 5px; }
+  .heading h1 { font-size: 30px; }
+  .title { font-size: 22px; }
+  .eyebrow { margin-bottom: 5px; font-size: 7px; }
+  .message { margin-top: 6px; font-size: 10px; }
+  .date { padding: 6px 0; }
+  .date strong { font-size: 33px; }
+  .ornament { font-size: 44px; }
+  .bautizo .ornament { font-size: 55px; }
+  .photoLabel { font-size: 7px; padding: 4px 8px; }
+}
+@media(max-height:500px) and (min-width:600px) {
+  .card { width: min(100%, 900px); display: grid; grid-template-columns: 34% 1fr; grid-template-rows: auto 1fr auto auto auto; column-gap: 28px; padding: 12px 24px; }
+  .header { grid-column: 1/-1; }
+  .portrait { grid-column: 1; grid-row: 2/5; height: 100%; max-height: none; }
+  .heading { grid-column: 2; grid-row: 2; align-self: center; }
+  .heading h1 { font-size: 30px; }
+  .message { margin-top: 4px; }
+  .details { grid-column: 2; grid-row: 3; }
+  .actions { grid-column: 2; grid-row: 4; }
+  .footer { grid-column: 1/-1; }
+  .date { padding: 4px 0; }
+  .venue { margin-top: 5px; }
+}
+@media(prefers-reduced-motion:reduce) { .preview { transition: none; } }
+
+/* Boleto de fiesta: papel cálido, tinta azul y detalles de entrada impresa. */
+.ticket { --paper: #fff2d6; --ink: #253e79; --accent: #c1502b; --line: #253e793f; --outer: #cad5e4; }
+.ticket .card { border: 10px solid var(--ink); border-radius: 22px; background: repeating-linear-gradient(0deg, transparent 0 3px, #253e7903 3px 4px), var(--paper); gap: 8px; padding: 16px 22px 12px; }
+.ticket .header { order: 0; border-bottom: 1px solid var(--ink); padding-bottom: 8px; }
+.ticket .heading { order: 1; }
+.ticket .title { font-family: 'Outfit', sans-serif; font-size: 11px; text-transform: uppercase; letter-spacing: 3px; font-style: normal; margin-bottom: 7px; }
+.ticket .heading h1 { font-family: 'Libre Baskerville', Georgia, serif; font-size: clamp(25px, 3.7dvh, 34px); font-weight: 700; letter-spacing: -1.5px; color: var(--ink); }
+.ticket .eyebrow { font-size: 6px; letter-spacing: 1.5px; }
+.ticket .portrait { order: 2; max-height: 255px; padding: 8px 0 14px; }
+.ticket .photoFrame { aspect-ratio: 1; border-radius: 8px; transform: rotate(3deg); max-width: 82%; border: 6px solid white; outline: 1px solid #253e7920; }
+.ticket .ornament { font-size: 40px; right: 1%; }
+.ticket .photoLabel { background: var(--accent); transform: translateX(-50%) rotate(-3deg); }
+.ticket .age { left: 0; bottom: 14%; border-radius: 4px; border: 2px solid var(--paper); outline: 1px solid var(--accent); }
+.ticket .details { order: 3; position: relative; border-top: 2px dashed var(--line); padding-top: 6px; }
+.ticket .details::before, .ticket .details::after { content: ''; position: absolute; top: -11px; width: 20px; height: 20px; border-radius: 50%; background: var(--ink); }
+.ticket .details::before { left: -31px; }.ticket .details::after { right: -31px; }
+.ticket .date { border-top: 0; }
+.ticket .date strong { font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 30px; }
+.ticket .actions { order: 4; }
+.ticket .actions a { border-radius: 0; border: 1px solid var(--ink); }
+.ticket .footer { order: 5; font-size: 6px; letter-spacing: 1px; }
+.ticket .footer::after { content: ''; display: block; width: 100px; height: 12px; margin: 6px auto 0; background: repeating-linear-gradient(90deg,var(--ink) 0 2px,transparent 2px 4px,var(--ink) 4px 5px,transparent 5px 8px); }
+
+/* Fiesta Pop: azul eléctrico, amarillo y una fotografía en marco naranja. */
+.pop { --paper: #2447d8; --ink: #fff8e8; --accent: #ffde57; --line: #fff8e85c; --outer: #152ca2; }
+.pop .card { background: radial-gradient(circle at 0% 29%, #4264ef 0 70px, transparent 71px), radial-gradient(circle at 105% 68%, #ff854d 0 40px, transparent 41px), var(--paper); border: 0; }
+.pop .photoFrame { aspect-ratio: 1; border-radius: 30% 30% 9% 30%; transform: rotate(-7deg); border: 7px solid #ff854d; outline: 0; box-shadow: 9px 9px 0 #122994; max-width: 78%; }
+.pop .ornament { color: var(--accent); right: 0; top: 0; font-size: 80px; text-shadow: 4px 4px 0 #122994; }
+.pop .age { background: #ffde57; color: #1734ae; width: 72px; height: 72px; left: 0; bottom: 7%; transform: rotate(9deg); border: 3px solid #1734ae; box-shadow: 4px 4px 0 #ff854d; }
+.pop .age strong { font: 800 36px/1 'Outfit', sans-serif; }
+.pop .photoLabel { background: #fff8e8; color: #1734ae; font-weight: 700; transform: translateX(-50%) rotate(4deg); }
+.pop .title { font: 700 16px/1.1 'Outfit', sans-serif; text-transform: uppercase; letter-spacing: 2px; }
+.pop .heading h1 { font: 800 clamp(28px, 4.6dvh, 40px)/1.05 'Outfit', sans-serif; letter-spacing: -1.5px; text-shadow: 3px 3px 0 #122994; }
+.pop .eyebrow { font-size: 7px; letter-spacing: 1px; }
+.pop .date { border-radius: 12px; background: #1734ae; border: 1px solid #ffffff30; padding-left: 8px; padding-right: 8px; }
+.pop .date strong { font: 700 34px/1 'Outfit', sans-serif; color: var(--accent); }
+.pop .actions a { border-radius: 24px; font-weight: 600; }
+.pop .actions .confirm { background: var(--accent); border-color: var(--accent); color: #1734ae; box-shadow: 0 4px 0 #122994; }
+.previews { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); }
+.ticket .previewPhoto { border-radius: 4px; transform: rotate(3deg); border: 4px solid white; }
+.pop .previewPhoto { border-radius: 28px 28px 8px 28px; border: 5px solid #ff854d; transform: rotate(-4deg); }
+@media(max-width:540px) { .previews { grid-template-columns: repeat(2,minmax(0,1fr)); } }
+@media(max-height:700px) {
+  .ticket .card { padding: 10px 18px; border-width: 7px; gap: 6px; }
+  .ticket .portrait { max-height: 150px; }
+  .ticket .heading h1 { font-size: 25px; }
+  .ticket .header { padding-bottom: 5px; }
+  .ticket .footer::after { height: 8px; margin-top: 4px; }
+  .pop .heading h1 { font-size: 29px; }
+  .pop .ornament { font-size: 50px; }
+  .pop .age { width: 58px; height: 58px; }
+  .pop .age strong { font-size: 28px; }
+}
+@media(max-height:500px) and (min-width:600px) {
+  .ticket .portrait { max-height: none; }
+  .ticket .details { border-top: 0; padding-top: 0; }
+  .ticket .details::before, .ticket .details::after { display: none; }
+  .ticket .footer::after { display: none; }
+  .pop .portrait { max-height: none; }
+}
