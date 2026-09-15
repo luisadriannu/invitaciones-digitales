@@ -1,11 +1,14 @@
-import { ArrowUpRight, MousePointerClick } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 
 export default function InvitationCardAction() {
   return (
-    <span className="mt-3 inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-current px-3 py-2 text-xs font-semibold leading-tight">
-      <MousePointerClick size={16} className="shrink-0" aria-hidden="true" />
-      Ver invitación
-      <ArrowUpRight size={16} className="hidden shrink-0 sm:block" aria-hidden="true" />
+    <span className="absolute bottom-3 right-3 z-10 inline-flex items-center gap-1.5 rounded-full bg-white/90 backdrop-blur-sm px-3 py-1.5 text-[11px] font-semibold tracking-wide text-[#2B2927] shadow-md transition-transform duration-300 group-hover:scale-105">
+      Click para ver
+      <ExternalLink
+        size={14}
+        className="shrink-0 text-[#D4AF37]"
+        aria-hidden="true"
+      />
     </span>
   );
 }

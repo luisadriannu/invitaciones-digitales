@@ -31,7 +31,9 @@ export default function FlashInvitation({ theme }: { theme: string }) {
   );
 
   return (
-    <main className={`${styles.page} ${styles[event.theme]} ${event.design ? styles[event.design] : ""}`}>
+    <main
+      className={`${styles.page} ${styles[event.theme]} ${event.design ? styles[event.design] : ""}`}
+    >
       <article
         className={styles.card}
         aria-label={`Invitación ${article} ${celebration} de ${event.name}`}
@@ -96,16 +98,30 @@ export default function FlashInvitation({ theme }: { theme: string }) {
         </div>
 
         <div className={styles.actions}>
-          <a href={event.mapUrl || undefined} aria-disabled={!event.mapUrl} title={event.mapUrl ? undefined : "Ubicación de ejemplo"} target="_blank" rel="noopener noreferrer">
+          <a
+            href={event.mapUrl || undefined}
+            aria-disabled={!event.mapUrl}
+            title={event.mapUrl ? undefined : "Ubicación de ejemplo"}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <MapPin size={16} />
             Ubicación
             <ArrowUpRight size={13} />
           </a>
           <a
             className={styles.confirm}
-            href={event.phone ? `https://wa.me/${event.phone}?text=${confirmation}` : undefined}
+            href={
+              event.phone
+                ? `https://wa.me/${event.phone}?text=${confirmation}`
+                : undefined
+            }
             aria-disabled={!event.phone}
-            title={event.phone ? undefined : "Confirmación disponible en la invitación final"}
+            title={
+              event.phone
+                ? undefined
+                : "Confirmación disponible en la invitación final"
+            }
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -114,7 +130,12 @@ export default function FlashInvitation({ theme }: { theme: string }) {
           </a>
         </div>
         <footer className={styles.footer}>
-          {!event.phone && !event.mapUrl ? "MUESTRA · DATOS FICTICIOS" : event.design === "ticket" ? "PASE PERSONAL · EDICIÓN CUMPLEAÑOS" : "UN MOMENTO PARA COMPARTIR"} <span>✧</span> FLASH
+          {!event.phone && !event.mapUrl
+            ? "MUESTRA · DATOS FICTICIOS"
+            : event.design === "ticket"
+              ? "PASE PERSONAL · EDICIÓN CUMPLEAÑOS"
+              : "UN MOMENTO PARA COMPARTIR"}{" "}
+          <span>✧</span> FLASH
         </footer>
       </article>
     </main>

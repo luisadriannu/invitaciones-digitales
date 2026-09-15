@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Home from "./views/Home";
+import events from "./data/events";
 
 export const metadata: Metadata = {
   title: "Invitaciones Digitales",
@@ -15,5 +16,11 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  return <Home />;
+  const samplePlans = Object.fromEntries(
+    Object.entries(events)
+      .filter(([, data]) => data.design?.variant !== "flash")
+      .map(([slug, data]) => [`/${data.tipo}/${slug}`, data.plan]),
+  );
+
+  return <Home samplePlans={samplePlans} />;
 }

@@ -1,3 +1,4 @@
+import { invitationPlans } from "@/app/data/plans";
 import type { EventData } from "@/app/types/EventData";
 import { MapPin } from "lucide-react";
 
@@ -12,7 +13,7 @@ export default function LocationMaps({ data }: Props) {
     <div className="text-center mt-10">
       <p className="text-3xl md:text-4xl font-light italic mb-6">Ubicación</p>
 
-      {data.suscription === "premiun" ? (
+      {invitationPlans[data.plan].embeddedMap ? (
         <iframe
           src={data.location.mapUrl}
           height="250"

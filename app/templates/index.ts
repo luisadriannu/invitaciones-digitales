@@ -15,6 +15,7 @@ const WeddingBase = dynamic(() => import("@/app/templates/wedding/WeddingBase"))
 const WeddingLight = dynamic(() => import("@/app/templates/wedding/WeddingLight"));
 // import BabyShowerBase from "@/templates/babyshower/BabyShowerBase";
 const xvBaseTemplate = dynamic(() => import("@/app/templates/xv/xvBaseTemplate"));
+const XvRoseGarden = dynamic(() => import("@/app/templates/xv/XvRoseGarden"));
 const ChristeningBase = dynamic(() => import("@/app/templates/christening/ChristeningBase"));
 const ChristeningItzia = dynamic(() => import("@/app/templates/christening/ChristeningItzia"));
 const GraduationBase = dynamic(() => import("@/app/templates/graduation/GraduationBase"));
@@ -47,6 +48,7 @@ export const templates = {
   },
   xv: {
     base: xvBaseTemplate,
+    roseGarden: XvRoseGarden,
   },
   bautizo: {
     flash: ChristeningFlash,

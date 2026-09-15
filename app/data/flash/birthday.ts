@@ -4,7 +4,7 @@ import type { EventData } from "@/app/types/EventData";
 
 const birthday: EventData = {
   tipo: "cumple",
-  suscription: "classic",
+  plan: "basic",
   design: { variant: "flash" },
   seo: { title: "Cumpleaños de Daniela · Flash", description: "Te invito a mi cumpleaños. ¡Daniela cumple 7 años!", image: "/pictures/birthday/victoria/victoria-4.jpg" },
   event: { name: "Daniela Ríos", age: 7, date: "08 Mayo 2027", partyHour: "4:00 PM", dressCode: "" },

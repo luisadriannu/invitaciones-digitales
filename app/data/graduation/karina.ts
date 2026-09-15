@@ -4,7 +4,7 @@ import type { EventData } from "@/app/types/EventData";
 
 const alan: EventData = {
   tipo: "graduacion",
-  suscription: "premiun",
+  plan: "premium",
   seo: {
     title: "Graduación de Karina🎓",
     description:

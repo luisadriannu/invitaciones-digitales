@@ -112,24 +112,24 @@
 .ticket .footer { order: 5; font-size: 6px; letter-spacing: 1px; }
 .ticket .footer::after { content: ''; display: block; width: 100px; height: 12px; margin: 6px auto 0; background: repeating-linear-gradient(90deg,var(--ink) 0 2px,transparent 2px 4px,var(--ink) 4px 5px,transparent 5px 8px); }
 
-/* Fiesta Pop: azul eléctrico, amarillo y una fotografía en marco naranja. */
-.pop { --paper: #2447d8; --ink: #fff8e8; --accent: #ffde57; --line: #fff8e85c; --outer: #152ca2; }
-.pop .card { background: radial-gradient(circle at 0% 29%, #4264ef 0 70px, transparent 71px), radial-gradient(circle at 105% 68%, #ff854d 0 40px, transparent 41px), var(--paper); border: 0; }
-.pop .photoFrame { aspect-ratio: 1; border-radius: 30% 30% 9% 30%; transform: rotate(-7deg); border: 7px solid #ff854d; outline: 0; box-shadow: 9px 9px 0 #122994; max-width: 78%; }
-.pop .ornament { color: var(--accent); right: 0; top: 0; font-size: 80px; text-shadow: 4px 4px 0 #122994; }
-.pop .age { background: #ffde57; color: #1734ae; width: 72px; height: 72px; left: 0; bottom: 7%; transform: rotate(9deg); border: 3px solid #1734ae; box-shadow: 4px 4px 0 #ff854d; }
+/* Fiesta Pop: chicle rosa, lavanda y una fotografía en marco fucsia. */
+.pop { --paper: #f472b6; --ink: #fff5fa; --accent: #ffd9ec; --line: #fff5fa5c; --outer: #e03a8f; }
+.pop .card { background: radial-gradient(circle at 0% 29%, #ffa9d6 0 70px, transparent 71px), radial-gradient(circle at 105% 68%, #d98fe6 0 40px, transparent 41px), var(--paper); border: 0; }
+.pop .photoFrame { aspect-ratio: 1; border-radius: 30% 30% 9% 30%; transform: rotate(-7deg); border: 7px solid #ff4fa3; outline: 0; box-shadow: 9px 9px 0 #b82b6d; max-width: 78%; }
+.pop .ornament { color: var(--accent); right: 0; top: 0; font-size: 80px; text-shadow: 4px 4px 0 #d93784; }
+.pop .age { background: var(--accent); color: #c2185b; width: 72px; height: 72px; left: 0; bottom: 7%; transform: rotate(9deg); border: 3px solid #c2185b; box-shadow: 4px 4px 0 #ff4fa3; }
 .pop .age strong { font: 800 36px/1 'Outfit', sans-serif; }
-.pop .photoLabel { background: #fff8e8; color: #1734ae; font-weight: 700; transform: translateX(-50%) rotate(4deg); }
+.pop .photoLabel { background: var(--ink); color: #c2185b; font-weight: 700; transform: translateX(-50%) rotate(4deg); }
 .pop .title { font: 700 16px/1.1 'Outfit', sans-serif; text-transform: uppercase; letter-spacing: 2px; }
-.pop .heading h1 { font: 800 clamp(28px, 4.6dvh, 40px)/1.05 'Outfit', sans-serif; letter-spacing: -1.5px; text-shadow: 3px 3px 0 #122994; }
+.pop .heading h1 { font: 800 clamp(28px, 4.6dvh, 40px)/1.05 'Outfit', sans-serif; letter-spacing: -1.5px; text-shadow: 3px 3px 0 #d93784; }
 .pop .eyebrow { font-size: 7px; letter-spacing: 1px; }
-.pop .date { border-radius: 12px; background: #1734ae; border: 1px solid #ffffff30; padding-left: 8px; padding-right: 8px; }
+.pop .date { border-radius: 12px; background: #c2185b; border: 1px solid #ffffff40; padding-left: 8px; padding-right: 8px; }
 .pop .date strong { font: 700 34px/1 'Outfit', sans-serif; color: var(--accent); }
 .pop .actions a { border-radius: 24px; font-weight: 600; }
-.pop .actions .confirm { background: var(--accent); border-color: var(--accent); color: #1734ae; box-shadow: 0 4px 0 #122994; }
+.pop .actions .confirm { background: var(--accent); border-color: var(--accent); color: #c2185b; box-shadow: 0 4px 0 #b82466; }
 .previews { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); }
 .ticket .previewPhoto { border-radius: 4px; transform: rotate(3deg); border: 4px solid white; }
-.pop .previewPhoto { border-radius: 28px 28px 8px 28px; border: 5px solid #ff854d; transform: rotate(-4deg); }
+.pop .previewPhoto { border-radius: 28px 28px 8px 28px; border: 5px solid #ff4fa3; transform: rotate(-4deg); }
 @media(max-width:540px) { .previews { grid-template-columns: repeat(2,minmax(0,1fr)); } }
 @media(max-height:700px) {
   .ticket .card { padding: 10px 18px; border-width: 7px; gap: 6px; }

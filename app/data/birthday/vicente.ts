@@ -2,7 +2,7 @@ import type { EventData } from "@/app/types/EventData";
 
 const vicente: EventData = {
   tipo: "cumple",
-  suscription: "premiun",
+  plan: "premium",
   seo: {
     title: "🦖 Cumpleaños de Vicente Sebastian",
     description:

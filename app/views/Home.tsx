@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { ArrowUpRight, MessageCircle } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -8,6 +9,18 @@ import type { Variants } from "motion/react";
 import { flashEvents } from "@/app/flash/data";
 import flashStyles from "@/app/flash/flash.module.css";
 import InvitationCardAction from "@/app/components/InvitationCardAction";
+import InvitationPlanBanner from "@/app/components/InvitationPlanBanner";
+import type { InvitationPlan } from "@/app/data/plans";
+
+const eventCategories = [
+  "Cumpleaños",
+  "XV Años",
+  "Boda",
+  "Bautizo",
+  "Primera Comunión",
+  "Graduación",
+  "Flash",
+] as const;
 
 const fadeUp: Variants = {
   hidden: {
@@ -35,13 +48,24 @@ const stagger: Variants = {
   },
 };
 
-export default function Home() {
+export default function Home({
+  samplePlans,
+}: {
+  samplePlans: Record<string, InvitationPlan>;
+}) {
+  const [category, setCategory] = useState("Todas");
   const message = `Hola 👋
 Quiero más información acerca de las invitaciones.`;
 
   const encodedMessage = encodeURIComponent(message);
 
   const samples = [
+    {
+      category: "XV Años",
+      title: "XV de Julia · Jardín de rosas",
+      image: "/pictures/xv/julia/xv-julia-3.jpg",
+      href: "/xv/julia",
+    },
     {
       category: "Cumpleaños",
       title: "Cumpleaños de Mateo",
@@ -110,10 +134,18 @@ Quiero más información acerca de las invitaciones.`;
     },
     {
       title: "Cumpleaños Dinosaurios",
+      category: "Cumpleaños",
       image: "/pictures/birthday/vicente/Jurassic_Park.svg",
       href: "/cumple/mateo-torres",
     },
   ];
+
+  const filteredSamples = samples.filter(
+    (sample) => category === "Todas" || sample.category === category,
+  );
+  const showFlash = category === "Todas" || category === "Flash";
+  const resultCount =
+    filteredSamples.length + (showFlash ? Object.keys(flashEvents).length : 0);
 
   return (
     <main className="min-h-screen bg-[#FAF8F4] relative overflow-hidden">
@@ -197,7 +229,7 @@ Quiero más información acerca de las invitaciones.`;
         </motion.section>
 
         {/* GALERÍA */}
-        <section className="mb-24">
+        <section>
           <div className="flex items-center justify-center gap-6 mb-12">
             <motion.div
               initial={{ width: 0 }}
@@ -254,10 +286,39 @@ Quiero más información acerca de las invitaciones.`;
             Toca cualquiera de las muestras para abrir la invitación
           </motion.p>
 
-          <motion.div
-            className="grid grid-cols-2 md:grid-cols-3 gap-6"
-          >
-            {samples.map((sample) => (
+          <div className="mx-auto mb-10 max-w-sm">
+            <label
+              htmlFor="event-category"
+              className="mb-2 block text-sm font-medium text-[#6A635C]"
+            >
+              Selecciona el tipo de evento
+            </label>
+            <select
+              id="event-category"
+              value={category}
+              onChange={(event) => setCategory(event.target.value)}
+              className="w-full rounded-xl border border-[#D4AF37]/40 bg-white px-4 py-3 text-[#2B2927] shadow-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#B8860B]"
+            >
+              <option value="Todas">Todas las categorías</option>
+              {eventCategories.map((item) => (
+                <option key={item} value={item}>
+                  {item}
+                </option>
+              ))}
+            </select>
+            <p
+              role="status"
+              className="mt-3 text-center text-xs text-[#6A635C]"
+            >
+              {resultCount}{" "}
+              {resultCount === 1
+                ? "invitación disponible"
+                : "invitaciones disponibles"}
+            </p>
+          </div>
+
+          <motion.div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+            {filteredSamples.map((sample) => (
               <motion.div
                 key={sample.href}
                 variants={fadeUp}
@@ -301,6 +362,10 @@ Quiero más información acerca de las invitaciones.`;
                         group-hover:scale-110
                       "
                     />
+                    {samplePlans[sample.href] && (
+                      <InvitationPlanBanner plan={samplePlans[sample.href]} />
+                    )}
+                    <InvitationCardAction />
                   </div>
 
                   <div className="text-center">
@@ -325,7 +390,6 @@ Quiero más información acerca de las invitaciones.`;
                     >
                       {sample.title}
                     </h3>
-                    <div className="text-[#8A6508]"><InvitationCardAction /></div>
                   </div>
                 </Link>
               </motion.div>
@@ -333,55 +397,59 @@ Quiero más información acerca de las invitaciones.`;
           </motion.div>
         </section>
 
-        <section aria-labelledby="flash-heading" className="mb-24">
-          <div className="text-center mb-10">
-            <div className="w-20 h-px bg-[#D4AF37]/40 mx-auto mb-6" />
-            <h2
-              id="flash-heading"
-              className="text-3xl md:text-5xl font-light text-[#2B2927]"
-            >
-              Invitaciones Flash
-            </h2>
-            <p className="mt-5 text-sm md:text-base text-[#6A635C]">
-              Toda la emoción y lo esencial, en una sola vista.
-              Elige un diseño para abrir la invitación.
-            </p>
-          </div>
-
-          <nav aria-label="Invitaciones Flash" className={flashStyles.previews}>
-            {Object.entries(flashEvents).map(([slug, event]) => (
-              <Link
-                key={slug}
-                href={`/flash/${slug}`}
-                prefetch={false}
-                aria-label={`Ver invitación: ${event.designLabel ?? event.title} de ${event.name}`}
-                className={`${flashStyles.preview} ${flashStyles[event.theme]} ${event.design ? flashStyles[event.design] : ""} rounded-xl text-center focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#B8860B]`}
+        {showFlash && (
+          <section aria-labelledby="flash-heading" className="mb-24 mt-6">
+            <div className="text-center mb-10">
+              <div className="w-20 h-px bg-[#D4AF37]/40 mx-auto mb-6" />
+              <h2
+                id="flash-heading"
+                className="text-3xl md:text-5xl font-light text-[#2B2927]"
               >
-                <div className={flashStyles.previewPhoto}>
-                  <Image
-                    src={event.photo}
-                    alt={event.name}
-                    fill
-                    sizes="150px"
-                  />
-                </div>
-                <span>{event.designLabel ?? event.title}</span>
-                <strong>{event.name.split(" ")[0]}</strong>
-                <InvitationCardAction />
-              </Link>
-            ))}
-          </nav>
+                Invitaciones Flash
+              </h2>
+              <p className="mt-5 text-sm md:text-base text-[#6A635C]">
+                Toda la emoción y lo esencial, en una sola vista. Elige un
+                diseño para abrir la invitación.
+              </p>
+            </div>
 
-          <div className="text-center mt-8">
-            <Link
-              href="/flash"
-              className="inline-flex items-center gap-2 text-sm text-[#8A6508] underline underline-offset-4"
+            <nav
+              aria-label="Invitaciones Flash"
+              className={flashStyles.previews}
             >
-              Ver la colección Flash
-              <ArrowUpRight size={16} aria-hidden="true" />
-            </Link>
-          </div>
-        </section>
+              {Object.entries(flashEvents).map(([slug, event]) => (
+                <Link
+                  key={slug}
+                  href={`/flash/${slug}`}
+                  prefetch={false}
+                  aria-label={`Ver invitación: ${event.designLabel ?? event.title} de ${event.name}`}
+                  className={`${flashStyles.preview} ${flashStyles[event.theme]} ${event.design ? flashStyles[event.design] : ""} rounded-xl text-center group focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#B8860B]`}
+                >
+                  <div className={flashStyles.previewPhoto}>
+                    <Image
+                      src={event.photo}
+                      alt={event.name}
+                      fill
+                      sizes="150px"
+                    />
+                  </div>
+                  <span>{event.designLabel ?? event.title}</span>
+                  <strong>{event.name.split(" ")[0]}</strong>
+                </Link>
+              ))}
+            </nav>
+
+            <div className="text-center mt-8">
+              <Link
+                href="/flash"
+                className="inline-flex items-center gap-2 text-sm text-[#8A6508] underline underline-offset-4"
+              >
+                Ver la colección Flash
+                <ArrowUpRight size={16} aria-hidden="true" />
+              </Link>
+            </div>
+          </section>
+        )}
 
         {/* CTA */}
         <motion.section

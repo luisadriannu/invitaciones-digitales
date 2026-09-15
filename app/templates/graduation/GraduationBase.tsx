@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "motion/react";
 import Gallery from "@/app/components/Gallery";
 import CountDown from "@/app/components/CountDown";
 import MusicButton from "@/app/components/MusicButton";
+import { invitationPlans } from "@/app/data/plans";
 import type { EventData } from "@/app/types/EventData";
 import { MapPin, Award, Utensils, Crown, Gem, Clock } from "lucide-react";
 
@@ -414,7 +415,7 @@ export default function GraduationBase({ data }: Props) {
               <p className="text-3xl md:text-4xl font-light italic mb-6 text-white">
                 Ubicación
               </p>
-              {data.suscription === "premiun" ? (
+              {invitationPlans[data.plan].embeddedMap ? (
                 <iframe
                   src={data.location.mapUrl}
                   height="250"

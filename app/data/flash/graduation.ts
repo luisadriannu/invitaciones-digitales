@@ -4,7 +4,7 @@ import type { EventData } from "@/app/types/EventData";
 
 const graduation: EventData = {
   tipo: "graduacion",
-  suscription: "classic",
+  plan: "basic",
   design: { variant: "flash" },
   seo: { title: "Graduación de Valeria · Flash", description: "Te invito a mi graduación. Valeria Mendoza, Instituto del Lago.", image: "/pictures/graduation/karina/graduation-1.jpg" },
   event: { name: "Valeria Mendoza", date: "10 Julio 2027", partyHour: "6:00 PM", dressCode: "" },

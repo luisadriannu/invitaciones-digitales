@@ -4,7 +4,7 @@ import type { EventData } from "@/app/types/EventData";
 
 const kevinyjuanalight: EventData = {
   tipo: "boda",
-  suscription: "premiun",
+  plan: "premium",
   seo: {
     title: "Boda de Clara y Diego",
     description: "Una nueva historia comienza. Acompaña a Clara y Diego a celebrar su boda.",

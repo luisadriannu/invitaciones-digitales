@@ -3,7 +3,7 @@ import type { EventData } from "@/app/types/EventData";
 // Datos de muestra. Agregar el contacto y la ubicación reales antes de compartir.
 const mateo: EventData = {
   tipo: "cumple",
-  suscription: "classic",
+  plan: "basic",
   seo: {
     title: "Mateo cumple 5 · Expedición jurásica",
     description:

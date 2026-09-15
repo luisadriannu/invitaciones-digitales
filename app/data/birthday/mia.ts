@@ -3,7 +3,7 @@ import type { EventData } from "@/app/types/EventData";
 // Invitación de muestra: sustituir lugar y contacto antes de compartirla.
 const mia: EventData = {
   tipo: "cumple",
-  suscription: "classic",
+  plan: "basic",
   seo: {
     title: "Mía cumple 8 · Guerreras Pop",
     description: "¡La misión es celebrar! Acompaña a Mía en un cumpleaños lleno de música, amistad y magia.",

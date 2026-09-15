@@ -2,7 +2,7 @@ import type { EventData } from "@/app/types/EventData";
 
 const itzia: EventData = {
   tipo: "bautizo",
-  suscription: "premiun",
+  plan: "premium",
   seo: {
     title: "🎀 Bautizo y Presentación de Itzia Sarai",
     description:

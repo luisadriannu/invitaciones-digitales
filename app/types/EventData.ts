@@ -1,3 +1,5 @@
+import type { InvitationPlan } from "@/app/data/plans";
+
 export type EventType =
   | "cumple"
   | "boda"
@@ -19,9 +21,10 @@ export type EventVariant =
   | "dinoParty"
   | "flash"
   | "sirena"
-  | "itzia";
+  | "itzia"
+  | "roseGarden";
 
-export type Suscription = "classic" | "premiun";
+
 
 export interface SeoInfo {
   title: string;
@@ -100,5 +103,5 @@ export interface EventData {
   contact: ContactInfo;
   family?: FamilyInfo;
   design?: DesignInfo;
-  suscription: Suscription;
+  plan: InvitationPlan;
 }
