@@ -5,7 +5,7 @@ export const bella = {
   designLabel: "Vino y flores",
   name: "Bella Pineda",
   age: 60,
-  photo: "/pictures/flash/bella-pineda/bella-pineda.png",
+  photo: "/pictures/flash/bella-pineda/bella-pineda-2.jpg",
   date: "29 Diciembre 2026",
   time: "7:30 PM",
   dinnerTime: "8:40 PM",
