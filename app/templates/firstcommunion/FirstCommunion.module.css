@@ -1,0 +1,50 @@
+.invitation {
+  color: #444b3f;
+  background: #faf8f0;
+  font-family: Arial, sans-serif;
+  overflow: clip;
+}
+.hero {
+  position: relative;
+  width: min(100%, 620px);
+  height: min(780px, 88svh);
+  min-height: 520px;
+  margin: 0 auto;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  overflow: hidden;
+}
+.heroCaption {
+  position: relative;
+  z-index: 10;
+  width: calc(100% - 40px);
+  margin: 0 auto 12px;
+  padding: 40px 15px 22px;
+  text-align: center;
+}
+.heroCaption h1 { font-size: clamp(32px, 8vw, 54px); margin-bottom: 12px; color: #514737; text-shadow: none; filter: none; }
+.heroCaption > span { letter-spacing: .25em; line-height: 1.7; color: #716044; }
+.heroCaption > p { color: #65583f; }
+.invitation > section:not(.hero) { position: relative; }
+.invitation > section:nth-of-type(3), .invitation > section:nth-of-type(5) {
+  background: #edf0e5;
+  border-block: 1px solid #d9decb;
+}
+.invitation > section:nth-of-type(5) > div { padding: 25px 20px; border: 1px solid #cbd2bd; border-radius: 90px 90px 8px 8px; background: #fafbf5; }
+.invitation > section:nth-of-type(5) p { font-size: 23px; line-height: 1.45; }
+.invitation > section:nth-of-type(5) p:first-child { font-size: 10px; letter-spacing: .16em; }
+.invitation > section:last-of-type { background: #edf0e5; border-top: 1px solid #d9decb; padding-bottom: 70px; }
+.eyebrow { margin-bottom: 13px; font-size: 10px; letter-spacing: .22em; text-transform: uppercase; color: #6a775a; }
+.scripture { padding: 30px 25px; text-align: center; background: #f1ead9; border-block: 1px solid #dfd4b7; }
+.scripture > div > div { display: none; }
+.scripture p { font-size: 23px; line-height: 1.5; }
+.scripture span { margin-top: 12px; color: #7f693f; }
+.wheat { margin: 0 auto 12px; color: #a18447; }
+.venueGrid { display: grid; gap: 14px; margin-bottom: 20px; }
+.venueCard { padding: 25px 20px; border: 1px solid #d5d8c6; border-radius: 50px 50px 8px 8px; background: #f2f3e9; text-align: center; }
+.venueCard svg, .venueCard p { margin-left: auto; margin-right: auto; }
+.time { margin-top: 14px; display: inline-block; border-top: 1px solid #c9cfb8; padding: 10px 22px 0; color: #5d6b4d; font-size: 16px; font-weight: 600; }
+.dressCode, .galleryHint { text-align: center; font-size: 12px; line-height: 1.8; color: #69745b; }
+.galleryHint { margin-top: 14px; }
+@media (min-width: 600px) { .venueGrid { grid-template-columns: 1fr 1fr; } }

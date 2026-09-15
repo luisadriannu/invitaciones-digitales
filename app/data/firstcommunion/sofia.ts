@@ -29,8 +29,8 @@ const sofia: EventData = {
   },
   location: {
     mapUrl: "",
-    church: "Parroquia de Santa Clara",
-    reception: "Jardín Los Naranjos · Oaxaca",
+    church: "Parroquia del Señor de Esquipulas",
+    reception: "La Casona",
   },
   contact: {
     phone: "5223123232",
@@ -38,10 +38,10 @@ const sofia: EventData = {
   family: {
     parents: {
       mother: "Rebeca Alvarado Vela",
-      father: "Luis Rodriguez Urieta",
+      father: "Luis Rodríguez Urieta",
     },
     godparents: {
-      man: "Alan Gonzalez Gomez",
+      man: "Alan González Gómez",
       woman: "Ana Mendoza Mendoza",
     },
   },

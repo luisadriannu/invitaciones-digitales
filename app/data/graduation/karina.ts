@@ -28,7 +28,7 @@ const alan: EventData = {
   location: {
     mapUrl: "",
     event: "CBTA No. 18",
-    reception: "Terraza Mirador del Sol · Acapulco",
+    reception: "Glorieta de los Heroes",
   },
   contact: {
     phone: "5223123232",

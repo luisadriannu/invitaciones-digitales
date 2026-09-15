@@ -28,8 +28,7 @@ const victoria: EventData = {
   },
   location: {
     mapUrl: "",
-    // church: "Catedral San Juan Bautista",
-    reception: "Terraza Dulce Jardín · Pachuca",
+    reception: "Salon contreras",
   },
   contact: {
     phone: "5266337283",

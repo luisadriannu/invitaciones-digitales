@@ -29,7 +29,9 @@ export async function generateMetadata({
     };
   }
 
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+  const siteUrl =
+    process.env.NEXT_PUBLIC_SITE_URL ??
+    "https://invitacionesdigitales-two.vercel.app";
 
   return {
     title: event.seo?.title,

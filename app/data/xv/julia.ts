@@ -1,6 +1,5 @@
 import type { EventData } from "@/app/types/EventData";
 
-// Muestra: sustituir horarios, lugares, familia y contacto para el evento real.
 const julia: EventData = {
   tipo: "xv",
   plan: "premium",

@@ -28,21 +28,22 @@ const camila: EventData = {
     music: "/music/mi-princesita.mp3",
   },
   location: {
-    mapUrl: "",
-    church: "Capilla del Rosario",
-    reception: "Salón Cielo de Cristal · Morelia",
+    mapUrl:
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4503.147319954574!2d-100.67044735819925!3d18.36185766010446!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x84332daac2bfd091%3A0x3e6aa83b763e2e73!2sDi%C3%B3cesis%20de%20Ciudad%20Altamirano!5e0!3m2!1ses-419!2smx!4v1789490549262!5m2!1ses-419!2smx",
+    church: "Diócesis de Ciudad Altamirano",
+    reception: "Quinta Andrea - Ciudad Altamirano",
   },
   contact: {
     phone: "5223123232",
   },
   family: {
     parents: {
-      mother: "Mtra. Maria Mercedes Juarez",
-      father: "Doc. Adrian Velvet Mendoza",
+      mother: "Mtra. María Mercedes Juárez",
+      father: "Dr. Adrian Hilario Mendoza",
     },
     godparents: {
       man: "Lic. Juan Aurelio Pérez",
-      woman: "Mtra. Antonia Lucide Rena",
+      woman: "Mtra. Antonia Reyes Morales",
     },
   },
   design: {

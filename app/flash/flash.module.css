@@ -149,3 +149,4 @@
   .ticket .footer::after { display: none; }
   .pop .portrait { max-height: none; }
 }
+.preview { position: relative; }

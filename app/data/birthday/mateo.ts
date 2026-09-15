@@ -3,7 +3,7 @@ import type { EventData } from "@/app/types/EventData";
 // Datos de muestra. Agregar el contacto y la ubicación reales antes de compartir.
 const mateo: EventData = {
   tipo: "cumple",
-  plan: "basic",
+  plan: "premium",
   seo: {
     title: "Mateo cumple 5 · Expedición jurásica",
     description:
@@ -13,7 +13,7 @@ const mateo: EventData = {
   event: {
     name: "Mateo",
     age: 5,
-    date: "14 Noviembre 2026",
+    date: "14 Diciembre 2026",
     startsAt: "2026-11-14T16:00:00-06:00",
     partyHour: "4:00 PM",
     phrase:
@@ -48,8 +48,8 @@ const mateo: EventData = {
     gallery: [],
   },
   location: {
-    reception: "Quinta La Reserva",
-    place: "Calle del Bosque 25, Coyoacán, Ciudad de México",
+    reception: "Balneario Barysal",
+    place: "La Estacion, 40662 Cdad. Altamirano, Gro.",
   },
   contact: { phone: "" },
   family: { parents: { mother: "Lucía", father: "Andrés" } },

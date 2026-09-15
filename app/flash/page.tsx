@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import InvitationCardAction from "@/app/components/InvitationCardAction";
+import FlashPriceBadge from "@/app/components/FlashPriceBadge";
 import { flashEvents } from "./data";
 import styles from "./flash.module.css";
 
@@ -37,6 +38,7 @@ export default function FlashGallery() {
                 <Image src={event.photo} alt={event.name} fill sizes="180px" />
                 <InvitationCardAction />
               </div>
+              <FlashPriceBadge />
               <span>{event.designLabel ?? event.title}</span>
               <strong>{event.name.split(" ")[0]}</strong>
             </Link>

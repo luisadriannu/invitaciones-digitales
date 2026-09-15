@@ -60,7 +60,7 @@ export default function XvRoseGarden({ data }: { data: EventData }) {
         </div>
         <div className={styles.heading}>
           <p className={styles.eyebrow}>Mis quince años</p>
-          <h1>{data.event.name}</h1>
+          <h1>{data.event.name.split(" ")[0]}</h1>
           <p className={styles.script}>Un sueño en rosa</p>
         </div>
         <div className={styles.portrait}>

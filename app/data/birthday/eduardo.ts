@@ -4,13 +4,13 @@ const mateo: EventData = {
   tipo: "cumple",
   plan: "premium",
   seo: {
-    title: "🦖 Cumpleaños de Mateo Torres",
+    title: "🦖 Cumpleaños de Eduardo Torres",
     description:
       "¡Prepárate para la aventura! Te invito a celebrar mi cumpleaños con temática de dinosaurios tipo Jurassic Park.",
     image: "/pictures/birthday/mateo/mateo-1.jpg",
   },
   event: {
-    name: "Mateo Torres",
+    name: "Eduardo Torres",
     date: "22 Noviembre 2026",
     ceremonyHour: "5:00 PM",
     partyHour: "5:00 PM",
@@ -56,8 +56,8 @@ const mateo: EventData = {
   },
   location: {
     mapUrl: "",
-    reception: "Salón Event Family · Cabo San Lucas",
-    place: "Cabo San Lucas",
+    reception: "Salón Quinta Karen",
+    place: "Col del Rastro, 40665 Cdad. Altamirano, Gro.",
   },
   contact: {
     phone: "522206283499",

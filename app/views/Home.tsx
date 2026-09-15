@@ -10,6 +10,7 @@ import { flashEvents } from "@/app/flash/data";
 import flashStyles from "@/app/flash/flash.module.css";
 import InvitationCardAction from "@/app/components/InvitationCardAction";
 import InvitationPlanBanner from "@/app/components/InvitationPlanBanner";
+import FlashPriceBadge from "@/app/components/FlashPriceBadge";
 import type { InvitationPlan } from "@/app/data/plans";
 
 const eventCategories = [
@@ -136,7 +137,7 @@ Quiero más información acerca de las invitaciones.`;
       title: "Cumpleaños Dinosaurios",
       category: "Cumpleaños",
       image: "/pictures/birthday/vicente/Jurassic_Park.svg",
-      href: "/cumple/mateo-torres",
+      href: "/cumple/eduardo",
     },
   ];
 
@@ -398,7 +399,7 @@ Quiero más información acerca de las invitaciones.`;
         </section>
 
         {showFlash && (
-          <section aria-labelledby="flash-heading" className="mb-24 mt-6">
+          <section aria-labelledby="flash-heading" className="mb-14 mt-6">
             <div className="text-center mb-10">
               <div className="w-20 h-px bg-[#D4AF37]/40 mx-auto mb-6" />
               <h2
@@ -435,6 +436,7 @@ Quiero más información acerca de las invitaciones.`;
                   </div>
                   <span>{event.designLabel ?? event.title}</span>
                   <strong>{event.name.split(" ")[0]}</strong>
+                  <FlashPriceBadge />
                 </Link>
               ))}
             </nav>
@@ -507,11 +509,17 @@ Quiero más información acerca de las invitaciones.`;
               hover:text-white
               transition-all
               duration-300
+              mb-4
             "
           >
             <MessageCircle size={20} />
             Cotizar por WhatsApp
           </motion.a>
+
+          <p className="text-xs">
+            Para mayor privacidad tu invitación nunca aparecera en esta sección,
+            solo tú y tus invitados pueden acceder a ella.
+          </p>
         </motion.section>
       </div>
     </main>

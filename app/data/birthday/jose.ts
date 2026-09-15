@@ -10,7 +10,7 @@ const jose: EventData = {
   },
   event: {
     name: "José Juarez Rodriguez",
-    date: "20 Septiembre 2026",
+    date: "20 Diciembre 2026",
     // ceremonyHour: "11:00 AM",
     partyHour: "2:30 PM",
     dressCode: "Casual",

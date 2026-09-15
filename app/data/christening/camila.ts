@@ -30,8 +30,8 @@ const camila: EventData = {
   },
   location: {
     mapUrl: "",
-    church: "Parroquia de los Ángeles",
-    reception: "Jardín Las Camelias · Puebla",
+    church: "Iglesia De La Costita",
+    reception: "Quinta Karen",
   },
   contact: {
     phone: "5223123232",
