@@ -110,7 +110,7 @@ export default function WeddingLight({ data }: Props) {
 
   return (
     <>
-      {data.media.music && <MusicButton src={data.media.music} />}
+      {data.media.music && <MusicButton src={data.media.music} color="#B85C7A" backgroundColor="#FDF9F4" />}
 
       <main
         style={{ fontFamily: "'Libre Baskerville', Georgia, serif" }}

@@ -60,7 +60,7 @@ export default function QuinceaneraInvitation({ data }: Props) {
 
   return (
     <>
-      {data.media.music && <MusicButton src={data.media.music} />}
+      {data.media.music && <MusicButton src={data.media.music} color="#93664a" backgroundColor="#F8F4EC" />}
 
       <main
         className="relative min-h-screen overflow-hidden bg-[#F8F4EC] text-[#5C4A4A]"

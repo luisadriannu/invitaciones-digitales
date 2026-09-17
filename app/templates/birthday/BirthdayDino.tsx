@@ -182,7 +182,7 @@ export default function BirthdayDino({ data }: Props) {
 
   return (
     <>
-      {data.media.music && <MusicButton src={data.media.music} />}
+      {data.media.music && <MusicButton src={data.media.music} color={C.amber} backgroundColor={C.canopy} />}
 
       <main
         className="relative min-h-screen"

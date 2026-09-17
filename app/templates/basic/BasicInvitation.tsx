@@ -39,7 +39,7 @@ export default function BasicInvitation({ data }: { data: EventData }) {
       "--ink": data.design?.colors?.primary || "#826534",
       "--paper": data.design?.colors?.background || "#faf5e9",
     } as CSSProperties}>
-      {data.media.music && <MusicButton src={data.media.music} />}
+      {data.media.music && <MusicButton src={data.media.music} color={data.design?.colors?.primary} backgroundColor={data.design?.colors?.background} />}
       <header className={styles.hero}>
         <div className={styles.cover}>
           <Image src={data.media.coverImage} alt={`Retrato de ${data.event.name}`} fill preload sizes="(max-width: 760px) 100vw, 760px" className={styles.coverImage} />

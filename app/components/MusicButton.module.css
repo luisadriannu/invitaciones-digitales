@@ -1,0 +1,27 @@
+.button {
+  position: fixed;
+  right: max(20px, env(safe-area-inset-right));
+  bottom: max(20px, env(safe-area-inset-bottom));
+  z-index: 60;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border-radius: 50%;
+  color: var(--music-color);
+  background: var(--music-background);
+  border: 1px solid color-mix(in srgb, var(--music-color) 28%, transparent);
+  box-shadow: 0 3px 14px color-mix(in srgb, var(--music-color) 12%, transparent);
+  cursor: pointer;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.button:hover { transform: translateY(-2px); }
+.button:active { transform: scale(.96); }
+.button:focus-visible { outline: 2px solid var(--music-color); outline-offset: 4px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .button { transition: none; }
+  .button:hover, .button:active { transform: none; }
+}

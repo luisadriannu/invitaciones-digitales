@@ -104,7 +104,7 @@ export default function WeddingBase({ data }: Props) {
 
   return (
     <>
-      {data.media.music && <MusicButton src={data.media.music} />}
+      {data.media.music && <MusicButton src={data.media.music} color="#C8956A" backgroundColor="#1A1210" />}
 
       <main
         style={{ fontFamily: "'Libre Baskerville', Georgia, serif" }}

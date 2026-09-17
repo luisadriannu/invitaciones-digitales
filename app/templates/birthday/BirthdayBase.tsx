@@ -83,7 +83,7 @@ export default function BirthdayBase({ data }: Props) {
 
   return (
     <>
-      {data.media.music && <MusicButton src={data.media.music} />}
+      {data.media.music && <MusicButton src={data.media.music} color={THEME.accent1} backgroundColor="#0D0D1A" />}
 
       <main id="bday-main">
         {/* ── Confetti ── */}

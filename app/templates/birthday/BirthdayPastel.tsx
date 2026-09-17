@@ -110,7 +110,7 @@ export default function BirthdayPastel({ data }: Props) {
 
   return (
     <>
-      {data.media.music && <MusicButton src={data.media.music} />}
+      {data.media.music && <MusicButton src={data.media.music} color="#ad514e" backgroundColor={THEME.bg} />}
 
       <main id="bp-main">
         {/* ── Confetti pastel ── */}

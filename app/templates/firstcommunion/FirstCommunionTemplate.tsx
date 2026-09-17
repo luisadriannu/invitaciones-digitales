@@ -54,7 +54,7 @@ export default function FirstCommunionTemplate({ data }: Props) {
 
   return (
     <>
-      {data.media.music && <MusicButton src={data.media.music} />}
+      {data.media.music && <MusicButton src={data.media.music} color="#68765B" backgroundColor="#FAF9F6" />}
 
       <main className={styles.invitation}>
         {/* --- HERO SECTION (Efecto Inmersivo) --- */}

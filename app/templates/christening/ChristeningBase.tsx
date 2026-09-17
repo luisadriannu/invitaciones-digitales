@@ -49,7 +49,7 @@ export default function ChristeningBase({ data }: Props) {
 
   return (
     <>
-      {data.media.music && <MusicButton src={data.media.music} />}
+      {data.media.music && <MusicButton src={data.media.music} color="#8a6a3c" backgroundColor="#FDFAF4" />}
 
       <main
         style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}

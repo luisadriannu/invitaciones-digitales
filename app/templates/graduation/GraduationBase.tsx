@@ -125,7 +125,7 @@ export default function GraduationBase({ data }: Props) {
 
   return (
     <>
-      {data.media.music && <MusicButton src={data.media.music} />}
+      {data.media.music && <MusicButton src={data.media.music} color={COLORS.primary} backgroundColor={COLORS.bgMain} />}
 
       <main
         style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}

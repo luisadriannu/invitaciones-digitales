@@ -52,7 +52,7 @@ export default function XvRoseGarden({ data }: { data: EventData }) {
           />
         ))}
       </div>
-      {data.media.music && <MusicButton src={data.media.music} />}
+      {data.media.music && <MusicButton src={data.media.music} color="#98576c" backgroundColor="#fffcf8" />}
       <header className={styles.hero}>
         <div className={styles.topline}>
           <span>Una nueva etapa florece</span>

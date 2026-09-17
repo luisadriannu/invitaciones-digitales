@@ -1,13 +1,17 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
+import { Music2, Pause } from "lucide-react";
+import styles from "./MusicButton.module.css";
 
 interface Props {
   src: string;
   autoPlay?: boolean;
+  color?: string;
+  backgroundColor?: string;
 }
 
-export default function MusicButton({ src, autoPlay }: Props) {
+export default function MusicButton({ src, autoPlay, color = "#826534", backgroundColor = "#faf5e9" }: Props) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const buttonRef = useRef<HTMLButtonElement | null>(null);
   const [playing, setPlaying] = useState(false);
@@ -72,47 +76,19 @@ export default function MusicButton({ src, autoPlay }: Props) {
   return (
     <button
       ref={buttonRef}
+      type="button"
       onClick={toggleMusic}
-      className="
-        fixed bottom-6 right-6 z-60
-        w-10 h-10 rounded-full
-        flex items-center justify-center
-        bg-black/70 backdrop-blur
-        border border-white/20
-        shadow-lg
-        hover:scale-110
-        transition
-        cursor-pointer
-      "
-      aria-label="Control de música"
+      className={styles.button}
+      style={{
+        "--music-color": color,
+        "--music-background": backgroundColor,
+      } as CSSProperties}
+      aria-label={playing ? "Pausar música" : "Reproducir música"}
+      title={playing ? "Pausar música" : "Reproducir música"}
     >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="26"
-        height="26"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="white"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        <path d="M9 18V5l12-2v13" />
-        <circle cx="6" cy="18" r="3" />
-        <circle cx="18" cy="16" r="3" />
-      </svg>
-
-      {!playing && (
-        <span
-          className="
-            absolute
-            w-10
-            h-0.5
-            bg-red-500
-            rotate-45
-          "
-        />
-      )}
+      {playing
+        ? <Pause size={18} strokeWidth={1.5} aria-hidden="true" />
+        : <Music2 size={19} strokeWidth={1.5} aria-hidden="true" />}
     </button>
   );
 }
