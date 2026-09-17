@@ -7,7 +7,7 @@ const julia: EventData = {
     title: "Los XV de Julia · Jardín de rosas",
     description:
       "Una nueva etapa florece. Acompáñame a celebrar mis quince años.",
-    image: "/pictures/xv/julia/xv-julia.jpg",
+    image: "/pictures/xv/julia/seo-julia.jpg",
   },
   event: {
     name: "Julia Hernández Pérez",

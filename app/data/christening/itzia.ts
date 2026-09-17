@@ -7,7 +7,7 @@ const itzia: EventData = {
     title: "🎀 Bautizo y Presentación de Itzia Sarai",
     description:
       "Mis papás y yo estaremos muy felices de compartir contigo el bautizo y presentación de nuestra pequeña.",
-    image: "/pictures/christening/itzia/itzia-10.jpg",
+    image: "/pictures/christening/itzia/seo-itzia.jpg",
   },
   event: {
     name: "Itzia Sarai Palacios Mondragon",
