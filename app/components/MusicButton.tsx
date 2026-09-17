@@ -9,6 +9,7 @@ interface Props {
 
 export default function MusicButton({ src, autoPlay }: Props) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const buttonRef = useRef<HTMLButtonElement | null>(null);
   const [playing, setPlaying] = useState(false);
 
   useEffect(() => {
@@ -20,11 +21,32 @@ export default function MusicButton({ src, autoPlay }: Props) {
 
     audioRef.current = audio;
 
+    const removeInteractionListeners = () => {
+      document.removeEventListener("click", startOnInteraction);
+      document.removeEventListener("keydown", startOnInteraction);
+    };
+    const startOnInteraction = (event: Event) => {
+      if (event.target instanceof Node && buttonRef.current?.contains(event.target)) return;
+      void audio.play().catch(() => {});
+    };
+    const onPlay = () => {
+      setPlaying(true);
+      removeInteractionListeners();
+    };
+    const onPause = () => setPlaying(false);
+    audio.addEventListener("play", onPlay);
+    audio.addEventListener("pause", onPause);
+
     if (autoPlay) {
-      audio.play().then(() => setPlaying(true)).catch(() => {});
+      document.addEventListener("click", startOnInteraction);
+      document.addEventListener("keydown", startOnInteraction);
+      void audio.play().catch(() => {});
     }
 
     return () => {
+      removeInteractionListeners();
+      audio.removeEventListener("play", onPlay);
+      audio.removeEventListener("pause", onPause);
       audio.pause();
       audio.removeAttribute("src");
       audio.load();
@@ -36,13 +58,12 @@ export default function MusicButton({ src, autoPlay }: Props) {
     if (!audioRef.current) return;
 
     try {
-      if (playing) {
+      if (!audioRef.current.paused) {
         audioRef.current.pause();
       } else {
         await audioRef.current.play();
       }
 
-      setPlaying((prev) => !prev);
     } catch (error) {
       console.error("Error reproduciendo audio:", error);
     }
@@ -50,6 +71,7 @@ export default function MusicButton({ src, autoPlay }: Props) {
 
   return (
     <button
+      ref={buttonRef}
       onClick={toggleMusic}
       className="
         fixed bottom-6 right-6 z-60

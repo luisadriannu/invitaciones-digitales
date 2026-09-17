@@ -10,6 +10,7 @@ export type EventType =
   | "primeracomunion";
 
 export type EventVariant =
+  | "basic"
   | "base"
   | "elegant"
   | "modern"

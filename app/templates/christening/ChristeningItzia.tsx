@@ -266,7 +266,7 @@ export default function ChristeningItzia({ data }: Props) {
           />
         )}
       </AnimatePresence>
-      {data.media.music && <MusicButton src={data.media.music} />}
+      {data.media.music && <MusicButton src={data.media.music} autoPlay />}
 
       <motion.main
         inert={showIntro}

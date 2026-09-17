@@ -1,6 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
+const BasicInvitation = dynamic(() => import("@/app/templates/basic/BasicInvitation"));
 const BirthdayBase = dynamic(() => import("@/app/templates/birthday/BirthdayBase"));
 const BirthdayDino = dynamic(() => import("@/app/templates/birthday/BirthdayDino"));
 const BirthdayPastel = dynamic(() => import("@/app/templates/birthday/BirthdayPastel"));
@@ -23,6 +24,7 @@ const FirstCommunionTemplate = dynamic(() => import("@/app/templates/firstcommun
 
 export const templates = {
   cumple: {
+    basic: BasicInvitation,
     base: BirthdayBase,
     dinosaur: BirthdayDino,
     pastel: BirthdayPastel,
@@ -40,9 +42,11 @@ export const templates = {
   //   base: BabyShowerBase,
   // },
   primeracomunion: {
+    basic: BasicInvitation,
     base: FirstCommunionTemplate,
   },
   graduacion: {
+    basic: BasicInvitation,
     flash: GraduationFlash,
     base: GraduationBase,
   },
@@ -51,6 +55,7 @@ export const templates = {
     roseGarden: XvRoseGarden,
   },
   bautizo: {
+    basic: BasicInvitation,
     flash: ChristeningFlash,
     base: ChristeningBase,
     itzia: ChristeningItzia,

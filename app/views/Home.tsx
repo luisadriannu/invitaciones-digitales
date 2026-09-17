@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { basicSamples } from "@/app/data/basic";
 import { ArrowUpRight, MessageCircle } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -61,6 +62,13 @@ Quiero más información acerca de las invitaciones.`;
   const encodedMessage = encodeURIComponent(message);
 
   const samples = [
+    ...basicSamples.map((sample) => ({
+      category: sample.category,
+      title: sample.title,
+      subtitle: "Básico",
+      image: sample.image,
+      href: `/${sample.tipo}/${sample.slug}`,
+    })),
     {
       category: "XV Años",
       title: "XV de Julia · Jardín de rosas",

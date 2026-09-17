@@ -1,0 +1,67 @@
+.page { max-width: 760px; margin: auto; overflow: clip; background: var(--paper); color: var(--ink); font-family: "Jost", Arial, sans-serif; text-align: center; }
+.hero { min-height: 100svh; position: relative; }
+.cover { position: relative; height: 64svh; min-height: 360px; }
+.cover::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 55%, var(--paper) 100%); }
+.coverImage { object-fit: cover; object-position: center 35%; }
+.heroContent { position: relative; margin-top: -36px; padding: 0 24px 48px; }
+.eyebrow { font-size: 11px; font-weight: 500; letter-spacing: .22em; text-transform: uppercase; line-height: 1.9; }
+.emblem { display: grid; place-items: center; width: 64px; height: 64px; margin: 20px auto; border: 1px solid color-mix(in srgb, var(--ink) 25%, transparent); border-radius: 50%; }
+.label { font-family: Georgia, serif; font-size: 24px; font-style: italic; }
+.hero h1 { font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(64px, 15vw, 108px); font-weight: 400; line-height: 1.1; margin: 8px 0 12px; overflow-wrap: anywhere; }
+.age { display: inline-block; background: #ffffff90; border-radius: 30px; padding: 8px 22px; font-size: 17px; margin-bottom: 18px; }
+.heroDate { letter-spacing: .15em; font-size: 13px; text-transform: uppercase; }
+.scroll { display: flex; align-items: center; justify-content: center; gap: 10px; margin: 32px auto 0; font-size: 10px; text-transform: uppercase; letter-spacing: .16em; }
+.section { padding: 72px 26px; scroll-margin-top: 20px; }
+.section h2 { font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(34px, 8vw, 48px); font-weight: 400; line-height: 1.2; margin: 14px 0 28px; }
+.section h2 em { font-weight: 400; }
+.phrase { max-width: 440px; margin: 20px auto 28px; font-size: 16px; line-height: 1.9; }
+.flourish { display: block; font-size: 26px; margin-bottom: 28px; }
+.welcome { background: #ffffff80; }
+.countdown { background: color-mix(in srgb, var(--ink) 9%, var(--paper)); border-radius: 50% 50% 0 0 / 28px 28px 0 0; }
+.smallNote { font-size: 12px; letter-spacing: .06em; margin-top: 24px; }
+.family { background: #ffffff60; }
+.family > svg, .rsvp > svg { margin: 0 auto 24px; }
+.familyGroup { margin-top: 36px; }
+.familyGroup h3 { font-size: 11px; text-transform: uppercase; letter-spacing: .15em; }
+.familyGroup p { font-family: Georgia, serif; font-size: 24px; line-height: 1.5; margin-top: 18px; }
+.familyGroup span { display: block; font-style: italic; font-size: 22px; opacity: .6; margin: 8px; }
+.date { display: flex; align-items: center; justify-content: center; gap: 12px; font-size: 18px; margin-bottom: 22px; }
+.school { margin: 0 0 26px; }
+.venues { display: grid; gap: 20px; max-width: 500px; margin: 30px auto; }
+.venue { border: 1px solid color-mix(in srgb, var(--ink) 20%, transparent); border-radius: 22px; padding: 32px 20px; background: #ffffff80; }
+.venue > svg { margin: 0 auto 16px; }
+.venue h3 { font-family: Georgia, serif; font-size: 25px; margin-bottom: 15px; }
+.venue p { line-height: 1.7; }
+.hour { display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 15px; font-size: 14px; }
+.button, .outlineButton { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 17px 26px; border: 1px solid var(--ink); border-radius: 40px; font-size: 12px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; cursor: pointer; text-decoration: none; }
+.button { background: var(--ink); color: white; }
+.outlineButton { color: var(--ink); }
+.button:hover, .outlineButton:hover { filter: brightness(.92); }
+.button:focus-visible, .outlineButton:focus-visible, .scroll:focus-visible, .close:focus-visible { outline: 3px solid var(--ink); outline-offset: 5px; }
+.dressCode { border-top: 1px solid color-mix(in srgb, var(--ink) 20%, transparent); max-width: 440px; margin: 40px auto 0; padding-top: 30px; }
+.dressCode > p:nth-child(2) { font-family: Georgia, serif; font-style: italic; font-size: 28px; margin: 12px 0; }
+.dressCode span { font-size: 13px; line-height: 1.7; }
+.gallery { background: #ffffff85; }
+.gallery > div { max-width: 510px; margin-inline: auto; }
+.rsvp { background: color-mix(in srgb, var(--ink) 8%, var(--paper)); }
+.footer { padding: 40px 24px; font-family: Georgia, serif; font-style: italic; line-height: 1.8; font-size: 18px; }
+.footer span { display: block; margin-bottom: 14px; }
+.footer strong { display: block; font-weight: 400; font-size: 30px; margin-top: 12px; }
+.dialog { margin: auto; width: min(420px, calc(100% - 32px)); max-height: calc(100svh - 48px); overflow-y: auto; background: var(--paper); color: var(--ink); border: 1px solid var(--ink); border-radius: 24px; padding: 0; }
+.dialog::backdrop { background: #17110bd0; backdrop-filter: blur(5px); }
+.dialogContent { position: relative; padding: 48px 26px 32px; }
+.dialogContent > svg { margin: 0 auto 20px; }
+.dialog h2 { font-family: Georgia, serif; font-size: 27px; line-height: 1.3; }
+.dialog p { font-size: 15px; line-height: 1.8; margin: 20px 0 26px; }
+.close { position: absolute; top: 12px; right: 12px; padding: 8px; cursor: pointer; }
+.cumple .emblem { background: #ffd4b8; transform: rotate(-8deg); border: none; }
+.cumple .welcome { background-image: radial-gradient(circle at 10% 20%, #f3b79345 0 6%, transparent 6.3%), radial-gradient(circle at 95% 80%, #f3b79345 0 9%, transparent 9.3%); }
+.bautizo .cover { margin: 24px 24px 0; border-radius: 220px 220px 0 0; overflow: hidden; }
+.bautizo .heroContent { margin-top: -15px; }
+.graduacion .emblem { border-radius: 0; border-style: double; border-width: 3px; }
+.graduacion .label { text-transform: uppercase; letter-spacing: .16em; font-style: normal; font-size: 15px; }
+.graduacion .countdown { background: var(--ink); color: var(--paper); border-radius: 0; }
+.primeracomunion .cover { margin: 18px 18px 0; border: 6px double #bca879; border-radius: 180px 180px 0 0; overflow: hidden; }
+.primeracomunion .family { border-top: 1px solid #bca87955; border-bottom: 1px solid #bca87955; }
+@media (max-width: 360px) { .section { padding: 58px 16px; } .eyebrow { font-size: 10px; letter-spacing: .12em; } .heroContent { padding-inline: 16px; } }
+@media (prefers-reduced-motion: reduce) { .page *, .page *::before, .page *::after { animation: none !important; scroll-behavior: auto !important; } }

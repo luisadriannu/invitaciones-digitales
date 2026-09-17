@@ -13,7 +13,7 @@ const itzia: EventData = {
     name: "Itzia Sarai Palacios Mondragon",
     date: "10 Octubre 2026",
     ceremonyHour: "9:00 AM",
-    partyHour: "6:00 PM",
+    partyHour: "5:00 PM",
     dressCode: "Sin código de vestimenta",
     dressCodeNote: "Sin código de vestimenta",
     specialMusic: "Mi Cenicienta — Voz de Mando",
@@ -30,7 +30,7 @@ const itzia: EventData = {
       "/pictures/christening/itzia/itzia-9.jpg",
       "/pictures/christening/itzia/itzia-10.jpg",
     ],
-    // music: "/music/mi-cenicienta.mp3",
+    music: "/music/eres-mi-cenicienta-voz-de-mando.mp3",
   },
   location: {
     mapUrl:
