@@ -19,11 +19,11 @@ export async function generateMetadata({
     slug: string;
   }>;
 }): Promise<Metadata> {
-  const { slug } = await params;
+  const { tipo, slug } = await params;
 
   const event = events[slug];
 
-  if (!event) {
+  if (!event || event.tipo !== tipo) {
     return {
       title: "Invitación no encontrada",
     };
@@ -32,6 +32,7 @@ export async function generateMetadata({
   const siteUrl =
     process.env.NEXT_PUBLIC_SITE_URL ??
     "https://invitacionesdigitales-two.vercel.app";
+  const imageUrl = new URL(event.seo.image, siteUrl).toString();
 
   return {
     title: event.seo?.title,
@@ -41,9 +42,12 @@ export async function generateMetadata({
       description: event.seo?.description,
       images: [
         {
-          url: `${siteUrl}${event.seo?.image}`,
-          width: 1200,
-          height: 630,
+          url: imageUrl,
+          alt: event.seo.title,
+          // No declarar dimensiones inventadas para fotos de otros formatos.
+          ...(event.seo.imageWidth && event.seo.imageHeight
+            ? { width: event.seo.imageWidth, height: event.seo.imageHeight }
+            : {}),
         },
       ],
     },
@@ -52,7 +56,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       title: event.seo?.title,
       description: event.seo?.description,
-      images: [`${siteUrl}${event.seo?.image}`],
+      images: [imageUrl],
     },
   };
 }

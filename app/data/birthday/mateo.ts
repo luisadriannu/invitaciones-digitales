@@ -8,7 +8,9 @@ const mateo: EventData = {
     title: "Mateo cumple 5 · Expedición jurásica",
     description:
       "¡Un cumpleaños de tamaño jurásico! Ven a jugar, explorar y celebrar los 5 años de Mateo.",
-    image: "/pictures/birthday/mateo/jurassic-expedition.png",
+    image: "/pictures/birthday/mateo/seo-mateo-v2.jpg",
+    imageWidth: 960,
+    imageHeight: 1200,
   },
   event: {
     name: "Mateo",
