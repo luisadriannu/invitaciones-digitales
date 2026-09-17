@@ -21,7 +21,6 @@ const eventCategories = [
   "Bautizo",
   "Primera Comunión",
   "Graduación",
-  "Flash",
 ] as const;
 
 const fadeUp: Variants = {
@@ -56,6 +55,9 @@ export default function Home({
   samplePlans: Record<string, InvitationPlan>;
 }) {
   const [category, setCategory] = useState("Todas");
+  const [plan, setPlan] = useState<"todos" | "basic" | "premium" | "flash">(
+    "todos",
+  );
   const message = `Hola 👋
 Quiero más información acerca de las invitaciones.`;
 
@@ -150,9 +152,13 @@ Quiero más información acerca de las invitaciones.`;
   ];
 
   const filteredSamples = samples.filter(
-    (sample) => category === "Todas" || sample.category === category,
+    (sample) =>
+      (category === "Todas" || sample.category === category) &&
+      (plan === "todos" || samplePlans[sample.href] === plan),
   );
-  const showFlash = category === "Todas" || category === "Flash";
+  const showFlash =
+    (category === "Todas" || category === "Flash") &&
+    (plan === "todos" || plan === "flash");
   const resultCount =
     filteredSamples.length + (showFlash ? Object.keys(flashEvents).length : 0);
 
@@ -314,6 +320,24 @@ Quiero más información acerca de las invitaciones.`;
                   {item}
                 </option>
               ))}
+            </select>
+
+            <label
+              htmlFor="event-plan"
+              className="mb-2 mt-6 block text-sm font-medium text-[#6A635C]"
+            >
+              Selecciona el tipo de plan
+            </label>
+            <select
+              id="event-plan"
+              value={plan}
+              onChange={(event) => setPlan(event.target.value as typeof plan)}
+              className="w-full rounded-xl border border-[#D4AF37]/40 bg-white px-4 py-3 text-[#2B2927] shadow-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#B8860B]"
+            >
+              <option value="todos">Todos los planes</option>
+              <option value="premium">Premium</option>
+              <option value="basic">Básico</option>
+              <option value="flash">Flash</option>
             </select>
             <p
               role="status"
