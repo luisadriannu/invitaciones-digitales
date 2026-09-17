@@ -7,7 +7,7 @@ const itzia: EventData = {
     title: "🎀 Bautizo y Presentación de Itzia Sarai",
     description:
       "Mis papás y yo estaremos muy felices de compartir contigo el bautizo y presentación de nuestra pequeña.",
-    image: "/pictures/christening/itzia/itzia-1.jpeg",
+    image: "/pictures/christening/itzia/itzia-10.jpg",
   },
   event: {
     name: "Itzia Sarai Palacios Mondragon",
@@ -19,15 +19,22 @@ const itzia: EventData = {
     specialMusic: "Mi Cenicienta — Voz de Mando",
   },
   media: {
-    coverImage: "/pictures/christening/itzia/itzia-4.jpg",
+    coverImage: "/pictures/christening/itzia/itzia-10.jpg",
     gallery: [
-      "/pictures/christening/itzia/itzia-1.jpeg",
-      "/pictures/christening/itzia/itzia-2.jpeg",
+      "/pictures/christening/itzia/itzia-3.jpg",
+      "/pictures/christening/itzia/itzia-4.jpg",
+      "/pictures/christening/itzia/itzia-5.jpg",
+      "/pictures/christening/itzia/itzia-6.jpg",
+      "/pictures/christening/itzia/itzia-7.jpg",
+      "/pictures/christening/itzia/itzia-8.jpg",
+      "/pictures/christening/itzia/itzia-9.jpg",
+      "/pictures/christening/itzia/itzia-10.jpg",
     ],
     // music: "/music/mi-cenicienta.mp3",
   },
   location: {
-    mapUrl: "",
+    mapUrl:
+      "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7573.152490781959!2d-100.6706350955756!3d18.366606863440325!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x84332c4dd4dbc2f1%3A0xa5a50a368e9b3e74!2s%22QUINTA%20KAREN%22!5e0!3m2!1ses-419!2smx!4v1789578358355!5m2!1ses-419!2smx",
     church: "Catedral",
     reception: "Salón Kinta Karen",
   },

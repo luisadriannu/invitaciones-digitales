@@ -2,15 +2,19 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { motion, AnimatePresence, type MotionProps } from "motion/react";
+import {
+  motion,
+  AnimatePresence,
+  useReducedMotion,
+  type MotionProps,
+} from "motion/react";
 import { Cormorant_Garamond, Jost } from "next/font/google";
 import MusicButton from "@/app/components/MusicButton";
-import EnvelopeIntro from "@/app/components/EnvelopeIntro";
 import Gallery from "@/app/components/Gallery";
 import LocationMaps from "@/app/components/LocationMaps";
 import type { EventData } from "@/app/types/EventData";
 import { useCountdown } from "@/app/hooks/useCountdown";
-import { MessageCircleHeart, Music, MapPin, Sparkles } from "lucide-react";
+import { MessageCircleHeart, MapPin } from "lucide-react";
 
 interface Props {
   data: EventData;
@@ -30,28 +34,17 @@ const utility = Jost({
 });
 
 const C = {
-  primary: "#5a3a48",
-  secondary: "#8a6b76",
-  accent: "#d98cae",
-  muted: "#a3818c",
-  label: "#c98fa8",
-  decorative: "#e0a8bf",
-  blush: "rgba(217,140,174,",
-  rose: "rgba(201,143,168,",
-  ring: "rgba(224,168,191,",
-  shadow: "rgba(150,90,115,",
+  primary: "#633a4d",
+  secondary: "#795664",
+  accent: "#df6094",
+  muted: "#916d79",
+  label: "#ad5276",
+  decorative: "#b99a58",
+  rose: "rgba(183,151,86,",
 } as const;
 
 const FONT_DISPLAY = "var(--font-display)";
 const FONT_UTILITY = "var(--font-utility)";
-
-const MOTES = Array.from({ length: 12 }, (_, i) => ({
-  id: i,
-  x: 8 + ((i * 11) % 84),
-  delay: (i * 0.9) % 7,
-  duration: 11 + (i % 3) * 2,
-  size: 3 + (i % 3),
-}));
 
 const MESES: Record<string, number> = {
   Enero: 0,
@@ -74,31 +67,6 @@ const fadeInUp: MotionProps = {
   viewport: { once: true },
   transition: { duration: 0.9 },
 };
-
-function FadeIn({
-  children,
-  className,
-  style,
-  delay = 0,
-}: {
-  children: React.ReactNode;
-  className?: string;
-  style?: React.CSSProperties;
-  delay?: number;
-}) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 16 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.7, delay }}
-      className={className}
-      style={style}
-    >
-      {children}
-    </motion.div>
-  );
-}
 
 function DoveMark({
   className = "",
@@ -125,58 +93,10 @@ function DoveMark({
   );
 }
 
-function LaurelSprig({
-  className = "",
-  flip = false,
-}: {
-  className?: string;
-  flip?: boolean;
-}) {
-  return (
-    <svg
-      viewBox="0 0 60 22"
-      className={className}
-      style={flip ? { transform: "scaleX(-1)" } : undefined}
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1"
-      strokeLinecap="round"
-    >
-      <path d="M2 11h50" />
-      {[6, 14, 22, 30, 38, 46].map((x, i) => (
-        <path key={i} d={`M${x} 11c3-4 6-5 9-4-1 3-4 5-9 4z`} />
-      ))}
-    </svg>
-  );
-}
-
-function CrossIcon({
-  className = "",
-  style,
-}: {
-  className?: string;
-  style?: React.CSSProperties;
-}) {
-  return (
-    <svg
-      viewBox="0 0 24 32"
-      className={className}
-      style={style}
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.2"
-      strokeLinecap="round"
-    >
-      <path d="M12 4v24" />
-      <path d="M4 12h16" />
-    </svg>
-  );
-}
-
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
     <p
-      className="text-[13px] uppercase mb-10"
+      className="text-[12px] uppercase mb-6"
       style={{
         fontFamily: FONT_UTILITY,
         letterSpacing: "0.32em",
@@ -185,99 +105,6 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
     >
       {children}
     </p>
-  );
-}
-
-function DetailLabel({ children }: { children: React.ReactNode }) {
-  return (
-    <p
-      className="text-[11px] uppercase mb-4"
-      style={{
-        fontFamily: FONT_UTILITY,
-        letterSpacing: "0.28em",
-        color: C.accent,
-      }}
-    >
-      {children}
-    </p>
-  );
-}
-
-function DetailValue({
-  children,
-  mb = false,
-}: {
-  children: React.ReactNode;
-  mb?: boolean;
-}) {
-  return (
-    <p
-      className={`italic font-light ${mb ? "mb-2" : ""}`}
-      style={{
-        fontFamily: FONT_DISPLAY,
-        fontSize: "1.75rem",
-        color: C.primary,
-      }}
-    >
-      {children}
-    </p>
-  );
-}
-
-function OrnamentDivider() {
-  return (
-    <div className="flex items-center justify-center gap-2 my-2">
-      <div className="h-px w-6" style={{ background: `${C.rose}0.3)` }} />
-      <div
-        className="w-1 h-1 rounded-full"
-        style={{ background: `${C.blush}0.5)` }}
-      />
-      <div
-        className="w-1.5 h-1.5 rounded-full"
-        style={{ background: `${C.blush}0.7)` }}
-      />
-      <div
-        className="w-1 h-1 rounded-full"
-        style={{ background: `${C.blush}0.5)` }}
-      />
-      <div className="h-px w-6" style={{ background: `${C.rose}0.3)` }} />
-    </div>
-  );
-}
-
-function LaurelDivider() {
-  return (
-    <motion.div
-      {...fadeInUp}
-      className="flex items-center gap-4 py-2"
-      style={{ color: C.decorative }}
-    >
-      <LaurelSprig className="w-12 h-4" />
-      <DoveMark className="w-6 h-4" />
-      <LaurelSprig className="w-12 h-4" flip />
-    </motion.div>
-  );
-}
-
-function DetailSection({
-  icon,
-  label,
-  children,
-  delay = 0,
-}: {
-  icon: React.ReactNode;
-  label: string;
-  children: React.ReactNode;
-  delay?: number;
-}) {
-  return (
-    <FadeIn delay={delay}>
-      <div className="flex items-center justify-center gap-2 mb-4">
-        {icon}
-        <DetailLabel>{label}</DetailLabel>
-      </div>
-      {children}
-    </FadeIn>
   );
 }
 
@@ -350,11 +177,74 @@ const COUNTDOWN_CORNERS = [
   "bottom-2 left-2 -rotate-90",
 ];
 
+function ItziaOpening({
+  image,
+  onOpen,
+  reduceMotion,
+}: {
+  image: string;
+  onOpen: () => void;
+  reduceMotion: boolean;
+}) {
+  return (
+    <motion.div
+      initial={{ opacity: 1 }}
+      exit={{ opacity: 0, scale: reduceMotion ? 1 : 1.04 }}
+      transition={{
+        duration: reduceMotion ? 0 : 0.6,
+        ease: [0.22, 1, 0.36, 1],
+      }}
+      className={`${display.variable} ${utility.variable} fixed inset-0 z-[100] flex flex-col items-center justify-center gap-5 overflow-hidden px-6 py-8 text-center`}
+      style={{
+        background: "radial-gradient(ellipse at 50% 30%, #fffaf7, #f9dce8)",
+      }}
+    >
+      <p
+        className="text-[11px] uppercase tracking-[0.3em]"
+        style={{ fontFamily: FONT_UTILITY, color: C.label }}
+      >
+        Tienes una invitación
+      </p>
+      <motion.div
+        initial={reduceMotion ? false : { opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7 }}
+        className="relative h-[min(62svh,520px)] w-[min(82vw,350px)] overflow-hidden rounded-t-full rounded-b-[1.75rem] border-[5px] border-[#fffaf7] shadow-[0_18px_50px_rgba(126,69,92,0.2)]"
+      >
+        <Image
+          src={image}
+          alt="Itzia con su vestido rosa"
+          fill
+          priority
+          className="object-cover object-[center_30%]"
+          sizes="(max-width: 640px) 82vw, 350px"
+        />
+        <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-[#482b39]/65 to-transparent" />
+        <p
+          className="absolute inset-x-3 bottom-5 text-4xl italic text-white"
+          style={{ fontFamily: FONT_DISPLAY }}
+        >
+          Itzia Sarai
+        </p>
+      </motion.div>
+      <button
+        type="button"
+        onClick={onOpen}
+        className="min-h-12 rounded-full bg-[#ad5276] px-8 py-3 text-[11px] uppercase tracking-[0.2em] text-white shadow-[0_8px_24px_rgba(173,82,118,0.25)] transition-transform hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#ad5276]"
+        style={{ fontFamily: FONT_UTILITY }}
+      >
+        Toca para abrir la invitación
+      </button>
+    </motion.div>
+  );
+}
+
 export default function ChristeningItzia({ data }: Props) {
+  const reduceMotion = useReducedMotion();
   const [showIntro, setShowIntro] = useState(true);
-  const [revealed, setRevealed] = useState(false);
   const [openModal, setOpenModal] = useState(false);
-  const heroImage = data.media.gallery[0] ?? data.media.coverImage;
+  const heroImage = data.media.gallery[7] ?? data.media.coverImage;
+  const openingImage = data.media.gallery[0] ?? data.media.coverImage;
 
   const whatsappUrl = `https://api.whatsapp.com/send?phone=${data.contact.phone}&text=${encodeURIComponent(
     `Hola, confirmo mi asistencia al bautizo de ${data.event.name}. ¡Gracias por la invitación!`,
@@ -367,146 +257,88 @@ export default function ChristeningItzia({ data }: Props) {
 
   return (
     <>
-      {showIntro && (
-        <EnvelopeIntro
-          onOpen={() => {
-            setShowIntro(false);
-            setRevealed(true);
-          }}
-        />
-      )}
+      <AnimatePresence>
+        {showIntro && (
+          <ItziaOpening
+            image={openingImage}
+            reduceMotion={Boolean(reduceMotion)}
+            onOpen={() => setShowIntro(false)}
+          />
+        )}
+      </AnimatePresence>
       {data.media.music && <MusicButton src={data.media.music} />}
 
       <motion.main
-        initial={{ opacity: 0, y: 40 }}
-        animate={revealed ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
-        transition={{ duration: 0.9, ease: "easeOut" }}
+        inert={showIntro}
         id="chr-itzia"
-        className={`${display.variable} ${utility.variable} relative min-h-screen overflow-hidden`}
+        className={`${display.variable} ${utility.variable} relative ${showIntro ? "h-[100svh]" : "min-h-screen"} overflow-hidden`}
         style={{
           background:
-            "radial-gradient(ellipse at 50% -10%, #fffbfc 0%, #fdf1f5 45%, #f8dfe9 100%)",
+            "radial-gradient(ellipse at 50% -10%, #fffaf7 0%, #fff1f5 48%, #f9dce8 100%)",
         }}
       >
-        {MOTES.map((m) => (
-          <div
-            key={m.id}
-            className="chr-mote"
-            style={{
-              left: `${m.x}%`,
-              width: m.size,
-              height: m.size,
-              animationDelay: `${m.delay}s`,
-              animationDuration: `${m.duration}s`,
-            }}
-          />
-        ))}
         <div
           className="pointer-events-none absolute inset-0 z-0"
-          style={{ boxShadow: "inset 0 0 140px rgba(160,90,115,0.10)" }}
+          style={{ boxShadow: "inset 0 0 140px rgba(183,151,86,0.10)" }}
         />
 
-        <div className="relative z-10 flex flex-col items-center px-6 py-20 gap-16">
-          {/* HERO DECORATION */}
-          <motion.div
-            initial={{ opacity: 0, y: -12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.8 }}
-            className="flex flex-col items-center"
-          >
-            <CrossIcon className="w-6 h-8" style={{ color: "#b86485" }} />
-            <div className="flex items-center gap-3 mt-3">
-              <LaurelSprig className="w-14 h-5 text-[#d98cae]" />
-              <div className="w-2 h-2 rounded-full" style={{ background: "#c98fa8" }} />
-              <LaurelSprig className="w-14 h-5 text-[#d98cae]" flip />
+        {/* La portada ocupa la primera pantalla; el resto sigue al deslizar. */}
+        <section className="relative z-10 min-h-screen min-h-[100svh] w-full overflow-hidden text-white">
+          <Image
+            src={heroImage}
+            alt={data.event.name}
+            fill
+            priority
+            className="object-cover object-[center_38%]"
+            sizes="100vw"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#34202b]/85 via-[#432935]/20 to-transparent" />
+          <div className="absolute inset-4 rounded-[1.5rem] border border-[#f3dbad]/55 pointer-events-none sm:inset-7" />
+          <div className="relative flex min-h-screen min-h-[100svh] flex-col items-center justify-end px-6 pb-[max(2rem,env(safe-area-inset-bottom))] pt-20 text-center">
+            <motion.p
+              initial={reduceMotion ? false : { opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="mb-3 text-[11px] uppercase tracking-[0.3em] text-[#f9e4bc]"
+              style={{ fontFamily: FONT_UTILITY }}
+            >
+              Bautizo y presentación
+            </motion.p>
+            <motion.h1
+              initial={reduceMotion ? false : { opacity: 0, y: 22 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{
+                duration: 0.8,
+                delay: 0.2,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+              className="max-w-xl text-[clamp(3.4rem,12vw,6.5rem)] font-medium leading-[0.9]"
+              style={{
+                fontFamily: FONT_DISPLAY,
+                textShadow: "0 3px 24px rgba(25,12,20,0.4)",
+              }}
+            >
+              {data.event.name}
+            </motion.h1>
+            <p
+              className="mt-4 text-sm tracking-[0.12em] text-[#f9e4bc]"
+              style={{ fontFamily: FONT_UTILITY }}
+            >
+              {data.event.date}
+            </p>
+            <div
+              className="mt-9 flex flex-col items-center gap-2 text-[10px] uppercase tracking-[0.28em] text-white/85"
+              style={{ fontFamily: FONT_UTILITY }}
+            >
+              <span>Desliza para descubrir</span>
+              <span aria-hidden="true" className="text-xl leading-none">
+                ↓
+              </span>
             </div>
-            <div className="flex items-center gap-2 mt-2">
-              <div className="h-px w-16" style={{ background: "rgba(201,143,168,0.4)" }} />
-              <DoveMark className="w-5 h-3" style={{ color: "#d98cae" }} />
-              <div className="h-px w-16" style={{ background: "rgba(201,143,168,0.4)" }} />
-            </div>
-          </motion.div>
+          </div>
+        </section>
 
-          {/* HERO */}
-          <motion.section
-            initial={{ opacity: 0, scale: 0.96 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1.2, ease: "easeOut" }}
-            className="relative w-full max-w-sm"
-            style={{
-              aspectRatio: "3/4",
-              boxShadow: `0 0 0 1px ${C.ring}0.4), 0 30px 60px ${C.shadow}0.22)`,
-              borderRadius: "1.5rem",
-              overflow: "hidden",
-            }}
-          >
-            <div className="absolute inset-0 overflow-hidden">
-              <Image
-                src={heroImage}
-                alt={data.event.name}
-                fill
-                priority
-                className="object-cover"
-                sizes="(max-width: 640px) 100vw, 384px"
-              />
-            </div>
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
-            <div className="absolute inset-0 flex flex-col items-center justify-end pb-10 px-6 text-center">
-              <motion.p
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.6, duration: 0.8 }}
-                style={{
-                  fontFamily: FONT_UTILITY,
-                  fontSize: "0.78rem",
-                  letterSpacing: "0.32em",
-                  textTransform: "uppercase",
-                  color: "rgba(255,255,255,0.7)",
-                }}
-              >
-                Bautizo y Presentación
-              </motion.p>
-              <motion.div
-                initial={{ opacity: 0, scaleX: 0 }}
-                animate={{ opacity: 1, scaleX: 1 }}
-                transition={{ delay: 0.8, duration: 0.7 }}
-                className="flex items-center gap-3 my-3"
-                style={{ color: "rgba(255,255,255,0.5)" }}
-              >
-                <div className="h-px w-8 bg-white/30" />
-                <DoveMark className="w-6 h-4" />
-                <div className="h-px w-8 bg-white/30" />
-              </motion.div>
-              <motion.h1
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.9, duration: 1, ease: "easeOut" }}
-                className="font-medium leading-none"
-                style={{
-                  fontFamily: FONT_DISPLAY,
-                  fontSize: "clamp(2.8rem, 13vw, 5rem)",
-                  color: "#fff",
-                  textShadow: "0 2px 20px rgba(0,0,0,0.3)",
-                }}
-              >
-                {data.event.name}
-              </motion.h1>
-              <motion.p
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 1.3, duration: 0.8 }}
-                className="italic font-light mt-2"
-                style={{
-                  fontFamily: FONT_DISPLAY,
-                  fontSize: "1.3rem",
-                  color: "rgba(255,255,255,0.75)",
-                }}
-              >
-                será bautizada y presentada
-              </motion.p>
-            </div>
-          </motion.section>
-
+        <div className="relative z-10 flex flex-col items-center gap-12 px-6 py-16 sm:gap-16 sm:py-20">
           {/* VERSE */}
           <motion.div
             {...fadeInUp}
@@ -527,26 +359,6 @@ export default function ChristeningItzia({ data }: Props) {
               </span>{" "}
               recibirá las aguas bautismales.
             </p>
-          </motion.div>
-
-          {/* PORTRAIT */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.88 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="itzia-portrait-ring"
-            style={{ position: "relative", width: 200, height: 200 }}
-          >
-            <div className="absolute inset-0 rounded-full overflow-hidden border-4 border-[#f0d4e0] shadow-[0_8px_40px_rgba(200,140,170,0.25)]">
-              <Image
-                src={heroImage}
-                alt={data.event.name}
-                fill
-                className="object-cover"
-                sizes="200px"
-              />
-            </div>
           </motion.div>
 
           {/* COUNTDOWN */}
@@ -603,182 +415,165 @@ export default function ChristeningItzia({ data }: Props) {
             </p>
           </motion.div>
 
-          <LaurelDivider />
-
           {/* FAMILIA */}
           <motion.section {...fadeInUp} className="w-full max-w-sm text-center">
             <SectionLabel>Nuestra Familia</SectionLabel>
-            {data.family?.parents && (
-              <FadeIn delay={0.1} className="mb-12">
-                <DetailLabel>Padres</DetailLabel>
-                <p
-                  className="italic font-light"
-                  style={{
-                    fontFamily: FONT_DISPLAY,
-                    fontSize: "1.55rem",
-                    color: C.primary,
-                    lineHeight: 1.4,
-                  }}
-                >
-                  {data.family.parents.father}
-                </p>
-                <div
-                  className="w-8 h-px mx-auto my-4"
-                  style={{ background: `${C.blush}0.4)` }}
-                />
-                <p
-                  className="italic font-light"
-                  style={{
-                    fontFamily: FONT_DISPLAY,
-                    fontSize: "1.55rem",
-                    color: C.primary,
-                    lineHeight: 1.4,
-                  }}
-                >
-                  {data.family.parents.mother}
-                </p>
-              </FadeIn>
-            )}
-            <OrnamentDivider />
-            <div className="my-8" />
-            {data.family?.godparents && (
-              <FadeIn delay={0.25}>
-                <DetailLabel>Padrinos</DetailLabel>
-                <p
-                  className="italic font-light"
-                  style={{
-                    fontFamily: FONT_DISPLAY,
-                    fontSize: "1.55rem",
-                    color: C.primary,
-                    lineHeight: 1.4,
-                  }}
-                >
-                  {data.family.godparents.man}
-                </p>
-                <div
-                  className="w-8 h-px mx-auto my-4"
-                  style={{ background: `${C.blush}0.4)` }}
-                />
-                <p
-                  className="italic font-light"
-                  style={{
-                    fontFamily: FONT_DISPLAY,
-                    fontSize: "1.55rem",
-                    color: C.primary,
-                    lineHeight: 1.4,
-                  }}
-                >
-                  {data.family.godparents.woman}
-                </p>
-              </FadeIn>
-            )}
+            <div className="rounded-3xl border border-[#d8b981]/50 bg-white/55 px-6 py-6 shadow-[0_12px_32px_rgba(126,69,92,0.06)]">
+              {data.family?.parents && (
+                <div>
+                  <p
+                    className="mb-2 text-[10px] uppercase tracking-[0.26em]"
+                    style={{ fontFamily: FONT_UTILITY, color: C.label }}
+                  >
+                    Sus papás
+                  </p>
+                  <p
+                    className="text-[1.35rem] italic leading-tight"
+                    style={{ fontFamily: FONT_DISPLAY, color: C.primary }}
+                  >
+                    {data.family.parents.father}{" "}
+                    <span className="text-[#b99a58]">&</span>{" "}
+                    {data.family.parents.mother}
+                  </p>
+                </div>
+              )}
+              {data.family?.parents && data.family?.godparents && (
+                <div className="mx-auto my-5 h-px w-16 bg-[#d8b981]/70" />
+              )}
+              {data.family?.godparents && (
+                <div>
+                  <p
+                    className="mb-2 text-[10px] uppercase tracking-[0.26em]"
+                    style={{ fontFamily: FONT_UTILITY, color: C.label }}
+                  >
+                    Sus padrinos
+                  </p>
+                  <p
+                    className="text-[1.35rem] italic leading-tight"
+                    style={{ fontFamily: FONT_DISPLAY, color: C.primary }}
+                  >
+                    {data.family.godparents.man}{" "}
+                    <span className="text-[#b99a58]">&</span>{" "}
+                    {data.family.godparents.woman}
+                  </p>
+                </div>
+              )}
+              {data.family?.godparents && (
+                <div>
+                  <div className="mx-auto my-5 h-px w-16 bg-[#d8b981]/70" />
+                  <p
+                    className="mb-2 text-[10px] uppercase tracking-[0.26em]"
+                    style={{ fontFamily: FONT_UTILITY, color: C.label }}
+                  >
+                    Sus padrinos de presentación
+                  </p>
+                  <p
+                    className="text-[1.35rem] italic leading-tight"
+                    style={{ fontFamily: FONT_DISPLAY, color: C.primary }}
+                  >
+                    Pablo Manuel Reynoso de la Paz{" "}
+                    <span className="text-[#b99a58]">&</span> <br /> Deniss
+                    Benitez Espinoza
+                  </p>
+                </div>
+              )}
+            </div>
           </motion.section>
 
           {/* DETALLES */}
           <motion.section {...fadeInUp} className="w-full max-w-sm text-center">
-            <SectionLabel>El Gran Día</SectionLabel>
-            <DetailSection
-              icon={
-                <CrossIcon className="w-3 h-4" style={{ color: C.accent }} />
-              }
-              label="Ceremonia"
-              delay={0.1}
-            >
-              <DetailValue mb>Misa</DetailValue>
-              <DetailValue>{data.event.ceremonyHour ?? "9:00 AM"}</DetailValue>
-            </DetailSection>
-            <OrnamentDivider />
-            <DetailSection
-              icon={
-                <Sparkles className="w-3 h-3" style={{ color: C.accent }} />
-              }
-              label="Hora de la Fiesta"
-              delay={0.2}
-            >
-              <DetailValue>{data.event.partyHour}</DetailValue>
-            </DetailSection>
-            {(data.event.dressCode || data.event.dressCodeNote) && (
-              <>
-                <OrnamentDivider />
-                <FadeIn delay={0.3} className="my-10">
-                  <DetailLabel>Código de Vestimenta</DetailLabel>
+            <SectionLabel>El gran día</SectionLabel>
+            <div className="overflow-hidden rounded-3xl border border-[#d8b981]/50 bg-white/55 text-left shadow-[0_12px_32px_rgba(126,69,92,0.06)]">
+              <div className="flex items-center gap-4 px-6 py-5">
+                <span
+                  className="w-16 shrink-0 text-[10px] uppercase tracking-[0.15em]"
+                  style={{ fontFamily: FONT_UTILITY, color: C.label }}
+                >
+                  Misa
+                </span>
+                <div>
                   <p
-                    className="italic font-light"
-                    style={{
-                      fontFamily: FONT_DISPLAY,
-                      fontSize: "1.5rem",
-                      color: C.primary,
-                    }}
+                    className="text-[1.55rem] italic leading-none"
+                    style={{ fontFamily: FONT_DISPLAY, color: C.primary }}
                   >
-                    {data.event.dressCodeNote ?? data.event.dressCode}
+                    {data.event.ceremonyHour ?? "9:00 AM"}
                   </p>
-                </FadeIn>
-              </>
-            )}
-            {data.event.specialMusic && (
-              <>
-                <OrnamentDivider />
-                <DetailSection
-                  icon={
-                    <Music className="w-3 h-3" style={{ color: C.accent }} />
-                  }
-                  label="Música Especial"
-                  delay={0.35}
+                  {data.location.church && (
+                    <p
+                      className="mt-1 flex items-center gap-1 text-sm"
+                      style={{ fontFamily: FONT_UTILITY, color: C.secondary }}
+                    >
+                      <MapPin size={12} />
+                      {data.location.church}
+                    </p>
+                  )}
+                </div>
+              </div>
+              <div className="mx-6 h-px bg-[#d8b981]/50" />
+              <div className="flex items-center gap-4 px-6 py-5">
+                <span
+                  className="w-16 shrink-0 text-[10px] uppercase tracking-[0.15em]"
+                  style={{ fontFamily: FONT_UTILITY, color: C.label }}
                 >
+                  Fiesta
+                </span>
+                <div>
                   <p
-                    className="italic font-light"
-                    style={{
-                      fontFamily: FONT_DISPLAY,
-                      fontSize: "1.4rem",
-                      color: C.primary,
-                    }}
+                    className="text-[1.55rem] italic leading-none"
+                    style={{ fontFamily: FONT_DISPLAY, color: C.primary }}
                   >
-                    {data.event.specialMusic}
+                    {data.event.partyHour}
                   </p>
-                </DetailSection>
-              </>
+                  {data.location.reception && (
+                    <p
+                      className="mt-1 flex items-center gap-1 text-sm"
+                      style={{ fontFamily: FONT_UTILITY, color: C.secondary }}
+                    >
+                      <MapPin size={12} />
+                      {data.location.reception}
+                    </p>
+                  )}
+                </div>
+              </div>
+            </div>
+            {(data.event.specialMusic ||
+              ((data.event.dressCodeNote ?? data.event.dressCode) &&
+                !/^sin código/i.test(
+                  data.event.dressCodeNote ?? data.event.dressCode ?? "",
+                ))) && (
+              <details
+                className="mt-5 text-left text-sm"
+                style={{ fontFamily: FONT_UTILITY, color: C.secondary }}
+              >
+                <summary className="cursor-pointer text-center underline decoration-[#b99a58] underline-offset-4">
+                  Otros detalles
+                </summary>
+                <div className="mt-4 space-y-2 rounded-2xl bg-white/50 p-4">
+                  {data.event.specialMusic && (
+                    <p>
+                      <span className="font-medium">Canción:</span>{" "}
+                      {data.event.specialMusic}
+                    </p>
+                  )}
+                  {(data.event.dressCodeNote ?? data.event.dressCode) &&
+                    !/^sin código/i.test(
+                      data.event.dressCodeNote ?? data.event.dressCode ?? "",
+                    ) && (
+                      <p>
+                        <span className="font-medium">Vestimenta:</span>{" "}
+                        {data.event.dressCodeNote ?? data.event.dressCode}
+                      </p>
+                    )}
+                </div>
+              </details>
             )}
-            <OrnamentDivider />
-            <DetailSection
-              icon={<MapPin className="w-3 h-3" style={{ color: C.accent }} />}
-              label="Ubicación"
-              delay={0.4}
-            >
-              {data.location.church && (
-                <p
-                  className="italic font-light mb-3"
-                  style={{
-                    fontFamily: FONT_DISPLAY,
-                    fontSize: "1.4rem",
-                    color: C.primary,
-                  }}
-                >
-                  {data.location.church}
-                </p>
-              )}
-              {data.location.reception && (
-                <p
-                  className="italic font-light"
-                  style={{
-                    fontFamily: FONT_DISPLAY,
-                    fontSize: "1.4rem",
-                    color: C.secondary,
-                  }}
-                >
-                  {data.location.reception}
-                </p>
-              )}
-            </DetailSection>
             {data.location.mapUrl && <LocationMaps data={data} />}
           </motion.section>
 
-          <LaurelDivider />
-
           {/* GALERIA */}
           <motion.section {...fadeInUp} className="w-full max-w-sm text-center">
-            <SectionLabel>Recuerdos</SectionLabel>
             <h2
-              className="italic font-light mb-8"
+              className="italic font-light mb-6"
               style={{
                 fontFamily: FONT_DISPLAY,
                 fontSize: "2.1rem",
@@ -789,38 +584,26 @@ export default function ChristeningItzia({ data }: Props) {
             </h2>
             <Gallery images={data.media.gallery} />
             <p
-              className="mt-4"
+              className="italic font-light mt-4"
               style={{
-                fontFamily: FONT_UTILITY,
-                fontSize: "0.78rem",
-                letterSpacing: "0.2em",
+                fontFamily: FONT_DISPLAY,
+                letterSpacing: "0.12em",
                 textTransform: "uppercase",
-                color: C.label,
+                fontSize: "0.7rem",
+                color: C.muted,
               }}
             >
               Desliza para ver más
             </p>
           </motion.section>
 
-          {/* DIVIDER 2 */}
-          <motion.div
-            {...fadeInUp}
-            className="flex items-center gap-4 py-2"
-            style={{ color: C.decorative }}
-          >
-            <LaurelSprig className="w-12 h-4" />
-            <CrossIcon className="w-4 h-5" />
-            <LaurelSprig className="w-12 h-4" flip />
-          </motion.div>
-
           {/* RSVP */}
           <motion.section
             {...fadeInUp}
             className="w-full max-w-sm text-center pb-4"
           >
-            <SectionLabel>¿Nos acompañas?</SectionLabel>
             <h2
-              className="italic font-light mb-3"
+              className="italic font-light mb-6"
               style={{
                 fontFamily: FONT_DISPLAY,
                 fontSize: "2.1rem",
@@ -829,16 +612,6 @@ export default function ChristeningItzia({ data }: Props) {
             >
               Confirma tu asistencia
             </h2>
-            <p
-              className="italic font-light mb-8"
-              style={{
-                fontFamily: FONT_DISPLAY,
-                fontSize: "1.05rem",
-                color: C.muted,
-              }}
-            >
-              Esperamos contar con tu presencia en este día tan especial
-            </p>
             <button
               className="itzia-rsvp-btn"
               onClick={() => setOpenModal(true)}

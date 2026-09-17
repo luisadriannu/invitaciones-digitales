@@ -1768,65 +1768,14 @@
 }
 
 /* ── Christening Itzia Template ── */
-.chr-mote {
-  position: fixed;
-  top: -10px;
-  border-radius: 9999px;
-  background: radial-gradient(
-    circle,
-    rgba(224, 168, 191, 0.55),
-    rgba(224, 168, 191, 0)
-  );
-  animation: chr-drift linear infinite;
-  pointer-events: none;
-  z-index: 0;
-}
-
-@keyframes chr-drift {
-  0% {
-    transform: translateY(-10px) translateX(0);
-    opacity: 0;
-  }
-  10% {
-    opacity: 0.7;
-  }
-  90% {
-    opacity: 0.4;
-  }
-  100% {
-    transform: translateY(108vh) translateX(18px);
-    opacity: 0;
-  }
-}
-
-.itzia-portrait-ring {
-  position: relative;
-  width: 200px;
-  height: 200px;
-  margin: 0 auto;
-}
-.itzia-portrait-ring::before {
-  content: "";
-  position: absolute;
-  inset: -10px;
-  border-radius: 50%;
-  border: 1px solid rgba(217, 140, 174, 0.35);
-}
-.itzia-portrait-ring::after {
-  content: "";
-  position: absolute;
-  inset: -20px;
-  border-radius: 50%;
-  border: 1px dashed rgba(217, 140, 174, 0.2);
-}
-
 .itzia-countdown {
-  background: #fff6f9;
+  background: #fffaf7;
+  border-radius: 1.5rem;
   box-shadow:
-    0 0 0 1px rgba(224, 168, 191, 0.4),
-    0 0 0 5px #fff6f9,
-    0 0 0 6px rgba(224, 168, 191, 0.25),
-    0 20px 45px rgba(150, 90, 115, 0.1);
+    0 0 0 1px rgba(194, 158, 91, 0.4),
+    0 0 0 5px #fffaf7,
+    0 0 0 6px rgba(194, 158, 91, 0.25),
+    0 20px 45px rgba(126, 69, 92, 0.1);
 }
 
 .itzia-rsvp-btn {
@@ -1838,37 +1787,37 @@
   font-size: 0.85rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: #fff6f9;
-  background: linear-gradient(135deg, #c98fa8, #d98cae);
+  color: #fffaf7;
+  background: linear-gradient(135deg, #ad5276, #e9709d);
   border: none;
   border-radius: 999px;
   cursor: pointer;
-  box-shadow: 0 8px 30px rgba(201, 143, 168, 0.35);
+  box-shadow: 0 8px 30px rgba(173, 82, 118, 0.35);
   transition:
     transform 0.2s,
     box-shadow 0.2s;
 }
 .itzia-rsvp-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 40px rgba(201, 143, 168, 0.5);
+  box-shadow: 0 12px 40px rgba(173, 82, 118, 0.5);
 }
 
 .itzia-modal-card {
   position: relative;
   background: rgba(255, 246, 249, 0.95);
-  border: 1px solid rgba(224, 168, 191, 0.35);
+  border: 1px solid rgba(194, 158, 91, 0.35);
   border-radius: 24px;
   padding: 2.5rem;
   text-align: center;
   box-shadow:
-    0 4px 40px rgba(150, 90, 115, 0.12),
+    0 4px 40px rgba(126, 69, 92, 0.12),
     0 1px 0 rgba(255, 255, 255, 0.9) inset;
 }
 .itzia-modal-card::before {
   content: "";
   position: absolute;
   inset: 6px;
-  border: 1px solid rgba(224, 168, 191, 0.15);
+  border: 1px solid rgba(194, 158, 91, 0.15);
   border-radius: 18px;
   pointer-events: none;
 }
@@ -1881,14 +1830,14 @@
   font-size: 0.75rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #8a6b76;
+  color: #795664;
   background: transparent;
-  border: 1px solid rgba(201, 143, 168, 0.35);
+  border: 1px solid rgba(173, 82, 118, 0.35);
   cursor: pointer;
   transition: background 0.2s;
 }
 .itzia-modal-cancel:hover {
-  background: rgba(201, 143, 168, 0.08);
+  background: rgba(173, 82, 118, 0.08);
 }
 
 .itzia-modal-confirm {
@@ -1899,23 +1848,16 @@
   font-size: 0.75rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #fff6f9;
-  background: linear-gradient(135deg, #c98fa8, #d98cae);
+  color: #fffaf7;
+  background: linear-gradient(135deg, #ad5276, #e9709d);
   border: none;
   cursor: pointer;
-  box-shadow: 0 4px 20px rgba(201, 143, 168, 0.35);
+  box-shadow: 0 4px 20px rgba(173, 82, 118, 0.35);
   transition:
     transform 0.2s,
     box-shadow 0.2s;
 }
 .itzia-modal-confirm:hover {
   transform: translateY(-1px);
-  box-shadow: 0 6px 25px rgba(201, 143, 168, 0.45);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .chr-mote {
-    animation: none;
-    opacity: 0.3;
-  }
+  box-shadow: 0 6px 25px rgba(173, 82, 118, 0.45);
 }
