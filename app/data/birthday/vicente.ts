@@ -20,7 +20,12 @@ const vicente: EventData = {
     specialMusic: "Música de Jurassic Park",
     favorites: {
       title: "¡A Sebastián le encanta!",
-      toys: ["Dinosaurios", "Superhéroes", "PAW Patrol", "Carritos y excavadoras"],
+      toys: [
+        "Dinosaurios",
+        "Superhéroes",
+        "PAW Patrol",
+        "Carritos y excavadoras",
+      ],
       activities: ["Leer", "Cantar y bailar", "Ir a la playa"],
       clothingSize: "5–6",
       clothingNote: "¡Es un dino bebé gigante!",
@@ -76,7 +81,7 @@ const vicente: EventData = {
     phone: "522223052024",
   },
   family: {
-    presentationGodparents: ["Javier Velasco Gapi", "Angelica Lara Lara"],
+    presentationGodparents: ["Angelica Lara Lara", "Javier Velasco Gapi"],
   },
   design: {
     variant: "dinosaur",

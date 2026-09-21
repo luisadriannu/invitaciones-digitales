@@ -181,7 +181,13 @@ export default function BirthdayDino({ data }: Props) {
 
   return (
     <>
-      {data.media.music && <MusicButton src={data.media.music} color={C.amber} backgroundColor={C.canopy} />}
+      {data.media.music && (
+        <MusicButton
+          src={data.media.music}
+          color={C.amber}
+          backgroundColor={C.canopy}
+        />
+      )}
 
       <main
         className="relative min-h-screen"
@@ -405,15 +411,29 @@ export default function BirthdayDino({ data }: Props) {
         </section>
 
         {data.family?.presentationGodparents?.length ? (
-          <section className="px-6 py-16 text-center" style={{ background: C.canopy2 }}>
+          <section
+            className="px-6 py-16 text-center"
+            style={{ background: C.canopy2 }}
+          >
             <div className="max-w-md mx-auto">
               <span className={s.parkTag}>CON MUCHO CARIÑO</span>
-              <h2 className={`${s.sectionTitle} mt-4 mb-8`}>Mis padrinos de presentación</h2>
+              <h2 className={`${s.sectionTitle} mt-4 mb-8`}>
+                Mis padrinos de presentación
+              </h2>
               <div className={s.badgeFrame}>
                 {data.family.presentationGodparents.map((name, index) => (
                   <div key={name}>
-                    {index > 0 && <p className="my-3" style={{ color: C.amber }}>&amp;</p>}
-                    <p className="text-xl leading-relaxed" style={{ fontFamily: DISPLAY_FONT }}>{name}</p>
+                    {index > 0 && (
+                      <p className="my-3" style={{ color: C.amber }}>
+                        &amp;
+                      </p>
+                    )}
+                    <p
+                      className="text-xl leading-relaxed"
+                      style={{ fontFamily: DISPLAY_FONT }}
+                    >
+                      {name}
+                    </p>
                   </div>
                 ))}
               </div>
@@ -515,34 +535,67 @@ export default function BirthdayDino({ data }: Props) {
             <div className="max-w-md mx-auto">
               <div className="text-center mb-10">
                 <span className={s.parkTag}>CONOCE AL PEQUEÑO EXPLORADOR</span>
-                <h2 className={`${s.sectionTitle} mt-4`}>{data.event.favorites.title}</h2>
+                <h2 className={`${s.sectionTitle} mt-4`}>
+                  {data.event.favorites.title}
+                </h2>
               </div>
               <div className="flex flex-col gap-5">
                 <div className={s.fieldCard}>
                   <h3 className={`${s.fieldLabel} mb-4`}>JUGAR CON</h3>
                   <ul className="grid grid-cols-1 min-[360px]:grid-cols-2 gap-3">
-                    {data.event.favorites.toys.map((toy) => <li key={toy} className="text-base leading-relaxed">{toy}</li>)}
+                    {data.event.favorites.toys.map((toy) => (
+                      <li key={toy} className="text-base leading-relaxed">
+                        {toy}
+                      </li>
+                    ))}
                   </ul>
                 </div>
                 <div className={s.fieldCard}>
-                  <h3 className={`${s.fieldLabel} mb-4`}>SUS AVENTURAS FAVORITAS</h3>
+                  <h3 className={`${s.fieldLabel} mb-4`}>
+                    SUS AVENTURAS FAVORITAS
+                  </h3>
                   <ul className="flex flex-col gap-3">
-                    {data.event.favorites.activities.map((activity) => <li key={activity} className="text-base leading-relaxed">{activity}</li>)}
+                    {data.event.favorites.activities.map((activity) => (
+                      <li key={activity} className="text-base leading-relaxed">
+                        {activity}
+                      </li>
+                    ))}
                   </ul>
                 </div>
                 <div className={s.fieldCard}>
                   <div className="flex items-center gap-4">
-                    <div className={s.fieldIcon}><Shirt size={22} aria-hidden="true" /></div>
-                    <div><h3 className={s.fieldLabel}>TALLA DE ROPA</h3><p className="text-2xl font-bold">{data.event.favorites.clothingSize}</p></div>
+                    <div className={s.fieldIcon}>
+                      <Shirt size={22} aria-hidden="true" />
+                    </div>
+                    <div>
+                      <h3 className={s.fieldLabel}>TALLA DE ROPA</h3>
+                      <p className="text-2xl font-bold">
+                        {data.event.favorites.clothingSize}
+                      </p>
+                    </div>
                   </div>
-                  {data.event.favorites.clothingNote && <p className="mt-4 text-sm leading-relaxed">{data.event.favorites.clothingNote}</p>}
+                  {data.event.favorites.clothingNote && (
+                    <p className="mt-4 text-sm leading-relaxed">
+                      {data.event.favorites.clothingNote}
+                    </p>
+                  )}
                 </div>
                 <div className={s.fieldCard}>
                   <div className="flex items-center gap-4">
-                    <div className={s.fieldIcon}><Footprints size={22} aria-hidden="true" /></div>
-                    <div><h3 className={s.fieldLabel}>CALZADO</h3><p className="text-2xl font-bold">#{data.event.favorites.shoeSize}</p></div>
+                    <div className={s.fieldIcon}>
+                      <Footprints size={22} aria-hidden="true" />
+                    </div>
+                    <div>
+                      <h3 className={s.fieldLabel}>CALZADO</h3>
+                      <p className="text-2xl font-bold">
+                        #{data.event.favorites.shoeSize}
+                      </p>
+                    </div>
                   </div>
-                  <p className="mt-4 text-sm leading-relaxed">Sus huellas por el mundo son del #{data.event.favorites.shoeSize}.</p>
+                  <p className="mt-4 text-sm leading-relaxed">
+                    Sus huellas por el mundo son del #
+                    {data.event.favorites.shoeSize}.
+                  </p>
                 </div>
               </div>
             </div>

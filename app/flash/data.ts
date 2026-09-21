@@ -9,6 +9,7 @@ export interface FlashEvent {
   photo: string;
   date: string;
   time: string;
+  dinnerTime?: string;
   venue: string;
   mapUrl: string;
   phone: string;
@@ -61,21 +62,21 @@ export const flashEvents: Record<string, FlashEvent> = {
     message:
       "Hoy comienza mi camino de fe. Mis papás y yo queremos compartirlo contigo.",
   },
-  "bella-pineda": {
+  "vino-y-flores": {
     theme: "cumple",
-    designLabel: "Mis 60 años",
-    title: "Mis 60 años",
-    eyebrow: "60 AÑOS DE HISTORIAS, AMOR Y ALEGRÍA",
-    name: "Bella Pineda",
-    age: 60,
-    photo: "/pictures/flash/birthday/invitacion-flash-abril.jpg",
-    date: "29 Diciembre 2026",
-    time: "7:30 PM",
-    venue: "Pista de Las Anonas",
+    designLabel: "Vino y flores",
+    title: "Mis 9 años",
+    eyebrow: "UN DÍA LLENO DE MOMENTOS HERMOSOS",
+    name: "Luciana Reyes",
+    age: 9,
+    photo: "/pictures/birthday/victoria/victoria-4.jpg",
+    date: "24 Abril 2027",
+    time: "5:00 PM",
+    dinnerTime: "6:30 PM",
+    venue: "Jardín Las Rosas · Puebla",
     mapUrl: "",
-    phone: "525543607525",
-    message:
-      "Sesenta años de historias, amor y alegría. Me encantaría celebrar este día contigo.",
+    phone: "",
+    message: "Nueve años de sueños, juegos y alegría. Me encantaría celebrar este día contigo.",
   },
   "cumple-ticket": {
     theme: "cumple",

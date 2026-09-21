@@ -1,8 +1,11 @@
-// Invitación personal: se incluye únicamente en la galería /flash.
+// Invitación personal: accesible por enlace, fuera de los catálogos públicos.
 export const bella = {
   theme: "cumple" as const,
   title: "Mis 60 años",
   designLabel: "Vino y flores",
+  eyebrow: "Una vida llena de momentos hermosos",
+  message: "Sesenta años de historias, amor y alegría. Me encantaría celebrar este día contigo.",
+  mapUrl: "",
   name: "Bella Pineda",
   age: 60,
   photo: "/pictures/flash/bella-pineda/bella-pineda-2.jpg",
