@@ -61,6 +61,22 @@ export const flashEvents: Record<string, FlashEvent> = {
     message:
       "Hoy comienza mi camino de fe. Mis papás y yo queremos compartirlo contigo.",
   },
+  "bella-pineda": {
+    theme: "cumple",
+    designLabel: "Mis 60 años",
+    title: "Mis 60 años",
+    eyebrow: "60 AÑOS DE HISTORIAS, AMOR Y ALEGRÍA",
+    name: "Bella Pineda",
+    age: 60,
+    photo: "/pictures/flash/birthday/invitacion-flash-abril.jpg",
+    date: "29 Diciembre 2026",
+    time: "7:30 PM",
+    venue: "Pista de Las Anonas",
+    mapUrl: "",
+    phone: "525543607525",
+    message:
+      "Sesenta años de historias, amor y alegría. Me encantaría celebrar este día contigo.",
+  },
   "cumple-ticket": {
     theme: "cumple",
     design: "ticket",

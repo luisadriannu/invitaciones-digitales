@@ -18,6 +18,14 @@ const vicente: EventData = {
     dressCodeNote:
       "Te sugerimos vestir con los colores de la temática: verde olivo, naranja y amarillo.",
     specialMusic: "Música de Jurassic Park",
+    favorites: {
+      title: "¡A Sebastián le encanta!",
+      toys: ["Dinosaurios", "Superhéroes", "PAW Patrol", "Carritos y excavadoras"],
+      activities: ["Leer", "Cantar y bailar", "Ir a la playa"],
+      clothingSize: "5–6",
+      clothingNote: "¡Es un dino bebé gigante!",
+      shoeSize: "16",
+    },
     itinerary: [
       {
         hour: "5:00 PM",
@@ -31,18 +39,18 @@ const vicente: EventData = {
       },
       {
         hour: "7:00 PM",
-        title: "Pastel",
-        description: "Momento de celebrar y soplar las velas.",
+        title: "Piñata y mañanitas",
+        description: "Hora de romper la piñata y cantar las mañanitas.",
       },
       {
         hour: "8:00 PM",
         title: "Cena",
-        description: "Compartimos algo delicioso.",
+        description: "¡Hora de cenar!",
       },
       {
         hour: "9:00 PM",
         title: "Fiesta y baile",
-        description: "¡A bailar con la música de toda la noche!",
+        description: "¡A mover los pies y bailar toda la noche!",
       },
     ],
   },
@@ -66,6 +74,9 @@ const vicente: EventData = {
   },
   contact: {
     phone: "522223052024",
+  },
+  family: {
+    presentationGodparents: ["Javier Velasco Gapi", "Angelica Lara Lara"],
   },
   design: {
     variant: "dinosaur",

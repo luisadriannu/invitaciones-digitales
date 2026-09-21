@@ -46,6 +46,14 @@ export interface EventInfo {
   dressCode: string;
   dressCodeNote?: string;
   specialMusic?: string;
+  favorites?: {
+    title: string;
+    toys: string[];
+    activities: string[];
+    clothingSize: string;
+    clothingNote?: string;
+    shoeSize: string;
+  };
   itinerary?: {
     hour: string;
     title: string;
@@ -73,6 +81,7 @@ export interface ContactInfo {
 }
 
 export interface FamilyInfo {
+  presentationGodparents?: string[];
   parents?: {
     mother: string;
     father: string;
