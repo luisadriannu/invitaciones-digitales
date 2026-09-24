@@ -16,7 +16,6 @@ export default function MobileOnly({
     };
 
     checkDevice();
-
     window.addEventListener("resize", checkDevice);
 
     return () => {

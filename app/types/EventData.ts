@@ -63,6 +63,7 @@ export interface EventInfo {
 
 export interface MediaInfo {
   coverImage: string;
+  portraitImage?: string;
   gallery: string[];
   music?: string;
 }
