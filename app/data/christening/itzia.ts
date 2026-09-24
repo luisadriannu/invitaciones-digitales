@@ -19,6 +19,8 @@ const itzia: EventData = {
     dressCode: "Sin código de vestimenta",
     dressCodeNote: "Sin código de vestimenta",
     specialMusic: "Mi Cenicienta — Voz de Mando",
+    giftMessage:
+      "Mi mejor regalo es tu presencia, pero si existe alguna duda o confusión en que regalarme, tu obsequio podría ser en efectivo.",
   },
   media: {
     coverImage: "/pictures/christening/itzia/itzia-10.jpg",

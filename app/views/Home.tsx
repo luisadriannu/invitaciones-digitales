@@ -175,7 +175,7 @@ Quiero más información acerca de las invitaciones.`;
         "
       />
 
-      <div className="max-w-7xl mx-auto px-6 py-16 relative z-10">
+      <div className="max-w-7xl mx-auto px-6 py-12 relative z-10">
         {/* HERO */}
         <motion.section
           initial="hidden"
@@ -552,6 +552,13 @@ Quiero más información acerca de las invitaciones.`;
             Para mayor privacidad tu invitación nunca aparecera en esta sección,
             solo tú y tus invitados pueden acceder a ella.
           </p>
+          <Image
+            src="/monarque-banner.png"
+            alt="Monarque"
+            width={1000}
+            height={0}
+            className="w-full h-auto"
+          />
         </motion.section>
       </div>
     </main>

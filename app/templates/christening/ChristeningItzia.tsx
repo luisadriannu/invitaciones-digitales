@@ -14,7 +14,7 @@ import Gallery from "@/app/components/Gallery";
 import LocationMaps from "@/app/components/LocationMaps";
 import type { EventData } from "@/app/types/EventData";
 import { useCountdown } from "@/app/hooks/useCountdown";
-import { MessageCircleHeart, MapPin } from "lucide-react";
+import { MessageCircleHeart, MapPin, Gift } from "lucide-react";
 
 interface Props {
   data: EventData;
@@ -596,6 +596,39 @@ export default function ChristeningItzia({ data }: Props) {
               Desliza para ver más
             </p>
           </motion.section>
+
+          {/* REGALOS */}
+          {data.event.giftMessage && (
+            <motion.section
+              {...fadeInUp}
+              initial={reduceMotion ? false : fadeInUp.initial}
+              aria-labelledby="itzia-gifts-title"
+              className="w-full max-w-sm text-center"
+            >
+              <div className="rounded-3xl border border-[#d8b981]/50 bg-white/55 px-6 py-8 shadow-[0_12px_32px_rgba(126,69,92,0.06)]">
+                <Gift
+                  size={28}
+                  strokeWidth={1.25}
+                  aria-hidden="true"
+                  className="mx-auto mb-4"
+                  style={{ color: C.decorative }}
+                />
+                <h2
+                  id="itzia-gifts-title"
+                  className="mb-4 text-[2.1rem] font-light italic"
+                  style={{ fontFamily: FONT_DISPLAY, color: C.primary }}
+                >
+                  Opciones de regalo
+                </h2>
+                <p
+                  className="text-lg leading-relaxed"
+                  style={{ fontFamily: FONT_DISPLAY, color: C.secondary }}
+                >
+                  {data.event.giftMessage}
+                </p>
+              </div>
+            </motion.section>
+          )}
 
           {/* RSVP */}
           <motion.section

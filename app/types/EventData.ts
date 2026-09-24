@@ -46,6 +46,7 @@ export interface EventInfo {
   dressCode: string;
   dressCodeNote?: string;
   specialMusic?: string;
+  giftMessage?: string;
   favorites?: {
     title: string;
     toys: string[];

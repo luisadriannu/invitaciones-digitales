@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { motion, AnimatePresence } from "motion/react";
+import { motion, AnimatePresence, useReducedMotion } from "motion/react";
 import {
   MapPin,
   Clock,
@@ -183,6 +183,8 @@ const DRIPS = Array.from({ length: 14 }, (_, i) => ({
 
 export default function BirthdayDino({ data }: Props) {
   const [showModal, setShowModal] = useState(false);
+  const [showIntro, setShowIntro] = useState(Boolean(data.media.music));
+  const reduceMotion = useReducedMotion();
 
   const confirmAttendance = () => {
     const message = encodeURIComponent(
@@ -210,6 +212,74 @@ export default function BirthdayDino({ data }: Props) {
 
   return (
     <>
+      <AnimatePresence>
+        {showIntro && (
+          <motion.div
+            key="dino-opening"
+            initial={{ opacity: 1 }}
+            exit={{ opacity: 0, scale: reduceMotion ? 1 : 1.04 }}
+            transition={{ duration: reduceMotion ? 0 : 0.6 }}
+            className="fixed inset-0 z-[100] overflow-y-auto"
+            style={{
+              background: `radial-gradient(ellipse at 50% 30%, ${C.panel}, ${C.canopy2})`,
+              color: C.bone,
+            }}
+          >
+            <motion.div
+              initial={reduceMotion ? false : { opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="mx-auto flex min-h-[100svh] max-w-md flex-col items-center justify-center px-8 py-8 text-center"
+            >
+              <p
+                className="mb-5 text-xs uppercase tracking-[0.22em]"
+                style={{ fontFamily: LABEL_FONT, color: C.hazard }}
+              >
+                Tu próxima aventura comienza aquí
+              </p>
+              <div className={s.junglePortrait}>
+                <div className={s.portraitFrame}>
+                  <Image
+                    src={data.media.portraitImage ?? data.media.coverImage}
+                    alt={`Cumpleaños de ${data.event.name}`}
+                    width={1600}
+                    height={1067}
+                    preload
+                    sizes="(max-width: 448px) calc(100vw - 88px), 360px"
+                    className={s.portraitPhoto}
+                  />
+                </div>
+                <JungleFrond className={s.leavesLeft} />
+                <JungleFrond className={s.leavesRight} />
+                <div className={s.portraitSeal} aria-hidden="true">
+                  <Footprints size={19} strokeWidth={1.5} />
+                </div>
+              </div>
+              <h2
+                className="text-3xl font-bold leading-tight sm:text-4xl"
+                style={{ fontFamily: DISPLAY_FONT }}
+              >
+                {data.event.name}
+              </h2>
+              <p className="mt-3 text-sm" style={{ color: C.boneDim }}>
+                Te espera una celebración de tamaño jurásico
+              </p>
+              <button
+                type="button"
+                onClick={() => setShowIntro(false)}
+                className="mt-7 inline-flex min-h-12 items-center justify-center gap-3 rounded-full px-7 py-3 text-sm font-bold transition-transform hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#f0c419]"
+                style={{ background: C.amber, color: C.ink, fontFamily: LABEL_FONT }}
+              >
+                <Footprints size={18} aria-hidden="true" />
+                Abrir invitación
+              </button>
+              <p className="mt-3 text-xs" style={{ color: C.boneDim }}>
+                Toca para entrar y escuchar la música
+              </p>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
       {data.media.music && (
         <MusicButton
           src={data.media.music}
@@ -220,7 +290,8 @@ export default function BirthdayDino({ data }: Props) {
       )}
 
       <main
-        className="relative min-h-screen"
+        inert={showIntro}
+        className={`relative ${showIntro ? "h-[100svh] overflow-hidden" : "min-h-screen"}`}
         style={
           {
             background: C.canopy,
