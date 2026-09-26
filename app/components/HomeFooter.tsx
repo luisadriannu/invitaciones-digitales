@@ -9,7 +9,7 @@ const socialLinks = [
   },
   {
     label: "Email",
-    detail: "Escríbenos",
+    detail: "monarqueinvitacionesweb@gmail.com",
     href: "mailto:monarqueinvitacionesweb@gmail.com",
     icon: "/socia-media/gmail.svg",
   },
@@ -29,7 +29,7 @@ const socialLinks = [
 
 export default function HomeFooter() {
   return (
-    <footer className="relative z-10 border-t border-[#D4AF37]/25 bg-[#F3EEE7] px-6 py-14 text-[#2B2927]">
+    <footer className="relative z-10 border-t border-[#D4AF37]/25 bg-[#FFFDF9] px-6 py-14 text-[#2B2927]">
       <div className="mx-auto max-w-5xl text-center">
         <div className="mx-auto flex items-center justify-center gap-3 text-[#B8860B]">
           <span className="h-px w-10 bg-current/40" />
@@ -40,11 +40,12 @@ export default function HomeFooter() {
         </div>
 
         <Image
-          src="/monarque-banner.png"
+          src="/monarque-footer-banner-v2.png"
           alt="Monarque"
-          width={1000}
-          height={0}
-          className="w-full h-auto"
+          width={1640}
+          height={624}
+          unoptimized
+          className="h-auto w-full"
         />
         <p
           className="
