@@ -12,6 +12,7 @@ import flashStyles from "@/app/flash/flash.module.css";
 import InvitationCardAction from "@/app/components/InvitationCardAction";
 import InvitationPlanBanner from "@/app/components/InvitationPlanBanner";
 import FlashPriceBadge from "@/app/components/FlashPriceBadge";
+import HomeFooter from "@/app/components/HomeFooter";
 import type { InvitationPlan } from "@/app/data/plans";
 
 const eventCategories = [
@@ -175,7 +176,7 @@ Quiero más información acerca de las invitaciones.`;
         "
       />
 
-      <div className="max-w-7xl mx-auto px-6 py-12 relative z-10">
+      <div className="max-w-7xl mx-auto px-6 py-16 relative z-10">
         {/* HERO */}
         <motion.section
           initial="hidden"
@@ -431,7 +432,7 @@ Quiero más información acerca de las invitaciones.`;
         </section>
 
         {showFlash && (
-          <section aria-labelledby="flash-heading" className="mb-14 mt-6">
+          <section aria-labelledby="flash-heading" className=" mt-6">
             <div className="text-center mb-10">
               <div className="w-20 h-px bg-[#D4AF37]/40 mx-auto mb-6" />
               <h2
@@ -484,83 +485,9 @@ Quiero más información acerca de las invitaciones.`;
             </div>
           </section>
         )}
-
-        {/* CTA */}
-        <motion.section
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          className="text-center"
-        >
-          <div className="w-24 h-px bg-[#D4AF37] mx-auto mb-8" />
-
-          <p
-            className="
-              text-[#6A635C]
-              text-lg
-              mb-3
-            "
-          >
-            ¿Te gustó algún diseño?
-          </p>
-
-          <p
-            className="
-              text-[#B8860B]
-              uppercase
-              tracking-[0.2em]
-              text-sm
-              mb-8
-            "
-          >
-            Solicita tu cotización personalizada
-          </p>
-
-          <motion.a
-            href={`https://api.whatsapp.com/send?phone=522206283499&text=${encodedMessage}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            whileHover={{
-              scale: 1.04,
-            }}
-            whileTap={{
-              scale: 0.98,
-            }}
-            className="
-              inline-flex
-              items-center
-              gap-3
-              px-10
-              py-4
-              border
-              border-[#D4AF37]
-              text-[#2B2927]
-              font-medium
-              hover:bg-[#D4AF37]
-              hover:text-white
-              transition-all
-              duration-300
-              mb-4
-            "
-          >
-            <MessageCircle size={20} />
-            Cotizar por WhatsApp
-          </motion.a>
-
-          <p className="text-xs">
-            Para mayor privacidad tu invitación nunca aparecera en esta sección,
-            solo tú y tus invitados pueden acceder a ella.
-          </p>
-          <Image
-            src="/monarque-banner.png"
-            alt="Monarque"
-            width={1000}
-            height={0}
-            className="w-full h-auto"
-          />
-        </motion.section>
       </div>
+
+      <HomeFooter />
     </main>
   );
 }
