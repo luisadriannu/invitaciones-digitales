@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { basicSamples } from "@/app/data/basic";
-import { ArrowUpRight, MessageCircle } from "lucide-react";
+import { ArrowDown, ArrowUpRight, Mail } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "motion/react";
@@ -14,6 +14,29 @@ import InvitationPlanBanner from "@/app/components/InvitationPlanBanner";
 import FlashPriceBadge from "@/app/components/FlashPriceBadge";
 import HomeFooter from "@/app/components/HomeFooter";
 import type { InvitationPlan } from "@/app/data/plans";
+import styles from "./Home.module.css";
+
+function BotanicalSprig({ className }: { className: string }) {
+  return (
+    <svg
+      viewBox="0 0 160 260"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.2"
+      className={`${styles.botanical} ${className}`}
+      aria-hidden="true"
+      focusable="false"
+    >
+      <path d="M35 250C115 185 48 90 126 12" />
+      {[0, 1, 2, 3, 4].map((i) => (
+        <g key={i} transform={`translate(${i % 2 ? -6 : 0} ${i * 41})`}>
+          <path d="M89 49C58 49 51 27 54 13C77 17 90 31 89 49ZM87 65C117 62 135 46 136 30C109 31 91 45 87 65" />
+          <path d="M89 49L62 24M87 65L125 40" opacity="0.55" />
+        </g>
+      ))}
+    </svg>
+  );
+}
 
 const eventCategories = [
   "Cumpleaños",
@@ -59,10 +82,6 @@ export default function Home({
   const [plan, setPlan] = useState<"todos" | "basic" | "premium" | "flash">(
     "todos",
   );
-  const message = `Hola 👋
-Quiero más información acerca de las invitaciones.`;
-
-  const encodedMessage = encodeURIComponent(message);
 
   const samples = [
     ...basicSamples.map((sample) => ({
@@ -176,62 +195,142 @@ Quiero más información acerca de las invitaciones.`;
         "
       />
 
-      <div className="max-w-7xl mx-auto px-6 py-16 relative z-10">
+      <div className="max-w-7xl mx-auto px-6 py-10 sm:py-16 relative z-10">
         {/* HERO */}
         <motion.section
           initial="hidden"
           animate="visible"
           variants={stagger}
-          className="text-center mb-24"
+          className={`${styles.hero} text-center mb-20`}
         >
+          <BotanicalSprig className={styles.leftBranch} />
+          <BotanicalSprig className={styles.rightBranch} />
+          <div className={styles.sparkles} aria-hidden="true">
+            <span>✦</span>
+            <span>✦</span>
+            <span>✧</span>
+            <span>✦</span>
+          </div>
+          <motion.div
+            variants={fadeUp}
+            className={styles.seal}
+            aria-hidden="true"
+          >
+            <Mail size={25} strokeWidth={1.1} />
+          </motion.div>
           <motion.span
             variants={fadeUp}
             className="
               block
               uppercase
-              tracking-[0.6em]
+              tracking-[0.35em] sm:tracking-[0.6em]
               text-[11px]
               text-[#B8860B]
               mb-6
             "
           >
-            Invitaciones Digitales
+            - Monarque - <br />{" "}
+            <span className="pt-2">Invitaciones Digitales</span>
           </motion.span>
+
+          <br />
 
           <motion.h1
             variants={fadeUp}
             className="
-              text-5xl
-              md:text-7xl
-              font-light
-              text-[#2B2927]
-              leading-tight
-              mb-8
-            "
+    text-[clamp(2rem,9vw,3rem)]
+    md:text-7xl
+    font-light
+    text-[#2B2927]
+    leading-[1.15]
+    mb-8
+  "
           >
-            Diseños elegantes para
-            <br />
-            momentos inolvidables
+            Tu evento merece
+            <span className="block">una invitación</span>
+            <span
+              className="
+      block
+      font-serif
+      italic
+      text-[#C99432]
+      text-[1.15em]
+      mt-1
+    "
+            >
+              Inolvidable.
+            </span>
           </motion.h1>
 
           <motion.div
-            initial={{ width: 0 }}
-            animate={{ width: 96 }}
+            initial={{ opacity: 0, scaleX: 0 }}
+            animate={{ opacity: 1, scaleX: 1 }}
             transition={{
               delay: 0.5,
               duration: 0.8,
+              ease: "easeOut",
             }}
             className="
-              h-px
-              bg-[#D4AF37]
-              mx-auto
-              mb-8
-            "
-          />
+    flex
+    items-center
+    justify-center
+    gap-3
+    mx-auto
+    mb-8
+    origin-center
+  "
+          >
+            {/* Línea izquierda */}
+            <div
+              className="
+      w-10 sm:w-14
+      h-px
+      bg-gradient-to-r
+      from-transparent
+      to-[#D4AF37]
+    "
+            />
+
+            {/* Ornamento central */}
+            <div className="relative flex items-center justify-center">
+              <span
+                className="
+        absolute
+        w-5 h-5
+        rounded-full
+        bg-[#D4AF37]/10
+        blur-[2px]
+      "
+              />
+
+              <span
+                className="
+        relative
+        w-2 h-2
+        rotate-45
+        border
+        border-[#D4AF37]
+        bg-[#FAF7EF]
+      "
+              />
+            </div>
+
+            {/* Línea derecha */}
+            <div
+              className="
+      w-10 sm:w-14
+      h-px
+      bg-gradient-to-l
+      from-transparent
+      to-[#D4AF37]
+    "
+            />
+          </motion.div>
 
           <motion.p
             variants={fadeUp}
             className="
+            
               text-[#6A635C]
               text-lg
               max-w-2xl
@@ -239,13 +338,22 @@ Quiero más información acerca de las invitaciones.`;
               leading-relaxed
             "
           >
-            Invitaciones digitales personalizadas para bodas, XV años, bautizos,
-            graduaciones, cumpleaños y celebraciones especiales.
+            Sorprende desde el primer mensaje con una invitación digital
+            diseñada especialmente para tu celebración.
           </motion.p>
+          <motion.a
+            variants={fadeUp}
+            href="#muestras"
+            className={styles.explore}
+          >
+            Descubre las invitaciones <ArrowDown size={15} aria-hidden="true" />
+          </motion.a>
         </motion.section>
 
+        <br />
+
         {/* GALERÍA */}
-        <section>
+        <section id="muestras" className="scroll-mt-8">
           <div className="flex items-center justify-center gap-6 mb-12">
             <motion.div
               initial={{ width: 0 }}
@@ -396,6 +504,7 @@ Quiero más información acerca de las invitaciones.`;
                         group-hover:scale-110
                       "
                     />
+                    <span className={styles.cardFrame} aria-hidden="true" />
                     {samplePlans[sample.href] && (
                       <InvitationPlanBanner plan={samplePlans[sample.href]} />
                     )}
@@ -432,7 +541,10 @@ Quiero más información acerca de las invitaciones.`;
         </section>
 
         {showFlash && (
-          <section aria-labelledby="flash-heading" className=" mt-6">
+          <section
+            aria-labelledby="flash-heading"
+            className={styles.flashSection}
+          >
             <div className="text-center mb-10">
               <div className="w-20 h-px bg-[#D4AF37]/40 mx-auto mb-6" />
               <h2

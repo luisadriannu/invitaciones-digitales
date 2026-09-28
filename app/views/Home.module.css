@@ -1,0 +1,197 @@
+.hero {
+  position: relative;
+  isolation: isolate;
+  padding: 48px 20px 42px;
+  border: 1px solid #d4af3738;
+  border-radius: 180px 180px 28px 28px / 70px 70px 28px 28px;
+  background: radial-gradient(ellipse at 50% 0%, #d4af3710, transparent 65%);
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 9px;
+  border: 1px solid #d4af3720;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.botanical {
+  position: absolute;
+  width: clamp(90px, 18vw, 210px);
+  height: auto;
+  color: #b8860b;
+  opacity: 0.33;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.leftBranch {
+  left: -34px;
+  bottom: -30px;
+  transform: rotate(-12deg);
+}
+.rightBranch {
+  right: -30px;
+  top: -30px;
+  transform: rotate(168deg);
+}
+
+.seal {
+  display: grid;
+  place-items: center;
+  width: 58px;
+  height: 58px;
+  margin: 0 auto 22px;
+  color: #b8860b;
+  border: 1px solid #d4af3780;
+  border-radius: 50%;
+  outline: 1px solid #d4af3735;
+  outline-offset: 5px;
+  background: #faf8f4;
+  box-shadow: 0 6px 22px #b8860b12;
+}
+
+.sparkles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  color: #b8860b;
+}
+
+.sparkles span {
+  position: absolute;
+  animation: glimmer 5s ease-in-out infinite;
+}
+.sparkles span:nth-child(1) {
+  left: 12%;
+  top: 16%;
+  font-size: 23px;
+}
+.sparkles span:nth-child(2) {
+  right: 13%;
+  top: 49%;
+  font-size: 17px;
+  animation-delay: -2s;
+}
+.sparkles span:nth-child(3) {
+  left: 19%;
+  bottom: 13%;
+  font-size: 13px;
+  animation-delay: -3s;
+}
+.sparkles span:nth-child(4) {
+  right: 26%;
+  top: 10%;
+  font-size: 10px;
+  animation-delay: -1s;
+}
+
+.explore {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 28px;
+  padding: 12px 22px;
+  border: 1px solid #d4af3780;
+  border-radius: 999px;
+  color: #8a6508;
+  background: #faf8f4;
+  font-size: 13px;
+  transition:
+    box-shadow 200ms,
+    background 200ms;
+}
+.explore:hover {
+  background: #f2ece4;
+  box-shadow: 0 6px 20px #b8860b12;
+}
+.explore:focus-visible {
+  outline: 2px solid #b8860b;
+  outline-offset: 4px;
+}
+
+.cardFrame {
+  position: absolute;
+  inset: 9px;
+  border: 1px solid #faf8f480;
+  border-radius: 7px;
+  pointer-events: none;
+}
+.cardFrame::before,
+.cardFrame::after {
+  content: "";
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  border-color: #d4af37;
+}
+.cardFrame::before {
+  top: -1px;
+  left: -1px;
+  border-top: 2px solid #d4af37;
+  border-left: 2px solid #d4af37;
+  border-radius: 7px 0 0;
+}
+.cardFrame::after {
+  right: -1px;
+  bottom: -1px;
+  border-bottom: 2px solid #d4af37;
+  border-right: 2px solid #d4af37;
+  border-radius: 0 0 7px;
+}
+
+.flashSection {
+  position: relative;
+  margin-top: 56px;
+  padding: 36px 16px;
+  border: 1px solid #d4af3735;
+  border-radius: 28px;
+  background: linear-gradient(135deg, #d4af3708, transparent, #d4af370d);
+}
+
+@keyframes glimmer {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scale(0.85);
+  }
+  50% {
+    opacity: 0.75;
+    transform: scale(1.1);
+  }
+}
+
+@media (max-width: 640px) {
+  .hero {
+    padding: 34px 16px;
+  }
+  .leftBranch {
+    left: -28px;
+    bottom: -25px;
+  }
+  .rightBranch {
+    right: -25px;
+    top: -18px;
+  }
+  .sparkles span:nth-child(1) {
+    left: 8%;
+    top: 11%;
+  }
+  .sparkles span:nth-child(2) {
+    right: 5%;
+    top: 72%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sparkles span {
+    animation: none;
+    opacity: 0.5;
+  }
+  .explore {
+    transition: none;
+  }
+}
