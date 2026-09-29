@@ -14,6 +14,7 @@ import kevinyjuana from "@/app/data/wedding/kevin-y-juana";
 import kevinyjuanalight from "@/app/data/wedding/kevin-y-juana-light";
 import valentina from "@/app/data/xv/valentina";
 import julia from "@/app/data/xv/julia";
+import nathalia from "@/app/data/xv/nathalia";
 import karina from "@/app/data/graduation/karina";
 import sofia from "@/app/data/firstcommunion/sofia";
 import itzia from "@/app/data/christening/itzia";
@@ -34,6 +35,7 @@ const events: Record<string, EventData> = {
   kevinyjuanalight,
   valentina,
   julia,
+  nathalia,
   karina,
   sofia,
   itzia,

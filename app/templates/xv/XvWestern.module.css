@@ -1,0 +1,90 @@
+.page { --ink: #51352c; --rust: #8e4834; --gold: #b79056; max-width: 760px; margin: auto; overflow: hidden; color: var(--ink); background: #f5ead7; background-image: repeating-linear-gradient(0deg, transparent 0 4px, #51352c03 4px 5px); font-family: Georgia, 'Times New Roman', serif; }
+.hero { position: relative; isolation: isolate; min-height: 100svh; display: flex; flex-direction: column; justify-content: flex-end; padding: 48px 28px 28px; text-align: center; color: #fff8e9; background: #51352c; }
+.eyebrow { font-family: 'Courier New', monospace; text-transform: uppercase; font-size: 11px; letter-spacing: .2em; line-height: 1.8; margin-bottom: 14px; }
+.emblem { width: 62px; margin: 22px auto; color: var(--gold); }
+.ribbon { display: inline-block; padding: 9px 24px; border-block: 1px solid var(--gold); letter-spacing: .28em; font-size: 11px; }
+.hero h1 { font-size: clamp(3.5rem, 15vw, 6rem); font-weight: bold; letter-spacing: -.05em; line-height: 1.1; margin: 18px 0; text-shadow: 0 3px 20px #0008; }
+.date { font-style: italic; font-size: 19px; }
+.heroPortrait { position: relative; max-width: 440px; margin: 32px auto; padding: 7px; border: 3px double var(--gold); border-radius: 48% 48% 4px 4px; }
+.photo { position: relative; aspect-ratio: 3/4; overflow: hidden; background: #e3d1b6; }
+.heroPortrait .photo { border-radius: 48% 48% 2px 2px; }
+.seal { position: absolute; bottom: -22px; left: calc(50% - 27px); width: 54px; height: 54px; display: grid; place-items: center; border-radius: 50%; background: var(--rust); color: #f5ead7; border: 4px double #c5a476; font-size: 19px; box-shadow: 0 4px 12px #51352c30; }
+.placeholder { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 24px; color: #8e6742; background: radial-gradient(ellipse, #f5ead7, #dbc4a2); }
+.placeholder svg { width: 32%; }
+.placeholder span { font-size: 40px; letter-spacing: .2em; }
+.scroll { display: flex; flex-direction: column; gap: 10px; margin-top: 38px; text-transform: uppercase; letter-spacing: .18em; font-size: 9px; }
+.cornerStars { position: absolute; top: 20px; right: 22px; color: var(--gold); font-size: 22px; }
+.section { padding: 42px 30px; text-align: center; }
+.section h2 { font-size: clamp(1.9rem, 7vw, 2.5rem); line-height: 1.2; margin-bottom: 24px; }
+.divider { display: flex; align-items: center; justify-content: center; gap: 16px; color: var(--gold); margin-bottom: 24px; }
+.divider::before,.divider::after { content: ''; width: 65px; height: 1px; background: var(--gold); }
+.quote { max-width: 450px; margin: auto; font-size: 24px; line-height: 1.6; font-style: italic; }
+.signature { margin-top: 24px; color: var(--rust); font-style: italic; }
+.family { background: #e9d8bd; border-block: 3px double #b7905680; }
+.parent { font-size: 23px; line-height: 1.5; }
+.ampersand { display: block; font-size: 30px; font-style: italic; color: var(--rust); margin: 10px; }
+.venue { max-width: 440px; margin: 18px auto 0; border: 1px dashed var(--gold); padding: 28px 18px; border-radius: 60px 60px 3px 3px / 18px 18px 3px 3px; }
+.venue svg { margin: 0 auto 16px; color: var(--rust); }
+.venue h3 { font-size: 13px; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 12px; }
+.venue p { font-size: 23px; line-height: 1.4; }
+.venue .hour { font-size: 16px; margin-top: 12px; }
+.mapButton { display: inline-flex; align-items: center; justify-content: center; gap: 8px; margin-top: 18px; padding: 11px 20px; font-family: 'Courier New', monospace; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--rust); background: #fff8e9; border: 1px solid var(--gold); border-radius: 3px; }
+.mapButton svg { margin: 0; color: var(--rust); }
+.mapButton:hover { color: #fff8e9; background: var(--rust); border-color: var(--rust); }
+.mapButton:hover svg { color: #fff8e9; }
+.mapButton:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+.dress { background: var(--ink); color: #f5ead7; border-block: 4px double var(--gold); }
+.dress svg { margin: 0 auto 18px; color: #d6b881; }
+.dress h2 { margin-bottom: 0; font-style: italic; }
+.dressBoot { display: block; width: clamp(112px, 34vw, 165px); height: auto; margin: 0 auto 18px; object-fit: contain; filter: drop-shadow(0 10px 18px #0007); }
+.gallery { display: grid; gap: 30px; max-width: 420px; margin: 32px auto 0; }
+.gallery figure { padding: 9px 9px 0; background: #fff8e9; border: 1px solid #b7905650; box-shadow: 0 8px 22px #51352c12; }
+.gallery figure:nth-child(odd) { rotate: -2deg; }
+.gallery figure:nth-child(even) { rotate: 2deg; }
+.gallery figcaption { padding: 12px; font-size: 11px; letter-spacing: .2em; color: var(--rust); }
+.rsvp { border-top: 1px solid #b7905680; }
+.rsvp > p { max-width: 360px; margin: auto; line-height: 1.7; }
+.button { display: inline-flex; justify-content: center; align-items: center; gap: 10px; margin-top: 25px; padding: 16px 22px; color: #fff8e9; background: var(--rust); outline: 1px dashed #f5ead780; outline-offset: -5px; border-radius: 4px; font-family: Georgia, serif; }
+.button:hover { background: var(--ink); }
+.button:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; }
+.footer { padding: 20px 24px 40px; text-align: center; font-size: 13px; line-height: 2; color: var(--rust); }
+
+.coverPhoto { object-fit: cover; object-position: 76% center; z-index: -3; }
+.coverShade { position: absolute; inset: 0; z-index: -2; background: linear-gradient(180deg, #22171018 25%, #22171025 40%, #221710c9 75%, #221710ed); }
+.hero::after { content: ''; position: absolute; inset: 14px; border: 1px solid #d6b88190; outline: 1px dashed #d6b88150; outline-offset: -5px; pointer-events: none; z-index: -1; }
+.coverContent { margin-top: 35svh; }
+.hero .emblem { width: 40px; margin: 14px auto; color: #d6b881; }
+.hero .eyebrow { color: #f5ead7; }
+.hero .ribbon { border-color: #d6b881; }
+.hero .scroll { margin-top: 28px; }
+
+/* Western ornaments */
+.hero { overflow: hidden; }
+.section { position: relative; }
+.westernOrnament { display: flex; justify-content: center; align-items: center; gap: 22px; color: var(--gold); margin: 0 auto 20px; pointer-events: none; }
+.westernOrnament svg { width: 100px; height: 72px; }
+.westernOrnament span { font-size: 15px; }
+.dress .westernOrnament svg { margin: 0; }
+.ropeCorner { position: absolute; top: -12px; left: 8px; width: clamp(65px, 18vw, 110px); color: #d6b881; opacity: .7; pointer-events: none; }
+.starField { position: absolute; inset: 0; pointer-events: none; color: #f5d59c; }
+.starField span { position: absolute; animation: westernTwinkle 4.5s ease-in-out infinite; }
+.starField span:nth-child(1) { left: 12%; top: 29%; font-size: 20px; }
+.starField span:nth-child(2) { right: 9%; top: 12%; font-size: 13px; animation-delay: -2s; }
+.starField span:nth-child(3) { left: 8%; top: 63%; font-size: 16px; animation-delay: -1s; }
+.starField span:nth-child(4) { right: 12%; top: 48%; font-size: 12px; animation-delay: -3s; }
+.starField span:nth-child(5) { right: 8%; bottom: 15%; font-size: 19px; animation-delay: -1.5s; }
+.stitchedCorners { position: absolute; inset: 12px; border: 1px dashed #b7905690; border-radius: 24px 3px; pointer-events: none; }
+.family::before, .family::after { content: '✦'; position: absolute; top: 50%; color: var(--gold); font-size: 16px; }
+.family::before { left: 18px; } .family::after { right: 18px; }
+.family .parent { padding-inline: 8px; }
+.venue { position: relative; box-shadow: 0 5px 16px #51352c08; }
+.venue::before, .venue::after { content: ''; position: absolute; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); bottom: 10px; box-shadow: inset 1px 1px 1px #fff8e980; }
+.venue::before { left: 10px; } .venue::after { right: 10px; }
+.gallery figure { position: relative; }
+.photoPin { position: absolute; z-index: 1; top: -15px; left: calc(50% - 15px); width: 30px; height: 30px; display: grid; place-items: center; color: #f5ead7; background: var(--rust); border: 3px double var(--gold); border-radius: 50%; box-shadow: 0 3px 8px #51352c30; }
+.hero .scroll span { animation: westernScroll 2.5s ease-in-out infinite; }
+.button { transition: transform .2s, background .2s, box-shadow .2s; }
+.button:hover { transform: translateY(-3px); box-shadow: 0 8px 20px #51352c25; }
+@keyframes westernTwinkle { 0%,100% { opacity: .25; transform: scale(.85) rotate(-8deg); } 50% { opacity: .9; transform: scale(1.15) rotate(8deg); } }
+@keyframes westernScroll { 0%,100% { transform: translateY(0); } 50% { transform: translateY(5px); } }
+@media (prefers-reduced-motion: reduce) { .starField span, .hero .scroll span { animation: none; } .button { transition: none; } .button:hover { transform: none; } }

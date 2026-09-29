@@ -23,7 +23,8 @@ export type EventVariant =
   | "flash"
   | "sirena"
   | "itzia"
-  | "roseGarden";
+  | "roseGarden"
+  | "western";
 
 
 
@@ -72,8 +73,10 @@ export interface MediaInfo {
 export interface LocationInfo {
   mapUrl?: string;
   church?: string;
+  churchMapUrl?: string;
   event?: string;
   reception?: string;
+  receptionMapUrl?: string;
   place?: string;
 }
 

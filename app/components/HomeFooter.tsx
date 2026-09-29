@@ -1,10 +1,19 @@
 import Image from "next/image";
 
+const WHATSAPP_NUMBER = "522206283499";
+
+const WHATSAPP_MESSAGE =
+  "¡Hola! 👋 Me interesa crear una invitación digital con Monarque ✨ ¿Podrían darme más información sobre los diseños y planes disponibles?";
+
+const whatsappContact = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
+  WHATSAPP_MESSAGE,
+)}`;
+
 const socialLinks = [
   {
     label: "WhatsApp",
     detail: "+52 220 628 3499",
-    href: "https://wa.me/522206283499",
+    href: whatsappContact,
     icon: "/socia-media/whatsapp.svg",
   },
   {
