@@ -1,21 +1,14 @@
 import Image from "next/image";
 
-const WHATSAPP_NUMBER = "522206283499";
+const whatsappCountries = [
+  { country: "México", number: "522206283499", display: "+52 220 628 3499" },
+  { country: "Perú", number: "51972157720", display: "+51 972 157 720" },
+] as const;
 
 const WHATSAPP_MESSAGE =
   "¡Hola! 👋 Me interesa crear una invitación digital con Monarque ✨ ¿Podrían darme más información sobre los diseños y planes disponibles?";
 
-const whatsappContact = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
-  WHATSAPP_MESSAGE,
-)}`;
-
 const socialLinks = [
-  {
-    label: "WhatsApp",
-    detail: "+52 220 628 3499",
-    href: whatsappContact,
-    icon: "/socia-media/whatsapp.svg",
-  },
   {
     label: "Email",
     detail: "monarqueinvitacionesweb@gmail.com",
@@ -78,8 +71,29 @@ export default function HomeFooter() {
           Solicita tu cotización personalizada
         </p>
 
+        <section aria-labelledby="whatsapp-country-heading" className="mx-auto max-w-xl rounded-2xl border border-[#D4AF37]/30 bg-[#FAF8F4] p-5 sm:p-6">
+          <Image src="/socia-media/whatsapp.svg" alt="" aria-hidden="true" width={32} height={32} className="mx-auto mb-3" />
+          <h2 id="whatsapp-country-heading" className="text-lg font-medium">Escríbenos por WhatsApp</h2>
+          <p className="mt-2 text-sm text-[#6A635C]">Elige el país al que quieres contactar</p>
+          <div className="mt-5 grid gap-3 sm:grid-cols-2">
+            {whatsappCountries.map(({ country, number, display }) => (
+              <a
+                key={number}
+                href={`https://wa.me/${number}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Escribir por WhatsApp a ${country}: ${display}`}
+                className="flex min-h-20 flex-col items-center justify-center rounded-xl border border-[#D8C9B7] bg-[#FFFDF9] px-4 py-3 transition-colors hover:border-[#B8860B] hover:bg-[#F2ECE4] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#B8860B]"
+              >
+                <span className="font-medium text-[#8A6508]">{country}</span>
+                <span className="mt-1 text-sm text-[#6A635C]">{display}</span>
+              </a>
+            ))}
+          </div>
+        </section>
+
         <nav className="mt-9" aria-label="Redes sociales y contacto">
-          <ul className="grid grid-cols-2 gap-3 md:grid-cols-4">
+          <ul className="grid grid-cols-1 gap-3 sm:grid-cols-3">
             {socialLinks.map((social) => (
               <li key={social.label} className="h-full">
                 <a
