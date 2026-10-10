@@ -453,7 +453,7 @@ export default function ChristeningItzia({ data }: Props) {
                     className="mb-2 text-[10px] uppercase tracking-[0.26em]"
                     style={{ fontFamily: FONT_UTILITY, color: C.label }}
                   >
-                    Sus padrinos
+                    Sus padrinos de bautizo
                   </p>
                   <p
                     className="text-[1.35rem] italic leading-tight"
@@ -472,7 +472,7 @@ export default function ChristeningItzia({ data }: Props) {
                     className="mb-2 text-[10px] uppercase tracking-[0.26em]"
                     style={{ fontFamily: FONT_UTILITY, color: C.label }}
                   >
-                    Sus padrinos de bautizo
+                    Sus padrinos de presentación
                   </p>
                   <p
                     className="text-[1.35rem] italic leading-tight"
