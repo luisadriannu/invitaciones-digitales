@@ -24,7 +24,8 @@ export type EventVariant =
   | "sirena"
   | "itzia"
   | "roseGarden"
-  | "western";
+  | "western"
+  | "oliveVintage";
 
 
 
@@ -86,6 +87,14 @@ export interface ContactInfo {
 }
 
 export interface FamilyInfo {
+  groomParents?: {
+    mother: string;
+    father: string;
+  };
+  brideParents?: {
+    mother: string;
+    father: string;
+  };
   presentationGodparents?: string[];
   parents?: {
     mother: string;

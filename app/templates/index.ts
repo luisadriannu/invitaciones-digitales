@@ -14,6 +14,7 @@ const GraduationFlash = dynamic(() => import("@/app/templates/flash/GraduationFl
 // import BirthdayModern from "@/templates/birthday/BirthdayModern";
 const WeddingBase = dynamic(() => import("@/app/templates/wedding/WeddingBase"));
 const WeddingLight = dynamic(() => import("@/app/templates/wedding/WeddingLight"));
+const WeddingOliveVintage = dynamic(() => import("@/app/templates/wedding/WeddingOliveVintage"));
 // import BabyShowerBase from "@/templates/babyshower/BabyShowerBase";
 const xvBaseTemplate = dynamic(() => import("@/app/templates/xv/xvBaseTemplate"));
 const XvRoseGarden = dynamic(() => import("@/app/templates/xv/XvRoseGarden"));
@@ -38,6 +39,7 @@ export const templates = {
   boda: {
     base: WeddingBase,
     light: WeddingLight,
+    oliveVintage: WeddingOliveVintage,
   },
   // babyshower: {
   //   base: BabyShowerBase,

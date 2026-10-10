@@ -266,7 +266,14 @@ export default function ChristeningItzia({ data }: Props) {
           />
         )}
       </AnimatePresence>
-      {data.media.music && <MusicButton src={data.media.music} autoPlay color={C.primary} backgroundColor="#fff5f8" />}
+      {data.media.music && (
+        <MusicButton
+          src={data.media.music}
+          autoPlay
+          color={C.primary}
+          backgroundColor="#fff5f8"
+        />
+      )}
 
       <motion.main
         inert={showIntro}
@@ -465,7 +472,7 @@ export default function ChristeningItzia({ data }: Props) {
                     className="mb-2 text-[10px] uppercase tracking-[0.26em]"
                     style={{ fontFamily: FONT_UTILITY, color: C.label }}
                   >
-                    Sus padrinos de presentación
+                    Sus padrinos de bautizo
                   </p>
                   <p
                     className="text-[1.35rem] italic leading-tight"
