@@ -102,14 +102,6 @@ export interface FamilyInfo {
     mother: string;
     father: string;
   };
-  groomParents?: {
-    father: string;
-    mother: string;
-  };
-  brideParents?: {
-    father: string;
-    mother: string;
-  };
   godparents?: {
     man: string;
     woman: string;
@@ -140,3 +132,4 @@ export interface EventData {
   design?: DesignInfo;
   plan: InvitationPlan;
 }
+
