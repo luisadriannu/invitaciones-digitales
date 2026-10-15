@@ -17,7 +17,12 @@ export const metadata: Metadata = {
     title: "Invitaciones Digitales",
     description:
       "Invitaciones digitales para bodas, XV años, bautizos y graduaciones.",
-    images: [{ url: "/seo/monarque-share.jpg", width: 1200, height: 457, alt: "Monarque · Invitaciones Web" }],
+    images: [
+      {
+        url: "/seo/icon.png",
+        alt: "Monarque · Invitaciones Web",
+      },
+    ],
   },
 };
 
