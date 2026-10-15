@@ -168,9 +168,25 @@ export default function WeddingAzure({ data }: { data: EventData }) {
             </div>
             <div className={styles.openingCard}>
               <p className={styles.eyebrow}>UNA HISTORIA DE AMOR</p>
+              <p className={styles.openingStory}>
+                La historia comienza cuando dos personas que ni soñaban
+                conocerse terminan encontrándose en el instante menos esperado,
+                pero en el momento indicado.
+              </p>
+              <span className={styles.openingDivider} aria-hidden="true">
+                <i />
+                ❦
+                <i />
+              </span>
               <WeddingRings />
-              <h2 id="opening-title">{data.event.name}</h2>
-              <p>Tenemos algo muy especial para compartir contigo.</p>
+              <h2 id="opening-title">
+                <span className="mb-3">{names[0]}</span>
+                <em>&amp;</em>
+                <span>{names[1]}</span>
+              </h2>
+              <p className={styles.openingInvitation}>
+                Tenemos algo muy especial para compartir contigo.
+              </p>
               <button
                 type="button"
                 className={styles.button}

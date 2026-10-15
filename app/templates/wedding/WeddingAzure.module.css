@@ -885,22 +885,91 @@
   align-self: center;
   padding: 20px 10px 24px;
 }
-.openingCard h2 {
+.openingCard .eyebrow {
+  color: #8b7449;
+  margin: 0 0 20px;
+}
+.openingCard .openingStory {
+  position: relative;
+  max-width: 340px;
+  margin: 0 auto;
+  color: #294b63;
   font:
-    400 clamp(36px, 10vw, 54px)/1.2 Georgia,
+    italic 400 clamp(20px, 5.4vw, 25px) / 1.42 "Cormorant Garamond",
+    Georgia,
     serif;
-  margin: 24px 0;
+  text-wrap: balance;
+}
+.openingStory:before {
+  content: "“";
+  position: absolute;
+  top: -24px;
+  left: -4px;
+  color: #b79b6452;
+  font: 76px/1 Georgia, serif;
+  pointer-events: none;
+}
+.openingDivider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: min(190px, 60%);
+  margin: 18px auto 4px;
+  color: #a28751;
+  font: 15px/1 Georgia, serif;
+}
+.openingDivider i {
+  width: 62px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #b79b64a8);
+}
+.openingDivider i:last-child {
+  transform: scaleX(-1);
+}
+.openingCard h2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font:
+    400 clamp(48px, 13vw, 68px)/1 "Great Vibes",
+    "Cormorant Garamond",
+    serif;
+  color: #244963;
+  margin: 10px 0 18px;
+  text-wrap: balance;
+}
+.openingCard h2 span {
+  display: block;
+}
+.openingCard h2 em {
+  display: block;
+  margin: 2px 0 0;
+  color: #a28751;
+  font:
+    italic 400 25px/0.85 "Cormorant Garamond",
+    Georgia,
+    serif;
 }
 .openingCard > p:not(.eyebrow) {
-  font-size: 14px;
-  line-height: 1.8;
-  max-width: 270px;
-  margin: 0 auto 20px;
+  margin-inline: auto;
+}
+.openingCard .openingInvitation {
+  max-width: 280px;
+  margin-bottom: 18px;
+  color: #526575;
+  font-size: 12px;
+  line-height: 1.7;
+  letter-spacing: 0.06em;
 }
 .openingCard .button {
   background: #315c7b;
   border-color: #315c7b;
   color: white;
+  min-width: 205px;
+  border-radius: 999px;
+  box-shadow: 0 10px 28px #203f5930;
+  letter-spacing: 0.08em;
 }
 .openingCard small {
   display: flex;
@@ -1152,12 +1221,19 @@
     padding-bottom: 12px;
   }
   .openingCard h2 {
-    margin-block: 16px;
+    margin-block: 8px 12px;
   }
   .openingCard .rings {
-    width: 130px;
-    height: 85px;
-    margin-block: 12px;
+    width: 112px;
+    height: 72px;
+    margin-block: 6px;
+  }
+  .openingCard .openingStory {
+    font-size: 19px;
+    line-height: 1.3;
+  }
+  .openingDivider {
+    margin-top: 10px;
   }
 }
 
