@@ -12,6 +12,7 @@ const vicente: EventData = {
     imageHeight: 800,
   },
   event: {
+    timeZone: "America/Mazatlan",
     name: "Vicente Sebastian Martinez Rivas",
     date: "3 Octubre 2026",
     ceremonyHour: "5:00 PM",

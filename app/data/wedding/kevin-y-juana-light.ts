@@ -11,6 +11,7 @@ const kevinyjuanalight: EventData = {
     image: "/pictures/wedding/kevin-y-juana/kevin-y-juana-1.jpg",
   },
   event: {
+    timeZone: "America/Mexico_City",
     name: "Clara Montes y Diego Salazar",
     date: "15 Mayo 2027",
     ceremonyHour: "5:00 PM",

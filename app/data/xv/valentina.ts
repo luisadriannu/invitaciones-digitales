@@ -12,6 +12,7 @@ const camila: EventData = {
     image: "/pictures/xv/valentina/xv-1.jpeg",
   },
   event: {
+    timeZone: "America/Mexico_City",
     name: "Maria Valentina",
     date: "16 Agosto 2027",
     ceremonyHour: "5:00 PM",

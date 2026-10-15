@@ -12,6 +12,7 @@ const sofia: EventData = {
     image: "/pictures/firstcommunion/sofia/sofia-1.jpg",
   },
   event: {
+    timeZone: "America/Mexico_City",
     name: "Sofia Rodriguez",
     date: "21 Diciembre 2026",
     ceremonyHour: "12:00 PM",

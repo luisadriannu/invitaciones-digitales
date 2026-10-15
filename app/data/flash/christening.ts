@@ -7,7 +7,8 @@ const christening: EventData = {
   plan: "basic",
   design: { variant: "flash" },
   seo: { title: "Bautizo de Elena · Flash", description: "Te invito a mi bautizo. Elena Paredes.", image: "/pictures/christening/camila/camila-4.jpg" },
-  event: { name: "Elena Paredes", date: "06 Junio 2027", ceremonyHour: "12:30 PM", partyHour: "", dressCode: "" },
+  event: {
+    timeZone: "America/Mexico_City", name: "Elena Paredes", date: "06 Junio 2027", ceremonyHour: "12:30 PM", partyHour: "", dressCode: "" },
   media: { coverImage: "/pictures/christening/camila/camila-4.jpg", gallery: [] },
   location: { church: "Capilla Santa Esperanza · Morelia" },
   contact: { phone: "" },

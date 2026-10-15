@@ -11,6 +11,7 @@ const mia: EventData = {
     image: "/pictures/birthday/mia/guerreras-pop-hd.png",
   },
   event: {
+    timeZone: "America/Mexico_City",
     name: "Mía",
     age: 8,
     date: "24 Enero 2027",

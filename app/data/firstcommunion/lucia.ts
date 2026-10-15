@@ -12,6 +12,7 @@ const invitation: EventData = {
     image: "/pictures/firstcommunion/lucia/lucia-1.jpg",
   },
   event: {
+    timeZone: "America/Mexico_City",
     name: "Lucía",
     date: "29 Mayo 2027",
     ceremonyHour: "11:00 AM",

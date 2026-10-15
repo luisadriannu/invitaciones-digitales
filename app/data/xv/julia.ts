@@ -10,9 +10,9 @@ const julia: EventData = {
     image: "/pictures/xv/julia/seo-julia.jpg",
   },
   event: {
+    timeZone: "America/Mexico_City",
     name: "Julia Hernández Pérez",
     date: "21 Agosto 2027",
-    startsAt: "2027-08-21T18:00:00-06:00",
     ceremonyHour: "5:00 PM",
     partyHour: "6:00 PM",
     phrase:

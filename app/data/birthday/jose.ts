@@ -9,6 +9,7 @@ const jose: EventData = {
     image: "/pictures/birthday/jose/jose-1.jpg",
   },
   event: {
+    timeZone: "America/Mexico_City",
     name: "José Juarez Rodriguez",
     date: "20 Diciembre 2026",
     // ceremonyHour: "11:00 AM",

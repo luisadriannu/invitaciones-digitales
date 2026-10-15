@@ -9,6 +9,7 @@ const kevinyjuana: EventData = {
     image: "/pictures/wedding/kevin-y-juana/kevin-y-juana-1.jpg",
   },
   event: {
+    timeZone: "America/Mexico_City",
     name: "Kevin Mariano y Juana Reynoso",
     date: "26 Diciembre 2026",
     ceremonyHour: "11:00 AM",

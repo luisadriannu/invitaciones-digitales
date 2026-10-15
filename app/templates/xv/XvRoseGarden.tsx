@@ -13,6 +13,7 @@ import {
   Sparkles,
 } from "lucide-react";
 import MusicButton from "@/app/components/MusicButton";
+import { getEventDate } from "@/app/lib/eventTime";
 import { useCountdown } from "@/app/hooks/useCountdown";
 import type { EventData } from "@/app/types/EventData";
 import styles from "./XvRoseGarden.module.css";
@@ -27,7 +28,7 @@ export default function XvRoseGarden({ data }: { data: EventData }) {
     viewport: { once: true, amount: 0.12 },
     transition: { duration: reducedMotion ? 0 : 0.8 },
   };
-  const time = useCountdown(new Date(data.event.startsAt!));
+  const time = useCountdown(getEventDate(data.event));
   const message = encodeURIComponent(
     `¡Hola! Me encantará acompañar a ${data.event.name} en sus XV años. Quiero confirmar mi asistencia.`,
   );

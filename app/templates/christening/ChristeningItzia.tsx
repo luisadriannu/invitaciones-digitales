@@ -13,6 +13,7 @@ import MusicButton from "@/app/components/MusicButton";
 import Gallery from "@/app/components/Gallery";
 import LocationMaps from "@/app/components/LocationMaps";
 import type { EventData } from "@/app/types/EventData";
+import { getEventDate } from "@/app/lib/eventTime";
 import { useCountdown } from "@/app/hooks/useCountdown";
 import { MessageCircleHeart, MapPin, Gift } from "lucide-react";
 
@@ -45,21 +46,6 @@ const C = {
 
 const FONT_DISPLAY = "var(--font-display)";
 const FONT_UTILITY = "var(--font-utility)";
-
-const MESES: Record<string, number> = {
-  Enero: 0,
-  Febrero: 1,
-  Marzo: 2,
-  Abril: 3,
-  Mayo: 4,
-  Junio: 5,
-  Julio: 6,
-  Agosto: 7,
-  Septiembre: 8,
-  Octubre: 9,
-  Noviembre: 10,
-  Diciembre: 11,
-};
 
 const fadeInUp: MotionProps = {
   initial: { opacity: 0, y: 20 },
@@ -109,17 +95,7 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
 }
 
 function PreCountDown({ data }: { data: EventData }) {
-  const [dia, mes, año] = data.event.date.split(" ");
-  const [hora, periodo] = data.event.partyHour.split(" ");
-  const [hh, mm] = hora.split(":").map(Number);
-  const hora24 =
-    periodo === "PM" && hh !== 12
-      ? hh + 12
-      : hh === 12 && periodo === "AM"
-        ? 0
-        : hh;
-  const target = new Date(Number(año), MESES[mes], Number(dia), hora24, mm);
-  const { days, hours, minutes, seconds } = useCountdown(target);
+  const { days, hours, minutes, seconds } = useCountdown(getEventDate(data.event));
   const finished = days === 0 && hours === 0 && minutes === 0 && seconds === 0;
 
   if (finished) {
