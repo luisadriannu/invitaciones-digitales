@@ -852,8 +852,9 @@
   z-index: 100;
   overflow-y: auto;
   display: grid;
-  place-items: center;
-  padding: 32px 26px;
+  grid-template-rows: auto minmax(min-content, 1fr);
+  justify-items: center;
+  padding: 0 26px max(32px, env(safe-area-inset-bottom));
   background: radial-gradient(ellipse at top, #fffdf8, #eee7d7);
   color: #203f59;
   text-align: center;
@@ -869,11 +870,11 @@
 }
 .openingFlowers {
   position: absolute;
-  top: -60px;
-  left: -65px;
-  width: 240px;
+  top: -24px;
+  left: -28px;
+  width: clamp(160px, 48vw, 210px);
   pointer-events: none;
-  z-index: -1;
+  z-index: 0;
 }
 .openingFlowers img {
   width: 100%;
@@ -881,7 +882,8 @@
 }
 .openingCard {
   width: min(100%, 420px);
-  padding: 70px 10px 35px;
+  align-self: center;
+  padding: 20px 10px 24px;
 }
 .openingCard h2 {
   font:
@@ -1122,3 +1124,29 @@
     letter-spacing: 1px;
   }
 }
+
+/* A separate layout row reserves space for flowers at every viewport height. */
+.openingDecoration {
+  position: relative;
+  width: calc(100% + 52px);
+  height: clamp(125px, 39vw, 170px);
+  overflow: hidden;
+  pointer-events: none;
+}
+.openingFlowers img { display: block; }
+.openingCard { box-sizing: border-box; min-width: 0; }
+@media (max-height: 650px) {
+  .openingDecoration { height: 112px; }
+  .openingFlowers { width: 160px; }
+  .openingCard { padding-top: 12px; padding-bottom: 12px; }
+  .openingCard h2 { margin-block: 16px; }
+  .openingCard .rings { width: 130px; height: 85px; margin-block: 12px; }
+}
+
+
+/* Flowers occupy their own row below the gift message, never over its icon. */
+.gifts { padding-bottom: 0; }
+.giftDecoration { height: 145px; margin: 24px -28px 0; overflow: hidden; pointer-events: none; }
+.giftFlowers { position: relative; width: 190px; margin-left: -30px; }
+.giftFlowers img { display: block; width: 100%; height: auto; }
+@media(min-width:700px) { .giftDecoration { margin-inline: -40px; } }

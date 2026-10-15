@@ -163,7 +163,7 @@ export default function WeddingAzure({ data }: { data: EventData }) {
             exit={{ opacity: 0, y: reducedMotion ? 0 : -24 }}
             transition={{ duration: reducedMotion ? 0 : 0.65 }}
           >
-            <BotanicalSprig className={styles.openingFlowers} />
+            <div className={styles.openingDecoration} aria-hidden="true"><BotanicalSprig className={styles.openingFlowers} /></div>
             <div className={styles.openingCard}>
               <p className={styles.eyebrow}>UNA HISTORIA DE AMOR</p>
               <WeddingRings />
@@ -476,3 +476,5 @@ export default function WeddingAzure({ data }: { data: EventData }) {
     </>
   );
 }
+
+
