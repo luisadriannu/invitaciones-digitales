@@ -40,6 +40,10 @@ const gold = "text-[#B8860B]";
 const dark = "text-[#3F3330]";
 const muted = "text-[#8A7668]";
 
+function buildGlassCard(primary: string) {
+  return `bg-[rgba(255,255,255,0.75)] border rounded-3xl p-8 backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5`;
+}
+
 /* Rose divider: vertical line + symbol + vertical line via flex-col */
 function RoseDivider({ symbol }: { symbol: string }) {
   return (
@@ -75,6 +79,8 @@ export default function WeddingLight({ data }: Props) {
   const [openModal, setOpenModal] = useState(false);
 
   const coverImage = data.media.coverImage;
+  const primary = data.design?.colors?.primary ?? "#B8860B";
+  const accent = data.design?.colors?.accent ?? "#B85C7A";
 
   const infoItems: InfoItem[] = [
     {
@@ -110,7 +116,7 @@ export default function WeddingLight({ data }: Props) {
 
   return (
     <>
-      {data.media.music && <MusicButton src={data.media.music} color="#B85C7A" backgroundColor="#FDF9F4" />}
+      {data.media.music && <MusicButton src={data.media.music} color={accent} backgroundColor="#FDF9F4" />}
 
       <main
         style={{ fontFamily: "'Libre Baskerville', Georgia, serif" }}
@@ -264,7 +270,7 @@ export default function WeddingLight({ data }: Props) {
         </section>
 
         {/* ════════════════ FAMILIA ════════════════ */}
-        {(data.family?.parents || data.family?.godparents) && (
+        {(data.family?.parents || data.family?.groomParents || data.family?.brideParents || data.family?.godparents) && (
           <section className={`py-24 px-6 ${lightBg}`}>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -272,7 +278,7 @@ export default function WeddingLight({ data }: Props) {
               viewport={{ once: true }}
               className="text-center mb-14"
             >
-              <p className={`outfit ${gold}/70 tracking-[0.2em] text-xs uppercase mb-2`}>
+              <p className="outfit tracking-[0.2em] text-xs uppercase mb-2" style={{ color: primary + "B3" }}>
                 Con la bendición de
               </p>
               <h2 className={`text-3xl md:text-4xl font-light italic ${dark}`}>
@@ -281,7 +287,43 @@ export default function WeddingLight({ data }: Props) {
             </motion.div>
 
             <div className="max-w-2xl mx-auto grid gap-6 md:grid-cols-2">
-              {data.family?.parents && (
+              {/* Padres del novio */}
+              {data.family?.groomParents && (
+                <motion.div
+                  initial={{ opacity: 0, x: -30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  className={`text-center ${glassCard}`}
+                  style={{ borderColor: primary + "40" }}
+                >
+                  <p className="outfit text-xs tracking-[0.2em] uppercase mb-5" style={{ color: primary + "B3" }}>
+                    Padres del Novio
+                  </p>
+                  <p className="wl-couple-name">{data.family.groomParents.father}</p>
+                  <SmallDivider />
+                  <p className="wl-couple-name">{data.family.groomParents.mother}</p>
+                </motion.div>
+              )}
+              {/* Padres de la novia */}
+              {data.family?.brideParents && (
+                <motion.div
+                  initial={{ opacity: 0, x: 30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.12 }}
+                  className={`text-center ${glassCard}`}
+                  style={{ borderColor: primary + "40" }}
+                >
+                  <p className="outfit text-xs tracking-[0.2em] uppercase mb-5" style={{ color: primary + "B3" }}>
+                    Padres de la Novia
+                  </p>
+                  <p className="wl-couple-name">{data.family.brideParents.father}</p>
+                  <SmallDivider />
+                  <p className="wl-couple-name">{data.family.brideParents.mother}</p>
+                </motion.div>
+              )}
+              {/* Padres (campo legacy) */}
+              {data.family?.parents && !data.family?.groomParents && (
                 <motion.div
                   initial={{ opacity: 0, x: -30 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -291,13 +333,9 @@ export default function WeddingLight({ data }: Props) {
                   <p className={`outfit ${gold}/70 text-xs tracking-[0.2em] uppercase mb-5`}>
                     Padres
                   </p>
-                  <p className="wl-couple-name">
-                    {data.family.parents.mother}
-                  </p>
+                  <p className="wl-couple-name">{data.family.parents.mother}</p>
                   <SmallDivider />
-                  <p className="wl-couple-name">
-                    {data.family.parents.father}
-                  </p>
+                  <p className="wl-couple-name">{data.family.parents.father}</p>
                 </motion.div>
               )}
               {data.family?.godparents && (
@@ -311,13 +349,9 @@ export default function WeddingLight({ data }: Props) {
                   <p className={`outfit ${gold}/70 text-xs tracking-[0.2em] uppercase mb-5`}>
                     Padrinos
                   </p>
-                  <p className="wl-couple-name">
-                    {data.family.godparents.woman}
-                  </p>
+                  <p className="wl-couple-name">{data.family.godparents.woman}</p>
                   <SmallDivider />
-                  <p className="wl-couple-name">
-                    {data.family.godparents.man}
-                  </p>
+                  <p className="wl-couple-name">{data.family.godparents.man}</p>
                 </motion.div>
               )}
             </div>
@@ -444,6 +478,37 @@ export default function WeddingLight({ data }: Props) {
             Desliza para ver más
           </p>
         </section>
+
+        {/* ════════════════ MESA DE REGALOS ════════════════ */}
+        {data.event.giftMessage && (
+          <section className={`py-24 px-6 text-center ${sandBg}`}>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
+              <p className="outfit tracking-[0.2em] text-xs uppercase mb-2" style={{ color: primary + "B3" }}>
+                Mesa de Regalos
+              </p>
+              <h2 className={`text-3xl md:text-4xl font-light italic mb-8 ${dark}`}>
+                🎁 Un detalle especial
+              </h2>
+              <div
+                className="max-w-md mx-auto rounded-3xl p-8 backdrop-blur-sm"
+                style={{
+                  background: "rgba(255,255,255,0.75)",
+                  border: `1px solid ${primary}40`,
+                }}
+              >
+                {data.event.giftMessage.split("\n\n").map((line, i) => (
+                  <p key={i} className={`outfit ${muted} text-sm leading-relaxed ${i > 0 ? "mt-4" : ""}`}>
+                    {line}
+                  </p>
+                ))}
+              </div>
+            </motion.div>
+          </section>
+        )}
 
         {/* ════════════════ RSVP ════════════════ */}
         <section className={`py-28 px-6 text-center ${sandBg}`}>

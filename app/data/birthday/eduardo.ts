@@ -10,6 +10,7 @@ const mateo: EventData = {
     image: "/pictures/birthday/mateo/mateo-1.jpg",
   },
   event: {
+    timeZone: "America/Mexico_City",
     name: "Eduardo Torres",
     date: "22 Noviembre 2026",
     ceremonyHour: "5:00 PM",

@@ -12,6 +12,7 @@ const invitation: EventData = {
     image: "/pictures/graduation/valeria/valeria-1.jpg",
   },
   event: {
+    timeZone: "America/Mexico_City",
     name: "Valeria",
     date: "19 Junio 2027",
     partyHour: "7:00 PM",

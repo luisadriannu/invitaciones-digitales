@@ -12,6 +12,7 @@ const invitation: EventData = {
     image: "/pictures/birthday/mariana/mariana-1.jpg",
   },
   event: {
+    timeZone: "America/Mexico_City",
     name: "Mariana",
     age: 9,
     date: "15 Mayo 2027",

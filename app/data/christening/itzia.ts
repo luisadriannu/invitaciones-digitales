@@ -12,6 +12,7 @@ const itzia: EventData = {
     imageHeight: 1200,
   },
   event: {
+    timeZone: "America/Mexico_City",
     name: "Itzia Sarai Palacios Mondragon",
     date: "10 Octubre 2026",
     ceremonyHour: "9:00 AM",

@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { ArrowDown, ArrowUpRight, CalendarDays, Clock3, ScanLine, Leaf, MapPin, ShieldCheck, MessageCircle } from "lucide-react";
+import { getEventDate } from "@/app/lib/eventTime";
 import type { EventData } from "@/app/types/EventData";
 import styles from "./BirthdayDinoParty.module.css";
 
@@ -12,13 +13,13 @@ const species = [
   { name: "BRACHIOSAURUS", code: "BR-03", message: "Gigante del Jurásico" },
 ];
 
-function Countdown({ startsAt }: { startsAt: string }) {
+function Countdown({ target }: { target: number }) {
   const [remaining, setRemaining] = useState<number | null>(null);
   useEffect(() => {
-    const update = () => setRemaining(Math.max(0, new Date(startsAt).getTime() - Date.now()));
+    const update = () => setRemaining(Math.max(0, target - Date.now()));
     const timer = window.setInterval(update, 1000);
     return () => window.clearInterval(timer);
-  }, [startsAt]);
+  }, [target]);
   if (remaining === 0) return <p className={styles.started}>¡Llegó el día de nuestra dino fiesta!</p>;
   const values = remaining === null ? [null, null, null, null] : [Math.floor(remaining / 86400000), Math.floor(remaining / 3600000) % 24, Math.floor(remaining / 60000) % 60, Math.floor(remaining / 1000) % 60];
   return <div className={styles.countdown} aria-label="Tiempo restante para la fiesta">{["Días", "Horas", "Minutos", "Segundos"].map((label, index) => <div key={label}><strong>{values[index] === null ? "—" : String(values[index]).padStart(2, "0")}</strong><span>{label}</span></div>)}</div>;
@@ -58,7 +59,7 @@ export default function BirthdayDinoParty({ data }: { data: EventData }) {
         <p className={styles.kicker}>CUENTA REGRESIVA PARA LA APERTURA</p><h2>Bienvenido<br /><em>a lo extraordinario.</em></h2>
         <p className={styles.copy}>{data.event.phrase}</p>
         <div className={styles.dateStrip}><CalendarDays size={19} /><span>{data.event.date}</span><span className={styles.dot}>•</span><span>{data.event.partyHour}</span></div>
-        {data.event.startsAt && <><p className={styles.countLabel}>LA AVENTURA COMIENZA EN</p><Countdown startsAt={data.event.startsAt} /></>}
+        <><p className={styles.countLabel}>LA AVENTURA COMIENZA EN</p><Countdown target={getEventDate(data.event).getTime()} /></>
       </section>
 
       <section className={`${styles.locationSection} ${styles.reveal}`}>

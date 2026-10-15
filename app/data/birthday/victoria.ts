@@ -11,6 +11,7 @@ const victoria: EventData = {
     image: "/pictures/birthday/victoria/victoria-4.jpg",
   },
   event: {
+    timeZone: "America/Mexico_City",
     name: "Victoria",
     date: "28 Noviembre 2026",
     // ceremonyHour: "11:00 AM",

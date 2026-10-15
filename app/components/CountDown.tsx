@@ -1,5 +1,6 @@
 "use client";
 
+import { getEventDate } from "@/app/lib/eventTime";
 import { useCountdown } from "@/app/hooks/useCountdown";
 import type { EventData } from "@/app/types/EventData";
 
@@ -8,42 +9,7 @@ interface Props {
 }
 
 export default function CountDown({ data }: Props) {
-  const meses: Record<string, number> = {
-    Enero: 0,
-    Febrero: 1,
-    Marzo: 2,
-    Abril: 3,
-    Mayo: 4,
-    Junio: 5,
-    Julio: 6,
-    Agosto: 7,
-    Septiembre: 8,
-    Octubre: 9,
-    Noviembre: 10,
-    Diciembre: 11,
-  };
-
-  const [dia, mes, año] = data.event.date.split(" ");
-  const [hora, periodo] = data.event.partyHour.split(" ");
-
-  const [horas, minutos] = hora.split(":").map(Number);
-
-  const hora24 =
-    periodo === "PM" && horas !== 12
-      ? horas + 12
-      : horas === 12 && periodo === "AM"
-        ? 0
-        : horas;
-
-  const targetDate = new Date(
-    Number(año),
-    meses[mes],
-    Number(dia),
-    hora24,
-    minutos,
-  );
-
-  const { days, hours, minutes, seconds } = useCountdown(targetDate);
+  const { days, hours, minutes, seconds } = useCountdown(getEventDate(data.event));
 
   const isFinished =
     days === 0 && hours === 0 && minutes === 0 && seconds === 0;

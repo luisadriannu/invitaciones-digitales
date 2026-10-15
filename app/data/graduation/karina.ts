@@ -12,6 +12,7 @@ const alan: EventData = {
     image: "/pictures/graduation/karina/graduation-1.jpg",
   },
   event: {
+    timeZone: "America/Mexico_City",
     name: "Karina Garcia",
     date: "17 Agosto 2027",
     partyHour: "3:30 PM",

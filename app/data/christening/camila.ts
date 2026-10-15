@@ -12,6 +12,7 @@ const camila: EventData = {
     image: "/pictures/christening/camila/camila-1.jpg",
   },
   event: {
+    timeZone: "America/Mexico_City",
     name: "Camila Rivera Vega",
     date: "07 Diciembre 2026",
     ceremonyHour: "11:00 AM",

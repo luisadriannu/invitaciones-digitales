@@ -17,6 +17,7 @@ export type EventVariant =
   | "personalized"
   | "dinosaur"
   | "light"
+  | "azure"
   | "pastel"
   | "pop"
   | "dinoParty"
@@ -26,8 +27,6 @@ export type EventVariant =
   | "roseGarden"
   | "western"
   | "oliveVintage";
-
-
 
 export interface SeoInfo {
   title: string;
@@ -41,6 +40,9 @@ export interface EventInfo {
   name: string;
   age?: number;
   date: string;
+  /** IANA zone of the event venue; defaults to central Mexico. */
+  timeZone?: string;
+  /** @deprecated Countdown uses date + partyHour + timeZone. */
   startsAt?: string;
   ceremonyHour?: string;
   partyHour: string;
@@ -100,7 +102,14 @@ export interface FamilyInfo {
     mother: string;
     father: string;
   };
-
+  groomParents?: {
+    father: string;
+    mother: string;
+  };
+  brideParents?: {
+    father: string;
+    mother: string;
+  };
   godparents?: {
     man: string;
     woman: string;

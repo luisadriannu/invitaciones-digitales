@@ -10,6 +10,7 @@ const nathalia: EventData = {
     image: "/pictures/xv/nathalia/nathalia-1.jpeg",
   },
   event: {
+    timeZone: "America/Mexico_City",
     name: "Nathalia",
     age: 15,
     date: "17 Octubre 2026",

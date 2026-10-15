@@ -12,6 +12,7 @@ const invitation: EventData = {
     image: "/pictures/christening/emilia/bautizo-emilia-4.jpg",
   },
   event: {
+    timeZone: "America/Mexico_City",
     name: "Emilia",
     date: "22 Mayo 2027",
     ceremonyHour: "12:00 PM",

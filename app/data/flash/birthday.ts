@@ -7,7 +7,8 @@ const birthday: EventData = {
   plan: "basic",
   design: { variant: "flash" },
   seo: { title: "Cumpleaños de Daniela · Flash", description: "Te invito a mi cumpleaños. ¡Daniela cumple 7 años!", image: "/pictures/birthday/victoria/victoria-4.jpg" },
-  event: { name: "Daniela Ríos", age: 7, date: "08 Mayo 2027", partyHour: "4:00 PM", dressCode: "" },
+  event: {
+    timeZone: "America/Mexico_City", name: "Daniela Ríos", age: 7, date: "08 Mayo 2027", partyHour: "4:00 PM", dressCode: "" },
   media: { coverImage: "/pictures/birthday/victoria/victoria-4.jpg", gallery: [] },
   location: { reception: "Jardín Mariposas · Toluca" },
   contact: { phone: "" },

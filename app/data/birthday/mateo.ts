@@ -13,10 +13,10 @@ const mateo: EventData = {
     imageHeight: 1200,
   },
   event: {
+    timeZone: "America/Mexico_City",
     name: "Mateo",
     age: 5,
     date: "14 Diciembre 2026",
-    startsAt: "2026-11-14T16:00:00-06:00",
     partyHour: "4:00 PM",
     phrase:
       "El parque abre sus puertas por una razón especial: mis 5 años. Únete a una expedición entre dinosaurios, desafíos y momentos inolvidables.",
