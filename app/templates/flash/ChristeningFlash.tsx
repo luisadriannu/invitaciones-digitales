@@ -1,3 +1,4 @@
+import MonarqueSignature from "@/app/components/MonarqueSignature";
 import Image from "next/image";
 import type { EventData } from "@/app/types/EventData";
 import FlashDetails from "./FlashDetails";
@@ -31,8 +32,10 @@ export default function ChristeningFlash({ data }: { data: EventData }) {
         <FlashDetails data={data} />
         <footer className={styles.footer}>
           Tu presencia hará este día más especial.
+        <MonarqueSignature compact />
         </footer>
       </article>
     </main>
   );
 }
+

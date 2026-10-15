@@ -1,3 +1,4 @@
+import MonarqueSignature from "@/app/components/MonarqueSignature";
 import Image from "next/image";
 import { MapPin, MessageCircle, Utensils, Clock3 } from "lucide-react";
 import type { FlashEvent } from "./data";
@@ -73,8 +74,10 @@ export default function FloralInvitation({ event }: { event: FlashEvent }) {
             </a>
           </div> : <p className={styles.footer}>Invitación de muestra · Confirmación disponible al personalizarla.</p>}
           <p className={styles.footer}>Tu compañía será mi mejor regalo.</p>
+          <MonarqueSignature compact />
         </div>
       </article>
     </main>
   );
 }
+

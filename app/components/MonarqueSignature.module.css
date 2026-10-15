@@ -1,0 +1,24 @@
+.signature {
+  display: flex;
+  justify-content: center;
+  background: #fffdfa;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+.banner {
+  display: block;
+  width: 100%;
+  max-width: 480px;
+  height: auto;
+  object-fit: contain;
+}
+.compact {
+  display: flex;
+  justify-content: center;
+  flex-shrink: 0;
+  margin: 6px auto 0;
+  width: min(100%, 150px);
+}
+.compact .banner {
+  width: 100%;
+  height: auto;
+}

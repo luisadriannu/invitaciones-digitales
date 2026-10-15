@@ -42,7 +42,7 @@ const events: Record<string, EventData> = {
   nathalia,
   karina,
   sofia,
-  itzia,
+  // itzia,
 };
 
 export default events;
