@@ -211,7 +211,7 @@ export default function BirthdayDino({ data }: Props) {
   ];
 
   return (
-    <>
+    <div className={s.theme}>
       <AnimatePresence>
         {showIntro && (
           <motion.div
@@ -995,6 +995,7 @@ export default function BirthdayDino({ data }: Props) {
           )}
         </AnimatePresence>
       </main>
-    </>
+    </div>
   );
 }
+

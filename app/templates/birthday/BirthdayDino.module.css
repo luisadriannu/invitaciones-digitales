@@ -1,5 +1,5 @@
 /* Colores y fuentes expuestos como variables desde BirthdayDino.tsx */
-:root {
+.theme {
   --park-canopy: #0f1c0d;
   --park-canopy2: #0b150a;
   --park-panel: #152a13;
@@ -209,3 +209,4 @@
     transform: translateY(110vh) rotate(8deg);
   }
 }
+
