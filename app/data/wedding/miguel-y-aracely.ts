@@ -62,8 +62,8 @@ const miguelYAracely: EventData = {
   },
   family: {
     toastGodparents: [
-      "Brenda Nellely Carachure Lino",
-      "Byron Raul Sebastian Santuna",
+      "ING. Brenda Nellely Carachure Lino",
+      "ING.Byron Raul Sebastian Santana",
     ],
     groomParents: {
       father: "Raymundo Hernández Hernández",
@@ -86,4 +86,3 @@ const miguelYAracely: EventData = {
 };
 
 export default miguelYAracely;
-
