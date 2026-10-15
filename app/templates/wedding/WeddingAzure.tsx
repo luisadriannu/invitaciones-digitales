@@ -163,7 +163,9 @@ export default function WeddingAzure({ data }: { data: EventData }) {
             exit={{ opacity: 0, y: reducedMotion ? 0 : -24 }}
             transition={{ duration: reducedMotion ? 0 : 0.65 }}
           >
-            <div className={styles.openingDecoration} aria-hidden="true"><BotanicalSprig className={styles.openingFlowers} /></div>
+            <div className={styles.openingDecoration} aria-hidden="true">
+              <BotanicalSprig className={styles.openingFlowers} />
+            </div>
             <div className={styles.openingCard}>
               <p className={styles.eyebrow}>UNA HISTORIA DE AMOR</p>
               <WeddingRings />
@@ -413,7 +415,15 @@ export default function WeddingAzure({ data }: { data: EventData }) {
         )}
 
         <section className={styles.gifts}>
-          <BotanicalSprig className={styles.botanicalLeft} />
+          <div className={styles.giftGarland} aria-hidden="true">
+            <Image
+              src="/pictures/wedding/miguel-y-aracely/horizontal-floral.png"
+              alt=""
+              width={2172}
+              height={724}
+              sizes="(max-width: 700px) 90vw, 600px"
+            />
+          </div>
           <div className={styles.envelope} aria-hidden="true">
             <Mail size={52} strokeWidth={0.8} />
             <Heart size={17} />
@@ -476,5 +486,3 @@ export default function WeddingAzure({ data }: { data: EventData }) {
     </>
   );
 }
-
-

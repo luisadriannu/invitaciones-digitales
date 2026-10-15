@@ -525,7 +525,7 @@
   z-index: 0;
 }
 .botanicalLeft {
-  left: -28px;
+  left: -18px;
   bottom: 18px;
   transform: rotate(16deg);
 }
@@ -1133,20 +1133,76 @@
   overflow: hidden;
   pointer-events: none;
 }
-.openingFlowers img { display: block; }
-.openingCard { box-sizing: border-box; min-width: 0; }
+.openingFlowers img {
+  display: block;
+}
+.openingCard {
+  box-sizing: border-box;
+  min-width: 0;
+}
 @media (max-height: 650px) {
-  .openingDecoration { height: 112px; }
-  .openingFlowers { width: 160px; }
-  .openingCard { padding-top: 12px; padding-bottom: 12px; }
-  .openingCard h2 { margin-block: 16px; }
-  .openingCard .rings { width: 130px; height: 85px; margin-block: 12px; }
+  .openingDecoration {
+    height: 112px;
+  }
+  .openingFlowers {
+    width: 160px;
+  }
+  .openingCard {
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+  .openingCard h2 {
+    margin-block: 16px;
+  }
+  .openingCard .rings {
+    width: 130px;
+    height: 85px;
+    margin-block: 12px;
+  }
 }
 
-
 /* Flowers occupy their own row below the gift message, never over its icon. */
-.gifts { padding-bottom: 0; }
-.giftDecoration { height: 145px; margin: 24px -28px 0; overflow: hidden; pointer-events: none; }
-.giftFlowers { position: relative; width: 190px; margin-left: -30px; }
-.giftFlowers img { display: block; width: 100%; height: auto; }
-@media(min-width:700px) { .giftDecoration { margin-inline: -40px; } }
+.gifts {
+  padding-bottom: 0;
+}
+.giftDecoration {
+  height: 145px;
+  margin: 24px -28px 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.giftFlowers {
+  position: relative;
+  width: 190px;
+  margin-left: -30px;
+}
+.giftFlowers img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+@media (min-width: 700px) {
+  .giftDecoration {
+    margin-inline: -40px;
+  }
+}
+
+.gifts {
+  padding-top: 36px;
+  padding-bottom: 64px;
+}
+.gifts > .giftGarland {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto 28px;
+  transform: none;
+  pointer-events: none;
+}
+.giftGarland img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transform: none;
+  animation: none;
+}
