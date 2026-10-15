@@ -26,7 +26,8 @@ const miguelYAracely: EventData = {
       {
         hour: "7:30 PM",
         title: "Ceremonia Civil",
-        description: "Nos gustaría contar con tu presencia",
+        description:
+          " Nos gustaría contar con tu presencia en la ceremonia civil a las 7:30 p. m.",
       },
       {
         hour: "8:00 PM",
@@ -47,7 +48,7 @@ const miguelYAracely: EventData = {
       "/pictures/wedding/miguel-y-aracely/boda-miguel-y-aracely-3.png",
       "/pictures/wedding/miguel-y-aracely/boda-miguel-y-aracely-4.png",
     ],
-    music: "/music/mi-princesita.mp3",
+    music: "/music/joan-sebastian-me-gustas.mp3",
   },
   location: {
     mapUrl:

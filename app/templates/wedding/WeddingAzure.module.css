@@ -4,3 +4,30 @@
 
 /* Light botanical details and a small, compositor-animated particle layer. */
 .page{position:relative;isolation:isolate}.gifts,.rsvp{position:relative;isolation:isolate}.botanicalLeft,.botanicalRight{position:absolute;width:clamp(100px,23vw,185px);height:auto;color:var(--blue);opacity:.3;pointer-events:none;z-index:0}.botanicalLeft{left:-28px;bottom:18px;transform:rotate(16deg)}.botanicalRight{right:-25px;top:28px;transform:rotate(196deg)}.hero>.botanicalLeft{bottom:35px}.family>.botanicalRight{color:#90e0ef;opacity:.18}.heroFrame,.topline,.discover,.gifts> :not(svg),.rsvp> :not(svg){position:relative;z-index:1}.heroFrame:after{content:'✧';position:absolute;top:-16px;left:calc(50% - 16px);width:32px;color:var(--blue);background:#ddf4fc;font:26px Georgia,serif}.galleryFrame{position:relative;outline:1px solid #0096c720;outline-offset:5px}.family:after{content:'✧  —  ♡  —  ✧';display:block;color:#90e0ef;letter-spacing:8px;font-size:14px;margin-top:38px}.particles{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:5;contain:strict}.particle{position:absolute;top:0;border-radius:70% 30% 65% 35%;background:#72c9e4;opacity:0;animation:azureDrift 28s linear infinite}.particle:nth-child(3n){background:#b5e8f5}.particle:nth-child(4n){border-radius:50%;background:#0096c7}@keyframes azureDrift{0%{transform:translate3d(-12px,105vh,0) rotate(0deg);opacity:0}15%{opacity:.35}50%{transform:translate3d(16px,45vh,0) rotate(90deg);opacity:.22}85%{opacity:.35}100%{transform:translate3d(-8px,-5vh,0) rotate(180deg);opacity:0}}@media(prefers-reduced-motion:reduce){.particle{animation:none;display:none}}@media(max-width:360px){.botanicalLeft,.botanicalRight{width:95px;opacity:.2}}
+
+/* Floral stationery: ivory paper, midnight blue ribbon and fine gold rules. */
+.page{--navy:#203f59;--blue:#315c7b;--ice:#f6f1e7;background:#fcf9f2}
+.hero{background:radial-gradient(ellipse at 40% 30%,#fffdf8,#f3eddf);padding:28px 30px 40px;isolation:isolate}
+.hero:before{content:'';position:absolute;inset:16px;border:1px solid #b79b64;outline:1px solid #b79b6440;outline-offset:5px;pointer-events:none;z-index:0}
+.hero:after{content:'';position:absolute;right:23px;top:0;bottom:0;width:17px;background:linear-gradient(90deg,#193a53,#345872,#193a53);border-inline:1px solid #b79b64;z-index:0;opacity:.95}
+.heroFrame{border:0;outline:0;border-radius:0;padding:112px 4px 74px;margin:0;max-width:440px}
+.heroFrame:after{display:none}.hero h1{font-size:clamp(58px,14vw,90px);color:#244963;margin:14px 0 24px}
+.hero h1 em{color:#b39760;font-size:26px}.heroText{color:#526575}.date strong{border-color:#b79b6470}
+.topline{padding-right:24px;font-size:8px}.topline>span:first-child{font-size:20px}
+.rings{display:block;width:160px;height:104px;margin:18px auto 10px;overflow:visible}
+.botanicalLeft,.botanicalRight{width:clamp(160px,45vw,280px);height:auto;opacity:1!important;pointer-events:none;position:absolute;z-index:2!important}
+.botanicalLeft img,.botanicalRight img{display:block;width:100%;height:auto}
+.hero>.botanicalLeft{top:35px;bottom:auto;left:-46px;transform:rotate(12deg)}
+.hero>.botanicalRight{top:auto;bottom:22px;right:-48px;transform:rotate(8deg)}
+.discover{padding-right:12px;font-size:8px;letter-spacing:1.6px}
+.family{overflow:hidden;padding-bottom:120px}.family>.botanicalRight{top:auto;bottom:-50px;right:-50px;width:185px;transform:rotate(-15deg);opacity:.8!important}
+.gifts{background:#f4eee2;overflow:hidden;padding-bottom:140px}.gifts>.botanicalLeft{bottom:-50px;left:-55px;transform:rotate(12deg);width:210px}
+.rsvp{background:radial-gradient(ellipse at bottom,#e3edf1,transparent 70%),#fcf9f2;overflow:hidden;padding-bottom:140px}.rsvp>.botanicalRight{top:auto;bottom:-46px;right:-50px;width:205px;transform:rotate(5deg)}
+.intro,.venue{background:#fcf9f2}.program{background:linear-gradient(#f5f0e5,#f8f5ee)}.gallery{background:linear-gradient(#edf3f5,#e0eaf0)}
+.giftNote,.galleryFrame{border-color:#b79b6460}.envelope{color:#a28751}.envelope>svg:last-child{fill:#f4eee2}
+.particle:nth-child(3n){background:#c2a568}.family:after{color:#d6bf8c}
+@media(min-width:700px){.heroFrame{padding-top:80px;padding-bottom:70px}.hero:after{width:32px;right:30px}.hero>.botanicalLeft{left:-20px}.hero>.botanicalRight{right:-10px}}
+@media(max-width:360px){.hero{padding-inline:24px}.hero h1{font-size:58px}.heroFrame{padding-top:100px}.hero>.botanicalLeft,.hero>.botanicalRight{width:160px}.date{gap:8px}.topline{letter-spacing:1px}}
+.hero>.botanicalLeft{top:-18px;left:-46px;width:clamp(160px,45vw,240px)}.hero>.botanicalRight{bottom:12px;width:clamp(150px,40vw,240px)}
+
+.opening{position:fixed;inset:0;z-index:100;overflow-y:auto;display:grid;place-items:center;padding:32px 26px;background:radial-gradient(ellipse at top,#fffdf8,#eee7d7);color:#203f59;text-align:center;font-family:'Jost',sans-serif;isolation:isolate}.opening:before{content:'';position:fixed;inset:15px;border:1px solid #b79b64;pointer-events:none}.openingFlowers{position:absolute;top:-35px;left:-65px;width:240px;pointer-events:none;z-index:-1}.openingFlowers img{width:100%;height:auto}.openingCard{width:min(100%,420px);padding:70px 10px 35px}.openingCard h2{font:400 clamp(36px,10vw,54px)/1.2 Georgia,serif;margin:24px 0}.openingCard>p:not(.eyebrow){font-size:14px;line-height:1.8;max-width:270px;margin:0 auto 20px}.openingCard .button{background:#315c7b;border-color:#315c7b;color:white}.openingCard small{display:flex;gap:7px;align-items:center;justify-content:center;margin-top:22px;font-size:10px;color:#526575}.musicToggle{position:fixed;right:20px;bottom:max(20px,env(safe-area-inset-bottom));z-index:60;display:grid;place-items:center;width:46px;height:46px;border-radius:50%;background:#fcf9f2;color:#315c7b;border:1px solid #b79b64;box-shadow:0 4px 15px #203f5920;cursor:pointer}.musicToggle:focus-visible,.opening button:focus-visible{outline:3px solid #0096c7;outline-offset:4px}.musicError{position:fixed;bottom:76px;right:20px;max-width:260px;background:#fcf9f2;color:#203f59;padding:12px;border:1px solid #b79b64;z-index:60;font-size:12px}
