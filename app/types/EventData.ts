@@ -98,6 +98,7 @@ export interface FamilyInfo {
     father: string;
   };
   presentationGodparents?: string[];
+  toastGodparents?: string[];
   parents?: {
     mother: string;
     father: string;
@@ -132,4 +133,5 @@ export interface EventData {
   design?: DesignInfo;
   plan: InvitationPlan;
 }
+
 

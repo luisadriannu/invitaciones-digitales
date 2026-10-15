@@ -1,7 +1,8 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import Gallery from "@/app/components/Gallery";
 import {
   Music2,
@@ -72,12 +73,50 @@ function WeddingRings() {
 const icons = [Wine, HeartHandshake, Sparkles, Utensils];
 
 export default function WeddingAzure({ data }: { data: EventData }) {
+  const reducedMotion = useReducedMotion();
+  const pageRef = useRef<HTMLElement>(null);
   const [notice, setNotice] = useState(false);
   const [showIntro, setShowIntro] = useState(Boolean(data.media.music));
   const [playing, setPlaying] = useState(false);
   const [musicError, setMusicError] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
+
+  useEffect(() => {
+    if (showIntro || reducedMotion || !pageRef.current) return;
+    const animations: Animation[] = [];
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (!entry.isIntersecting) continue;
+          animations.push(
+            entry.target.animate(
+              [
+                { opacity: 0, transform: "translateY(20px)" },
+                { opacity: 1, transform: "translateY(0)" },
+              ],
+              {
+                duration: 850,
+                easing: "cubic-bezier(.22,1,.36,1)",
+                fill: "none",
+              },
+            ),
+          );
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.12 },
+    );
+    pageRef.current
+      .querySelectorAll(
+        "section h2, section > p, article, li, figure, [data-reveal]",
+      )
+      .forEach((element) => observer.observe(element));
+    return () => {
+      observer.disconnect();
+      animations.forEach((animation) => animation.cancel());
+    };
+  }, [showIntro, reducedMotion]);
 
   const playMusic = () => {
     setMusicError(false);
@@ -114,24 +153,33 @@ export default function WeddingAzure({ data }: { data: EventData }) {
           }}
         />
       )}
-      {showIntro && (
-        <section className={styles.opening} aria-labelledby="opening-title">
-          <BotanicalSprig className={styles.openingFlowers} />
-          <div className={styles.openingCard}>
-            <p className={styles.eyebrow}>UNA HISTORIA DE AMOR</p>
-            <WeddingRings />
-            <h2 id="opening-title">{data.event.name}</h2>
-            <p>Tenemos algo muy especial para compartir contigo.</p>
-            <button
-              type="button"
-              className={styles.button}
-              onClick={openInvitation}
-            >
-              Abrir invitación <ArrowUpRight size={17} />
-            </button>
-          </div>
-        </section>
-      )}
+      <AnimatePresence>
+        {showIntro && (
+          <motion.section
+            key="opening"
+            className={styles.opening}
+            aria-labelledby="opening-title"
+            initial={{ opacity: 1 }}
+            exit={{ opacity: 0, y: reducedMotion ? 0 : -24 }}
+            transition={{ duration: reducedMotion ? 0 : 0.65 }}
+          >
+            <BotanicalSprig className={styles.openingFlowers} />
+            <div className={styles.openingCard}>
+              <p className={styles.eyebrow}>UNA HISTORIA DE AMOR</p>
+              <WeddingRings />
+              <h2 id="opening-title">{data.event.name}</h2>
+              <p>Tenemos algo muy especial para compartir contigo.</p>
+              <button
+                type="button"
+                className={styles.button}
+                onClick={openInvitation}
+              >
+                Abrir invitación <ArrowUpRight size={17} />
+              </button>
+            </div>
+          </motion.section>
+        )}
+      </AnimatePresence>
       {!showIntro && data.media.music && (
         <>
           <button
@@ -155,6 +203,8 @@ export default function WeddingAzure({ data }: { data: EventData }) {
         </>
       )}
       <main
+        ref={pageRef}
+        data-open={!showIntro}
         className={styles.page}
         inert={showIntro}
         style={showIntro ? { height: "100svh", overflow: "hidden" } : undefined}
@@ -265,6 +315,30 @@ export default function WeddingAzure({ data }: { data: EventData }) {
           </div>
         </section>
 
+        {Boolean(data.family?.toastGodparents?.length) && (
+          <section
+            className={styles.toastSponsors}
+            aria-labelledby="toast-sponsors-title"
+          >
+            <Wine size={30} strokeWidth={1.2} aria-hidden="true" />
+            <p className={styles.eyebrow}>POR LOS MOMENTOS QUE NOS UNEN</p>
+            <h2 id="toast-sponsors-title">
+              Padrinos de <em>Brindis</em>
+            </h2>
+            <div className={styles.sponsorNames} data-reveal>
+              {data.family?.toastGodparents?.map((name, index) => (
+                <div key={name}>
+                  {index > 0 && <span aria-hidden="true">&</span>}
+                  <p>{name}</p>
+                </div>
+              ))}
+            </div>
+            <div className={styles.divider} aria-hidden="true">
+              ✧
+            </div>
+          </section>
+        )}
+
         <section className={styles.program}>
           <p className={styles.eyebrow}>SÁBADO · 28 DE NOVIEMBRE</p>
           <h2>
@@ -331,7 +405,7 @@ export default function WeddingAzure({ data }: { data: EventData }) {
               <br />
               <em>eternos.</em>
             </h2>
-            <div className={styles.galleryFrame}>
+            <div className={styles.galleryFrame} data-reveal>
               <Gallery images={data.media.gallery} />
             </div>
             <p className={styles.galleryHint}>Desliza para ver más recuerdos</p>
@@ -361,7 +435,7 @@ export default function WeddingAzure({ data }: { data: EventData }) {
         </section>
 
         <section className={styles.rsvp}>
-          <BotanicalSprig className={styles.botanicalRight} />
+          {/* <BotanicalSprig className={styles.botanicalRight} /> */}
           <p className={styles.eyebrow}>GUARDAMOS UN LUGAR PARA TI</p>
           <h2>¿Nos acompañas?</h2>
           <p>

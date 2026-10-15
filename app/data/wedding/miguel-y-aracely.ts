@@ -7,7 +7,9 @@ const miguelYAracely: EventData = {
     title: "Boda de Miguel y Aracely",
     description:
       "Nos casamos. Acompaña a Miguel y Aracely a celebrar el día más importante de sus vidas.",
-    image: "/pictures/wedding/miguel-y-aracely/boda-miguel-y-aracely-1.png",
+    image: "/pictures/wedding/miguel-y-aracely/preview-whatsapp.jpg",
+    imageWidth: 896,
+    imageHeight: 1200,
   },
   event: {
     timeZone: "America/Mexico_City",
@@ -59,6 +61,10 @@ const miguelYAracely: EventData = {
     phone: "527671100573",
   },
   family: {
+    toastGodparents: [
+      "Brenda Nellely Carachure Lino",
+      "Byron Raul Sebastian Santuna",
+    ],
     groomParents: {
       father: "Raymundo Hernández Hernández",
       mother: "Margarita Aurelio Servando",
@@ -80,3 +86,4 @@ const miguelYAracely: EventData = {
 };
 
 export default miguelYAracely;
+
