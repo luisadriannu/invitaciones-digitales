@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { Satisfy } from "next/font/google";
 import {
   CalendarDays,
   Clock3,
@@ -12,6 +13,12 @@ import {
 import CountDown from "@/app/components/CountDown";
 import type { EventData } from "@/app/types/EventData";
 import styles from "./BirthdaySummerSea.module.css";
+
+const nameScript = Satisfy({
+  subsets: ["latin"],
+  weight: "400",
+  display: "swap",
+});
 
 export default function BirthdaySummerSea({ data }: { data: EventData }) {
   return (
@@ -40,7 +47,9 @@ export default function BirthdaySummerSea({ data }: { data: EventData }) {
             <strong>{data.event.age}</strong>
             <span>AÑOS</span>
           </div>
-          <h1 id="summer-title">{data.event.name}</h1>
+          <h1 id="summer-title" className={nameScript.className}>
+            {data.event.name}
+          </h1>
           <p className={styles.heroPhrase}>Una tarde tropical para brindar, bailar y disfrutar.</p>
           <a className={styles.discover} href="#detalles">
             Ver invitación <span aria-hidden="true">↓</span>
