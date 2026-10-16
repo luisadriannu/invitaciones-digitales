@@ -21,6 +21,7 @@ export type EventVariant =
   | "pastel"
   | "pop"
   | "dinoParty"
+  | "summerSea"
   | "flash"
   | "sirena"
   | "itzia"

@@ -19,6 +19,9 @@ const BirthdayPop = dynamic(
 const BirthdayDinoParty = dynamic(
   () => import("@/app/templates/birthday/BirthdayDinoParty"),
 );
+const BirthdaySummerSea = dynamic(
+  () => import("@/app/templates/birthday/BirthdaySummerSea"),
+);
 const BirthdayFlash = dynamic(
   () => import("@/app/templates/flash/BirthdayFlash"),
 );
@@ -69,6 +72,7 @@ export const templates = {
     pastel: BirthdayPastel,
     pop: BirthdayPop,
     dinoParty: BirthdayDinoParty,
+    summerSea: BirthdaySummerSea,
     flash: BirthdayFlash,
     // elegant: BirthdayElegant,
     // modern: BirthdayModern,

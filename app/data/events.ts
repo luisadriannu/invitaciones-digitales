@@ -9,6 +9,7 @@ import mateo from "@/app/data/birthday/mateo";
 import eduardo from "@/app/data/birthday/eduardo";
 import victoria from "@/app/data/birthday/victoria";
 import vicente from "@/app/data/birthday/vicente";
+import nataliaDaliz from "@/app/data/birthday/natalia-daliz";
 import camila from "@/app/data/christening/camila";
 import kevinyjuana from "@/app/data/wedding/kevin-y-juana";
 import kevinyjuanalight from "@/app/data/wedding/kevin-y-juana-light";
@@ -33,6 +34,7 @@ const events: Record<string, EventData> = {
   jose,
   victoria,
   vicente,
+  nataliaDaliz,
   kevinyjuana,
   kevinyjuanalight,
   miguelYAracely,
