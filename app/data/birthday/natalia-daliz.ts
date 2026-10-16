@@ -24,6 +24,7 @@ const nataliaDaliz: EventData = {
   media: {
     coverImage: "/pictures/birthday/natalia-daliz/tropical-disco-frame.png",
     gallery: [],
+    music: "/music/be-with-you.mp3",
   },
   location: {
     reception: "Jardín Las Flores",
