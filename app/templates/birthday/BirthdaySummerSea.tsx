@@ -146,7 +146,9 @@ export default function BirthdaySummerSea({ data }: { data: EventData }) {
             />
             <div className={styles.openingContent}>
               <p className={styles.openingEyebrow}>ESTÁS INVITADA</p>
-              <span className={styles.openingAge}>MIS {data.event.age} AÑOS</span>
+              <span className={styles.openingAge}>
+                MIS {data.event.age} AÑOS
+              </span>
               <h2 id="opening-title" className={nameScript.className}>
                 {data.event.name}
               </h2>
@@ -164,117 +166,143 @@ export default function BirthdaySummerSea({ data }: { data: EventData }) {
         inert={showIntro}
         style={showIntro ? { height: "100svh", overflow: "hidden" } : undefined}
       >
-      <div className={styles.particles} aria-hidden="true">
-        {Array.from({ length: 14 }, (_, index) => (
-          <span key={index}>{index % 4 === 0 ? "✦" : ""}</span>
-        ))}
-      </div>
-      <section className={styles.hero} aria-labelledby="summer-title">
-        <Image
-          className={styles.frame}
-          src={data.media.coverImage}
-          alt=""
-          fill
-          preload
-          sizes="(max-width: 600px) 100vw, 600px"
-        />
-        <div className={styles.paperGrain} aria-hidden="true" />
-        <div className={styles.heroContent}>
-          <p className={`${styles.eyebrow} ${styles.heroEyebrow}`}>
-            ESTÁS INVITADA A CELEBRAR
-          </p>
-          <div className={styles.ageMark}>
-            <span>MIS</span>
-            <strong>{data.event.age}</strong>
-            <span>AÑOS</span>
+        <div className={styles.particles} aria-hidden="true">
+          {Array.from({ length: 14 }, (_, index) => (
+            <span key={index}>{index % 4 === 0 ? "✦" : ""}</span>
+          ))}
+        </div>
+        <section className={styles.hero} aria-labelledby="summer-title">
+          <Image
+            className={styles.frame}
+            src={data.media.coverImage}
+            alt=""
+            fill
+            preload
+            sizes="(max-width: 600px) 100vw, 600px"
+          />
+          <div className={styles.paperGrain} aria-hidden="true" />
+          <div className={styles.heroContent}>
+            <p className={`${styles.eyebrow} ${styles.heroEyebrow}`}>
+              ESTÁS INVITADA A CELEBRAR
+            </p>
+            <div className={styles.ageMark}>
+              <span>MIS</span>
+              <strong>{data.event.age}</strong>
+              <span>AÑOS</span>
+            </div>
+            <h1
+              id="summer-title"
+              ref={headingRef}
+              tabIndex={-1}
+              className={nameScript.className}
+            >
+              {data.event.name}
+            </h1>
+            <p className={styles.heroPhrase}>
+              Una tarde tropical para brindar, bailar y disfrutar.
+            </p>
+            <button
+              type="button"
+              className={styles.discover}
+              onClick={() =>
+                document
+                  .getElementById("detalles")
+                  ?.scrollIntoView({ behavior: "smooth", block: "start" })
+              }
+            >
+              Ver invitación <span aria-hidden="true">↓</span>
+            </button>
           </div>
-          <h1
-            id="summer-title"
-            ref={headingRef}
-            tabIndex={-1}
-            className={nameScript.className}
-          >
-            {data.event.name}
-          </h1>
-          <p className={styles.heroPhrase}>Una tarde tropical para brindar, bailar y disfrutar.</p>
-          <button
-            type="button"
-            className={styles.discover}
-            onClick={() =>
-              document
-                .getElementById("detalles")
-                ?.scrollIntoView({ behavior: "smooth", block: "start" })
-            }
-          >
-            Ver invitación <span aria-hidden="true">↓</span>
-          </button>
-        </div>
-      </section>
+        </section>
 
-      <section id="detalles" className={styles.details}>
-        <span className={styles.shellMark} aria-hidden="true">✺</span>
-        <p className={styles.eyebrow}>RESERVA LA FECHA</p>
-        <h2>Una fiesta bajo el sol</h2>
-        <p className={styles.intro}>
-          Quiero compartir contigo un día lleno de sol, música y momentos
-          inolvidables.
-        </p>
+        <section id="detalles" className={styles.details}>
+          <span className={styles.shellMark} aria-hidden="true">
+            ✺
+          </span>
+          <p className={styles.eyebrow}>RESERVA LA FECHA</p>
+          <h2>Una fiesta bajo el sol</h2>
+          <p className={styles.intro}>
+            Quiero compartir contigo un día lleno de sol, música y momentos
+            inolvidables.
+          </p>
 
-        <div className={styles.detailGrid}>
-          <article>
-            <CalendarDays aria-hidden="true" />
-            <span>FECHA</span>
-            <strong>1 de noviembre</strong>
-          </article>
-          <article>
-            <Clock3 aria-hidden="true" />
-            <span>HORA</span>
-            <strong>{data.event.partyHour}</strong>
-          </article>
-          <article>
-            <MapPin aria-hidden="true" />
-            <span>LUGAR</span>
-            <strong>{data.location.reception}</strong>
-          </article>
-        </div>
-      </section>
+          <div className={styles.detailGrid}>
+            <article>
+              <CalendarDays aria-hidden="true" />
+              <span>FECHA</span>
+              <strong>1 de noviembre</strong>
+            </article>
+            <article>
+              <Clock3 aria-hidden="true" />
+              <span>HORA</span>
+              <strong>{data.event.partyHour}</strong>
+            </article>
+            <article>
+              <MapPin aria-hidden="true" />
+              <span>LUGAR</span>
+              <strong>{data.location.reception}</strong>
+            </article>
+          </div>
 
-      <section className={styles.countdownSection}>
-        <SunMedium aria-hidden="true" />
-        <p className={styles.eyebrow}>LA CUENTA REGRESIVA COMENZÓ</p>
-        <h2>Falta muy poco</h2>
-        <div className={styles.countdown}>
-          <CountDown data={data} />
-        </div>
-      </section>
+          {data.location.mapUrl && (
+            <div className={styles.mapBlock}>
+              <p className={styles.eyebrow}>AQUÍ NOS VEMOS</p>
+              <h3>{data.location.reception}</h3>
+              <div className={styles.mapFrame}>
+                <iframe
+                  src={data.location.mapUrl}
+                  title={`Mapa de ${data.location.reception}`}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  allowFullScreen
+                />
+              </div>
+            </div>
+          )}
+        </section>
 
-      <section className={styles.dress}>
-        <div className={styles.discoDot} aria-hidden="true" />
-        <Sparkles aria-hidden="true" />
-        <p className={styles.eyebrow}>PREPÁRATE PARA DISFRUTAR</p>
-        <h2>Sol, agua<br /><em>y mucho baile</em></h2>
-        <p>{data.event.dressCodeNote}</p>
-        <div className={styles.waveRule} aria-hidden="true">✦ ✺ ✦</div>
-      </section>
+        <section className={styles.countdownSection}>
+          <SunMedium aria-hidden="true" />
+          <p className={styles.eyebrow}>LA CUENTA REGRESIVA COMENZÓ</p>
+          <h2>Falta muy poco</h2>
+          <div className={styles.countdown}>
+            <CountDown data={data} />
+          </div>
+        </section>
 
-      <section className={styles.gifts} aria-labelledby="gift-title">
-        <div className={styles.giftIcon} aria-hidden="true">
-          <Gift />
-        </div>
-        <p className={styles.eyebrow}>MESA DE REGALOS</p>
-        <h2 id="gift-title">Regalos en efectivo</h2>
-        <p>
-          Tu presencia es lo más importante. Si deseas tener un detalle
-          conmigo, habrá un espacio especial para recibirlo.
-        </p>
-        <span className={styles.giftNote}>Con cariño, Natalia</span>
-      </section>
+        <section className={styles.dress}>
+          <div className={styles.discoDot} aria-hidden="true" />
+          <Sparkles aria-hidden="true" />
+          <p className={styles.eyebrow}>PREPÁRATE PARA DISFRUTAR</p>
+          <h2>
+            Sol, agua
+            <br />
+            <em>y mucho baile</em>
+          </h2>
+          <p>{data.event.dressCodeNote}</p>
+          <div className={styles.waveRule} aria-hidden="true">
+            ✦ ✺ ✦
+          </div>
+        </section>
 
-      <footer className={styles.footer}>
-        <span>01 · 11 · 2026</span>
-        <strong>Natalia Dalíz</strong>
-        <small>Jardín Las Flores · 1:00 PM</small>
-      </footer>
+        <section className={styles.gifts} aria-labelledby="gift-title">
+          <div className={styles.giftIcon} aria-hidden="true">
+            <Gift />
+          </div>
+          <p className={styles.eyebrow}>MESA DE REGALOS</p>
+          <h2 id="gift-title">Regalos en efectivo</h2>
+          <p>
+            Tu presencia es lo más importante. Si deseas tener un detalle
+            conmigo, habrá un espacio especial para recibirlo.
+          </p>
+          <span className={styles.giftNote}>Con cariño, Natalia</span>
+        </section>
+
+        <footer className={styles.footer}>
+          <span>01 · 11 · 2026</span>
+          <strong>Natalia Dalíz</strong>
+          <small>Jardín Las Flores · 1:00 PM</small>
+        </footer>
       </main>
     </>
   );

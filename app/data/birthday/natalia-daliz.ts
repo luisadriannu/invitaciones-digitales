@@ -28,6 +28,8 @@ const nataliaDaliz: EventData = {
   },
   location: {
     reception: "Jardín Las Flores",
+    mapUrl:
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d796.1154683919838!2d-100.67000113873648!3d18.347981628572548!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x84332dcf8360cbf1%3A0xf285ffb66d988d2d!2sJard%C3%ADn%20Fiesta%20Real!5e0!3m2!1ses-419!2smx!4v1792171833713!5m2!1ses-419!2smx",
   },
   contact: {
     phone: "",
