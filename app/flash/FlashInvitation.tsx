@@ -1,3 +1,4 @@
+import MonarqueSignature from "@/app/components/MonarqueSignature";
 import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
@@ -136,8 +137,10 @@ export default function FlashInvitation({ theme }: { theme: string }) {
               ? "PASE PERSONAL · EDICIÓN CUMPLEAÑOS"
               : "UN MOMENTO PARA COMPARTIR"}{" "}
           <span>✧</span> FLASH
+        <MonarqueSignature compact />
         </footer>
       </article>
     </main>
   );
 }
+

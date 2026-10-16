@@ -1,3 +1,4 @@
+import MonarqueSignature from "@/app/components/MonarqueSignature";
 import Image from "next/image";
 import { Sparkles } from "lucide-react";
 import type { EventData } from "@/app/types/EventData";
@@ -38,8 +39,10 @@ export default function BirthdayFlash({ data }: { data: EventData }) {
         <FlashDetails data={data} />
         <footer className={styles.footer}>
           ¡Te espero para celebrar juntos!
+        <MonarqueSignature compact />
         </footer>
       </article>
     </main>
   );
 }
+

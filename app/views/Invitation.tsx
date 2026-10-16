@@ -1,3 +1,4 @@
+import MonarqueSignature from "@/app/components/MonarqueSignature";
 import { notFound } from "next/navigation";
 import events from "@/app/data/events";
 import TemplateRenderer from "@/app/templates/TemplateRenderer";
@@ -18,5 +19,6 @@ export default function Invitation({ tipo, slug }: InvitationProps) {
     notFound();
   }
 
-  return <TemplateRenderer data={data} />;
+  return <><TemplateRenderer data={data} />{data.design?.variant !== "flash" && <MonarqueSignature />}</>;
 }
+

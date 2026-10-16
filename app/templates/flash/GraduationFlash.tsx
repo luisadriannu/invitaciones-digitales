@@ -1,3 +1,4 @@
+import MonarqueSignature from "@/app/components/MonarqueSignature";
 import Image from "next/image";
 import { GraduationCap } from "lucide-react";
 import type { EventData } from "@/app/types/EventData";
@@ -32,8 +33,10 @@ export default function GraduationFlash({ data }: { data: EventData }) {
         <FlashDetails data={data} />
         <footer className={styles.footer}>
           Celebremos este momento juntos.
+        <MonarqueSignature compact />
         </footer>
       </article>
     </main>
   );
 }
+

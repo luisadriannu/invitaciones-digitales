@@ -21,11 +21,13 @@ export type EventVariant =
   | "pastel"
   | "pop"
   | "dinoParty"
+  | "summerSea"
   | "flash"
   | "sirena"
   | "itzia"
   | "roseGarden"
-  | "western";
+  | "western"
+  | "oliveVintage";
 
 export interface SeoInfo {
   title: string;
@@ -88,18 +90,19 @@ export interface ContactInfo {
 }
 
 export interface FamilyInfo {
+  groomParents?: {
+    mother: string;
+    father: string;
+  };
+  brideParents?: {
+    mother: string;
+    father: string;
+  };
   presentationGodparents?: string[];
+  toastGodparents?: string[];
   parents?: {
     mother: string;
     father: string;
-  };
-  groomParents?: {
-    father: string;
-    mother: string;
-  };
-  brideParents?: {
-    father: string;
-    mother: string;
   };
   godparents?: {
     man: string;
@@ -131,3 +134,5 @@ export interface EventData {
   design?: DesignInfo;
   plan: InvitationPlan;
 }
+
+

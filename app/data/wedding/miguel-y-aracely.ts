@@ -7,7 +7,9 @@ const miguelYAracely: EventData = {
     title: "Boda de Miguel y Aracely",
     description:
       "Nos casamos. Acompaña a Miguel y Aracely a celebrar el día más importante de sus vidas.",
-    image: "/pictures/wedding/miguel-y-aracely/boda-miguel-y-aracely-1.png",
+    image: "/pictures/wedding/miguel-y-aracely/preview-whatsapp.jpg",
+    imageWidth: 896,
+    imageHeight: 1200,
   },
   event: {
     timeZone: "America/Mexico_City",
@@ -26,7 +28,8 @@ const miguelYAracely: EventData = {
       {
         hour: "7:30 PM",
         title: "Ceremonia Civil",
-        description: "Nos gustaría contar con tu presencia",
+        description:
+          " Nos gustaría contar con tu presencia en la ceremonia civil a las 7:30 p. m.",
       },
       {
         hour: "8:00 PM",
@@ -47,7 +50,7 @@ const miguelYAracely: EventData = {
       "/pictures/wedding/miguel-y-aracely/boda-miguel-y-aracely-3.png",
       "/pictures/wedding/miguel-y-aracely/boda-miguel-y-aracely-4.png",
     ],
-    music: "/music/mi-princesita.mp3",
+    music: "/music/joan-sebastian-me-gustas.mp3",
   },
   location: {
     mapUrl:
@@ -58,6 +61,10 @@ const miguelYAracely: EventData = {
     phone: "527671100573",
   },
   family: {
+    toastGodparents: [
+      "ING. Brenda Nellely Carachure Lino",
+      "ING. Byron Raul Sebastian Santana",
+    ],
     groomParents: {
       father: "Raymundo Hernández Hernández",
       mother: "Margarita Aurelio Servando",
