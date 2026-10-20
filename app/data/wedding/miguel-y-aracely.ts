@@ -43,12 +43,12 @@ const miguelYAracely: EventData = {
   },
   media: {
     coverImage:
-      "/pictures/wedding/miguel-y-aracely/boda-miguel-y-aracely-3.png",
+      "/pictures/wedding/miguel-y-aracely/boda-miguel-y-aracely-3.webp",
     gallery: [
-      "/pictures/wedding/miguel-y-aracely/boda-miguel-y-aracely-1.png",
-      "/pictures/wedding/miguel-y-aracely/boda-miguel-y-aracely-2.png",
-      "/pictures/wedding/miguel-y-aracely/boda-miguel-y-aracely-3.png",
-      "/pictures/wedding/miguel-y-aracely/boda-miguel-y-aracely-4.png",
+      "/pictures/wedding/miguel-y-aracely/boda-miguel-y-aracely-1.webp",
+      "/pictures/wedding/miguel-y-aracely/boda-miguel-y-aracely-2.webp",
+      "/pictures/wedding/miguel-y-aracely/boda-miguel-y-aracely-3.webp",
+      "/pictures/wedding/miguel-y-aracely/boda-miguel-y-aracely-4.webp",
     ],
     music: "/music/joan-sebastian-me-gustas.mp3",
   },

@@ -46,7 +46,7 @@ const mateo: EventData = {
     ],
   },
   media: {
-    coverImage: "/pictures/birthday/mateo/jurassic-expedition.png",
+    coverImage: "/pictures/birthday/mateo/jurassic-expedition.webp",
     gallery: [],
   },
   location: {

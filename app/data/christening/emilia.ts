@@ -9,7 +9,7 @@ const invitation: EventData = {
     title: "Bautizo · Cielo azul · Emilia",
     description:
       "Un pequeño corazón, una gran bendición. Acompáñanos en el bautizo de nuestra hija.",
-    image: "/pictures/christening/emilia/bautizo-emilia-4.jpg",
+    image: "/pictures/christening/emilia/bautizo-emilia-3.jpg",
   },
   event: {
     timeZone: "America/Mexico_City",

@@ -7,7 +7,7 @@ const nataliaDaliz: EventData = {
     title: "Mis 20 años · Natalia Dalíz",
     description:
       "Acompáñame a celebrar mis 20 años en una tarde de verano, agua y baile.",
-    image: "/pictures/birthday/natalia-daliz/tropical-disco-frame.png",
+    image: "/pictures/birthday/natalia-daliz/tropical-disco-frame.webp",
     imageWidth: 940,
     imageHeight: 1672,
   },
@@ -22,7 +22,7 @@ const nataliaDaliz: EventData = {
     phrase: "Lleva tu traje de baño y ganas de bailar.",
   },
   media: {
-    coverImage: "/pictures/birthday/natalia-daliz/tropical-disco-frame.png",
+    coverImage: "/pictures/birthday/natalia-daliz/tropical-disco-frame.webp",
     gallery: [],
     music: "/music/be-with-you.mp3",
   },

@@ -51,7 +51,7 @@ const mateo: EventData = {
     coverImage: "/pictures/birthday/mateo/mateo-1.jpg",
     gallery: [
       "/pictures/birthday/mateo/mateo-1.jpg",
-      "/pictures/birthday/mateo/mateo-2.png",
+      "/pictures/birthday/mateo/mateo-2.webp",
       "/pictures/birthday/mateo/mateo-3.jpg",
     ],
   },

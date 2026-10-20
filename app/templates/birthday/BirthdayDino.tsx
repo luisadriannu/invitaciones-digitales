@@ -336,7 +336,7 @@ export default function BirthdayDino({ data }: Props) {
           <div className={s.hazardStrip} style={{ top: 0 }} />
 
           <Image
-            src="/pictures/birthday/vicente/fondo-dinosaurio.png"
+            src="/pictures/birthday/vicente/fondo-dinosaurio.webp"
             alt={data.event.name}
             fill
             priority

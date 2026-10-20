@@ -25,7 +25,7 @@ function BotanicalSprig({ className }: { className: string }) {
   return (
     <div className={className} aria-hidden="true">
       <Image
-        src="/pictures/wedding/miguel-y-aracely/blue-floral.png"
+        src="/pictures/wedding/miguel-y-aracely/blue-floral.webp"
         alt=""
         width={1376}
         height={1152}
@@ -433,7 +433,7 @@ export default function WeddingAzure({ data }: { data: EventData }) {
         <section className={styles.gifts}>
           <div className={styles.giftGarland} aria-hidden="true">
             <Image
-              src="/pictures/wedding/miguel-y-aracely/horizontal-floral.png"
+              src="/pictures/wedding/miguel-y-aracely/horizontal-floral.webp"
               alt=""
               width={2172}
               height={724}

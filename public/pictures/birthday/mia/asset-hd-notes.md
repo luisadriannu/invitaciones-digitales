@@ -1,6 +1,6 @@
 # Imagen de referencia mejorada
 
-Herramienta: ImageGen integrada, modo edición. Referencia: imagen adjunta por la usuaria. Resultado: `public/pictures/birthday/mia/guerreras-pop-hd.png`. La mejora generativa puede reconstruir pequeños detalles.
+Herramienta: ImageGen integrada, modo edición. Referencia: imagen adjunta por la usuaria. Resultado optimizado: `public/pictures/birthday/mia/guerreras-pop-hd.webp`. La mejora generativa puede reconstruir pequeños detalles.
 
 ## Prompt
 

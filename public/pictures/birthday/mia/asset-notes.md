@@ -1,6 +1,6 @@
 # Guerreras pop
 
-Ilustración generada con la herramienta integrada ImageGen y guardada en `public/pictures/birthday/mia/guerreras-pop.png`.
+Ilustración generada con la herramienta integrada ImageGen y optimizada como `public/pictures/birthday/mia/guerreras-pop.webp`.
 
 Prompt utilizado:
 

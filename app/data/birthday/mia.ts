@@ -8,7 +8,7 @@ const mia: EventData = {
     title: "Mía cumple 8 · Guerreras Pop",
     description:
       "¡La misión es celebrar! Acompaña a Mía en un cumpleaños lleno de música, amistad y magia.",
-    image: "/pictures/birthday/mia/guerreras-pop-hd.png",
+    image: "/pictures/birthday/mia/guerreras-pop-hd.webp",
   },
   event: {
     timeZone: "America/Mexico_City",
@@ -43,7 +43,7 @@ const mia: EventData = {
     ],
   },
   media: {
-    coverImage: "/pictures/birthday/mia/guerreras-pop-hd.png",
+    coverImage: "/pictures/birthday/mia/guerreras-pop-hd.webp",
     gallery: [],
   },
   location: {

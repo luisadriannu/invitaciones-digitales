@@ -101,14 +101,14 @@ export default function Home({
       category: "Cumpleaños",
       title: "Cumpleaños de Mateo",
       subtitle: "Jurásica",
-      image: "/pictures/birthday/mateo/jurassic-expedition.png",
+      image: "/pictures/birthday/mateo/jurassic-expedition.webp",
       href: "/cumple/mateo",
     },
     {
       category: "Cumpleaños",
       title: "Cumpleaños de Mía",
       subtitle: "Guerreras pop",
-      image: "/pictures/birthday/mia/guerreras-pop-hd.png",
+      image: "/pictures/birthday/mia/guerreras-pop-hd.webp",
       href: "/cumple/mia",
     },
     {
