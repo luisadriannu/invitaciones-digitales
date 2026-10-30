@@ -24,6 +24,15 @@
   width: min(100%, 280px);
   height: auto;
 }
+.logoLink {
+  display: block;
+  max-width: 100%;
+  border-radius: 4px;
+}
+.logoLink:focus-visible {
+  outline: 2px solid #b8860b;
+  outline-offset: 5px;
+}
 .contacts {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));

@@ -78,7 +78,7 @@ export default function BasicDualInvitation({ data }: { data: EventData }) {
     viewport: { once: true, amount: 0.12 },
     transition: { duration: reduced ? 0 : 0.7 },
   };
-  const whatsapp = `https://wa.me/${data.contact.phone}?text=${encodeURIComponent(`¡Hola! Quiero confirmar mi asistencia a la Primera Comunión de ${data.event.name} y al cumpleaños de ${birthday?.name}, el ${data.event.date}.`)}`;
+  const whatsapp = `https://wa.me/${data.contact.phone}?text=${encodeURIComponent("¡Hola! Quiero confirmar mi asistencia a la Primera Comunión de Sofía y al cumpleaños de Adán, el 21 de Noviembre 2026.")}`;
 
   return (
     <main className={s.page}>
@@ -97,7 +97,18 @@ export default function BasicDualInvitation({ data }: { data: EventData }) {
               sizes="(max-width: 760px) 100vw, 760px"
             />
             <div className={s.coverOrnaments} aria-hidden="true">
-              {Array.from({ length: 8 }, (_, i) => <i key={i} style={{ left: `${10 + i * 11}%`, top: `${12 + (i % 3) * 24}%`, animationDelay: `${i * -.8}s` }}>✦</i>)}
+              {Array.from({ length: 8 }, (_, i) => (
+                <i
+                  key={i}
+                  style={{
+                    left: `${10 + i * 11}%`,
+                    top: `${12 + (i % 3) * 24}%`,
+                    animationDelay: `${i * -0.8}s`,
+                  }}
+                >
+                  ✦
+                </i>
+              ))}
             </div>
             <div className={`${s.photoCaption} ${s.coverBlessing}`}>
               <strong>Un día de luz</strong>
@@ -150,8 +161,17 @@ export default function BasicDualInvitation({ data }: { data: EventData }) {
         <motion.div {...reveal} className={s.arch}>
           <p className={s.eyebrow}>Con fe, amor y alegría</p>
           <div className={s.cross} aria-hidden="true">
-            <svg viewBox="0 0 64 88" width="64" height="88" fill="none" focusable="false">
-              <path d="M28 4h8v23h21v8H36v49h-8V35H7v-8h21Z" fill="currentColor" />
+            <svg
+              viewBox="0 0 64 88"
+              width="64"
+              height="88"
+              fill="none"
+              focusable="false"
+            >
+              <path
+                d="M28 4h8v23h21v8H36v49h-8V35H7v-8h21Z"
+                fill="currentColor"
+              />
             </svg>
           </div>
           <p className={s.eyebrow}>Mi Primera Comunión</p>
@@ -256,7 +276,13 @@ export default function BasicDualInvitation({ data }: { data: EventData }) {
           </div>
           <motion.div {...reveal} className={s.dinoContent}>
             <div className={s.expeditionBackdrop} aria-hidden="true">
-              <svg className={s.contourMap} viewBox="0 0 400 900" preserveAspectRatio="none" fill="none" focusable="false">
+              <svg
+                className={s.contourMap}
+                viewBox="0 0 400 900"
+                preserveAspectRatio="none"
+                fill="none"
+                focusable="false"
+              >
                 <path d="M-50 50C140-80 90 220 260 110S490 80 460 260M-40 75C130-50 80 245 270 135S470 110 435 270M-30 100C120-20 70 270 280 160S450 140 410 280M-50 580C100 390 190 680 350 520S460 480 480 710M-40 610C110 420 180 710 360 550S440 510 460 730M-30 640C120 450 170 740 370 580S420 540 440 750" />
               </svg>
               <JurassicFern className={s.portraitFernLeft} />
@@ -278,10 +304,32 @@ export default function BasicDualInvitation({ data }: { data: EventData }) {
             <p className={s.eyebrow}>Mi cumpleaños</p>
             <h2 id="adan-title">{birthday.name}</h2>
             <div className={s.age}>
-              <svg className={s.ageCompass} viewBox="0 0 180 180" fill="none" aria-hidden="true" focusable="false">
-                <circle cx="90" cy="90" r="75" stroke="currentColor" strokeWidth=".7" />
-                <circle cx="90" cy="90" r="68" stroke="currentColor" strokeWidth=".6" strokeDasharray="2 8" />
-                <path d="M90 3 94 15 90 24 86 15ZM90 177 94 165 90 156 86 165ZM3 90 15 86 24 90 15 94ZM177 90 165 86 156 90 165 94Z" fill="currentColor" />
+              <svg
+                className={s.ageCompass}
+                viewBox="0 0 180 180"
+                fill="none"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <circle
+                  cx="90"
+                  cy="90"
+                  r="75"
+                  stroke="currentColor"
+                  strokeWidth=".7"
+                />
+                <circle
+                  cx="90"
+                  cy="90"
+                  r="68"
+                  stroke="currentColor"
+                  strokeWidth=".6"
+                  strokeDasharray="2 8"
+                />
+                <path
+                  d="M90 3 94 15 90 24 86 15ZM90 177 94 165 90 156 86 165ZM3 90 15 86 24 90 15 94ZM177 90 165 86 156 90 165 94Z"
+                  fill="currentColor"
+                />
               </svg>
               <strong>{birthday.age}</strong>
               <span>AÑOS DE AVENTURAS</span>
@@ -336,7 +384,11 @@ export default function BasicDualInvitation({ data }: { data: EventData }) {
               fill
               sizes="(max-width: 760px) 100vw, 760px"
             />
-            <p className={s.dinosaurFarewell}>¡Nos espera una<br /><em>gran aventura!</em></p>
+            <p className={s.dinosaurFarewell}>
+              ¡Nos espera una
+              <br />
+              <em>gran aventura!</em>
+            </p>
           </div>
         </section>
       )}

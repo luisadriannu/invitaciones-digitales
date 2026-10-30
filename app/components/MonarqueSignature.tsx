@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { Mail, MessageCircle } from "lucide-react";
 import styles from "./MonarqueSignature.module.css";
 
@@ -9,7 +10,7 @@ export default function MonarqueSignature({
 }) {
   if (compact) {
     return (
-      <div className={styles.compact}>
+      <Link href="/" className={`${styles.compact} ${styles.logoLink}`} aria-label="Ir al inicio de Monarque · Invitaciones Web">
         <Image
           src="/monarque-banner-cropped.png"
           alt="Monarque · Invitaciones Web"
@@ -18,7 +19,7 @@ export default function MonarqueSignature({
           sizes="150px"
           className={styles.banner}
         />
-      </div>
+      </Link>
     );
   }
 
@@ -26,6 +27,7 @@ export default function MonarqueSignature({
     <footer className={styles.signature} aria-label="Contacto de Monarque">
       <div className={styles.content}>
         <div className={styles.heading}>
+          <Link href="/" className={styles.logoLink} aria-label="Ir al inicio de Monarque · Invitaciones Web">
           <Image
             src="/monarque-banner-cropped.png"
             alt="Monarque · Invitaciones Web"
@@ -33,6 +35,7 @@ export default function MonarqueSignature({
             height={282}
             sizes="280px"
           />
+          </Link>
         </div>
 
         <div className={styles.contacts}>
