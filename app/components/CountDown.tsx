@@ -9,45 +9,40 @@ interface Props {
 }
 
 export default function CountDown({ data }: Props) {
-  const { days, hours, minutes, seconds } = useCountdown(getEventDate(data.event));
+  const { days, hours, minutes, seconds, isReady } = useCountdown(
+    getEventDate(data.event),
+  );
 
   const isFinished =
     days === 0 && hours === 0 && minutes === 0 && seconds === 0;
 
   return (
     <div className="text-center my-8">
-      {isFinished ? (
-        <div className="relative inline-block rounded-xl p-0.5 overflow-hidden">
-          <div
-            className="
-              absolute
-              inset-0
-            bg-linear-to-r
-              from-sky-300
-              via-purple-300
-              to-teal-300
-            "
-          />
-
-          <div className="relative bg-[#0b1020] rounded-xl px-6 py-3">
-            <p
-              className="
-                text-3xl
-                md:text-4xl
-                font-extrabold
-                text-center
-                tracking-wide
-              bg-linear-to-r
-                from-slate-200
-                via-white
-                to-slate-300
-                bg-clip-text
-                text-transparent
-              "
-            >
-              ¡Hoy es el gran día!
-            </p>
-          </div>
+      {!isReady ? (
+        <p className="text-sm tracking-wide text-current/70" role="status">
+          Calculando cuenta regresiva…
+        </p>
+      ) : isFinished ? (
+        <div
+          className="relative inline-flex max-w-full items-center justify-center gap-4 overflow-hidden rounded-full border px-6 py-4 text-current backdrop-blur-sm sm:px-9"
+          style={{
+            backgroundColor:
+              "color-mix(in srgb, currentColor 10%, transparent)",
+            borderColor:
+              "color-mix(in srgb, currentColor 28%, transparent)",
+            boxShadow:
+              "0 12px 32px color-mix(in srgb, currentColor 10%, transparent)",
+          }}
+        >
+          <span className="text-xs opacity-45" aria-hidden="true">
+            ✦
+          </span>
+          <p className="font-serif text-[clamp(1.6rem,8vw,2.25rem)] font-normal italic leading-tight tracking-normal">
+            Hoy es el gran día
+          </p>
+          <span className="text-xs opacity-45" aria-hidden="true">
+            ✦
+          </span>
         </div>
       ) : (
         <div className="flex gap-4 justify-center">

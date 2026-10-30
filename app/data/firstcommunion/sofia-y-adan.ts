@@ -49,6 +49,7 @@ const invitation: EventData = {
   },
   media: {
     coverImage: "/pictures/duo/sofia-y-adan-1.webp",
+    music: "/music/un-mundo-ideal.mp3",
     gallery: Array.from(
       { length: 8 },
       (_, index) => `/pictures/duo/sofia-y-adan-${index + 1}.webp`,

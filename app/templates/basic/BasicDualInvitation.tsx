@@ -1,13 +1,15 @@
 "use client";
 
 import Image from "next/image";
-import { useRef } from "react";
-import { motion, useReducedMotion } from "motion/react";
+import { useRef, useState } from "react";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import {
   ArrowDown,
   Church,
   MapPin,
   MessageCircle,
+  Music2,
+  Pause,
   Wheat,
   X,
 } from "lucide-react";
@@ -64,6 +66,10 @@ function JurassicFootprint({ className }: { className: string }) {
 export default function BasicDualInvitation({ data }: { data: EventData }) {
   const reduced = useReducedMotion();
   const dialog = useRef<HTMLDialogElement>(null);
+  const audio = useRef<HTMLAudioElement>(null);
+  const [opened, setOpened] = useState(!data.media.music);
+  const [playing, setPlaying] = useState(false);
+  const [musicError, setMusicError] = useState(false);
   const countdownData = {
     ...data,
     event: {
@@ -79,9 +85,129 @@ export default function BasicDualInvitation({ data }: { data: EventData }) {
     transition: { duration: reduced ? 0 : 0.7 },
   };
   const whatsapp = `https://wa.me/${data.contact.phone}?text=${encodeURIComponent("¡Hola! Quiero confirmar mi asistencia a la Primera Comunión de Sofía y al cumpleaños de Adán, el 21 de Noviembre 2026.")}`;
+  const playMusic = () => {
+    setMusicError(false);
+    void audio.current?.play().catch(() => setMusicError(true));
+  };
+  const openInvitation = () => {
+    playMusic();
+    setOpened(true);
+  };
 
   return (
-    <main className={s.page}>
+    <>
+      {data.media.music && (
+        <audio
+          ref={audio}
+          src={data.media.music}
+          loop
+          preload="none"
+          onPlay={() => setPlaying(true)}
+          onPause={() => setPlaying(false)}
+          onError={() => {
+            setPlaying(false);
+            setMusicError(true);
+          }}
+        />
+      )}
+      {opened && data.media.music && (
+        <button
+          type="button"
+          className={s.musicToggle}
+          data-playing={playing}
+          aria-label={playing ? "Pausar música" : "Reproducir música"}
+          title={playing ? "Pausar música" : "Reproducir música"}
+          onClick={() => (playing ? audio.current?.pause() : playMusic())}
+        >
+          {playing ? (
+            <Pause size={18} aria-hidden="true" />
+          ) : (
+            <Music2 size={19} aria-hidden="true" />
+          )}
+        </button>
+      )}
+      {musicError && opened && (
+        <p className={s.musicError} role="status">
+          Toca el botón musical para iniciar la canción.
+        </p>
+      )}
+      <AnimatePresence>
+        {!opened && (
+          <motion.section
+            key="dual-opening"
+            className={s.intro}
+            aria-labelledby="dual-opening-title"
+            initial={{ opacity: 1 }}
+            exit={{ opacity: 0, scale: reduced ? 1 : 1.025 }}
+            transition={{ duration: reduced ? 0 : 0.65 }}
+          >
+            <div className={s.introCanvas}>
+              <div className={`${s.introScene} ${s.introCommunion}`}>
+                <div className={s.communionEmblem} aria-hidden="true">
+                  <div className={s.communionRays} />
+                  <Wheat className={`${s.communionWheat} ${s.communionWheatLeft}`} />
+                  <Wheat className={`${s.communionWheat} ${s.communionWheatRight}`} />
+                  <div className={s.communionHost}>
+                    <span />
+                  </div>
+                  <div className={s.communionChalice}>
+                    <i />
+                    <b />
+                    <span />
+                  </div>
+                  <p>
+                    Mi Primera
+                    <br />
+                    Comunión
+                  </p>
+                </div>
+              </div>
+              <div className={`${s.introScene} ${s.introAdventure}`}>
+                <Image
+                  src={birthday?.image ?? data.media.coverImage}
+                  alt=""
+                  fill
+                  preload
+                  sizes="(max-width: 760px) 50vw, 380px"
+                />
+              </div>
+              <div className={s.introVeil} aria-hidden="true" />
+              <div className={s.introSparkles} aria-hidden="true">
+                {Array.from({ length: 10 }, (_, index) => (
+                  <i key={index}>✦</i>
+                ))}
+              </div>
+              <motion.div
+                className={s.introCard}
+                initial={reduced ? false : { opacity: 0, y: 24, scale: 0.97 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ duration: reduced ? 0 : 0.8, delay: 0.15 }}
+              >
+                <p className={s.introEyebrow}>Una invitación muy especial</p>
+                <span className={s.introSymbol} aria-hidden="true">
+                  ✦
+                </span>
+                <h2 id="dual-opening-title">Dos motivos para celebrar</h2>
+                <p className={s.introNames}>
+                  {data.event.name.split(" ")[0]}
+                  <span>&</span>
+                  {birthday?.name.split(" ")[0]}
+                </p>
+                <p className={s.introDate}>{data.event.date}</p>
+                <button type="button" onClick={openInvitation}>
+                  Abrir invitación <ArrowDown size={16} aria-hidden="true" />
+                </button>
+                <small>La música comenzará al abrir</small>
+              </motion.div>
+            </div>
+          </motion.section>
+        )}
+      </AnimatePresence>
+      <main
+        className={s.page}
+        inert={!opened}
+        style={!opened ? { height: "100svh", overflow: "hidden" } : undefined}
+      >
       <header className={s.opening}>
         <div className={s.coverHeading}>
           <span>Mi Primera Comunión</span>
@@ -503,6 +629,7 @@ export default function BasicDualInvitation({ data }: { data: EventData }) {
           </a>
         </div>
       </dialog>
-    </main>
+      </main>
+    </>
   );
 }

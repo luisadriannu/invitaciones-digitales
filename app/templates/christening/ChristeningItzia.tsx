@@ -95,8 +95,22 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
 }
 
 function PreCountDown({ data }: { data: EventData }) {
-  const { days, hours, minutes, seconds } = useCountdown(getEventDate(data.event));
+  const { days, hours, minutes, seconds, isReady } = useCountdown(
+    getEventDate(data.event),
+  );
   const finished = days === 0 && hours === 0 && minutes === 0 && seconds === 0;
+
+  if (!isReady) {
+    return (
+      <p
+        className="text-sm"
+        style={{ fontFamily: FONT_UTILITY, color: C.muted }}
+        role="status"
+      >
+        Calculando cuenta regresiva…
+      </p>
+    );
+  }
 
   if (finished) {
     return (

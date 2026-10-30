@@ -7,9 +7,16 @@ interface TimeLeft {
   hours: number;
   minutes: number;
   seconds: number;
+  isReady: boolean;
 }
 
-const EMPTY: TimeLeft = { days: 0, hours: 0, minutes: 0, seconds: 0 };
+const EMPTY: TimeLeft = {
+  days: 0,
+  hours: 0,
+  minutes: 0,
+  seconds: 0,
+  isReady: false,
+};
 
 export const useCountdown = (targetDate: Date) => {
   const target = targetDate.getTime();
@@ -19,15 +26,19 @@ export const useCountdown = (targetDate: Date) => {
     let timer: ReturnType<typeof setTimeout> | undefined;
     const update = () => {
       const difference = target - Date.now();
-      const next = difference > 0 ? {
-        days: Math.floor(difference / 86400000),
-        hours: Math.floor((difference / 3600000) % 24),
-        minutes: Math.floor((difference / 60000) % 60),
-        seconds: Math.floor((difference / 1000) % 60),
-      } : EMPTY;
+      const next: TimeLeft = difference > 0
+        ? {
+            days: Math.floor(difference / 86400000),
+            hours: Math.floor((difference / 3600000) % 24),
+            minutes: Math.floor((difference / 60000) % 60),
+            seconds: Math.floor((difference / 1000) % 60),
+            isReady: true,
+          }
+        : { ...EMPTY, isReady: true };
       setTimeLeft((previous) =>
         previous.days === next.days && previous.hours === next.hours &&
         previous.minutes === next.minutes && previous.seconds === next.seconds
+          && previous.isReady === next.isReady
           ? previous : next,
       );
       if (difference > 0 && !document.hidden) timer = setTimeout(update, 1000);
