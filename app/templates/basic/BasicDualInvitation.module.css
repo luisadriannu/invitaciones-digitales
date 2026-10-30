@@ -112,6 +112,21 @@ to{opacity:1;transform:translateY(0)}
 .embers { position:absolute; inset:0; overflow:hidden; pointer-events:none; z-index:3; }
 .embers i { position:absolute; bottom:-12px; width:3px; height:3px; border-radius:50%; background:#f8e7b8; box-shadow:0 0 6px #f2cc6d80; opacity:0; animation:jurassicEmber 26s linear infinite; }
 .dinoContent { z-index:2; padding-top:48px; padding-bottom:45px; background:radial-gradient(ellipse at center,#303b20 52%,#303b20bb 76%,transparent); }
+.dinoContent { isolation:isolate; }
+.dinoContent>.expeditionBackdrop { position:absolute; inset:0; z-index:-1; pointer-events:none; overflow:hidden; }
+.expeditionBackdrop>svg { position:absolute; }
+.contourMap { inset:0; width:100%; height:100%; stroke:#b8b27a; stroke-width:1; opacity:.12; }
+.portraitFernLeft { width:130px; left:-26px; top:145px; rotate:-28deg; opacity:.8; }
+.portraitFernRight { width:125px; right:-25px; top:115px; rotate:32deg; scale:-1 1; opacity:.75; }
+.lowerFernRight { width:100px; right:-50px; bottom:30px; rotate:-25deg; opacity:.45; }
+.localTrackLeft,.localTrackRight { width:34px; color:#d7c28a; opacity:.16; }
+.localTrackLeft { left:12px; top:64%; rotate:25deg; }
+.localTrackRight { right:15px; top:54%; rotate:-28deg; }
+.age { position:relative; width:190px; padding-top:20px; margin:25px auto 34px; }
+.ageCompass { position:absolute; width:180px; height:180px; top:0; left:5px; color:#d5ae60; opacity:.48; pointer-events:none; }
+.age strong { line-height:1.25; }
+.age span { margin-top:30px; }
+.dinoContent .explorerPortrait { box-shadow:0 0 0 7px #303b20,0 0 0 8px #ae996760,0 18px 40px #10190e80; }
 .expedition { border:1px solid #d8bc7c; box-shadow:3px 4px 0 #15200e; rotate:-2deg; }
 .fossilDivider { display:flex; justify-content:center; align-items:center; gap:14px; color:#baa16b; margin:25px auto; }
 .fossilDivider span { width:45px; height:1px; background:linear-gradient(90deg,transparent,#baa16b); }

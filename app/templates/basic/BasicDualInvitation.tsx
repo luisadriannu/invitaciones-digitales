@@ -100,9 +100,7 @@ export default function BasicDualInvitation({ data }: { data: EventData }) {
               {Array.from({ length: 8 }, (_, i) => <i key={i} style={{ left: `${10 + i * 11}%`, top: `${12 + (i % 3) * 24}%`, animationDelay: `${i * -.8}s` }}>✦</i>)}
             </div>
             <div className={`${s.photoCaption} ${s.coverBlessing}`}>
-              <span>Un día lleno de luz</span>
-              <strong>Con fe y alegría</strong>
-              <p>Te invito a compartir una bendición especial</p>
+              <strong>Un día de luz</strong>
             </div>
           </div>
           <div className={s.coverCurtainLeft} aria-hidden="true" />
@@ -254,6 +252,16 @@ export default function BasicDualInvitation({ data }: { data: EventData }) {
             </motion.div>
           </div>
           <motion.div {...reveal} className={s.dinoContent}>
+            <div className={s.expeditionBackdrop} aria-hidden="true">
+              <svg className={s.contourMap} viewBox="0 0 400 900" preserveAspectRatio="none" fill="none" focusable="false">
+                <path d="M-50 50C140-80 90 220 260 110S490 80 460 260M-40 75C130-50 80 245 270 135S470 110 435 270M-30 100C120-20 70 270 280 160S450 140 410 280M-50 580C100 390 190 680 350 520S460 480 480 710M-40 610C110 420 180 710 360 550S440 510 460 730M-30 640C120 450 170 740 370 580S420 540 440 750" />
+              </svg>
+              <JurassicFern className={s.portraitFernLeft} />
+              <JurassicFern className={s.portraitFernRight} />
+              <JurassicFern className={s.lowerFernRight} />
+              <JurassicFootprint className={s.localTrackLeft} />
+              <JurassicFootprint className={s.localTrackRight} />
+            </div>
             <p className={s.expedition}>La aventura continúa</p>
             <div className={s.explorerPortrait}>
               <Image
@@ -267,6 +275,11 @@ export default function BasicDualInvitation({ data }: { data: EventData }) {
             <p className={s.eyebrow}>Mi cumpleaños</p>
             <h2 id="adan-title">{birthday.name}</h2>
             <div className={s.age}>
+              <svg className={s.ageCompass} viewBox="0 0 180 180" fill="none" aria-hidden="true" focusable="false">
+                <circle cx="90" cy="90" r="75" stroke="currentColor" strokeWidth=".7" />
+                <circle cx="90" cy="90" r="68" stroke="currentColor" strokeWidth=".6" strokeDasharray="2 8" />
+                <path d="M90 3 94 15 90 24 86 15ZM90 177 94 165 90 156 86 165ZM3 90 15 86 24 90 15 94ZM177 90 165 86 156 90 165 94Z" fill="currentColor" />
+              </svg>
               <strong>{birthday.age}</strong>
               <span>AÑOS DE AVENTURAS</span>
             </div>
