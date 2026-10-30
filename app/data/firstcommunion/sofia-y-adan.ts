@@ -8,7 +8,9 @@ const invitation: EventData = {
     title: "Sofía y Adán · Dos motivos para celebrar",
     description:
       "Primera Comunión de Sofía Dariel y cumpleaños de Adán Uriel. 21 de noviembre de 2026. ¡Te esperamos!",
-    image: "/pictures/duo/sofia-y-adan-4.webp",
+    image: "/pictures/duo/sofia-y-adan-compartir-v1.jpg",
+    imageWidth: 1200,
+    imageHeight: 630,
   },
   event: {
     name: "Sofía Dariel López Mateos",

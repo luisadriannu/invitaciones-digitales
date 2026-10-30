@@ -101,6 +101,7 @@ export default function BasicDualInvitation({ data }: { data: EventData }) {
             </div>
             <div className={`${s.photoCaption} ${s.coverBlessing}`}>
               <strong>Un día de luz</strong>
+              <p>Te invito a compartir una bendición especial</p>
             </div>
           </div>
           <div className={s.coverCurtainLeft} aria-hidden="true" />
@@ -149,7 +150,9 @@ export default function BasicDualInvitation({ data }: { data: EventData }) {
         <motion.div {...reveal} className={s.arch}>
           <p className={s.eyebrow}>Con fe, amor y alegría</p>
           <div className={s.cross} aria-hidden="true">
-            ✝
+            <svg viewBox="0 0 64 88" width="64" height="88" fill="none" focusable="false">
+              <path d="M28 4h8v23h21v8H36v49h-8V35H7v-8h21Z" fill="currentColor" />
+            </svg>
           </div>
           <p className={s.eyebrow}>Mi Primera Comunión</p>
           <h2 id="sofia-title">Sofía Dariel</h2>
@@ -326,6 +329,15 @@ export default function BasicDualInvitation({ data }: { data: EventData }) {
               ¡Vamos a celebrar! <ArrowDown size={18} />
             </a>
           </motion.div>
+          <div className={s.closingDinosaur}>
+            <Image
+              src="/pictures/birthday/mateo/jurassic-expedition.webp"
+              alt="Un gran tiranosaurio entre la vegetación de la selva"
+              fill
+              sizes="(max-width: 760px) 100vw, 760px"
+            />
+            <p className={s.dinosaurFarewell}>¡Nos espera una<br /><em>gran aventura!</em></p>
+          </div>
         </section>
       )}
 
