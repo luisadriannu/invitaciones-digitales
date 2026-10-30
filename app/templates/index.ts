@@ -1,6 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
+const BasicDualInvitation = dynamic(() => import("@/app/templates/basic/BasicDualInvitation"));
 const BasicInvitation = dynamic(
   () => import("@/app/templates/basic/BasicInvitation"),
 );
@@ -87,6 +88,7 @@ export const templates = {
   //   base: BabyShowerBase,
   // },
   primeracomunion: {
+    basicDual: BasicDualInvitation,
     basic: BasicInvitation,
     base: FirstCommunionTemplate,
   },

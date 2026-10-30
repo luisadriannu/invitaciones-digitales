@@ -11,6 +11,7 @@ export type EventType =
 
 export type EventVariant =
   | "basic"
+  | "basicDual"
   | "base"
   | "elegant"
   | "modern"
@@ -86,6 +87,7 @@ export interface LocationInfo {
 
 export interface ContactInfo {
   phone: string;
+  confirmationDeadline?: string;
   confirmationLink?: string;
 }
 
@@ -124,6 +126,7 @@ export interface DesignInfo {
 }
 
 export interface EventData {
+  companionBirthday?: { name: string; age: number; phrase: string; image: string };
   tipo: EventType;
   seo: SeoInfo;
   event: EventInfo;

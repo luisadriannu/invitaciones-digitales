@@ -18,6 +18,7 @@ import valentina from "@/app/data/xv/valentina";
 import julia from "@/app/data/xv/julia";
 import karina from "@/app/data/graduation/karina";
 import sofia from "@/app/data/firstcommunion/sofia";
+import sofiaYAdan from "@/app/data/firstcommunion/sofia-y-adan";
 
 const events: Record<string, EventData> = {
   ...basicEvents,
@@ -39,6 +40,7 @@ const events: Record<string, EventData> = {
   julia,
   karina,
   sofia,
+  "sofia-y-adan": sofiaYAdan,
 };
 
 export default events;

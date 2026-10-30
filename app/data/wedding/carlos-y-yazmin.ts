@@ -38,7 +38,7 @@ const carlosYYazmin: EventData = {
       "/pictures/wedding/kevin-y-juana/kevin-y-juana-2.jpg",
       "/pictures/wedding/kevin-y-juana/kevin-y-juana-4.jpg",
     ],
-  },
+  },  
   location: {
     event: "Boda civil y recepción",
     reception: "Salón El Centro · Ajuchitlán del Progreso",

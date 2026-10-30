@@ -1,0 +1,185 @@
+.page{max-width:760px;margin:auto;background:#f7f5f0;color:#62594f;font-family:'Jost',sans-serif;text-align:center;overflow:hidden}
+.page p{line-height:1.7}
+.page h2,.page h3{font-family:'Cormorant Garamond',Georgia,serif;font-weight:400}
+.eyebrow{font-size:11px!important;letter-spacing:3px;text-transform:uppercase;font-weight:500}
+.opening{position:relative;background:#f1ece3;isolation:isolate}
+.opening h1{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(48px,10vw,76px);line-height:1.2;margin:20px 0 12px}
+.opening h1 span{font-style:italic;color:#998575}
+.opening>p:not(.eyebrow){font-size:15px}
+.date{display:flex;align-items:center;justify-content:center;gap:20px;margin:25px 0}
+.date span{font-size:11px;letter-spacing:2px}
+.date strong{font-family:Georgia,serif;font-weight:400;font-size:42px;border-inline:1px solid #b5a99a;padding:0 22px}
+.discover{display:inline-flex;align-items:center;gap:8px;font-size:12px;letter-spacing:1px;padding:12px}
+
+.communion{position:relative;padding:54px 26px 65px;background:linear-gradient(115deg,transparent 15%,#ffffff88 35%,transparent 52%),radial-gradient(ellipse at top,#fffefa,#e6dfd5)}
+.arch{position:relative;border:1px solid #bcae9c;border-radius:220px 220px 4px 4px;padding:68px 15px 40px;box-shadow:inset 0 0 0 8px #f5f2ec,inset 0 0 0 9px #d2c7ba}
+.cross{font-family:Georgia,serif;font-size:80px;line-height:1.4;color:#9e8a72;margin:10px auto 20px}
+.arch h2{font-size:clamp(46px,11vw,74px);line-height:1.15;margin:19px 0 3px}
+.surname{font-size:20px;letter-spacing:2px}
+.wheat{margin:24px auto;color:#94806c}
+.invite{font-size:16px}
+.day{margin-top:24px;text-transform:uppercase;font-size:12px;letter-spacing:2px}
+.family{padding:48px 0 36px}
+.family>.eyebrow{margin:20px 0 13px}
+.family>p:not(.eyebrow){font-family:'Cormorant Garamond',Georgia,serif;font-size:23px;line-height:1.45}
+.family span{display:block;font-style:italic;color:#94806c;font-size:18px;margin:4px}
+.ceremony{padding-top:30px;border-top:1px solid #d2c7ba}
+.ceremony>svg,.reception>svg,.rsvp>svg{margin:0 auto 17px}
+.ceremony h3,.reception h3{font-size:30px;line-height:1.2;margin:14px 0}
+.time{font-size:25px;margin:13px 0}
+.button{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:50px;background:#6c6053;color:#fffcf7;border:1px solid #6c6053;border-radius:3px;padding:14px 18px;margin-top:22px;font-size:14px;transition:transform .2s,background .2s;max-width:100%}
+.button:hover{background:#51473e;transform:translateY(-3px)}
+.button:active{transform:scale(.97)}
+.page a:focus-visible{outline:3px solid #a76a39;outline-offset:5px}
+.specks{position:absolute;inset:0;pointer-events:none}
+.specks i{position:absolute;width:4px;height:4px;border-radius:50%;background:#b2a18c;animation:float 7s infinite ease-in-out;opacity:.35}
+.birthday{position:relative;background:radial-gradient(ellipse at 90% 70%,#71553744,transparent 55%),#303b20;color:#f5eedc;isolation:isolate}
+.dinoArt{aspect-ratio:2 / 3;position:relative;overflow:hidden;z-index:1}
+.dinoArt:after{content:'';position:absolute;inset:0;background:linear-gradient(transparent 72%,#303b20)}
+.dinoImage{object-fit:cover;object-position:center}
+.jurassicWelcome { position:absolute; bottom:5%; left:0; right:0; z-index:2; padding:35px 22px 25px; color:#fff4d8; background:radial-gradient(ellipse at center,#25351dd9,transparent 72%); text-shadow:0 2px 16px #10190e; }
+.jurassicWelcome p { text-transform:uppercase; letter-spacing:4px; font-size:10px; margin-bottom:12px; }
+.jurassicWelcome h3 { font-family:'Fraunces',Georgia,serif; font-size:clamp(34px,9vw,63px); line-height:1.1; margin:0 0 17px; }
+.jurassicWelcome h3 em { color:#f3c77e; font-weight:400; }
+.jurassicWelcome>span { display:block; max-width:250px; margin:auto; font-size:11px; letter-spacing:1.5px; line-height:1.7; }
+.dinoContent{position:relative;margin-top:0;padding:25px 27px 64px}
+.expedition{display:inline-block;background:#e9ad63;color:#30371f;padding:9px 16px;text-transform:uppercase;letter-spacing:3px;font-size:10px;font-weight:600;margin-bottom:28px}
+.dinoContent h2{font-family:'Fraunces',Georgia,serif;font-size:clamp(45px,11vw,76px);line-height:1.1;margin:17px 0;color:#f5eedc}
+.age{display:flex;flex-direction:column;align-items:center}
+.age strong{font-family:'Fraunces',Georgia,serif;font-size:112px;line-height:1.2;color:#e9ad63}
+.age span{font-size:10px;letter-spacing:4px}
+.roar{font-family:'Cormorant Garamond',Georgia,serif;font-size:27px;max-width:360px;margin:27px auto}
+.dinoDate{font-size:12px;letter-spacing:2px;text-transform:uppercase}
+.dinoLink{display:inline-flex;align-items:center;gap:9px;padding:15px;margin-top:16px;color:#e9ad63;transition:transform .2s}
+.dinoLink:hover{transform:translateY(3px)}
+.celebration{padding:59px 26px 0;background:#f1ede6}
+
+/* Broad fades connect the three palettes without crossing any text or buttons. */
+.communion::after { content:''; position:absolute; bottom:0; left:0; right:0; height:65px; background:linear-gradient(transparent,#e6dfd5); pointer-events:none; }
+.dinoArt::before { content:''; position:absolute; inset:-1px 0 auto; height:clamp(170px,35vw,260px); background:linear-gradient(to bottom,#e6dfd5 0%,#e6dfd5 9%,#e6dfd5e8 24%,#e6dfd596 48%,#e6dfd526 78%,transparent 100%); z-index:1; pointer-events:none; }
+.birthday { padding-bottom:145px; }
+.birthday::after { content:''; position:absolute; bottom:0; left:0; right:0; height:190px; z-index:4; background:linear-gradient(to bottom,transparent 0%,#73765c35 18%,#a9a894a6 48%,#e1ddd2ed 78%,#f1ede6 100%); pointer-events:none; }
+.celebration h2{font-size:40px;line-height:1.15;margin:17px 0 24px}
+.celebration>div>p:not(.eyebrow){max-width:390px;margin-inline:auto;font-size:16px}
+.reception{margin-top:35px;padding:32px 16px;border:1px solid #c5b9a9;background:#faf8f4}
+.note{padding:29px 0;font-size:14px}
+.note p:first-child{font-weight:500;margin-bottom:8px}
+.rsvp{padding:40px 0;border-block:1px solid #d2c7ba}
+.rsvp h2{font-size:36px}
+.footer{padding:40px 0}
+.footer span{font-size:12px;letter-spacing:1px}
+.footer p{font-family:'Cormorant Garamond',Georgia,serif;font-size:39px;margin:6px 0}
+@keyframes open{from{opacity:0;transform:translateY(15px)}
+to{opacity:1;transform:translateY(0)}
+}
+@keyframes float{50%{transform:translate(9px,-22px);opacity:.7}
+}
+@keyframes breathe{to{transform:scale(1.045)}
+}
+@media(min-width:600px){.communion{padding-inline:90px}
+.celebration{padding-inline:90px}
+}
+@media(prefers-reduced-motion:reduce){.page *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+}
+
+
+.countdown { padding-bottom: 34px; margin-bottom: 36px; border-bottom: 1px solid #d2c7ba; }
+.gallery { padding: 24px 0 42px; }
+.galleryHint { font-size: 12px; margin-top: 18px; letter-spacing: 1px; }
+.button { cursor: pointer; }
+.page button:focus-visible { outline: 3px solid #a76a39; outline-offset: 5px; }
+.dialog { margin: auto; width: min(420px, calc(100% - 32px)); max-height: calc(100svh - 48px); overflow-y: auto; background: #f7f5f0; color: #62594f; border: 1px solid #bcae9c; border-radius: 20px; padding: 0; }
+.dialog::backdrop { background: #28251fbd; backdrop-filter: blur(5px); }
+.dialogContent { position: relative; padding: 48px 24px 32px; }
+.dialogContent > svg { margin: 0 auto 20px; }
+.dialog h2 { font-size: 30px; line-height: 1.2; }
+.dialog p { margin-top: 20px; font-size: 15px; }
+.close { position: absolute; top: 10px; right: 10px; padding: 10px; cursor: pointer; }
+
+/* Vegetation frames the scene; tracks remain behind the invitation content. */
+.birthday { overflow: hidden; }
+.jungleDecor { position:absolute; inset:0; pointer-events:none; z-index:0; }
+.jungleDecor>svg { position:absolute; filter:drop-shadow(0 6px 7px #101d1080); }
+.fernTopLeft { width:150px; top:-65px; left:-55px; rotate:-38deg; transform-origin:bottom center; animation:fernSway 8s ease-in-out infinite alternate; }
+.fernTopRight { width:135px; top:-80px; right:-35px; rotate:45deg; scale:-1 1; transform-origin:bottom center; animation:fernSway 10s ease-in-out infinite alternate-reverse; }
+.fernMiddleLeft { width:110px; top:43%; left:-66px; rotate:22deg; opacity:.8; }
+.fernBottomRight { width:140px; bottom:-28px; right:-45px; rotate:-28deg; transform-origin:bottom center; animation:fernSway 9s ease-in-out infinite alternate; }
+.fernBottomLeft { width:120px; bottom:-65px; left:-40px; rotate:35deg; }
+.trackOne,.trackTwo,.trackThree { width:40px; color:#c5bb8160; opacity:.5; }
+.trackOne { top:55%; right:15px; rotate:-25deg; }
+.trackTwo { top:64%; right:34px; rotate:-9deg; }
+.trackThree { top:73%; right:5px; rotate:-25deg; }
+.embers { position:absolute; inset:0; overflow:hidden; pointer-events:none; z-index:3; }
+.embers i { position:absolute; bottom:-12px; width:3px; height:3px; border-radius:50%; background:#f8e7b8; box-shadow:0 0 6px #f2cc6d80; opacity:0; animation:jurassicEmber 26s linear infinite; }
+.dinoContent { z-index:2; padding-top:48px; padding-bottom:45px; background:radial-gradient(ellipse at center,#303b20 52%,#303b20bb 76%,transparent); }
+.expedition { border:1px solid #d8bc7c; box-shadow:3px 4px 0 #15200e; rotate:-2deg; }
+.fossilDivider { display:flex; justify-content:center; align-items:center; gap:14px; color:#baa16b; margin:25px auto; }
+.fossilDivider span { width:45px; height:1px; background:linear-gradient(90deg,transparent,#baa16b); }
+.fossilDivider span:last-child { scale:-1 1; }
+@keyframes fernSway { from { transform:rotate(-3deg); } to { transform:rotate(3deg); } }
+@keyframes jurassicEmber { 8% { opacity:.32; } 85% { opacity:.22; } to { transform:translate(30px,-2800px); opacity:0; } }
+@media(min-width:600px) { .fernMiddleLeft { width:170px; left:-75px; } .fernBottomRight { width:190px; right:-50px; } .trackOne,.trackTwo,.trackThree { width:54px; right:45px; } }
+@media(prefers-reduced-motion:reduce) { .jungleDecor * { animation:none!important; } .embers { display:none; } }
+
+/* Photographic double cover: both celebrations have equal prominence. */
+.coverHeading { display:flex; justify-content:space-between; align-items:center; gap:14px; padding:18px 20px; color:#6c6053; font-size:9px; text-transform:uppercase; letter-spacing:1.8px; }
+.coverHeading span:last-child { white-space:nowrap; }
+.communionCover { grid-template-columns:1fr!important; height:clamp(460px,76svh,760px)!important; }
+.communionCover .sofiaPanel { border:0; }
+.communionCover .coverPanel img { object-position:center 30%; }
+.coverInvitation .coverSurname { font-size:19px; letter-spacing:2px; margin-bottom:20px; }
+.coverOrnaments { position:absolute; inset:22px 18px 20px; z-index:2; border:1px solid #fff8e780; border-radius:180px 180px 5px 5px; pointer-events:none; }
+.coverOrnaments::before { content:''; position:absolute; top:-4px; left:50%; width:7px; height:7px; border-radius:50%; transform:translateX(-50%); background:#fff7e6; box-shadow:0 0 12px #fff5d899,-16px 2px 0 -2px #fff7e6,16px 2px 0 -2px #fff7e6; }
+.coverOrnaments::after { content:''; position:absolute; bottom:12px; left:50%; width:48px; height:1px; transform:translateX(-50%); background:linear-gradient(90deg,transparent,#fff7e6bb,transparent); }
+.coverOrnaments i { position:absolute; font-size:11px; font-style:normal; color:#fff3d1; opacity:.5; animation:coverTwinkle 6s ease-in-out infinite; }
+.communionCover .coverBlessing { bottom:42px; left:35px; right:35px; }
+.photoCaption.coverBlessing>strong { font-size:clamp(34px,8.5vw,58px); font-style:italic; margin:7px 0 9px; }
+.coverBlessing>p { font-size:12px; max-width:240px; margin:auto; line-height:1.6; color:#fff5e4; }
+.photoCaption.coverBlessing>span { letter-spacing:3px; }
+@keyframes coverTwinkle { 50% { opacity:.15; transform:translateY(-10px) scale(.75); } }
+@media(prefers-reduced-motion:reduce) { .coverOrnaments i { animation:none!important; } }
+.coverPhotos { position:relative; display:grid; grid-template-columns:1fr 1fr; height:clamp(340px,58svh,590px); overflow:hidden; background:#b7ada0; }
+.coverPanel { position:relative; overflow:hidden; }
+.coverPanel img { object-fit:cover; object-position:50% 23%; animation:portraitArrival 1.8s ease-out both; }
+.sofiaPanel { border-right:2px solid #eee5d6; }
+.adanPanel img { object-position:52% 22%; }
+.coverPanel::after { content:''; position:absolute; inset:0; background:linear-gradient(transparent 45%,#27271b30 65%,#262318d9 100%); }
+.photoCaption { position:absolute; bottom:30px; left:8px; right:8px; z-index:1; color:#fff9ed; }
+.photoCaption span { display:block; font-size:9px; letter-spacing:1.6px; text-transform:uppercase; }
+.photoCaption strong { display:block; font-family:'Cormorant Garamond',Georgia,serif; font-size:clamp(47px,12vw,77px); line-height:1.15; font-weight:400; }
+.coverAmpersand { position:absolute; bottom:47px; left:50%; transform:translateX(-50%); z-index:2; color:#f8edd9; font-family:'Cormorant Garamond',Georgia,serif; font-size:42px; font-style:italic; text-shadow:0 2px 12px #302515; }
+.coverCurtainLeft,.coverCurtainRight { position:absolute; inset:0 50% 0 0; z-index:3; background:linear-gradient(120deg,#ddd3c4,#faf7f0,#d7cbbb); pointer-events:none; animation:curtainLeft 1.5s cubic-bezier(.22,1,.36,1) both; border-right:1px solid #bcae9c; }
+.coverCurtainRight { inset:0 0 0 50%; animation-name:curtainRight; }
+.coverInvitation { position:relative; padding:48px 22px 34px; background:radial-gradient(ellipse at 20% 10%,#fffdf8,transparent 60%),linear-gradient(135deg,#f4f0e8,#e5dccf); }
+.coverInvitation::before,.coverInvitation::after { content:''; position:absolute; width:80px; height:150px; top:25px; border:1px solid #bca98c66; border-radius:100%; transform:rotate(-35deg); pointer-events:none; }
+.coverInvitation::before { left:-60px; }
+.coverInvitation::after { right:-60px; transform:rotate(35deg); }
+.coverInvitation h1 { margin:12px 0; }
+.coverInvitation>p:not(.eyebrow) { font-family:'Cormorant Garamond',Georgia,serif; font-size:21px; line-height:1.5; }
+.monogram { position:absolute; top:-29px; left:50%; transform:translateX(-50%) rotate(-8deg); display:flex; align-items:center; justify-content:center; width:58px; height:58px; border-radius:50%; color:#6e5e49; font:21px 'Cormorant Garamond',Georgia,serif; border:3px double #c2ad8d; background:linear-gradient(135deg,#fff9eb,#d2bfa2); box-shadow:0 5px 15px #3b302529; z-index:4; }
+.monogram span { font-size:15px; font-style:italic; }
+.discover { border-top:1px solid #bca98c66; padding-top:18px; }
+.discover svg { animation:inviteArrow 2.6s ease-in-out infinite; }
+.communionPortrait { position:relative; width:min(100%,340px); aspect-ratio:2/3; margin:28px auto 0; border-radius:170px 170px 5px 5px; overflow:hidden; border:6px solid #fffcf4; outline:1px solid #c2b39c; box-shadow:0 12px 28px #76654a20; }
+.communionPortrait img { object-fit:cover; }
+.explorerPortrait { position:relative; width:210px; height:250px; margin:2px auto 30px; border:7px solid #b4a17b; outline:1px solid #e0cb9a; border-radius:100px 100px 8px 8px; box-shadow:0 16px 35px #10190e66; transform:rotate(-3deg); }
+.explorerPortrait img { object-fit:cover; object-position:center 18%; border-radius:92px 92px 2px 2px; }
+.explorerPortrait span { position:absolute; bottom:-14px; right:-20px; display:grid; place-items:center; width:63px; height:63px; border-radius:50%; background:#d59d50; border:3px solid #f1d49d; color:#30371f; font:42px 'Fraunces',Georgia,serif; transform:rotate(10deg); }
+@keyframes portraitArrival { from { transform:scale(1.08); } to { transform:scale(1); } }
+@keyframes curtainLeft { from { transform:translateX(0); } to { transform:translateX(-101%); } }
+@keyframes curtainRight { from { transform:translateX(0); } to { transform:translateX(101%); } }
+@keyframes inviteArrow { 50% { transform:translateY(5px); } }
+@media(prefers-reduced-motion:reduce) { .coverCurtainLeft,.coverCurtainRight { display:none; } .page * { animation:none!important; transition:none!important; } }
+
+.adventureStory,.expeditionTicket { position:relative; z-index:2; margin:0 auto; background:radial-gradient(ellipse,#303b20 50%,#303b20d9 76%,transparent); }
+.adventureStory { padding:35px 30px 65px; }
+.adventureStory h3,.expeditionTicket h3 { font-family:'Fraunces',Georgia,serif; font-size:clamp(28px,7vw,42px); line-height:1.25; margin:18px 0 25px; color:#f1d49d; }
+.adventurePhoto { position:relative; width:min(100%,330px); aspect-ratio:3/4; margin:35px auto; border:9px solid #e1d2ae; border-bottom-width:47px; box-shadow:0 15px 30px #0c150c66; rotate:3deg; }
+.adventurePhoto img { object-fit:cover; }
+.adventurePhoto span { position:absolute; bottom:-35px; left:0; right:0; color:#544b37; font:italic 18px 'Cormorant Garamond',Georgia,serif; }
+.adventureStory>p:last-child,.expeditionTicket>p:not(.eyebrow) { max-width:360px; margin-inline:auto; line-height:1.9; }
+.expeditionTicket { width:calc(100% - 64px); max-width:470px; padding:35px 22px 38px; margin-bottom:100px; border:1px solid #b6a06c; outline:1px dashed #b6a06c66; outline-offset:-9px; background:#26301feF; box-shadow:0 15px 35px #10190e44; }
+.ticketDate { display:flex; align-items:center; justify-content:center; gap:18px; padding:24px 0; margin:25px 0; border-block:1px dashed #b6a06c66; }
+.ticketDate span { font-size:10px; letter-spacing:2px; }
+.ticketDate strong { font:64px 'Fraunces',Georgia,serif; color:#e9ad63; }
+@media(prefers-reduced-motion:reduce) { .embers { display:none; } }

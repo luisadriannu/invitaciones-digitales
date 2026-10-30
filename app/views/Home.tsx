@@ -158,13 +158,6 @@ export default function Home({
       href: "/boda/kevinyjuanalight",
     },
     {
-      category: "Boda",
-      title: "Boda Miguel y Aracely",
-      subtitle: "Light · Azul",
-      image: "/pictures/wedding/kevin-y-juana/kevin-y-juana-8.jpg",
-      href: "/boda/miguelYAracely",
-    },
-    {
       category: "Bautizo",
       title: "Bautizo",
       image: "/pictures/christening/camila/camila-1.jpg",
