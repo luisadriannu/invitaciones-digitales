@@ -8,7 +8,7 @@ const invitation: EventData = {
     title: "Sofía y Adán · Dos motivos para celebrar",
     description:
       "Primera Comunión de Sofía Dariel y cumpleaños de Adán Uriel. 21 de noviembre de 2026. ¡Te esperamos!",
-    image: "/pictures/duo/sofia-y-adan-4.jpeg",
+    image: "/pictures/duo/sofia-y-adan-4.webp",
   },
   event: {
     name: "Sofía Dariel López Mateos",
@@ -23,7 +23,7 @@ const invitation: EventData = {
     name: "Adán Uriel",
     age: 6,
     phrase: "¡Alerta de rugidos! Un gran dinosaurio cumple 6 años.",
-    image: "/pictures/duo/aventura-jurasica.png",
+    image: "/pictures/duo/aventura-jurasica.webp",
   },
   family: {
     parents: {
@@ -46,10 +46,10 @@ const invitation: EventData = {
     confirmationDeadline: "15 de noviembre de 2026",
   },
   media: {
-    coverImage: "/pictures/duo/sofia-y-adan-1.jpeg",
+    coverImage: "/pictures/duo/sofia-y-adan-1.webp",
     gallery: Array.from(
       { length: 8 },
-      (_, index) => `/pictures/duo/sofia-y-adan-${index + 1}.jpeg`,
+      (_, index) => `/pictures/duo/sofia-y-adan-${index + 1}.webp`,
     ),
   },
 };

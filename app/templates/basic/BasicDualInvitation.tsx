@@ -156,7 +156,7 @@ export default function BasicDualInvitation({ data }: { data: EventData }) {
           <p className={s.surname}>López Mateos</p>
           <div className={s.communionPortrait}>
             <Image
-              src="/pictures/duo/sofia-y-adan-2.jpeg"
+              src="/pictures/duo/sofia-y-adan-2.webp"
               alt="Sofía saltando feliz en la playa"
               fill
               sizes="(max-width: 600px) 72vw, 340px"
@@ -265,7 +265,7 @@ export default function BasicDualInvitation({ data }: { data: EventData }) {
             <p className={s.expedition}>La aventura continúa</p>
             <div className={s.explorerPortrait}>
               <Image
-                src="/pictures/duo/sofia-y-adan-7.jpeg"
+                src="/pictures/duo/sofia-y-adan-7.webp"
                 alt="Adán, el festejado de esta aventura"
                 fill
                 sizes="220px"
@@ -293,7 +293,7 @@ export default function BasicDualInvitation({ data }: { data: EventData }) {
             <h3>¡La aventura de crecer!</h3>
             <div className={s.adventurePhoto}>
               <Image
-                src="/pictures/duo/sofia-y-adan-8.jpeg"
+                src="/pictures/duo/sofia-y-adan-8.webp"
                 alt="Un recuerdo de Adán cuando era más pequeño"
                 fill
                 sizes="(max-width: 600px) 72vw, 330px"
