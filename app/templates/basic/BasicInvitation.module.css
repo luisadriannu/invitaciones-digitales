@@ -63,5 +63,55 @@
 .graduacion .countdown { background: var(--ink); color: var(--paper); border-radius: 0; }
 .primeracomunion .cover { margin: 18px 18px 0; border: 6px double #bca879; border-radius: 180px 180px 0 0; overflow: hidden; }
 .primeracomunion .family { border-top: 1px solid #bca87955; border-bottom: 1px solid #bca87955; }
+.evento .cover { height: 76svh; min-height: 500px; }
+.evento .cover::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 42%, var(--paper) 100%); }
+.evento .heroContent { z-index: 2; margin-top: -120px; padding-bottom: 58px; }
+.evento .hero h1 { font-size: clamp(48px, 12vw, 82px); }
+.evento .emblem { color: var(--paper); background: color-mix(in srgb, var(--ink) 82%, transparent); border-color: color-mix(in srgb, var(--paper) 60%, transparent); backdrop-filter: blur(8px); }
+.evento .label { color: var(--ink); }
+.evento .welcome { background: color-mix(in srgb, var(--paper) 88%, white); }
+.seasonalParticles { position: absolute; inset: 0; z-index: 1; overflow: hidden; pointer-events: none; }
+.seasonalParticles i { position: absolute; top: -30px; color: #fff7d7; font-style: normal; font-size: 10px; text-shadow: 0 0 10px #fff; opacity: .75; animation: seasonalFall 9s linear infinite; }
+.seasonalParticles i:nth-child(1){left:7%;animation-delay:-1s}.seasonalParticles i:nth-child(2){left:15%;animation-delay:-5s;font-size:6px}.seasonalParticles i:nth-child(3){left:24%;animation-delay:-8s}.seasonalParticles i:nth-child(4){left:34%;animation-delay:-3s;font-size:7px}.seasonalParticles i:nth-child(5){left:43%;animation-delay:-6s}.seasonalParticles i:nth-child(6){left:52%;animation-delay:-2s;font-size:6px}.seasonalParticles i:nth-child(7){left:61%;animation-delay:-7s}.seasonalParticles i:nth-child(8){left:69%;animation-delay:-4s;font-size:8px}.seasonalParticles i:nth-child(9){left:77%;animation-delay:-9s}.seasonalParticles i:nth-child(10){left:84%;animation-delay:-2.5s;font-size:6px}.seasonalParticles i:nth-child(11){left:91%;animation-delay:-6.5s}.seasonalParticles i:nth-child(12){left:97%;animation-delay:-4.5s;font-size:7px}
+@keyframes seasonalFall { to { transform: translate3d(20px, 105svh, 0) rotate(180deg); opacity: .15; } }
+.snowTheme { position: relative; }
+.snowTheme .hero::before { content: ""; position: absolute; z-index: 2; left: 18px; right: 18px; top: 18px; height: 7px; border-radius: 999px; background: repeating-linear-gradient(90deg,#f8e6ab 0 6px,transparent 6px 18px); box-shadow: 0 0 14px #ffda72; opacity: .75; pointer-events: none; }
+.snowfall { position: fixed; z-index: 55; inset: 0 auto 0 50%; width: min(100%,760px); overflow: hidden; transform: translateX(-50%); pointer-events: none; }
+.snowfall i { position: absolute; left: var(--snow-left); top: -20px; width: var(--snow-size); height: var(--snow-size); border-radius: 50%; background: #fff; box-shadow: 0 0 7px #fff,0 0 13px #e9f6ff; opacity: .8; animation: snowfallDrop var(--snow-duration) linear var(--snow-delay) infinite; }
+.snowfall i:nth-child(3n) { border: 1px solid #fff; background: transparent; box-shadow: 0 0 5px #fff; transform: rotate(45deg); border-radius: 1px; }
+.snowfall i:nth-child(4n) { opacity: .5; }
+.christmasCorners { position: absolute; z-index: 3; inset: 22px 18px auto; display: flex; align-items: flex-start; justify-content: space-between; color: #fff8df; filter: drop-shadow(0 2px 7px #173a24); pointer-events: none; }
+.christmasCorners svg:first-child,.christmasCorners svg:last-child { width: 29px; height: 29px; stroke-width: 1.2; }
+.christmasCorners svg:last-child { transform: scaleX(-1); }
+.christmasCorners svg:nth-child(2) { width: 18px; height: 18px; margin-top: 15px; animation: snowTwinkle 3s ease-in-out infinite; }
+.snowTheme .welcome::before,.snowTheme .welcome::after { content: "✦"; position: absolute; top: 24px; color: color-mix(in srgb,var(--ink) 38%,transparent); font-size: 18px; }
+.snowTheme .welcome::before { left: 22px; }
+.snowTheme .welcome::after { right: 22px; }
+.christmasTreeDecor { width: min(78vw,330px); margin: 30px auto -24px; filter: drop-shadow(0 16px 22px #4f251f2e); }
+.christmasTreeDecor img { display: block; width: 100%; height: auto; }
+.christmasGarland { display: block; width: min(112%,700px); height: auto; margin: 34px auto -44px; transform: translateX(-5%); filter: drop-shadow(0 10px 16px #39201930); }
+.christmasGifts { width: min(92vw,430px); margin: 24px auto 14px; filter: drop-shadow(0 14px 20px #40251d38); }
+.christmasGifts img { display: block; width: 100%; height: auto; }
+.snowTheme .rsvp { padding-bottom: 82px; background: radial-gradient(circle at 50% 72%,#fff8e9 0%,transparent 48%),color-mix(in srgb,var(--ink) 8%,var(--paper)); }
+.confettiTheme { color: #f2d99c; background: #0b1220; }
+.confettiTheme .heroContent { color: #e7c36d; }
+.confettiTheme .welcome { color: #f5e8c8; background: linear-gradient(180deg,#151f31,#101827); border-block: 1px solid #caa6572e; }
+.confettiTheme .welcome .eyebrow,.confettiTheme .welcome .flourish { color: #d2ad5a; }
+.confettiTheme .countdown { color: #f6e9c9; background: linear-gradient(180deg,#111b2c,#0c1524); border-top: 1px solid #d1ad5d38; }
+.confettiTheme .details { color: #edcf88; background: radial-gradient(circle at 50% 0,#26344a 0%,#111a2a 44%,#0b1321 100%); }
+.confettiTheme .details h2 { color: #f4dfad; }
+.confettiTheme .date { color: #e7c36d; }
+.confettiTheme .venue { color: #f8ebc9; border-color: #d6b66166; background: linear-gradient(145deg,#202e44e8,#121d30f2); box-shadow: inset 0 0 0 1px #ffffff0d,0 14px 35px #03070f5c; }
+.confettiTheme .venue > svg { color: #e9c568; filter: drop-shadow(0 0 8px #e9c56855); }
+.confettiTheme .venue h3 { color: #ffe4a0; }
+.confettiTheme .venue p { color: #f4e8ca; }
+.confettiTheme .venue .hour { color: #e9c568; border-top: 1px solid #d6b66138; padding-top: 13px; }
+.confettiTheme .dressCode { border-top-color: #d6b6614a; color: #f2dfb0; }
+.confettiTheme .dressCode .eyebrow { color: #cba653; }
+.confettiTheme .rsvp { color: #f4e6c4; background: linear-gradient(180deg,#111b2c,#0a1321); border-top: 1px solid #d6b66138; }
+.confettiTheme .button { color: #101827; background: linear-gradient(135deg,#f1d482,#b98a33); border-color: #f1d482; box-shadow: 0 8px 24px #0007; }
+.confettiTheme .footer { color: #e7c36d; background: #080f1b; border-top: 1px solid #d6b66130; }
+@keyframes snowfallDrop { 0% { transform: translate3d(0,-5vh,0) rotate(0); } 100% { transform: translate3d(var(--snow-drift),105vh,0) rotate(240deg); } }
+@keyframes snowTwinkle { 50% { opacity: .35; transform: rotate(60deg) scale(.78); } }
 @media (max-width: 360px) { .section { padding: 58px 16px; } .eyebrow { font-size: 10px; letter-spacing: .12em; } .heroContent { padding-inline: 16px; } }
-@media (prefers-reduced-motion: reduce) { .page *, .page *::before, .page *::after { animation: none !important; scroll-behavior: auto !important; } }
+@media (prefers-reduced-motion: reduce) { .page *, .page *::before, .page *::after { animation: none !important; scroll-behavior: auto !important; } .snowfall { display: none; } }

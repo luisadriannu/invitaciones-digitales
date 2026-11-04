@@ -6,6 +6,7 @@ export type EventType =
   | "xv"
   | "babyshower"
   | "bautizo"
+  | "evento"
   | "graduacion"
   | "primeracomunion";
 
@@ -114,6 +115,7 @@ export interface FamilyInfo {
 
 export interface DesignInfo {
   variant?: EventVariant;
+  effect?: "snow" | "confetti";
 
   colors?: {
     primary?: string;

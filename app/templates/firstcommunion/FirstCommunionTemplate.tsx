@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { motion, AnimatePresence } from "motion/react";
+import { motion, AnimatePresence, MotionConfig } from "motion/react";
 import Gallery from "@/app/components/Gallery";
 import CountDown from "@/app/components/CountDown";
 import MusicButton from "@/app/components/MusicButton";
@@ -53,7 +53,7 @@ export default function FirstCommunionTemplate({ data }: Props) {
   };
 
   return (
-    <>
+    <MotionConfig reducedMotion="user">
       {data.media.music && <MusicButton src={data.media.music} color="#68765B" backgroundColor="#FAF9F6" />}
 
       <main className={styles.invitation}>
@@ -73,7 +73,7 @@ export default function FirstCommunionTemplate({ data }: Props) {
               className="object-cover object-center"
             />
           </motion.div>
-          <div className="absolute inset-0 z-20 pointer-events-none">
+          <div className={`${styles.particles} absolute inset-0 z-20 pointer-events-none`}>
             {PARTICLES.map((p) => (
               <motion.div
                 key={p.id}
@@ -171,8 +171,8 @@ export default function FirstCommunionTemplate({ data }: Props) {
         >
           <p className={styles.eyebrow}>Un encuentro de fe y amor</p>
           <h2 className="text-2xl md:text-3xl font-serif text-[#2B2927] font-light leading-relaxed mb-5">
-            “Hoy recibo a Jesús en mi corazón por primera vez, dejando que su
-            luz guíe mi camino.”
+            “{data.event.phrase ??
+              "Hoy recibo a Jesús en mi corazón por primera vez, dejando que su luz guíe mi camino."}”
           </h2>
 
           <p className="text-sm md:text-base text-[#706A63] font-light max-w-lg mx-auto leading-relaxed tracking-wide">
@@ -542,6 +542,6 @@ export default function FirstCommunionTemplate({ data }: Props) {
           )}
         </AnimatePresence>
       </main>
-    </>
+    </MotionConfig>
   );
 }

@@ -15,7 +15,7 @@ const nataliaDaliz: EventData = {
     timeZone: "America/Mexico_City",
     name: "Natalia Dalíz",
     age: 20,
-    date: "1 Noviembre 2026",
+    date: "1 Noviembre 2027",
     partyHour: "1:00 PM",
     dressCode: "Traje de baño",
     dressCodeNote: "Lleva tu traje de baño y ganas de bailar.",

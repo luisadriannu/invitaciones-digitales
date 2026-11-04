@@ -48,3 +48,12 @@
 .dressCode, .galleryHint { text-align: center; font-size: 12px; line-height: 1.8; color: #69745b; }
 .galleryHint { margin-top: 14px; }
 @media (min-width: 600px) { .venueGrid { grid-template-columns: 1fr 1fr; } }
+@media (prefers-reduced-motion: reduce) {
+  .particles { display: none; }
+  .invitation *, .invitation *::before, .invitation *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+}

@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useRef, type CSSProperties } from "react";
 import { motion, useReducedMotion } from "motion/react";
-import { CakeSlice, Church, GraduationCap, Wheat, MapPin, CalendarDays, Clock, ArrowDown, MessageCircle, X } from "lucide-react";
+import { CakeSlice, Church, GraduationCap, Wheat, Sparkles, Snowflake, TreePine, MapPin, CalendarDays, Clock, ArrowDown, MessageCircle, X } from "lucide-react";
 import Gallery from "@/app/components/Gallery";
 import CountDown from "@/app/components/CountDown";
 import MusicButton from "@/app/components/MusicButton";
@@ -15,6 +15,7 @@ const themes = {
   bautizo: { label: "Mi bautizo", intro: "Un regalo del cielo", closing: "Gracias por ser parte de esta bendición", Icon: Church },
   graduacion: { label: "Mi graduación", intro: "El comienzo de algo grande", closing: "¡Celebremos todo lo que viene!", Icon: GraduationCap },
   primeracomunion: { label: "Mi primera comunión", intro: "Un encuentro lleno de amor", closing: "Te espero con mucha ilusión", Icon: Wheat },
+  evento: { label: "Celebración especial", intro: "Una fecha para compartir", closing: "¡Celebremos juntos esta temporada!", Icon: Sparkles },
 };
 
 export default function BasicInvitation({ data }: { data: EventData }) {
@@ -33,17 +34,52 @@ export default function BasicInvitation({ data }: { data: EventData }) {
   };
   // La cuenta regresiva comienza en la ceremonia cuando la hay.
   const countdownData = { ...data, event: { ...data.event, partyHour: data.event.ceremonyHour || data.event.partyHour } };
+  const snowEffect = data.design?.effect === "snow";
+  const confettiEffect = data.design?.effect === "confetti";
 
   return (
-    <main className={`${styles.page} ${styles[data.tipo]}`} style={{
+    <main className={`${styles.page} ${styles[data.tipo]} ${snowEffect ? styles.snowTheme : ""} ${confettiEffect ? styles.confettiTheme : ""}`} style={{
       "--ink": data.design?.colors?.primary || "#826534",
       "--paper": data.design?.colors?.background || "#faf5e9",
     } as CSSProperties}>
       {data.media.music && <MusicButton src={data.media.music} color={data.design?.colors?.primary} backgroundColor={data.design?.colors?.background} />}
-      <header className={styles.hero}>
-        <div className={styles.cover}>
-          <Image src={data.media.coverImage} alt={`Retrato de ${data.event.name}`} fill preload sizes="(max-width: 760px) 100vw, 760px" className={styles.coverImage} />
+      {snowEffect && (
+        <div className={styles.snowfall} aria-hidden="true">
+          {Array.from({ length: 28 }, (_, index) => (
+            <i
+              key={index}
+              style={{
+                "--snow-left": `${(index * 37) % 100}%`,
+                "--snow-delay": `${-(index % 11) * 1.15}s`,
+                "--snow-duration": `${9 + (index % 7)}s`,
+                "--snow-size": `${5 + (index % 5) * 2}px`,
+                "--snow-drift": `${-18 + (index % 7) * 7}px`,
+              } as CSSProperties}
+            />
+          ))}
         </div>
+      )}
+      <header className={styles.hero}>
+        <motion.div
+          className={styles.cover}
+          initial={reducedMotion ? false : { opacity: 0, scale: 1.06 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: reducedMotion ? 0 : 1.2, ease: "easeOut" }}
+        >
+          <Image src={data.media.coverImage} alt={`Retrato de ${data.event.name}`} fill preload sizes="(max-width: 760px) 100vw, 760px" className={styles.coverImage} />
+        </motion.div>
+        {data.tipo === "evento" && (
+          <div className={styles.seasonalParticles} aria-hidden="true">
+            {Array.from({ length: 12 }, (_, index) => <i key={index}>✦</i>)}
+          </div>
+        )}
+        {snowEffect && (
+          <div className={styles.christmasCorners} aria-hidden="true">
+            <TreePine />
+            <Snowflake />
+            <TreePine />
+          </div>
+        )}
         <div className={styles.heroContent}>
           <p className={styles.eyebrow}>{theme.intro}</p>
           <div className={styles.emblem}><Icon size={32} strokeWidth={1.3} aria-hidden="true" /></div>
@@ -60,6 +96,24 @@ export default function BasicInvitation({ data }: { data: EventData }) {
         <p className={styles.eyebrow}>Estás invitado</p>
         <h2>Los momentos más bonitos<br /><em>se comparten</em></h2>
         <p className={styles.phrase}>{data.event.phrase}</p>
+        {snowEffect && (
+          <motion.div
+            initial={reducedMotion ? false : { opacity: 0, y: 20, scale: 0.96 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: reducedMotion ? 0 : 0.8 }}
+            className={styles.christmasTreeDecor}
+            aria-hidden="true"
+          >
+            <Image
+              src="/pictures/seasonal/december-2026/decor/christmas-tree-gifts.webp"
+              alt=""
+              width={720}
+              height={1080}
+              sizes="(max-width: 760px) 78vw, 330px"
+            />
+          </motion.div>
+        )}
       </motion.section>
 
       <motion.section {...reveal} className={`${styles.section} ${styles.countdown}`}>
@@ -67,6 +121,17 @@ export default function BasicInvitation({ data }: { data: EventData }) {
         <h2>Nos vemos en…</h2>
         <CountDown data={countdownData} />
         <p className={styles.smallNote}>Guarda la fecha y acompáñame</p>
+        {snowEffect && (
+          <Image
+            className={styles.christmasGarland}
+            src="/pictures/seasonal/december-2026/decor/christmas-garland.webp"
+            alt=""
+            width={1100}
+            height={375}
+            sizes="(max-width: 760px) 100vw, 700px"
+            aria-hidden="true"
+          />
+        )}
       </motion.section>
 
       {data.family && <motion.section {...reveal} className={`${styles.section} ${styles.family}`}>
@@ -117,6 +182,24 @@ export default function BasicInvitation({ data }: { data: EventData }) {
         <p className={styles.eyebrow}>¿Me acompañas?</p>
         <h2>Tu lugar está aquí</h2>
         <p className={styles.phrase}>Me encantará contar contigo. Confirma tu asistencia para preparar juntos un día inolvidable.</p>
+        {snowEffect && (
+          <motion.div
+            initial={reducedMotion ? false : { opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: reducedMotion ? 0 : 0.7 }}
+            className={styles.christmasGifts}
+            aria-hidden="true"
+          >
+            <Image
+              src="/pictures/seasonal/december-2026/decor/christmas-gifts.webp"
+              alt=""
+              width={900}
+              height={507}
+              sizes="(max-width: 760px) 90vw, 430px"
+            />
+          </motion.div>
+        )}
         <button className={styles.button} onClick={() => dialog.current?.showModal()}>Confirmar asistencia</button>
       </motion.section>
       <footer className={styles.footer}><span aria-hidden="true">✦</span><p>{theme.closing}</p><strong>{data.event.name}</strong></footer>

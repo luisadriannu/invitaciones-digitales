@@ -45,6 +45,28 @@ const eventCategories = [
   "Bautizo",
   "Primera Comunión",
   "Graduación",
+  "Eventos de temporada",
+] as const;
+
+const seasonalSamples = [
+  {
+    title: "Cena de Navidad",
+    subtitle: "Una noche para compartir",
+    image: "/pictures/seasonal/december-2026/christmas-dinner.webp",
+    href: "/evento/cena-navidad",
+  },
+  {
+    title: "Posada Navideña",
+    subtitle: "Tradición, luces y alegría",
+    image: "/pictures/seasonal/december-2026/christmas-posada.webp",
+    href: "/evento/posada-navidena",
+  },
+  {
+    title: "Celebración de Año Nuevo",
+    subtitle: "Brindemos por lo que comienza",
+    image: "/pictures/seasonal/december-2026/new-year-eve.webp",
+    href: "/evento/ano-nuevo",
+  },
 ] as const;
 
 const fadeUp: Variants = {
@@ -118,6 +140,13 @@ export default function Home({
       href: "/primeracomunion/sofia",
     },
     {
+      category: "Primera Comunión",
+      title: "Primera Comunión · Isabella",
+      subtitle: "Premium",
+      image: "/pictures/firstcommunion/isabella/isabella-1.jpg",
+      href: "/primeracomunion/isabella",
+    },
+    {
       category: "Graduación",
       title: "Graduación",
       image: "/pictures/graduation/karina/graduation-1.jpg",
@@ -142,6 +171,14 @@ export default function Home({
       subtitle: "Pastel",
       image: "/pictures/birthday/victoria/victoria-4.jpg",
       href: "/cumple/victoria",
+    },
+    {
+      category: "Cumpleaños",
+      title: "Cumpleaños · Natalia Dalíz",
+      subtitle: "Verano tropical",
+      thumbnailName: "Natalia Dalíz",
+      image: "/pictures/birthday/natalia-daliz/tropical-disco-frame.webp",
+      href: "/cumple/nataliaDaliz",
     },
     {
       category: "Boda",
@@ -179,8 +216,13 @@ export default function Home({
   const showFlash =
     (category === "Todas" || category === "Flash") &&
     (plan === "todos" || plan === "flash");
+  const showSeasonal =
+    (category === "Todas" || category === "Eventos de temporada") &&
+    (plan === "todos" || plan === "basic");
   const resultCount =
-    filteredSamples.length + (showFlash ? Object.keys(flashEvents).length : 0);
+    filteredSamples.length +
+    (showSeasonal ? seasonalSamples.length : 0) +
+    (showFlash ? Object.keys(flashEvents).length : 0);
 
   return (
     <main className="min-h-screen bg-[#FAF8F4] relative overflow-hidden">
@@ -295,12 +337,12 @@ export default function Home({
             <div className="relative flex items-center justify-center">
               <span
                 className="
-        absolute
-        w-5 h-5
-        rounded-full
-        bg-[#D4AF37]/10
-        blur-[2px]
-      "
+                  absolute
+                  w-5 h-5
+                  rounded-full
+                  bg-[#D4AF37]/10
+                  blur-[2px]
+                "
               />
 
               <span
@@ -505,6 +547,14 @@ export default function Home({
                       "
                     />
                     <span className={styles.cardFrame} aria-hidden="true" />
+                    {sample.thumbnailName && (
+                      <span
+                        className={styles.cardPersonalName}
+                        aria-hidden="true"
+                      >
+                        {sample.thumbnailName}
+                      </span>
+                    )}
                     {samplePlans[sample.href] && (
                       <InvitationPlanBanner plan={samplePlans[sample.href]} />
                     )}
@@ -539,6 +589,68 @@ export default function Home({
             ))}
           </motion.div>
         </section>
+
+        {showSeasonal && (
+          <section
+            className={styles.seasonalSection}
+            aria-labelledby="seasonal-heading"
+          >
+            <div className={styles.seasonalGlow} aria-hidden="true" />
+            <motion.div
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className={styles.seasonalHeading}
+            >
+              <p>Eventos del año · Diciembre</p>
+              <h2 id="seasonal-heading">Celebraciones de temporada</h2>
+              <span>
+                Diseños especiales que se renuevan con cada época del año.
+              </span>
+            </motion.div>
+
+            <div className={styles.seasonalGrid}>
+              {seasonalSamples.map((sample, index) => (
+                <motion.article
+                  key={sample.href}
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.15 }}
+                  transition={{ duration: 0.6, delay: index * 0.08 }}
+                  className={styles.seasonalCard}
+                >
+                  <Link
+                    href={sample.href}
+                    prefetch={false}
+                    aria-label={`Ver invitación: ${sample.title}`}
+                  >
+                    <div className={styles.seasonalMedia}>
+                      <Image
+                        src={sample.image}
+                        alt={sample.title}
+                        fill
+                        sizes="(max-width: 767px) calc(100vw - 80px), 360px"
+                      />
+                      <span
+                        className={styles.seasonalShade}
+                        aria-hidden="true"
+                      />
+                      <span className={styles.seasonalMonth}>
+                        Diciembre 2026
+                      </span>
+                      <InvitationPlanBanner plan="basic" />
+                      <InvitationCardAction />
+                    </div>
+                    <div className={styles.seasonalCopy}>
+                      <h3>{sample.title}</h3>
+                      <p>{sample.subtitle}</p>
+                    </div>
+                  </Link>
+                </motion.article>
+              ))}
+            </div>
+          </section>
+        )}
 
         {showFlash && (
           <section

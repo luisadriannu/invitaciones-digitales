@@ -92,6 +92,9 @@ export const templates = {
     basic: BasicInvitation,
     base: FirstCommunionTemplate,
   },
+  evento: {
+    basic: BasicInvitation,
+  },
   graduacion: {
     basic: BasicInvitation,
     flash: GraduationFlash,

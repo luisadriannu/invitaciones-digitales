@@ -295,13 +295,17 @@ export default function BirthdaySummerSea({ data }: { data: EventData }) {
             Tu presencia es lo más importante. Si deseas tener un detalle
             conmigo, habrá un espacio especial para recibirlo.
           </p>
-          <span className={styles.giftNote}>Con cariño, Natalia</span>
+          <span className={styles.giftNote}>
+            Con cariño, {data.event.name.split(" ")[0]}
+          </span>
         </section>
 
         <footer className={styles.footer}>
-          <span>01 · 11 · 2026</span>
-          <strong>Natalia Dalíz</strong>
-          <small>Jardín Las Flores · 1:00 PM</small>
+          <span>{data.event.date}</span>
+          <strong>{data.event.name}</strong>
+          <small>
+            {data.location.reception} · {data.event.partyHour}
+          </small>
         </footer>
       </main>
     </>

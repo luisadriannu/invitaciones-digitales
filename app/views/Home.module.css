@@ -142,6 +142,76 @@
   border-right: 2px solid #d4af37;
   border-radius: 0 0 7px;
 }
+.cardPersonalName {
+  position: absolute;
+  z-index: 2;
+  top: 43%;
+  left: 12px;
+  right: 12px;
+  transform: translateY(-50%) rotate(-3deg);
+  color: #d92b70;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(23px, 3.1vw, 35px);
+  font-style: italic;
+  font-weight: 600;
+  line-height: 1;
+  text-align: center;
+  text-shadow:
+    0 1px 0 #fff,
+    0 0 8px #fff,
+    0 2px 12px #fff8;
+  pointer-events: none;
+}
+
+.seasonalSection {
+  position: relative;
+  isolation: isolate;
+  margin-top: 76px;
+  padding: 54px 20px 34px;
+  overflow: hidden;
+  border: 1px solid #c99f593d;
+  border-radius: 32px;
+  background:
+    radial-gradient(circle at 8% 8%, #e8cda62e 0 9%, transparent 32%),
+    radial-gradient(circle at 94% 92%, #d9aeb333 0 8%, transparent 30%),
+    linear-gradient(145deg, #fffdf8 0%, #f8efe5 50%, #f6e8e5 100%);
+  box-shadow: 0 24px 60px #7c5d3d17, inset 0 0 0 7px #fffaf58a;
+}
+.seasonalSection::before { content: ""; position: absolute; inset: 11px; z-index: -1; border: 1px solid #c7a36330; border-radius: 23px; pointer-events: none; }
+.seasonalGlow {
+  position: absolute;
+  z-index: -1;
+  inset: -40% -10% auto;
+  height: 300px;
+  background: radial-gradient(circle, #e5bd7640, transparent 65%);
+  pointer-events: none;
+}
+.seasonalHeading { max-width: 650px; margin: 0 auto 34px; text-align: center; color: #493d34; }
+.seasonalHeading > p { margin-bottom: 12px; color: #ad7c32; font-size: 10px; letter-spacing: .32em; text-transform: uppercase; }
+.seasonalHeading h2 { margin: 0 0 12px; font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(36px, 6vw, 58px); font-weight: 400; line-height: 1; }
+.seasonalHeading > span { color: #77695f; font-size: 14px; line-height: 1.7; }
+.seasonalGrid { display: grid; gap: 24px; max-width: 1040px; margin: auto; }
+.seasonalCard { overflow: hidden; border: 1px solid #c8a66a42; border-radius: 22px; background: #fffdf9; box-shadow: 0 16px 36px #76583f20; transition: transform .25s ease, box-shadow .25s ease; }
+.seasonalCard:hover { transform: translateY(-5px); box-shadow: 0 22px 44px #76583f2d; }
+.seasonalCard a { display: block; color: inherit; }
+.seasonalCard a:focus-visible { outline: 3px solid #dfc077; outline-offset: -4px; }
+.seasonalMedia { position: relative; height: 390px; overflow: hidden; }
+.seasonalMedia img { object-fit: cover; transition: transform .7s ease; }
+.seasonalCard:hover .seasonalMedia img { transform: scale(1.04); }
+.seasonalShade { position: absolute; inset: 0; background: linear-gradient(180deg, #07140d08 45%, #07140db5 100%); pointer-events: none; }
+.seasonalMonth { position: absolute; z-index: 2; left: 18px; bottom: 17px; color: #fff8e8; font-size: 10px; letter-spacing: .24em; text-transform: uppercase; text-shadow: 0 2px 12px #000; }
+.seasonalCopy { padding: 21px 18px 23px; text-align: center; }
+.seasonalCopy h3 { margin: 0 0 5px; color: #3e3327; font-family: "Cormorant Garamond", Georgia, serif; font-size: 29px; font-weight: 500; line-height: 1.05; }
+.seasonalCopy p { margin: 0; color: #826f5a; font-size: 12px; letter-spacing: .05em; }
+@media (min-width: 700px) {
+  .seasonalSection { padding: 62px 34px 42px; }
+  .seasonalGrid { grid-template-columns: repeat(3, 1fr); }
+  .seasonalMedia { height: 360px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .seasonalCard, .seasonalMedia img { transition: none; }
+  .seasonalCard:hover, .seasonalCard:hover .seasonalMedia img { transform: none; }
+}
 
 .flashSection {
   position: relative;

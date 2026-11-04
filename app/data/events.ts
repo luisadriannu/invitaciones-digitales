@@ -19,6 +19,10 @@ import julia from "@/app/data/xv/julia";
 import karina from "@/app/data/graduation/karina";
 import sofia from "@/app/data/firstcommunion/sofia";
 import sofiaYAdan from "@/app/data/firstcommunion/sofia-y-adan";
+import isabella from "@/app/data/firstcommunion/isabella";
+import christmasDinner from "@/app/data/seasonal/christmas-dinner";
+import christmasPosada from "@/app/data/seasonal/christmas-posada";
+import newYearEve from "@/app/data/seasonal/new-year-eve";
 
 const events: Record<string, EventData> = {
   ...basicEvents,
@@ -41,6 +45,10 @@ const events: Record<string, EventData> = {
   karina,
   sofia,
   "sofia-y-adan": sofiaYAdan,
+  isabella,
+  "cena-navidad": christmasDinner,
+  "posada-navidena": christmasPosada,
+  "ano-nuevo": newYearEve,
 };
 
 export default events;
