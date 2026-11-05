@@ -28,6 +28,7 @@ export type EventVariant =
   | "sirena"
   | "itzia"
   | "roseGarden"
+  | "watercolor"
   | "western"
   | "oliveVintage";
 

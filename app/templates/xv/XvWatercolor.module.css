@@ -1,0 +1,171 @@
+.page{max-width:760px;margin:auto;overflow:hidden;background:#fffefa;color:#655455;font-family:'Jost',sans-serif;text-align:center;position:relative;isolation:isolate}
+.page p{line-height:1.9}
+.page h2,.page h3{font-family:'Cormorant Garamond',Georgia,serif;font-weight:400}
+.eyebrow{font-size:10px;letter-spacing:2.8px;text-transform:uppercase;font-weight:500;color:#8b7041}
+.hero{position:relative;min-height:820px;display:grid;place-items:center;background:white;isolation:isolate}
+.heroFlowers{object-fit:contain;object-position:top center}
+.heroFloralTop,.heroFloralBottom{position:absolute;left:0;right:0;height:clamp(170px,44vw,330px);z-index:-1;pointer-events:none}
+.heroFloralTop{top:0}
+.heroFloralBottom{bottom:0;transform:rotate(180deg)}
+.heroInner{padding:190px 20px 165px;animation:arrive 1.5s ease both}
+.xv{display:block;font-family:'Cormorant Garamond',Georgia,serif;font-size:47px;line-height:1;color:#a78740;margin:27px 0 0;letter-spacing:6px}
+.hero h1{font-family:'Great Vibes',cursive;font-size:clamp(100px,24vw,155px);font-weight:400;line-height:1.1;color:#b77e88;margin:8px 0 0}
+.occasion{font-size:12px;letter-spacing:5px;text-transform:uppercase}
+.date{display:flex;justify-content:center;align-items:center;gap:22px;margin:28px 0 18px}
+.date strong{font-family:'Cormorant Garamond',Georgia,serif;font-size:52px;font-weight:400;padding:0 23px;border-inline:1px solid #cbb584}
+.date span{font-size:10px;letter-spacing:2px}
+.heroNote{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:20px;line-height:1.4!important}
+.scroll{display:inline-flex;align-items:center;gap:9px;font-size:10px;letter-spacing:1px;margin-top:25px;padding:12px}
+.scroll svg{animation:arrow 3s ease-in-out infinite}
+.section{padding:65px 30px;position:relative}
+.section h2{font-size:clamp(35px,9vw,49px);line-height:1.12;margin:17px 0 25px}
+.section h2 em{color:#b47884}
+.section>p:not(.eyebrow){font-size:16px;max-width:440px;margin-inline:auto}
+.letter{background:linear-gradient(#fff,#fcf5f1);padding-top:35px}
+.smallFlower{font-size:35px;color:#b99851;display:block;margin-bottom:20px}
+.fullName{margin-top:28px!important;font-size:12px!important;text-transform:uppercase;letter-spacing:2px}
+.signature{font:45px 'Great Vibes',cursive;color:#b47884;margin:18px 0 0}
+.countdown{background:#f8ecec;border-block:1px solid #dfc8c655}
+.countdown h2{font-size:37px}
+.fine{font-size:13px!important;line-height:1.9}
+.bouquet{position:relative;width:220px;aspect-ratio:1;margin:0 auto 17px;mix-blend-mode:multiply}
+.bouquet img{object-fit:contain}
+.family{padding-top:30px;background:#fffefa}
+.names{margin-top:32px}
+.names h3{font-family:'Jost',sans-serif;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#8b7041}
+.names>p{font-family:'Cormorant Garamond',Georgia,serif;font-size:25px;line-height:1.4;margin:15px 0}
+.names span{display:block;font-size:18px;font-style:italic;color:#b99151;margin:5px 0}
+.centerIcon{margin:24px auto;color:#aa884a}
+.venues{background:linear-gradient(#f8f0e7,#fcf8f2)}
+.venue{padding:30px 15px 35px;border:1px solid #cfb78399;border-radius:100px 100px 4px 4px;max-width:430px;margin:32px auto 0;background:#fffefa99}
+.venue>svg{margin:13px auto 20px;color:#a88648}
+.venue h3{font-size:29px;line-height:1.25;margin:15px auto;max-width:310px}
+.hour{font-size:24px;color:#9f6c79;margin:15px 0}
+.outline,.button{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:14px 18px;border:1px solid #b78e96;font-size:12px;letter-spacing:.3px;cursor:pointer;transition:transform .2s,background .2s;max-width:100%}
+.outline{margin-top:20px;color:#835760;background:#fffcf6}
+.button{background:#9e6572;color:white;margin-top:25px;border-color:#9e6572}
+.button:hover{background:#86505d;transform:translateY(-3px)}
+.outline:hover{background:#f7e9e7;transform:translateY(-2px)}
+.button:active,.outline:active{transform:scale(.97)}
+.page a:focus-visible,.page button:focus-visible{outline:3px solid #b99750;outline-offset:5px}
+.map{width:100%;height:260px;border:1px solid #cfb78399;border-radius:4px;margin:30px auto 0;display:block}
+.itinerary{background:#fffefa}
+.timeline{max-width:420px;margin:40px auto 0;text-align:left}
+.moment{display:grid;grid-template-columns:46px 1fr;gap:17px;position:relative;padding-bottom:35px}
+.moment:not(:last-child):before{content:'';position:absolute;left:22px;top:43px;bottom:0;border-left:1px solid #d8bc9a}
+.timelineIcon{width:45px;height:45px;display:grid;place-items:center;border:1px solid #c4a977;border-radius:50%;color:#9c7c43;background:#fffaf3}
+.moment .eyebrow{letter-spacing:1.4px;font-size:10px}
+.moment h3{font-size:27px;line-height:1.25;margin:6px 0 8px}
+.moment p:last-child{font-size:14px;line-height:1.7}
+.details{background:#f4e6e8}
+.dressNote{border:1px solid #c596a099;padding:22px 17px;margin:26px auto 0;max-width:350px;display:flex;align-items:center;gap:15px;text-align:left}
+.dressNote>span{width:25px;height:25px;flex-shrink:0;border-radius:50%;background:#dba7b5;border:3px solid #fff7ef}
+.dressNote p{font-size:14px;line-height:1.7}
+.gifts{background:#fffcf5}
+.giftOptions{display:flex;justify-content:center;gap:30px;margin-top:30px}
+.giftOptions>div{display:flex;flex-direction:column;align-items:center;gap:12px;color:#9f7b43;font-size:12px}
+.thanks{background:linear-gradient(#fdf7f3,#fffefa);padding-top:20px}
+.thanks .signature{margin-top:25px;font-size:39px}
+.rsvp{border-top:1px solid #dcc599;background:#f9edec}
+.footer{padding:40px 25px 65px;background:#f9edec}
+.footer>p{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:22px}
+.footer strong{display:block;font:75px 'Great Vibes',cursive;color:#a97480;margin:19px 0 10px}
+.footer>span{font-size:10px;letter-spacing:3px;color:#8b7041}
+.dialog{margin:auto;width:min(420px,calc(100% - 32px));max-height:calc(100svh - 40px);overflow:auto;border:1px solid #c6a66b;border-radius:18px;background:#fffaf5;color:#655455}
+.dialog::backdrop{background:#36252a99;backdrop-filter:blur(5px)}
+.dialogInner{position:relative;padding:38px 25px}
+.dialog h2{font-size:40px;margin:16px 0}
+.dialog p{font-size:15px}
+.close{position:absolute;top:10px;right:10px;padding:8px;cursor:pointer}
+@keyframes arrive{from{opacity:0;transform:translateY(20px)}
+to{opacity:1;transform:translateY(0)}
+}
+@keyframes arrow{50%{transform:translateY(5px)}
+}
+@media(min-width:600px){.hero{min-height:1020px}
+.heroInner{padding:280px 35px 260px}
+.section{padding-inline:80px}
+.hero h1{font-size:155px}
+}
+@media(prefers-reduced-motion:reduce){.page *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+.particles{display:none}
+}
+
+
+/* Watercolor arrangements stay behind the content and outside the reading area. */
+.floralSection { isolation:isolate; padding-top:110px; padding-bottom:110px; }
+
+.floralCorners { position:absolute; inset:0; z-index:-1; pointer-events:none; mix-blend-mode:multiply; }
+
+.floralCorners .bouquet { position:absolute; width:180px; margin:0; mix-blend-mode:normal; }
+
+.cornerTop { top:-25px; left:-65px; rotate:30deg; }
+
+.cornerBottom { bottom:-25px; right:-65px; rotate:-150deg; }
+
+.reverseFlorals .cornerTop { left:auto; right:-65px; scale:-1 1; }
+
+.reverseFlorals .cornerBottom { right:auto; left:-65px; scale:-1 1; }
+
+.goldSprigTop,.goldSprigBottom { position:absolute; font-size:26px; color:#b08c4090; }
+
+.goldSprigTop { top:65px; left:100px; }
+
+.goldSprigBottom { bottom:65px; right:100px; }
+
+.reverseFlorals .goldSprigTop { left:auto; right:100px; }
+
+.reverseFlorals .goldSprigBottom { right:auto; left:100px; }
+
+.floralDivider { position:relative; display:flex; align-items:center; justify-content:center; gap:8px; padding:8px 30px; background:linear-gradient(#fcf5f1,#fffefa); }
+
+.floralDivider .bouquet { width:150px; flex-shrink:0; margin:0; }
+
+.floralDivider>span { width:75px; height:1px; background:linear-gradient(90deg,transparent,#c1a36d); }
+
+.floralDivider>span:last-child { scale:-1 1; }
+
+.family .names { border:1px solid #c9ae7855; padding:25px 15px; border-radius:90px 90px 5px 5px; background:linear-gradient(135deg,#fffaf5,#f8e9eb55); }
+
+.venue { box-shadow:0 12px 28px #9b747211,inset 0 0 0 5px #fffdf5; }
+
+.giftOptions>div { border:1px solid #c6a36e66; border-radius:60px 60px 4px 4px; padding:23px 15px; min-width:115px; background:#fffefa; }
+
+.timelineIcon { box-shadow:0 0 0 5px #f7e9e9; }
+
+.footer { position:relative; padding-bottom:45px; }
+
+.footerBouquet { width:190px; margin:0 auto 5px; }
+
+.particles { position:fixed; inset:0; width:min(100%,760px); margin-inline:auto; z-index:4; pointer-events:none; overflow:hidden; }
+
+.particles>span { position:absolute; top:-35px; opacity:0; animation:floralDrift linear infinite; will-change:transform,opacity; }
+
+.floatingPetal { width:8px; height:13px; border-radius:70% 10% 65% 20%; background:linear-gradient(135deg,#efd0d6,#cb8d9c); }
+
+.floatingFlower { width:19px; height:19px; color:#ddb0bd; }
+
+.floatingFlower svg { display:block; width:100%; height:100%; }
+
+@keyframes floralDrift { 8% { opacity:.45; }
+ 85% { opacity:.3; }
+ to { transform:translate3d(28px,calc(100dvh + 70px),0) rotate(220deg); opacity:0; }
+ }
+
+@media(min-width:600px) { .floralCorners .bouquet { width:250px; }
+ .cornerTop { top:-35px; left:-55px; }
+ .cornerBottom { bottom:-35px; right:-55px; }
+ .reverseFlorals .cornerTop { right:-55px; }
+ .reverseFlorals .cornerBottom { left:-55px; }
+ .goldSprigTop { left:175px; }
+ .goldSprigBottom { right:175px; }
+ .reverseFlorals .goldSprigTop { right:175px; }
+ .reverseFlorals .goldSprigBottom { left:175px; }
+ }
+
+@media(prefers-reduced-motion:reduce) { .particles { display:none; }
+ }
+
+
+.bouquet:has(img[src*="magnolias"]) { aspect-ratio:2 / 3; }
+.floralDivider .bouquet:has(img[src*="magnolias"]) { width:115px; }

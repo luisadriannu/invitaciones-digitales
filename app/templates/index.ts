@@ -1,6 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
+const XvWatercolor = dynamic(() => import("@/app/templates/xv/XvWatercolor"));
 const BasicDualInvitation = dynamic(() => import("@/app/templates/basic/BasicDualInvitation"));
 const BasicInvitation = dynamic(
   () => import("@/app/templates/basic/BasicInvitation"),
@@ -101,6 +102,7 @@ export const templates = {
     base: GraduationBase,
   },
   xv: {
+    watercolor: XvWatercolor,
     base: xvBaseTemplate,
     roseGarden: XvRoseGarden,
     western: XvWestern,
