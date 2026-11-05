@@ -2,7 +2,7 @@ import type { EventData } from "@/app/types/EventData";
 
 const nataliaDaliz: EventData = {
   tipo: "cumple",
-  plan: "basic",
+  plan: "premium",
   seo: {
     title: "Mis 20 años · Natalia Dalíz",
     description:
