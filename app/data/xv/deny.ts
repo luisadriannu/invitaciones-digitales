@@ -8,7 +8,7 @@ const deny: EventData = {
     title: "Deny · Mis XV años",
     description:
       "Hay sueños que florecen y momentos que se vuelven inolvidables. Acompáñame a celebrar mis XV años este 13 de febrero de 2027.",
-    image: "/pictures/xv/deny/guirnalda-hd.webp",
+    image: "/pictures/xv/deny/deny-seo-card.jpg",
   },
   event: {
     name: "Denisha Aleli Pineda Valle",
