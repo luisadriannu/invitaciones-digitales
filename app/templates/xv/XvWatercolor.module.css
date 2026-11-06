@@ -216,6 +216,14 @@ to{opacity:1;transform:translateY(0)}
 
 
 .bouquet:has(img[src*="magnolias"]) { aspect-ratio:2 / 3; }
+.childhood { background:linear-gradient(#fcf5f1,#fffefa); padding-top:25px; padding-bottom:25px; }
+.memoryStage { position:relative; width:min(100%,380px); margin:25px auto 20px; padding:30px 0; isolation:isolate; }
+.memoryFrame { position:relative; width:calc(100% - 56px); max-width:300px; aspect-ratio:3 / 5; margin:auto; }
+.memoryPortrait { position:absolute; inset:0; border:7px solid #fffaf3; outline:1px solid #b79a62; border-radius:50%; overflow:hidden; box-shadow:0 12px 30px #80634e22; }
+.memoryPortrait img { object-fit:cover; object-position:52% center; }
+.memoryWreath { position:absolute; inset:-30px; z-index:1; pointer-events:none; }
+.memoryWreath img { object-fit:fill; }
+.childhood figcaption { max-width:340px; margin:0 auto; padding:5px 6px; font:italic 25px/1.5 'Cormorant Garamond',Georgia,serif; color:#966773; }
 .floralDivider .bouquet:has(img[src*="magnolias"]) { width:115px; }
 
 .referenceSection { isolation:isolate; overflow:hidden; min-height:620px; display:flex; flex-direction:column; justify-content:center; }
@@ -224,3 +232,8 @@ to{opacity:1;transform:translateY(0)}
 .referenceFrame::after { content:""; position:absolute; inset:0; background:linear-gradient(180deg,#fffdf9b8,#fffaf3d9 35%,#fffaf3d9 65%,#fffdf9b8); }
 .referenceFrameImage { object-fit:cover; object-position:center; }
 .referenceSection.gifts>p:not(.eyebrow) { background:#fffdf8d9; border:1px solid #c9ac7766; padding:22px 18px; }
+
+.formalBadge { position:relative; max-width:100%; margin:32px auto; padding:15px 0; text-align:center; }
+.formalBadge .formalLabel { font-size:10px; letter-spacing:3px; text-transform:uppercase; color:#8b7041; margin:0 0 7px; }
+.formalBadge strong { display:block; font-family:'Jost',sans-serif; font-size:clamp(28px,8vw,38px); font-weight:500; letter-spacing:.18em; text-indent:.18em; text-transform:uppercase; line-height:1.4; color:#825761; }
+.formalRule { display:block; width:65px; height:1px; background:linear-gradient(90deg,transparent,#b89961,transparent); margin:17px auto 0; }

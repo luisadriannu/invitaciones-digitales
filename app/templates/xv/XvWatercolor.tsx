@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { Pinyon_Script } from "next/font/google";
-import { useRef, useState } from "react";
+import { Children, useRef, useState, type ComponentProps, type ReactNode } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { ArrowDown, Church, MapPin, Heart, Gift, Mail, MessageCircle, Music2, Pause, X, Utensils, Sparkles } from "lucide-react";
 import CountDown from "@/app/components/CountDown";
@@ -10,6 +10,12 @@ import type { EventData } from "@/app/types/EventData";
 import s from "./XvWatercolor.module.css";
 
 const nameScript = Pinyon_Script({ subsets: ["latin"], weight: "400", display: "swap" });
+
+// Motion forwards children to a DOM element. Normalize its child arrays so
+// React retains stable keys in both server rendering and hydration.
+function AnimatedDiv({ children, ...props }: Omit<ComponentProps<typeof motion.div>, "children"> & { children?: ReactNode }) {
+  return <motion.div {...props}>{Children.toArray(children)}</motion.div>;
+}
 
 function Bouquet({ className = "", variety = "anemonas" }: { className?: string; variety?: "anemonas" | "magnolias" }) {
   return <div className={`${s.bouquet} ${className}`} aria-hidden="true"><Image src={`/pictures/xv/deny/${variety}.webp`} alt="" fill sizes="(max-width: 600px) 220px, 300px" /></div>;
@@ -117,6 +123,21 @@ export default function XvWatercolor({ data }: { data: EventData }) {
       <p className={s.fullName}>{data.event.name}</p>
       <div className={`${s.signature} ${nameScript.className}`}>Deny</div>
     </motion.section>
+    {data.media.portraitImage && <motion.section {...reveal} className={`${s.section} ${s.childhood}`} aria-labelledby="deny-memory-title">
+      <p className={s.eyebrow}>Donde comenzaron mis sueños</p>
+      <h2 id="deny-memory-title">La pequeña que fui,<br /><em>los sueños que vienen</em></h2>
+      <figure>
+        <div className={s.memoryStage}>
+          <div className={s.memoryFrame}>
+            <div className={s.memoryPortrait}>
+              <Image src={data.media.portraitImage} alt="Deny de pequeña, sonriendo con un moño rosa" fill sizes="(max-width: 400px) 70vw, 300px" />
+            </div>
+            <div className={s.memoryWreath} aria-hidden="true"><Image src="/pictures/xv/deny/corona-oval.webp" alt="" fill sizes="(max-width: 400px) 90vw, 360px" /></div>
+          </div>
+        </div>
+        <figcaption>Aquella pequeña de grandes sueños hoy comienza una nueva historia.</figcaption>
+      </figure>
+    </motion.section>}
     <FloralDivider />
     <motion.section {...reveal} className={`${s.section} ${s.countdown} ${s.floralSection}`}>
       <FloralCorners />
@@ -131,29 +152,29 @@ export default function XvWatercolor({ data }: { data: EventData }) {
       </div>
       <p className={s.eyebrow}>Las raíces de mis sueños</p>
       <h2>El amor que<br /><em>me acompaña</em></h2>
-      <motion.div {...revealLeft} className={s.names}><h3>Mis papás</h3><p>{data.family?.parents?.mother}<span>&</span>{data.family?.parents?.father}</p></motion.div>
-      <motion.div {...revealRight} className={s.names}><h3>Mis padrinos</h3><p>{data.family?.godparents?.woman}<span>&</span>{data.family?.godparents?.man}</p></motion.div>
+      <AnimatedDiv {...revealLeft} className={s.names}><h3>Mis papás</h3><p>{data.family?.parents?.mother}<span>&</span>{data.family?.parents?.father}</p></AnimatedDiv>
+      <AnimatedDiv {...revealRight} className={s.names}><h3>Mis padrinos</h3><p>{data.family?.godparents?.woman}<span>&</span>{data.family?.godparents?.man}</p></AnimatedDiv>
       <Heart size={21} strokeWidth={1} className={s.centerIcon} aria-hidden="true" />
     </motion.section>
     <motion.section {...reveal} className={`${s.section} ${s.venues} ${s.floralSection}`}>
       <FloralCorners reverse />
       <p className={s.eyebrow}>Los lugares de nuestra historia</p>
       <h2>Nos vemos<br /><em>para celebrar</em></h2>
-      <motion.div {...revealLeft} className={s.venue}>
+      <AnimatedDiv {...revealLeft} className={s.venue}>
         <Church size={32} strokeWidth={1} aria-hidden="true" /><p className={s.eyebrow}>Ceremonia religiosa</p>
         <h3>{data.location.church}</h3><p className={s.hour}>12:00 p. m.</p>
         <a href={data.location.churchMapUrl} target="_blank" rel="noopener noreferrer" className={s.outline}><MapPin size={15} /> Ver parroquia en el mapa</a>
-      </motion.div>
-      <motion.div {...revealRight} className={s.venue}>
+      </AnimatedDiv>
+      <AnimatedDiv {...revealRight} className={s.venue}>
         <Utensils size={30} strokeWidth={1} aria-hidden="true" /><p className={s.eyebrow}>Recepción y comida</p>
         <h3>{data.location.reception}</h3><p className={s.hour}>2:00 p. m.</p>
         <p className={s.fine}>Comida de 2:00 a 4:00 p. m.<br />Protocolo de XV años a las 5:00 p. m.</p>
         <a href={data.location.receptionMapUrl} target="_blank" rel="noopener noreferrer" className={s.outline}><MapPin size={15} /> Cómo llegar al salón</a>
-      </motion.div>
-      <motion.div {...popIn} className={s.mapFrame}>
+      </AnimatedDiv>
+      <AnimatedDiv {...popIn} className={s.mapFrame}>
         <div className={s.mapCrown} aria-hidden="true"><span /><MapPin size={18} strokeWidth={1.2} /><span /></div>
         <iframe className={s.map} src={data.location.mapUrl} title="Ubicación del Salón Frida" loading="lazy" referrerPolicy="no-referrer-when-downgrade" allowFullScreen />
-      </motion.div>
+      </AnimatedDiv>
     </motion.section>
     <motion.section {...reveal} className={`${s.section} ${s.itinerary} ${s.floralSection}`}>
       <FloralCorners />
@@ -161,18 +182,23 @@ export default function XvWatercolor({ data }: { data: EventData }) {
       <div className={s.timeline}>{data.event.itinerary?.map((item, i) => {
         const Icon = [Church, Utensils, Sparkles][i] || Heart;
         const direction = i % 2 === 0 ? revealLeft : revealRight;
-        return <motion.div {...direction} transition={{ ...direction.transition, delay: reduced ? 0 : i * .12 }} key={item.title} className={s.moment}><div className={s.timelineIcon}><Icon size={21} strokeWidth={1.2} aria-hidden="true" /></div><div><p className={s.eyebrow}>{item.hour}</p><h3>{item.title}</h3><p>{item.description}</p></div></motion.div>;
+        return <AnimatedDiv {...direction} transition={{ ...direction.transition, delay: reduced ? 0 : i * .12 }} key={item.title} className={s.moment}><div className={s.timelineIcon}><Icon size={21} strokeWidth={1.2} aria-hidden="true" /></div><div><p className={s.eyebrow}>{item.hour}</p><h3>{item.title}</h3><p>{item.description}</p></div></AnimatedDiv>;
       })}</div>
     </motion.section>
     <motion.section {...reveal} className={`${s.section} ${s.details} ${s.referenceSection}`}>
       <ReferenceFrame src="/pictures/xv/deny/marco-rosas-dorado.png" />
-      <p className={s.eyebrow}>Un pequeño detalle</p><h2>Ven como<br /><em>te sientas mejor</em></h2>
-      <p>{data.event.dressCode}</p><motion.div {...popIn} className={s.dressNote}><span aria-hidden="true" /><p>{data.event.dressCodeNote}</p></motion.div>
+      <p className={s.eyebrow}>Código de vestimenta</p><h2>Una ocasión<br /><em>para lucir especial</em></h2>
+      <AnimatedDiv {...popIn} className={s.formalBadge}>
+        <p className={s.formalLabel}>Vestimenta</p>
+        <strong>{data.event.dressCode}</strong>
+        <span className={s.formalRule} aria-hidden="true" />
+      </AnimatedDiv>
+      <AnimatedDiv {...popIn} className={s.dressNote}><span aria-hidden="true" /><p>{data.event.dressCodeNote}</p></AnimatedDiv>
     </motion.section>
     <motion.section {...reveal} className={`${s.section} ${s.gifts} ${s.referenceSection}`}>
       <ReferenceFrame src="/pictures/xv/deny/marco-floral-lateral.png" />
       <Gift size={30} strokeWidth={1} className={s.centerIcon} aria-hidden="true" /><p className={s.eyebrow}>Detalles con cariño</p><h2>El mejor regalo<br /><em>es tu compañía</em></h2><p>{data.event.giftMessage}</p>
-      <div className={s.giftOptions}><motion.div {...popIn}><Gift size={24} strokeWidth={1} /><span>Obsequio</span></motion.div><motion.div {...popIn} transition={{ ...popIn.transition, delay: reduced ? 0 : .14 }}><Mail size={24} strokeWidth={1} /><span>Lluvia de sobres</span></motion.div></div>
+      <div className={s.giftOptions}><AnimatedDiv {...popIn}><Gift size={24} strokeWidth={1} /><span>Obsequio</span></AnimatedDiv><AnimatedDiv {...popIn} transition={{ ...popIn.transition, delay: reduced ? 0 : .14 }}><Mail size={24} strokeWidth={1} /><span>Lluvia de sobres</span></AnimatedDiv></div>
     </motion.section>
     <motion.section {...reveal} className={`${s.section} ${s.thanks}`}>
       <Bouquet variety="magnolias" /><p className={s.eyebrow}>Gracias por ser parte de mi historia</p><h2>Hay personas que<br /><em>hacen florecer la vida</em></h2><p>Gracias por acompañarme, por cada consejo, por cada abrazo y por el cariño que me ha ayudado a crecer. Llevo en el corazón todo lo que hemos compartido y me emociona crear un recuerdo más a tu lado.</p><div className={`${s.signature} ${nameScript.className}`}>Con amor, Deny</div>

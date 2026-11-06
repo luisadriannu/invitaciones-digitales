@@ -19,7 +19,7 @@ const deny: EventData = {
     partyHour: "2:00 pm",
     phrase:
       "Hay sueños que florecen con el tiempo y momentos que se guardan para siempre en el corazón. Hoy comienza una nueva etapa en mi vida, y quiero vivirla rodeada del amor de quienes han sido parte de mi historia. Será una alegría compartir contigo mis quince años.",
-    dressCode: "Sin código de vestimenta",
+    dressCode: "Formal",
     dressCodeNote:
       "El rosa palo y sus tonalidades están reservados para la quinceañera. Con cariño, te pedimos evitar estos colores en tu vestuario.",
     giftMessage:
@@ -56,7 +56,7 @@ const deny: EventData = {
     },
   },
   location: {
-    church: "Parroquia de San Marcos Evangelista, Tula",
+    church: "Parroquia de San Marcos Evangelista",
     churchMapUrl:
       "https://www.google.com/maps/search/?api=1&query=Parroquia+de+San+Marcos+Evangelista+Tula",
     reception: "Salón Frida",
@@ -67,6 +67,7 @@ const deny: EventData = {
   },
   contact: { phone: "527737396070" },
   media: {
+    portraitImage: "/pictures/xv/deny/deny-infancia.webp",
     coverImage: "/pictures/xv/deny/guirnalda-hd.webp",
     gallery: [],
     music: "/music/xv-deny.mp3",
