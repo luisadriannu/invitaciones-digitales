@@ -46,6 +46,8 @@
 .heroInner{position:relative;z-index:1;padding:190px 20px 165px;animation:arrive 1.5s ease both}
 .heroAgeEmblem{margin-top:24px;margin-bottom:7px}
 .hero h1{font-size:clamp(88px,22vw,135px);font-weight:400;line-height:.9;color:#b77e88;margin:10px 0 31px}
+/* The title receives focus after opening for screen readers, not as a control. */
+.hero h1[tabindex="-1"]:focus{outline:none}
 .occasion{font-size:12px;letter-spacing:5px;text-transform:uppercase}
 .date{display:flex;justify-content:center;align-items:center;gap:22px;margin:28px 0 18px}
 .date strong{font-family:'Cormorant Garamond',Georgia,serif;font-size:52px;font-weight:400;padding:0 23px;border-inline:1px solid #cbb584}
