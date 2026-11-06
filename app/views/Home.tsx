@@ -201,6 +201,13 @@ export default function Home({
       href: "/bautizo/camila",
     },
     {
+      category: "Bautizo",
+      title: "Bautizo · Renata Sofía",
+      subtitle: "Cielo de lavanda",
+      image: "/pictures/christening/renata/bautizo-1.jpg",
+      href: "/bautizo/renata-sofia",
+    },
+    {
       title: "Cumpleaños Dinosaurios",
       category: "Cumpleaños",
       image: "/pictures/birthday/vicente/Jurassic_Park.svg",
@@ -344,7 +351,6 @@ export default function Home({
                   blur-[2px]
                 "
               />
-
               <span
                 className="
         relative
@@ -710,7 +716,6 @@ export default function Home({
           </section>
         )}
       </div>
-
       <HomeFooter />
     </main>
   );

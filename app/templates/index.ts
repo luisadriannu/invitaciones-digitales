@@ -2,7 +2,9 @@
 
 import dynamic from "next/dynamic";
 const XvWatercolor = dynamic(() => import("@/app/templates/xv/XvWatercolor"));
-const BasicDualInvitation = dynamic(() => import("@/app/templates/basic/BasicDualInvitation"));
+const BasicDualInvitation = dynamic(
+  () => import("@/app/templates/basic/BasicDualInvitation"),
+);
 const BasicInvitation = dynamic(
   () => import("@/app/templates/basic/BasicInvitation"),
 );
@@ -33,8 +35,6 @@ const ChristeningFlash = dynamic(
 const GraduationFlash = dynamic(
   () => import("@/app/templates/flash/GraduationFlash"),
 );
-// import BirthdayElegant from "@/templates/birthday/BirthdayElegant";
-// import BirthdayModern from "@/templates/birthday/BirthdayModern";
 const WeddingBase = dynamic(
   () => import("@/app/templates/wedding/WeddingBase"),
 );
@@ -47,7 +47,6 @@ const WeddingLight = dynamic(
 const WeddingOliveVintage = dynamic(
   () => import("@/app/templates/wedding/WeddingOliveVintage"),
 );
-// import BabyShowerBase from "@/templates/babyshower/BabyShowerBase";
 const xvBaseTemplate = dynamic(
   () => import("@/app/templates/xv/xvBaseTemplate"),
 );
@@ -58,6 +57,9 @@ const ChristeningBase = dynamic(
 );
 const ChristeningItzia = dynamic(
   () => import("@/app/templates/christening/ChristeningItzia"),
+);
+const ChristeningCelestial = dynamic(
+  () => import("@/app/templates/christening/ChristeningCelestial"),
 );
 const GraduationBase = dynamic(
   () => import("@/app/templates/graduation/GraduationBase"),
@@ -112,5 +114,6 @@ export const templates = {
     flash: ChristeningFlash,
     base: ChristeningBase,
     itzia: ChristeningItzia,
+    celestial: ChristeningCelestial,
   },
 } as const;

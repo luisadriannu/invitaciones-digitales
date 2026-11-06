@@ -27,6 +27,7 @@ export type EventVariant =
   | "flash"
   | "sirena"
   | "itzia"
+  | "celestial"
   | "roseGarden"
   | "watercolor"
   | "western"
@@ -129,7 +130,12 @@ export interface DesignInfo {
 }
 
 export interface EventData {
-  companionBirthday?: { name: string; age: number; phrase: string; image: string };
+  companionBirthday?: {
+    name: string;
+    age: number;
+    phrase: string;
+    image: string;
+  };
   tipo: EventType;
   seo: SeoInfo;
   event: EventInfo;
@@ -140,5 +146,3 @@ export interface EventData {
   design?: DesignInfo;
   plan: InvitationPlan;
 }
-
-
