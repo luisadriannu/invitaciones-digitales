@@ -52,6 +52,9 @@ const xvBaseTemplate = dynamic(
 );
 const XvRoseGarden = dynamic(() => import("@/app/templates/xv/XvRoseGarden"));
 const XvWestern = dynamic(() => import("@/app/templates/xv/XvWestern"));
+const XvEnchantedPrincess = dynamic(
+  () => import("@/app/templates/xv/XvEnchantedPrincess"),
+);
 const ChristeningBase = dynamic(
   () => import("@/app/templates/christening/ChristeningBase"),
 );
@@ -108,6 +111,7 @@ export const templates = {
     base: xvBaseTemplate,
     roseGarden: XvRoseGarden,
     western: XvWestern,
+    enchantedPrincess: XvEnchantedPrincess,
   },
   bautizo: {
     basic: BasicInvitation,

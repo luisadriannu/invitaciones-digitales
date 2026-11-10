@@ -30,6 +30,7 @@ export type EventVariant =
   | "celestial"
   | "roseGarden"
   | "watercolor"
+  | "enchantedPrincess"
   | "western"
   | "oliveVintage";
 
