@@ -21,3 +21,11 @@
 @keyframes openingLeafFall{0%{opacity:0;transform:translate3d(0,-2rem,0) rotate(0deg)}12%{opacity:.62}45%{transform:translate3d(1.2rem,43svh,0) rotate(150deg)}78%{opacity:.52}100%{opacity:0;transform:translate3d(-.8rem,104svh,0) rotate(340deg)}}
 @media(prefers-reduced-motion:reduce){.fireflies i,.ambient i,.sectionBranchLeft,.sectionBranchRight,.sectionGlow,.openingFallingLeaves i{animation:none}.openingFallingLeaves{display:none}.openingCard button,.rsvpSection a{transition:none}}
 .openingBotanicalOverlay{object-fit:fill;object-position:center;opacity:.78;filter:saturate(.88) drop-shadow(0 8px 12px rgb(5 35 15/.2))}
+.heroContent>p{display:inline-block;padding:.5rem 1rem;border:1px solid rgb(246 221 130/.38);border-radius:999px;font-size:clamp(.78rem,3.4vw,1rem);font-weight:600;letter-spacing:.25em;color:#fff0ad;background:rgb(16 54 27/.42);box-shadow:0 8px 24px rgb(0 0 0/.2),inset 0 0 18px rgb(255 233 142/.08);text-shadow:0 2px 12px rgb(0 0 0/.7);backdrop-filter:blur(5px)}
+.hero h1{max-width:100%;margin:.8rem auto .5rem;font-size:clamp(3.75rem,17vw,6.4rem);font-weight:400;font-style:normal;line-height:.82;letter-spacing:.005em;text-wrap:balance;overflow-wrap:normal;text-shadow:0 4px 28px rgb(0 0 0/.58),0 0 22px rgb(246 221 130/.16)}
+.openingCard h1{font-size:clamp(2.9rem,12vw,4.25rem);font-style:normal;line-height:.82;letter-spacing:.005em;text-wrap:balance}
+.xvSeal{position:relative;width:min(72vw,17rem);height:7.4rem;margin:.9rem auto 1.35rem;overflow:visible;border:0;border-radius:0;background:transparent;box-shadow:none;backdrop-filter:none}
+.xvSealArtwork{z-index:0;object-fit:contain;overflow:visible;filter:drop-shadow(0 4px 9px rgb(0 0 0/.3))}
+.xvSeal strong,.xvSeal span{position:absolute;z-index:1;left:50%;text-shadow:0 2px 8px rgb(0 0 0/.68);transform:translateX(-50%)}
+.xvSeal strong{top:.45rem;margin:0;font-size:2.3rem}
+.xvSeal span{bottom:-.65rem;margin:0;color:#fff3bc;font-size:.55rem;letter-spacing:.2em;white-space:nowrap}

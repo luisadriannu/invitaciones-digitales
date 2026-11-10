@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { Italianno } from "next/font/google";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import {
   Church,
@@ -19,6 +20,12 @@ import Gallery from "@/app/components/Gallery";
 import MusicButton from "@/app/components/MusicButton";
 import type { EventData } from "@/app/types/EventData";
 import styles from "./XvEnchantedPrincess.module.css";
+
+const nameScript = Italianno({
+  subsets: ["latin"],
+  weight: "400",
+  display: "swap",
+});
 
 const FIREFLIES = Array.from({ length: 22 }, (_, index) => ({
   id: index,
@@ -164,7 +171,12 @@ export default function XvEnchantedPrincess({ data }: { data: EventData }) {
             >
               <Crown size={30} strokeWidth={1.15} aria-hidden="true" />
               <p>Un sueño está por comenzar</p>
-              <h1>{shortName}</h1>
+              <h1
+                className={nameScript.className}
+                style={{ fontFamily: nameScript.style.fontFamily }}
+              >
+                {shortName}
+              </h1>
               <span>Mis XV años</span>
               <button type="button" onClick={() => setShowOpening(false)}>
                 Abrir invitación <Sparkles size={15} />
@@ -218,8 +230,21 @@ export default function XvEnchantedPrincess({ data }: { data: EventData }) {
           >
             <Crown size={30} strokeWidth={1} />
             <p>La magia de mis quince</p>
-            <h1>{shortName}</h1>
+            <h1
+              className={nameScript.className}
+              style={{ fontFamily: nameScript.style.fontFamily }}
+            >
+              {shortName}
+            </h1>
             <div className={styles.xvSeal}>
+              <Image
+                src="/pictures/xv/alexa-marbella/laurel-bow-emblem.webp"
+                alt=""
+                fill
+                className={styles.xvSealArtwork}
+                sizes="260px"
+                aria-hidden="true"
+              />
               <strong>XV</strong>
               <span>años</span>
             </div>
