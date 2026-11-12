@@ -10,6 +10,7 @@ import eduardo from "@/app/data/birthday/eduardo";
 import victoria from "@/app/data/birthday/victoria";
 import nataliaDaliz from "@/app/data/birthday/natalia-daliz";
 import camila from "@/app/data/christening/camila";
+import renataSofia from "@/app/data/christening/renata-sofia";
 import kevinyjuana from "@/app/data/wedding/kevin-y-juana";
 import kevinyjuanalight from "@/app/data/wedding/kevin-y-juana-light";
 import miguelYAracely from "@/app/data/wedding/miguel-y-aracely";
@@ -17,6 +18,7 @@ import carlosYYazmin from "@/app/data/wedding/carlos-y-yazmin";
 import valentina from "@/app/data/xv/valentina";
 import julia from "@/app/data/xv/julia";
 import deny from "@/app/data/xv/deny";
+import alexaMarbella from "@/app/data/xv/alexa-marbella";
 import karina from "@/app/data/graduation/karina";
 import sofia from "@/app/data/firstcommunion/sofia";
 import sofiaYAdan from "@/app/data/firstcommunion/sofia-y-adan";
@@ -34,6 +36,7 @@ const events: Record<string, EventData> = {
   eduardo,
   mia,
   camila,
+  "renata-sofia": renataSofia,
   jose,
   victoria,
   nataliaDaliz,
@@ -44,6 +47,7 @@ const events: Record<string, EventData> = {
   valentina,
   julia,
   deny,
+  "alexa-marbella": alexaMarbella,
   karina,
   sofia,
   "sofia-y-adan": sofiaYAdan,
