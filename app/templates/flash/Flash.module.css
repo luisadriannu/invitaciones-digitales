@@ -215,6 +215,7 @@
   --accent: #dfbd79;
   --line: #ac8e4c66;
   --paper: #172624;
+  --monarque-logo-filter: brightness(0) saturate(100%) invert(91%) sepia(15%) saturate(700%) hue-rotate(341deg) brightness(105%);
   background: #0e1918;
 }
 .graduation .card {

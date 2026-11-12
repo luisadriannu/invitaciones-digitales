@@ -1,4 +1,5 @@
 .page {
+  --monarque-logo-filter: brightness(0) saturate(100%) invert(91%) sepia(15%) saturate(700%) hue-rotate(341deg) brightness(105%);
   min-height: 100svh;
   display: grid;
   place-items: center;

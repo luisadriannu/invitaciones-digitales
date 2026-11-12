@@ -16,7 +16,7 @@ export default function MonarqueSignature({
           alt="Monarque · Invitaciones Web"
           width={856}
           height={282}
-          sizes="150px"
+          sizes="174px"
           className={styles.banner}
         />
       </Link>

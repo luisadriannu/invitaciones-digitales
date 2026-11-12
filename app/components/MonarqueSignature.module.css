@@ -110,16 +110,17 @@
   height: auto;
   object-fit: contain;
 }
-.compact {
+.logoLink.compact {
   display: flex;
   justify-content: center;
   flex-shrink: 0;
-  margin: 6px auto 0;
-  width: min(100%, 150px);
+  margin: 14px auto 0;
+  width: min(100%, 174px);
 }
 .compact .banner {
   width: 100%;
   height: auto;
+  filter: var(--monarque-logo-filter, none);
 }
 
 @media (max-width: 480px) {

@@ -35,6 +35,7 @@
 .footer { font-size: 7px; letter-spacing: 1.7px; flex-shrink: 0; text-align: center; }
 .footer span { margin: 0 8px; }
 .graduacion .card { background: radial-gradient(ellipse at 50% 0, #325b48, transparent 60%), var(--paper); }
+.graduacion { --monarque-logo-filter: brightness(0) saturate(100%) invert(91%) sepia(15%) saturate(700%) hue-rotate(341deg) brightness(105%); }
 .graduacion .photoFrame { border-radius: 2px; transform: rotate(-3deg); border-width: 6px; }
 .graduacion .confirm { color: var(--paper); background: var(--accent); border-color: var(--accent); }
 .bautizo .photoFrame { border-radius: 120px; outline-offset: 5px; }
