@@ -1,3 +1,4 @@
+import MobileOnly from "@/app/components/MobileOnly";
 import MonarqueSignature from "@/app/components/MonarqueSignature";
 import type { Metadata } from "next";
 import Image from "next/image";
@@ -32,115 +33,117 @@ export default function FlashInvitation({ theme }: { theme: string }) {
   );
 
   return (
-    <main
-      className={`${styles.page} ${styles[event.theme]} ${event.design ? styles[event.design] : ""}`}
-    >
-      <article
-        className={styles.card}
-        aria-label={`Invitación ${article} ${celebration} de ${event.name}`}
+    <MobileOnly>
+      <main
+        className={`${styles.page} ${styles[event.theme]} ${event.design ? styles[event.design] : ""}`}
       >
-        <header className={styles.header}>
-          <span>ESTÁS INVITADO</span>
-        </header>
+        <article
+          className={styles.card}
+          aria-label={`Invitación ${article} ${celebration} de ${event.name}`}
+        >
+          <header className={styles.header}>
+            <span>ESTÁS INVITADO</span>
+          </header>
 
-        <div className={styles.portrait}>
-          <span className={styles.ornament} aria-hidden="true">
-            {theme === "bautizo" ? "✧" : "✳"}
-          </span>
-          <div className={styles.photoFrame}>
-            <Image
-              src={event.photo}
-              alt={`Fotografía de ${event.name}`}
-              fill
-              sizes="(max-width: 600px) 220px, 300px"
-              priority
-              className={styles.photo}
-            />
+          <div className={styles.portrait}>
+            <span className={styles.ornament} aria-hidden="true">
+              {theme === "bautizo" ? "✧" : "✳"}
+            </span>
+            <div className={styles.photoFrame}>
+              <Image
+                src={event.photo}
+                alt={`Fotografía de ${event.name}`}
+                fill
+                sizes="(max-width: 600px) 220px, 300px"
+                priority
+                className={styles.photo}
+              />
+            </div>
+            <span className={styles.photoLabel}>
+              {theme === "graduacion"
+                ? `GENERACIÓN ${year}`
+                : theme === "bautizo"
+                  ? "CON AMOR Y FE"
+                  : "LET’S CELEBRATE"}
+            </span>
+            {event.age !== undefined && (
+              <span className={styles.age}>
+                <strong>{event.age}</strong>
+                {event.age === 1 ? "AÑO" : "AÑOS"}
+              </span>
+            )}
           </div>
-          <span className={styles.photoLabel}>
-            {theme === "graduacion"
-              ? `GENERACIÓN ${year}`
-              : theme === "bautizo"
-                ? "CON AMOR Y FE"
-                : "LET’S CELEBRATE"}
-          </span>
-          {event.age !== undefined && (
-            <span className={styles.age}>
-              <strong>{event.age}</strong>
-              {event.age === 1 ? "AÑO" : "AÑOS"}
-            </span>
-          )}
-        </div>
 
-        <div className={styles.heading}>
-          <p className={styles.eyebrow}>{event.eyebrow}</p>
-          <p className={styles.title}>{event.title}</p>
-          <h1>{event.name}</h1>
-          <p className={styles.message}>{event.message}</p>
-        </div>
-
-        <div className={styles.details}>
-          <div className={styles.date}>
-            <strong>{day}</strong>
-            <span>
-              {month}
-              <small>{year}</small>
-            </span>
-            <i aria-hidden="true" />
-            <span>
-              {event.time}
-              <small>TE ESPERAMOS</small>
-            </span>
+          <div className={styles.heading}>
+            <p className={styles.eyebrow}>{event.eyebrow}</p>
+            <p className={styles.title}>{event.title}</p>
+            <h1>{event.name}</h1>
+            <p className={styles.message}>{event.message}</p>
           </div>
-          <p className={styles.venue}>
-            <MapPin size={14} aria-hidden="true" />
-            {event.venue}
-          </p>
-        </div>
 
-        <div className={styles.actions}>
-          <a
-            href={event.mapUrl || undefined}
-            aria-disabled={!event.mapUrl}
-            title={event.mapUrl ? undefined : "Ubicación de ejemplo"}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <MapPin size={16} />
-            Ubicación
-            <ArrowUpRight size={13} />
-          </a>
-          <a
-            className={styles.confirm}
-            href={
-              event.phone
-                ? `https://wa.me/${event.phone}?text=${confirmation}`
-                : undefined
-            }
-            aria-disabled={!event.phone}
-            title={
-              event.phone
-                ? undefined
-                : "Confirmación disponible en la invitación final"
-            }
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <MessageCircle size={16} />
-            Confirmar
-          </a>
-        </div>
-        <footer className={styles.footer}>
-          {!event.phone && !event.mapUrl
-            ? "MUESTRA · DATOS FICTICIOS"
-            : event.design === "ticket"
-              ? "PASE PERSONAL · EDICIÓN CUMPLEAÑOS"
-              : "UN MOMENTO PARA COMPARTIR"}{" "}
-          <span>✧</span> FLASH
-        <MonarqueSignature compact />
-        </footer>
-      </article>
-    </main>
+          <div className={styles.details}>
+            <div className={styles.date}>
+              <strong>{day}</strong>
+              <span>
+                {month}
+                <small>{year}</small>
+              </span>
+              <i aria-hidden="true" />
+              <span>
+                {event.time}
+                <small>TE ESPERAMOS</small>
+              </span>
+            </div>
+            <p className={styles.venue}>
+              <MapPin size={14} aria-hidden="true" />
+              {event.venue}
+            </p>
+          </div>
+
+          <div className={styles.actions}>
+            <a
+              href={event.mapUrl || undefined}
+              aria-disabled={!event.mapUrl}
+              title={event.mapUrl ? undefined : "Ubicación de ejemplo"}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <MapPin size={16} />
+              Ubicación
+              <ArrowUpRight size={13} />
+            </a>
+            <a
+              className={styles.confirm}
+              href={
+                event.phone
+                  ? `https://wa.me/${event.phone}?text=${confirmation}`
+                  : undefined
+              }
+              aria-disabled={!event.phone}
+              title={
+                event.phone
+                  ? undefined
+                  : "Confirmación disponible en la invitación final"
+              }
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <MessageCircle size={16} />
+              Confirmar
+            </a>
+          </div>
+          <footer className={styles.footer}>
+            {!event.phone && !event.mapUrl
+              ? "MUESTRA · DATOS FICTICIOS"
+              : event.design === "ticket"
+                ? "PASE PERSONAL · EDICIÓN CUMPLEAÑOS"
+                : "UN MOMENTO PARA COMPARTIR"}{" "}
+            <span>✧</span> FLASH
+          <MonarqueSignature compact />
+          </footer>
+        </article>
+      </main>
+    </MobileOnly>
   );
 }
 

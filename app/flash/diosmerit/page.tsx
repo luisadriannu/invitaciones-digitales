@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { ArrowUpRight, MapPin } from "lucide-react";
+import MobileOnly from "@/app/components/MobileOnly";
 import MonarqueSignature from "@/app/components/MonarqueSignature";
 import flash from "../bella-pineda/bella.module.css";
 import styles from "./diosmerit.module.css";
@@ -12,6 +13,10 @@ export const metadata: Metadata = {
 };
 
 export default function DiosmeritInvitation() {
+  return <MobileOnly><InvitationCard /></MobileOnly>;
+}
+
+function InvitationCard() {
   return (
     <main className={`${flash.page} ${styles.page}`}>
       <article
