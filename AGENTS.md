@@ -8,3 +8,4 @@ This version has breaking changes — APIs, conventions, and file structure may 
 
 - Every new invitation should include tasteful motion by default: an animated opening, subtle decorative particles or ambient movement, section reveal transitions, and responsive button microinteractions.
 - Keep animations smooth and lightweight, and always provide a `prefers-reduced-motion` fallback.
+- Flash invitations use static decoration without animated petals, floating flowers, or decorative particle effects.

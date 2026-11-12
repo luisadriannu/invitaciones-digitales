@@ -1,0 +1,75 @@
+.page {
+  background: radial-gradient(ellipse at top, #6e1748, #2d0a24 72%);
+}
+
+.card {
+  padding-top: clamp(105px, 29vw, 146px);
+  padding-bottom: 68px;
+  background: radial-gradient(ellipse at 50% 22%, #a91d67, #65143f 58%, #41102c);
+  animation: open-card 750ms ease-out both;
+}
+
+.flowers {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 138px;
+  background: url("/pictures/xv/deny/guirnalda-hd.webp") center top / 100% auto no-repeat;
+  filter: saturate(1.75) hue-rotate(-24deg);
+  pointer-events: none;
+}
+
+.bottomFlowers {
+  inset: auto 0 -52px;
+  transform: rotate(180deg);
+  opacity: .85;
+}
+
+.surname {
+  display: block;
+  margin-top: 5px;
+  font-size: .67em;
+}
+
+.details {
+  margin: 0 0 20px;
+}
+
+.schedule {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: stretch;
+  margin: 0;
+  padding: 14px 0;
+  border-bottom: 1px solid #d6b27950;
+}
+
+.schedule > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 5px;
+  padding: 0 7px;
+}
+.schedule > div + div { border-left: 1px solid #d6b27950; }
+.schedule dt { color: #f4d7ae; font-size: 11px; line-height: 1.4; letter-spacing: .09em; text-transform: uppercase; }
+.schedule dd { margin: 0; font-size: clamp(16px, 4.5vw, 21px); }
+.venue { display: flex; align-items: center; justify-content: center; gap: 9px; margin: 15px 0; font-size: 14px; line-height: 1.5; }
+.venue svg { color: #f4d7ae; flex-shrink: 0; }
+.venue strong { font-weight: 600; }
+.card a { transition: transform 180ms ease; }
+.card a:active { transform: scale(.96); }
+
+.reveal { animation: open-card 650ms ease-out both; }
+.reveal:nth-child(2) { animation-delay: 140ms; }
+.reveal:nth-child(3) { animation-delay: 230ms; }
+.reveal:nth-child(4) { animation-delay: 320ms; }
+
+@keyframes open-card {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card, .reveal { animation: none; }
+  .card a { transition: none; }
+}
