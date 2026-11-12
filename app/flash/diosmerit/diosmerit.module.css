@@ -24,6 +24,19 @@
   opacity: .85;
 }
 
+.parents {
+  margin: 14px auto 18px;
+  color: #f4d7ae;
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.parents p:first-child {
+  margin-bottom: 5px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
 .surname {
   display: block;
   margin-top: 5px;
