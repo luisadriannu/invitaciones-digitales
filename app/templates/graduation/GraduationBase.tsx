@@ -477,7 +477,6 @@ export default function GraduationBase({ data }: Props) {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            d
             transition={{ duration: 0.6 }}
           >
             <p className="text-2xl md:text-3xl font-light italic text-white mb-2">

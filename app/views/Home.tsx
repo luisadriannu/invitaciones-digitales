@@ -169,7 +169,6 @@ export default function Home({
       subtitle: "Pastel",
       image: "/pictures/birthday/victoria/victoria-4.jpg",
       href: "/cumple/victoria",
-      n,
     },
     {
       category: "Cumpleaños",
