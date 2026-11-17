@@ -125,7 +125,13 @@ export default function GraduationBase({ data }: Props) {
 
   return (
     <>
-      {data.media.music && <MusicButton src={data.media.music} color={COLORS.primary} backgroundColor={COLORS.bgMain} />}
+      {data.media.music && (
+        <MusicButton
+          src={data.media.music}
+          color={COLORS.primary}
+          backgroundColor={COLORS.bgMain}
+        />
+      )}
 
       <main
         style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
@@ -307,6 +313,7 @@ export default function GraduationBase({ data }: Props) {
                   <p className="family-name">{data.family.parents.father}</p>
                 </motion.div>
               )}
+
               {data.family?.godparents && (
                 <motion.div
                   initial={{ opacity: 0, y: 40 }}
@@ -470,6 +477,7 @@ export default function GraduationBase({ data }: Props) {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
+            d
             transition={{ duration: 0.6 }}
           >
             <p className="text-2xl md:text-3xl font-light italic text-white mb-2">

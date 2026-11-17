@@ -74,11 +74,9 @@ const fadeUp: Variants = {
     opacity: 0,
     y: 30,
   },
-
   visible: {
     opacity: 1,
     y: 0,
-
     transition: {
       duration: 0.7,
     },
@@ -171,6 +169,7 @@ export default function Home({
       subtitle: "Pastel",
       image: "/pictures/birthday/victoria/victoria-4.jpg",
       href: "/cumple/victoria",
+      n,
     },
     {
       category: "Cumpleaños",
@@ -287,25 +286,24 @@ export default function Home({
           <motion.h1
             variants={fadeUp}
             className="
-    text-[clamp(2rem,9vw,3rem)]
-    md:text-7xl
-    font-light
-    text-[#2B2927]
-    leading-[1.15]
-    mb-8
-  "
+              text-[clamp(2rem,9vw,3rem)]
+              md:text-7xl
+              font-light    text-[#2B2927]
+              leading-[1.15]
+              mb-8
+            "
           >
             Tu evento merece
             <span className="block">una invitación</span>
             <span
               className="
-      block
-      font-serif
-      italic
-      text-[#C99432]
-      text-[1.15em]
-      mt-1
-    "
+                block
+                font-serif
+                italic
+                text-[#C99432]
+                text-[1.15em]
+                mt-1
+              "
             >
               Inolvidable.
             </span>
@@ -320,24 +318,24 @@ export default function Home({
               ease: "easeOut",
             }}
             className="
-    flex
-    items-center
-    justify-center
-    gap-3
-    mx-auto
-    mb-8
-    origin-center
-  "
+              flex
+              items-center
+              justify-center
+              gap-3
+              mx-auto
+              mb-8
+              origin-center
+            "
           >
             {/* Línea izquierda */}
             <div
               className="
-      w-10 sm:w-14
-      h-px
-      bg-gradient-to-r
-      from-transparent
-      to-[#D4AF37]
-    "
+                w-10 sm:w-14
+                h-px
+                bg-gradient-to-r
+                from-transparent
+                to-[#D4AF37]
+              "
             />
 
             {/* Ornamento central */}
