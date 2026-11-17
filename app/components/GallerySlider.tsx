@@ -10,9 +10,10 @@ import "swiper/css";
 
 interface GalleryProps {
   images: string[];
+  autoplayDelay?: number;
 }
 
-export default function GallerySlider({ images }: GalleryProps) {
+export default function GallerySlider({ images, autoplayDelay = 2500 }: GalleryProps) {
   const container = useRef<HTMLDivElement>(null);
   const [swiper, setSwiper] = useState<SwiperInstance | null>(null);
 
@@ -54,8 +55,9 @@ export default function GallerySlider({ images }: GalleryProps) {
         onSwiper={setSwiper}
         spaceBetween={10}
         slidesPerView={1}
+        grabCursor
         autoplay={images.length > 1 ? {
-          delay: 2500,
+          delay: autoplayDelay,
           disableOnInteraction: false,
         } : false}
         modules={[Autoplay]}

@@ -70,7 +70,6 @@ export default async function Page({
   }>;
 }) {
   const resolvedParams = await params;
-
   return (
     <MobileOnly>
       <Invitation tipo={resolvedParams.tipo} slug={resolvedParams.slug} />

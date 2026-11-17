@@ -6,6 +6,7 @@ import graduationFlash from "@/app/data/flash/graduation";
 import jose from "@/app/data/birthday/jose";
 import mia from "@/app/data/birthday/mia";
 import mateo from "@/app/data/birthday/mateo";
+import cristofer from "@/app/data/birthday/cristofer";
 import eduardo from "@/app/data/birthday/eduardo";
 import victoria from "@/app/data/birthday/victoria";
 import nataliaDaliz from "@/app/data/birthday/natalia-daliz";
@@ -33,6 +34,7 @@ const events: Record<string, EventData> = {
   "bautizo-flash": christeningFlash,
   "graduacion-flash": graduationFlash,
   mateo,
+  cristofer,
   eduardo,
   mia,
   camila,

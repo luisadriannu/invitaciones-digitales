@@ -16,7 +16,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es">
-      <body>
+      <body suppressHydrationWarning={process.env.NODE_ENV === "development"}>
         <StyledJsxRegistry>{children}</StyledJsxRegistry>
       </body>
     </html>

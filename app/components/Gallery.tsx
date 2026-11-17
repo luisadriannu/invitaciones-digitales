@@ -6,7 +6,7 @@ import { useEffect, useRef, useState } from "react";
 
 const GallerySlider = dynamic(() => import("./GallerySlider"));
 
-export default function Gallery({ images }: { images: string[] }) {
+export default function Gallery({ images, autoplayDelay = 2500 }: { images: string[]; autoplayDelay?: number }) {
   const container = useRef<HTMLDivElement>(null);
   const [ready, setReady] = useState(false);
 
@@ -27,7 +27,7 @@ export default function Gallery({ images }: { images: string[] }) {
   return (
     <div ref={container} className="relative h-[60vh] overflow-hidden rounded-3xl">
       {!ready && <Image src={images[0]} alt="Imagen 1" fill sizes="100vw" className="object-contain" />}
-      {ready && <GallerySlider images={images} />}
+      {ready && <GallerySlider images={images} autoplayDelay={autoplayDelay} />}
     </div>
   );
 }

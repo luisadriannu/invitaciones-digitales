@@ -1,6 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
+const BirthdayFootball = dynamic(() => import("@/app/templates/birthday/BirthdayFootball"));
 const XvWatercolor = dynamic(() => import("@/app/templates/xv/XvWatercolor"));
 const BasicDualInvitation = dynamic(
   () => import("@/app/templates/basic/BasicDualInvitation"),
@@ -73,6 +74,7 @@ const FirstCommunionTemplate = dynamic(
 
 export const templates = {
   cumple: {
+    football: BirthdayFootball,
     basic: BasicInvitation,
     base: BirthdayBase,
     dinosaur: BirthdayDino,
