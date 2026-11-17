@@ -6,7 +6,9 @@ const cristofer: EventData = {
   seo: {
     title: "Cristofer cumple 2 · ¡Únete a mi equipo!",
     description: "Un pequeño campeón, dos años de alegría y un equipo muy especial: tú. Celebremos a Cristofer el 21 de noviembre a las 5:30 p. m.",
-    image: "/cumple/cristofer/opengraph-image",
+    image: "/pictures/birthday/cristofer/portada-whatsapp.jpg",
+    imageWidth: 1200,
+    imageHeight: 630,
   },
   event: {
     name: "Cristofer",
