@@ -126,17 +126,18 @@
   overflow: hidden;
   border: 1px solid #cfa94e66;
   border-radius: 30px;
-  color: #fffaf0;
+  color: #4d3833;
   background:
-    radial-gradient(circle at 12% 20%, #e7c86a30, transparent 34%),
-    linear-gradient(135deg, #2f4c3b 0%, #18382a 58%, #102b20 100%);
-  box-shadow: 0 24px 55px #18382a2c, inset 0 0 0 7px #fff8e80a;
+    radial-gradient(circle at 12% 20%, #e0b85d30, transparent 34%),
+    radial-gradient(circle at 94% 90%, #c9889730, transparent 30%),
+    linear-gradient(135deg, #fffaf5 0%, #f7eae5 58%, #efdcd8 100%);
+  box-shadow: 0 24px 55px #704b4424, inset 0 0 0 7px #fffaf58a;
 }
 .promotion::before {
   position: absolute;
   inset: 9px;
   z-index: -1;
-  border: 1px solid #f1d5832b;
+  border: 1px solid #b9903c35;
   border-radius: 21px;
   content: "";
   pointer-events: none;
@@ -149,7 +150,7 @@
   width: 320px;
   height: 320px;
   border-radius: 50%;
-  background: radial-gradient(circle, #ddb94b26, transparent 68%);
+  background: radial-gradient(circle, #c4819130, transparent 68%);
   pointer-events: none;
 }
 .promotionIcon {
@@ -157,16 +158,16 @@
   width: 74px;
   height: 74px;
   place-items: center;
-  border: 1px solid #f1d5838f;
+  border: 1px solid #c39b488f;
   border-radius: 50%;
-  color: #f3d67d;
-  background: #fff8e70d;
-  box-shadow: 0 0 0 7px #fff7dc0a;
+  color: #a77b25;
+  background: #fffaf5b8;
+  box-shadow: 0 0 0 7px #c7973c12;
 }
 .promotionCopy { position: relative; z-index: 1; }
 .promotionCopy > p:first-child {
   margin-bottom: 8px;
-  color: #ecd17d;
+  color: #9a7024;
   font-size: 10px;
   font-weight: 600;
   letter-spacing: .26em;
@@ -182,7 +183,7 @@
 .promotion h2 em {
   display: block;
   margin-top: 7px;
-  color: #f2d67d;
+  color: #a65f70;
   font-weight: 400;
 }
 .promotionPrice {
@@ -192,9 +193,9 @@
   margin-top: 22px;
 }
 .promotionPrice span,
-.promotionPrice small { color: #d9dfd7; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; }
-.promotionPrice strong { color: #fff7d4; font-family: "Cormorant Garamond", Georgia, serif; font-size: 48px; font-weight: 500; line-height: 1; }
-.promotionDescription { max-width: 620px; margin-top: 13px; color: #e6ebe6; font-size: 14px; line-height: 1.65; }
+.promotionPrice small { color: #79635e; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; }
+.promotionPrice strong { color: #713946; font-family: "Cormorant Garamond", Georgia, serif; font-size: 48px; font-weight: 500; line-height: 1; }
+.promotionDescription { max-width: 620px; margin-top: 13px; color: #725f5a; font-size: 14px; line-height: 1.65; }
 .promotion a {
   display: inline-flex;
   min-height: 46px;
@@ -204,9 +205,9 @@
   margin-top: 21px;
   padding: 12px 20px;
   border-radius: 999px;
-  color: #203d2e;
-  background: linear-gradient(135deg, #fff1b5, #d7b34f);
-  box-shadow: 0 10px 24px #07170f40;
+  color: #fffaf5;
+  background: linear-gradient(135deg, #a65f70, #713946);
+  box-shadow: 0 10px 24px #5f30373d;
   font-size: 12px;
   font-weight: 700;
   letter-spacing: .07em;
@@ -214,11 +215,11 @@
   text-transform: uppercase;
   transition: transform 180ms ease, box-shadow 180ms ease;
 }
-.promotion a:hover { transform: translateY(-2px); box-shadow: 0 14px 30px #07170f52; }
-.promotion a:focus-visible { outline: 2px solid #fff8dc; outline-offset: 4px; }
-.promotionTerms { display: block; max-width: 620px; margin-top: 13px; color: #bdc9c0; font-size: 10px; line-height: 1.55; }
-.promotionSparkle { position: absolute; top: 20px; right: 28px; color: #f2d67d; font-size: 22px; }
-.promotionStars { position: absolute; right: 8%; bottom: 16%; width: 42px; height: 42px; color: #f2d67d; opacity: .2; }
+.promotion a:hover { transform: translateY(-2px); box-shadow: 0 14px 30px #5f303752; }
+.promotion a:focus-visible { outline: 2px solid #713946; outline-offset: 4px; }
+.promotionTerms { display: block; max-width: 620px; margin-top: 13px; color: #796762; font-size: 10px; line-height: 1.55; }
+.promotionSparkle { position: absolute; top: 20px; right: 28px; color: #b68a32; font-size: 22px; }
+.promotionStars { position: absolute; right: 8%; bottom: 16%; width: 42px; height: 42px; color: #a65f70; opacity: .22; }
 .promotionInlineCard { max-width: 860px; }
 .promotionInlineFooter { display: flex; align-items: center; gap: 20px; }
 .promotionInlineFooter .promotionPrice { flex: 0 0 auto; }
@@ -408,7 +409,7 @@
   place-items: center;
   padding: max(18px, env(safe-area-inset-top)) 18px max(18px, env(safe-area-inset-bottom));
   overflow-y: auto;
-  background: #0d1c16b8;
+  background: #372725bd;
   backdrop-filter: blur(8px);
 }
 .promotionModalCard {
@@ -426,16 +427,16 @@
   width: 38px;
   height: 38px;
   place-items: center;
-  border: 1px solid #f1d58370;
+  border: 1px solid #e4c77a8c;
   border-radius: 50%;
-  color: #fff5cf;
-  background: #0d281dd9;
-  box-shadow: 0 7px 18px #07140d52;
+  color: #fffaf5;
+  background: #713946e8;
+  box-shadow: 0 7px 18px #4b282d52;
   cursor: pointer;
   transition: transform 180ms ease, background 180ms ease;
 }
-.promotionClose:hover { transform: scale(1.06); background: #254a36; }
-.promotionClose:focus-visible { outline: 2px solid #fff8dc; outline-offset: 3px; }
+.promotionClose:hover { transform: scale(1.06); background: #572c36; }
+.promotionClose:focus-visible { outline: 2px solid #fff6df; outline-offset: 3px; }
 
 @media (max-width: 640px) {
   .promotionModalCard {
