@@ -68,7 +68,12 @@ export default function BirthdayFootball({ data }: { data: EventData }) {
     transition: { duration: reduced ? 0 : 0.65 },
   };
   const map = data.location.receptionMapUrl || data.location.mapUrl;
-  const confirmation = `https://wa.me/${data.contact.phone.replace(/\D/g, "")}?text=${encodeURIComponent(`¡Hola, Isabel y Gonzalo! Quiero confirmar mi asistencia al cumpleaños de ${data.event.name}.`)}`;
+  const parents = data.family?.parents;
+  const parentNames = parents
+    ? `${parents.mother} y ${parents.father}`
+    : "la familia";
+  const [eventDay, eventMonth, eventYear] = data.event.date.split(" ");
+  const confirmation = `https://wa.me/${data.contact.phone.replace(/\D/g, "")}?text=${encodeURIComponent(`¡Hola, ${parentNames}! Quiero confirmar mi asistencia al cumpleaños de ${data.event.name}.`)}`;
 
   return (
     <>
@@ -107,7 +112,7 @@ export default function BirthdayFootball({ data }: { data: EventData }) {
               </p>
               <div className={styles.perforation} />
               <span>
-                21 NOV 2026 <b>·</b> 5:30 P. M.
+                {data.event.date.toUpperCase()} <b>·</b> {data.event.partyHour}
               </span>
               <button
                 className={styles.button}
@@ -134,8 +139,8 @@ export default function BirthdayFootball({ data }: { data: EventData }) {
                 <i />
               </div>
               <div className={styles.topline}>
-                <span>CLUB CRISTOFER</span>
-                <span>★ TEMPORADA 02</span>
+                <span>CLUB {data.event.name.toUpperCase()}</span>
+                <span>★ TEMPORADA {String(data.event.age).padStart(2, "0")}</span>
               </div>
               <p className={styles.eyebrow}>
                 ¡ESTÁS CONVOCADO A MI CUMPLEAÑOS!
@@ -149,7 +154,7 @@ export default function BirthdayFootball({ data }: { data: EventData }) {
               <Image
                 className={styles.art}
                 src={data.media.coverImage}
-                alt="Camiseta blanca y verde de Cristofer con el número 2 y un balón de fútbol"
+                alt={`Camiseta blanca y verde de ${data.event.name} con el número ${data.event.age} y un balón de fútbol`}
                 width={600}
                 height={520}
                 preload
@@ -162,7 +167,7 @@ export default function BirthdayFootball({ data }: { data: EventData }) {
               </a>
             </section>
             <div className={styles.ribbon}>
-              ★ DOS AÑOS DE PURO AMOR ★ ¡VAMOS, CRISTOFER! ★
+              ★ {data.event.age} AÑOS DE PURO AMOR ★ ¡VAMOS, {data.event.name.toUpperCase()}! ★
             </div>
             <motion.section
               {...reveal}
@@ -172,7 +177,7 @@ export default function BirthdayFootball({ data }: { data: EventData }) {
               <div className={styles.clubSeal} aria-hidden="true">
                 <span>★ ★ ★</span>
                 <Trophy size={25} strokeWidth={1.4} />
-                <strong>CFC</strong>
+                <strong>{data.event.name.charAt(0).toUpperCase()}FC</strong>
                 <small>PEQUEÑO CAMPEÓN</small>
               </div>
               <span className={styles.eyebrow}>
@@ -239,7 +244,7 @@ export default function BirthdayFootball({ data }: { data: EventData }) {
                 </div>
               )}
               <span className={styles.scoreNote}>
-                CRISTOFER FC <b>★</b> TEMPORADA 02
+                {data.event.name.toUpperCase()} FC <b>★</b> TEMPORADA {String(data.event.age).padStart(2, "0")}
               </span>
             </motion.section>
             <motion.section {...reveal} className={styles.section}>
@@ -255,15 +260,15 @@ export default function BirthdayFootball({ data }: { data: EventData }) {
                   <Trophy size={20} aria-hidden="true" />
                 </div>
                 <div className={styles.date}>
-                  <span>SÁBADO</span>
-                  <strong>21</strong>
-                  <span>NOVIEMBRE · 2026</span>
+                  <span>GUARDA LA FECHA</span>
+                  <strong>{eventDay}</strong>
+                  <span>{eventMonth?.toUpperCase()} · {eventYear}</span>
                 </div>
                 <div className={styles.detail}>
                   <Clock3 size={22} aria-hidden="true" />
                   <div>
                     <small>EL SILBATAZO INICIAL</small>
-                    <strong>5:30 p. m.</strong>
+                    <strong>{data.event.partyHour}</strong>
                   </div>
                 </div>
                 <div className={styles.detail}>
@@ -275,7 +280,7 @@ export default function BirthdayFootball({ data }: { data: EventData }) {
                 </div>
                 {data.location.mapUrl && (
                   <iframe
-                    title="Ubicación de la fiesta de Cristofer"
+                    title={`Ubicación de la fiesta de ${data.event.name}`}
                     src={data.location.mapUrl}
                     width="100%"
                     height="240"
@@ -318,8 +323,8 @@ export default function BirthdayFootball({ data }: { data: EventData }) {
                 <em>contigo?</em>
               </h2>
               <p className={styles.copy}>
-                ¡Te esperamos con mucho cariño para celebrar los dos añitos de
-                Cristofer! El mejor gol del día será compartirlo contigo.
+                ¡Te esperamos con mucho cariño para celebrar los {data.event.age} años de {data.event.name}!
+                El mejor gol del día será compartirlo contigo.
               </p>
               <a
                 className={styles.button}
@@ -330,7 +335,7 @@ export default function BirthdayFootball({ data }: { data: EventData }) {
                 <MessageCircle size={19} /> Confirmar asistencia
               </a>
               <p className={styles.whatsappNote}>
-                Por WhatsApp · Isabel y Gonzalo
+                Por WhatsApp · {parentNames}
               </p>
             </motion.section>
             <footer className={styles.footer}>

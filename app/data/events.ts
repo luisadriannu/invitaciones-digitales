@@ -7,6 +7,7 @@ import jose from "@/app/data/birthday/jose";
 import mia from "@/app/data/birthday/mia";
 import mateo from "@/app/data/birthday/mateo";
 import cristofer from "@/app/data/birthday/cristofer";
+import santiagoFutbol from "@/app/data/birthday/santiago-futbol";
 import eduardo from "@/app/data/birthday/eduardo";
 import victoria from "@/app/data/birthday/victoria";
 import nataliaDaliz from "@/app/data/birthday/natalia-daliz";
@@ -35,6 +36,7 @@ const events: Record<string, EventData> = {
   "graduacion-flash": graduationFlash,
   mateo,
   cristofer,
+  "santiago-futbol": santiagoFutbol,
   eduardo,
   mia,
   camila,

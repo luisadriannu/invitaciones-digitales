@@ -1,11 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { basicSamples } from "@/app/data/basic";
-import { ArrowDown, ArrowUpRight, Mail } from "lucide-react";
+import { ArrowDown, ArrowUpRight, Gift, Mail, Sparkles, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "motion/react";
+import { AnimatePresence, motion } from "motion/react";
 import type { Variants } from "motion/react";
 import { flashEvents } from "@/app/flash/data";
 import flashStyles from "@/app/flash/flash.module.css";
@@ -93,6 +93,8 @@ const stagger: Variants = {
   },
 };
 
+const PROMOTION_STORAGE_KEY = "monarque-premium-basic-promo-2026-dismissed";
+
 export default function Home({
   samplePlans,
 }: {
@@ -102,6 +104,49 @@ export default function Home({
   const [plan, setPlan] = useState<"todos" | "basic" | "premium" | "flash">(
     "todos",
   );
+  const [showPromotion, setShowPromotion] = useState(false);
+  const promotionCloseRef = useRef<HTMLButtonElement>(null);
+
+  const dismissPromotion = useCallback(() => {
+    setShowPromotion(false);
+    try {
+      window.localStorage.setItem(PROMOTION_STORAGE_KEY, "true");
+    } catch {
+      // The modal can still close when browser storage is unavailable.
+    }
+  }, []);
+
+  useEffect(() => {
+    try {
+      if (window.localStorage.getItem(PROMOTION_STORAGE_KEY) === "true") return;
+    } catch {
+      // Show the promotion when browser storage is unavailable.
+    }
+
+    const frame = requestAnimationFrame(() => {
+      setShowPromotion(true);
+      requestAnimationFrame(() => promotionCloseRef.current?.focus());
+    });
+
+    return () => cancelAnimationFrame(frame);
+  }, []);
+
+  useEffect(() => {
+    if (!showPromotion) return;
+
+    const previousOverflow = document.body.style.overflow;
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") dismissPromotion();
+    };
+
+    document.body.style.overflow = "hidden";
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [dismissPromotion, showPromotion]);
 
   const samples = [
     ...basicSamples.map((sample) => ({
@@ -123,6 +168,13 @@ export default function Home({
       subtitle: "Jurásica",
       image: "/pictures/birthday/mateo/jurassic-expedition.webp",
       href: "/cumple/mateo",
+    },
+    {
+      category: "Cumpleaños",
+      title: "Cumpleaños de Santiago",
+      subtitle: "Premium",
+      image: "/pictures/birthday/santiago-futbol/football.svg",
+      href: "/cumple/santiago-futbol",
     },
     {
       category: "Cumpleaños",
@@ -228,9 +280,75 @@ export default function Home({
     filteredSamples.length +
     (showSeasonal ? seasonalSamples.length : 0) +
     (showFlash ? Object.keys(flashEvents).length : 0);
+  const promotionMessage = encodeURIComponent(
+    "Hola, me interesa la promoción Premium + invitación Básica gratis. Quisiera recibir más información.",
+  );
 
   return (
-    <main className="min-h-screen bg-[#FAF8F4] relative overflow-hidden">
+    <>
+      <AnimatePresence>
+        {showPromotion && (
+          <motion.div
+            className={styles.promotionBackdrop}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+          >
+            <motion.section
+              className={`${styles.promotion} ${styles.promotionModalCard}`}
+              initial={{ opacity: 0, y: 24, scale: 0.96 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 16, scale: 0.97 }}
+              transition={{ duration: 0.35 }}
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="promotion-title"
+            >
+              <button
+                ref={promotionCloseRef}
+                type="button"
+                className={styles.promotionClose}
+                onClick={dismissPromotion}
+                aria-label="Cerrar promoción"
+              >
+                <X size={20} aria-hidden="true" />
+              </button>
+              <div className={styles.promotionGlow} aria-hidden="true" />
+              <span className={styles.promotionSparkle} aria-hidden="true">✦</span>
+              <div className={styles.promotionIcon} aria-hidden="true">
+                <Gift size={27} strokeWidth={1.25} />
+              </div>
+              <div className={styles.promotionCopy}>
+                <p>Promoción especial · Cupos limitados</p>
+                <h2 id="promotion-title">
+                  Invitación Premium
+                  <em>+ Básica gratis</em>
+                </h2>
+                <div className={styles.promotionPrice}>
+                  <span>Todo por</span>
+                  <strong>$550</strong>
+                  <small>MXN</small>
+                </div>
+                <a
+                  href={`https://wa.me/522206283499?text=${promotionMessage}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Quiero la promoción
+                  <ArrowUpRight size={17} aria-hidden="true" />
+                </a>
+                <small className={styles.promotionTerms}>
+                  Válida del 17 de noviembre al 7 de diciembre de 2026
+                </small>
+              </div>
+              <Sparkles className={styles.promotionStars} aria-hidden="true" />
+            </motion.section>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <main className="min-h-screen bg-[#FAF8F4] relative overflow-hidden">
       {/* Glow dorado */}
       <div
         className="
@@ -393,6 +511,44 @@ export default function Home({
           >
             Descubre las invitaciones <ArrowDown size={15} aria-hidden="true" />
           </motion.a>
+        </motion.section>
+
+        <motion.section
+          className={`${styles.promotion} ${styles.promotionInlineCard}`}
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.25 }}
+          transition={{ duration: 0.65 }}
+          aria-labelledby="promotion-inline-title"
+        >
+          <div className={styles.promotionGlow} aria-hidden="true" />
+          <div className={styles.promotionIcon} aria-hidden="true">
+            <Gift size={27} strokeWidth={1.25} />
+          </div>
+          <div className={styles.promotionCopy}>
+            <p>Promoción por tiempo limitado</p>
+            <h2 id="promotion-inline-title">
+              Invitación Premium
+              <em>+ Básica gratis</em>
+            </h2>
+            <div className={styles.promotionInlineFooter}>
+              <div className={styles.promotionPrice}>
+                <strong>$550</strong>
+                <small>MXN</small>
+              </div>
+              <a
+                href={`https://wa.me/522206283499?text=${promotionMessage}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Quiero la promoción
+                <ArrowUpRight size={17} aria-hidden="true" />
+              </a>
+            </div>
+            <small className={styles.promotionTerms}>
+              Válida del 17 de noviembre al 7 de diciembre de 2026
+            </small>
+          </div>
         </motion.section>
 
         <br />
@@ -714,6 +870,7 @@ export default function Home({
         )}
       </div>
       <HomeFooter />
-    </main>
+      </main>
+    </>
   );
 }
