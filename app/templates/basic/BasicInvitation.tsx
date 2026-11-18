@@ -1,8 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { useRef, type CSSProperties } from "react";
-import { motion, useReducedMotion } from "motion/react";
+import { useRef, useState, type CSSProperties } from "react";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { CakeSlice, Church, GraduationCap, Wheat, Sparkles, Snowflake, TreePine, MapPin, CalendarDays, Clock, ArrowDown, MessageCircle, X } from "lucide-react";
 import Gallery from "@/app/components/Gallery";
 import CountDown from "@/app/components/CountDown";
@@ -20,6 +20,7 @@ const themes = {
 
 export default function BasicInvitation({ data }: { data: EventData }) {
   const dialog = useRef<HTMLDialogElement>(null);
+  const [opened, setOpened] = useState(!data.design?.opening);
   const reducedMotion = useReducedMotion();
   const theme = themes[data.tipo as keyof typeof themes];
   const { Icon } = theme;
@@ -38,9 +39,50 @@ export default function BasicInvitation({ data }: { data: EventData }) {
   const confettiEffect = data.design?.effect === "confetti";
 
   return (
-    <main className={`${styles.page} ${styles[data.tipo]} ${snowEffect ? styles.snowTheme : ""} ${confettiEffect ? styles.confettiTheme : ""}`} style={{
+    <>
+      <AnimatePresence>
+        {!opened && data.design?.opening && (
+          <motion.section
+            className={styles.opening}
+            initial={{ opacity: 1 }}
+            exit={{ opacity: 0, scale: reducedMotion ? 1 : 1.02 }}
+            transition={{ duration: reducedMotion ? 0 : 0.65 }}
+            aria-label="Portada de la invitación"
+          >
+            <Image
+              src={data.media.coverImage}
+              alt=""
+              fill
+              priority
+              sizes="100vw"
+              className={styles.openingImage}
+            />
+            <div className={styles.openingShade} />
+            <div className={styles.openingLights} aria-hidden="true">
+              {Array.from({ length: 12 }, (_, index) => <i key={index} />)}
+            </div>
+            <motion.div
+              className={styles.openingCard}
+              initial={reducedMotion ? false : { opacity: 0, y: 24, scale: .97 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ duration: reducedMotion ? 0 : .8 }}
+            >
+              <Church size={31} strokeWidth={1.2} aria-hidden="true" />
+              <p>Un regalo del cielo</p>
+              <h1>{data.event.name}</h1>
+              <span>Mi bautizo · {data.event.date}</span>
+              <button type="button" onClick={() => setOpened(true)}>
+                Abrir invitación <Sparkles size={16} aria-hidden="true" />
+              </button>
+            </motion.div>
+          </motion.section>
+        )}
+      </AnimatePresence>
+
+    <main inert={!opened} className={`${styles.page} ${!opened ? styles.pageLocked : ""} ${styles[data.tipo]} ${snowEffect ? styles.snowTheme : ""} ${confettiEffect ? styles.confettiTheme : ""}`} style={{
       "--ink": data.design?.colors?.primary || "#826534",
       "--paper": data.design?.colors?.background || "#faf5e9",
+      "--accent": data.design?.colors?.accent || "#c6a55b",
     } as CSSProperties}>
       {data.media.music && <MusicButton src={data.media.music} color={data.design?.colors?.primary} backgroundColor={data.design?.colors?.background} />}
       {snowEffect && (
@@ -61,13 +103,18 @@ export default function BasicInvitation({ data }: { data: EventData }) {
       )}
       <header className={styles.hero}>
         <motion.div
-          className={styles.cover}
+          className={`${styles.cover} ${data.media.framedCover ? styles.framedCover : ""}`}
           initial={reducedMotion ? false : { opacity: 0, scale: 1.06 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: reducedMotion ? 0 : 1.2, ease: "easeOut" }}
         >
           <Image src={data.media.coverImage} alt={`Retrato de ${data.event.name}`} fill preload sizes="(max-width: 760px) 100vw, 760px" className={styles.coverImage} />
         </motion.div>
+        {data.tipo === "bautizo" && (
+          <div className={styles.baptismAmbient} aria-hidden="true">
+            {Array.from({ length: 8 }, (_, index) => <i key={index}>✦</i>)}
+          </div>
+        )}
         {data.tipo === "evento" && (
           <div className={styles.seasonalParticles} aria-hidden="true">
             {Array.from({ length: 12 }, (_, index) => <i key={index}>✦</i>)}
@@ -210,9 +257,10 @@ export default function BasicInvitation({ data }: { data: EventData }) {
           <MessageCircle size={32} strokeWidth={1.3} aria-hidden="true" />
           <h2 id="confirmation-title">Confirmar asistencia</h2>
           {confirmation ? <><p>Envía tu confirmación por WhatsApp. ¡Gracias por compartir este día conmigo!</p><a className={styles.button} href={confirmation} target="_blank" rel="noopener noreferrer" onClick={() => dialog.current?.close()}>Enviar confirmación</a></>
-            : <><p>Esta es una invitación de muestra. En tu invitación, este botón enviará la confirmación al WhatsApp que elijas.</p><button className={styles.button} onClick={() => dialog.current?.close()}>Entendido</button></>}
+            : <><p>El número de WhatsApp para confirmar asistencia se agregará próximamente.</p><button className={styles.button} onClick={() => dialog.current?.close()}>Entendido</button></>}
         </div>
       </dialog>
     </main>
+    </>
   );
 }

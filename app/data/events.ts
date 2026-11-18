@@ -13,6 +13,7 @@ import victoria from "@/app/data/birthday/victoria";
 import nataliaDaliz from "@/app/data/birthday/natalia-daliz";
 import camila from "@/app/data/christening/camila";
 import renataSofia from "@/app/data/christening/renata-sofia";
+import erikDavid from "@/app/data/christening/erik-david";
 import kevinyjuana from "@/app/data/wedding/kevin-y-juana";
 import kevinyjuanalight from "@/app/data/wedding/kevin-y-juana-light";
 import miguelYAracely from "@/app/data/wedding/miguel-y-aracely";
@@ -41,6 +42,7 @@ const events: Record<string, EventData> = {
   mia,
   camila,
   "renata-sofia": renataSofia,
+  "erik-david": erikDavid,
   jose,
   victoria,
   nataliaDaliz,

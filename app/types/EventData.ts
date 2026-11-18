@@ -75,6 +75,7 @@ export interface EventInfo {
 
 export interface MediaInfo {
   coverImage: string;
+  framedCover?: boolean;
   portraitImage?: string;
   gallery: string[];
   music?: string;
@@ -120,6 +121,7 @@ export interface FamilyInfo {
 export interface DesignInfo {
   variant?: EventVariant;
   effect?: "snow" | "confetti";
+  opening?: boolean;
 
   colors?: {
     primary?: string;
