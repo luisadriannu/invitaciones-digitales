@@ -7,9 +7,9 @@ const erikDavid: EventData = {
     title: "Bautizo de Erik David",
     description:
       "Tenemos el honor de invitarle al bautizo de nuestro amado hijo, Erik David Patiño Jaimes.",
-    image: "/pictures/christening/erik-david/bautizo-cielo.webp",
-    imageWidth: 1024,
-    imageHeight: 1536,
+    image: "/pictures/christening/erik-david/erik-03.webp",
+    imageWidth: 824,
+    imageHeight: 1100,
   },
   event: {
     timeZone: "America/Mexico_City",
