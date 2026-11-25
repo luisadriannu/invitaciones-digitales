@@ -1,6 +1,7 @@
 import type { EventData } from "@/app/types/EventData";
 import { basicEvents } from "@/app/data/basic";
 import birthdayFlash from "@/app/data/flash/birthday";
+import arismael from "./birthday/arismael";
 import christeningFlash from "@/app/data/flash/christening";
 import graduationFlash from "@/app/data/flash/graduation";
 import jose from "@/app/data/birthday/jose";
@@ -32,6 +33,7 @@ import newYearEve from "@/app/data/seasonal/new-year-eve";
 
 const events: Record<string, EventData> = {
   ...basicEvents,
+  arismael,
   "cumple-flash": birthdayFlash,
   "bautizo-flash": christeningFlash,
   "graduacion-flash": graduationFlash,
