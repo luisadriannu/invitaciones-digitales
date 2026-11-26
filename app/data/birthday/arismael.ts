@@ -1,11 +1,17 @@
 import type { EventData } from "@/app/types/EventData";
 
-const artwork = "/arismael-spidey-pose.webp";
+const portrait = "/pictures/birthday/arismael/retrato.png";
 const arismael: EventData = {
   tipo: "cumple",
   plan: "premium",
   design: { variant: "spidey" },
-  seo: { title: "ARISMAEL · Mis 3 años", description: "¡Celebra conmigo el 26 de diciembre en El Mezquite!", image: artwork },
+  seo: {
+    title: "ARISMAEL · Mis 3 años",
+    description: "¡Celebra conmigo el 26 de diciembre en El Mezquite!",
+    image: portrait,
+    imageWidth: 540,
+    imageHeight: 717,
+  },
   event: {
     name: "ARISMAEL", age: 3, date: "26 Diciembre 2026", partyHour: "5:00 PM",
     timeZone: "America/Mexico_City", dressCode: "",
@@ -16,7 +22,7 @@ const arismael: EventData = {
     })),
   },
   media: {
-    coverImage: "/pictures/birthday/arismael/retrato.png",
+    coverImage: portrait,
     gallery: [1, 2, 3, 4, 5].map(number => `/pictures/birthday/arismael/spidey-${number}.webp`),
     music: "/arismael-spidey.mp3",
   },
