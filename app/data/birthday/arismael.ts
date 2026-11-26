@@ -14,7 +14,7 @@ const arismael: EventData = {
       title, hour: index === 0 ? "17:00" : "", description: "",
     })),
   },
-  media: { coverImage: artwork, gallery: [] },
+  media: { coverImage: artwork, gallery: [], music: "/arismael-spidey.mp3" },
   location: { place: "Salón de eventos «El Mezquite»", reception: "Ciudad Altamirano, Guerrero", mapUrl: "https://maps.app.goo.gl/NS3sAeTcP7BWJsZG9" },
   contact: { phone: "527671121139" },
 };

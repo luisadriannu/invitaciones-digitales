@@ -2,15 +2,29 @@
 
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import Image from "next/image";
-import { ArrowDown, Cake, CalendarDays, Clock, Gift, MapPin, MessageCircle, PartyPopper, Sparkles, Zap } from "lucide-react";
+import { ArrowDown, Cake, CalendarDays, Castle, Clock, Gift, MapPin, MessageCircle, Music2, PartyPopper, Pause, Smile, Sparkles, Star, Zap } from "lucide-react";
 import { motion, useReducedMotion } from "motion/react";
 import CountDown from "@/app/components/CountDown";
 import type { EventData } from "@/app/types/EventData";
 import s from "./BirthdaySpidey.module.css";
 
+const activityIcons = { Apertura: PartyPopper, Brincolín: Castle, "Show de payasos": Smile, Piñatas: Star, Pastel: Cake, Aguinaldos: Gift };
+
+function WebCorner({ flip = false }: { flip?: boolean }) {
+  return <svg className={`${s.webCorner} ${flip ? s.webFlipped : ""}`} viewBox="0 0 100 100" fill="none" aria-hidden="true">
+    <path d="M0 0L100 0M0 0L92 38M0 0L71 71M0 0L38 92M0 0L0 100M24 0Q20 5 22 9Q16 10 17 17Q10 16 9 22Q5 20 0 24M48 0Q40 10 44 18Q32 20 34 34Q20 32 18 44Q10 40 0 48M72 0Q60 15 66 27Q48 30 51 51Q30 48 27 66Q15 60 0 72M96 0Q80 20 88 36Q64 40 68 68Q40 64 36 88Q20 80 0 96" stroke="currentColor" strokeWidth="1.5" />
+  </svg>;
+}
+
+function ComicLink() {
+  return <div className={s.comicLink} aria-hidden="true"><span /><Zap size={20} /><span /></div>;
+}
+
 export default function BirthdaySpidey({ data }: { data: EventData }) {
   const [open, setOpen] = useState(false);
   const [signalOn, setSignalOn] = useState(false);
+  const [musicPlaying, setMusicPlaying] = useState(false);
+  const audioRef = useRef<HTMLAudioElement>(null);
   const reduceMotion = useReducedMotion();
   const inviteHeading = useRef<HTMLHeadingElement>(null);
   const { event, location } = data;
@@ -28,12 +42,29 @@ export default function BirthdaySpidey({ data }: { data: EventData }) {
   }, [open]);
 
   function openInvitation() {
+    // Keep playback in the user gesture so mobile browsers can allow sound.
+    void audioRef.current?.play().catch(() => setMusicPlaying(false));
     window.scrollTo({ top: 0, behavior: "instant" });
     setOpen(true);
   }
 
+  function toggleMusic() {
+    const audio = audioRef.current;
+    if (!audio) return;
+    if (audio.paused) void audio.play().catch(() => setMusicPlaying(false));
+    else audio.pause();
+  }
+
   return (
     <main className={s.page}>
+      {data.media.music && <audio ref={audioRef} src={data.media.music} preload="none" loop
+        onPlay={() => setMusicPlaying(true)} onPause={() => setMusicPlaying(false)}
+        onError={() => setMusicPlaying(false)} />}
+      {open && data.media.music && <button type="button" className={s.musicControl}
+        onClick={toggleMusic} aria-label={musicPlaying ? "Pausar música" : "Reproducir música"}
+        title={musicPlaying ? "Pausar música" : "Reproducir música"}>
+        {musicPlaying ? <Pause size={20} aria-hidden="true" /> : <Music2 size={20} aria-hidden="true" />}
+      </button>}
       <div className={s.particles} aria-hidden="true">
         {Array.from({ length: 15 }, (_, i) => (
           <span key={i} style={{
@@ -83,15 +114,25 @@ export default function BirthdaySpidey({ data }: { data: EventData }) {
               <span><CalendarDays size={17} aria-hidden="true" />{event.date}</span>
               <span><Clock size={17} aria-hidden="true" />{event.partyHour}</span>
             </div>
-            <p className={s.countLabel}>Cuenta regresiva</p>
-            <CountDown data={data} />
+            <div className={s.countFrame}>
+              <WebCorner /><WebCorner flip />
+              <p className={s.comicLabel}>¡La misión se acerca!</p>
+              <p className={s.countLabel}>Cuenta regresiva</p>
+              <CountDown data={data} />
+            </div>
           </motion.section>
+          <ComicLink />
           <motion.section {...reveal(-24, -2)} className={s.venuePanel}>
+            <WebCorner flip />
+            <p className={s.comicLabel}>¡Aquí es la misión!</p>
             <MapPin className={s.emblem} aria-hidden="true" />
             <h2>Nos vemos en</h2>
             <h3>{location.place}</h3>
             <p>{location.reception}</p>
-            <iframe title="Mapa del salón El Mezquite" loading="lazy" src={`https://maps.google.com/maps?q=${encodeURIComponent(venue)}&output=embed`} />
+            <div className={s.mapFrame}>
+              <span className={s.mapStamp} aria-hidden="true"><MapPin size={15} />Punto de encuentro</span>
+              <iframe title="Mapa del salón El Mezquite" loading="lazy" src={`https://maps.google.com/maps?q=${encodeURIComponent(venue)}&output=embed`} />
+            </div>
             <a href={location.mapUrl} target="_blank" rel="noreferrer">Cómo llegar ↗</a>
           </motion.section>
           <motion.figure {...reveal(0, 1, .92)} className={s.comicPanel}>
@@ -119,18 +160,27 @@ export default function BirthdaySpidey({ data }: { data: EventData }) {
             <Cake className={s.emblem} aria-hidden="true" />
             <h2>Plan de la fiesta</h2>
             <p className={s.invitationLine}>Del primer salto al último pedacito de pastel, ¡nos espera una tarde de diversión!</p>
-            <ol>{event.itinerary?.map(item => (
+            <ol>{event.itinerary?.map(item => {
+              const ActivityIcon = activityIcons[item.title as keyof typeof activityIcons] ?? Zap;
+              return (
               <li key={item.title}>
-                <span><Zap size={15} aria-hidden="true" />{item.title}</span>
+                <span><span className={s.activityIcon}><ActivityIcon size={21} aria-hidden="true" /></span>{item.title}</span>
                 {item.hour && <b>{item.hour} h</b>}
               </li>
-            ))}</ol>
+            ); })}</ol>
           </motion.section>
+          <ComicLink />
           <motion.section {...reveal(-18, -2)} className={s.gifts}>
-            <Gift className={s.emblem} aria-hidden="true" />
+            <div className={s.giftArt} aria-hidden="true">
+              <WebCorner />
+              <Sparkles className={s.giftSpark} size={24} />
+              <Gift className={s.giftBox} size={66} strokeWidth={1.6} />
+              <Star className={s.giftStar} size={20} />
+            </div>
             <h2>{event.giftMessage}</h2>
             <p>¡Lo mejor será celebrar contigo!</p>
           </motion.section>
+          <ComicLink />
           <motion.section {...reveal(0, 0, .94)} className={s.rsvp}>
             <div className={s.farewellArt}>
               <Image
