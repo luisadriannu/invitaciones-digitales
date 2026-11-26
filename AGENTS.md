@@ -6,6 +6,8 @@ This version has breaking changes — APIs, conventions, and file structure may 
 
 ## Invitation design defaults
 
+- Reuse existing shared components whenever they cover the requested feature. For invitation photo carousels, use `app/components/Gallery.tsx` (which loads `GallerySlider`). Fix layout issues in the relevant container or shared component instead of building a separate carousel.
+
 - Every new invitation should include tasteful motion by default: an animated opening, subtle decorative particles or ambient movement, section reveal transitions, and responsive button microinteractions.
 - Keep animations smooth and lightweight, and always provide a `prefers-reduced-motion` fallback.
 - Flash invitations use static decoration without animated petals, floating flowers, or decorative particle effects.

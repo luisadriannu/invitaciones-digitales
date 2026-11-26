@@ -5,6 +5,7 @@ import Image from "next/image";
 import { ArrowDown, Cake, CalendarDays, Castle, Clock, Gift, MapPin, MessageCircle, Music2, PartyPopper, Pause, Smile, Sparkles, Star, Zap } from "lucide-react";
 import { motion, useReducedMotion } from "motion/react";
 import CountDown from "@/app/components/CountDown";
+import Gallery from "@/app/components/Gallery";
 import type { EventData } from "@/app/types/EventData";
 import s from "./BirthdaySpidey.module.css";
 
@@ -22,6 +23,7 @@ function ComicLink() {
 
 export default function BirthdaySpidey({ data }: { data: EventData }) {
   const [open, setOpen] = useState(false);
+  const [opening, setOpening] = useState(false);
   const [signalOn, setSignalOn] = useState(false);
   const [musicPlaying, setMusicPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
@@ -41,11 +43,23 @@ export default function BirthdaySpidey({ data }: { data: EventData }) {
     inviteHeading.current?.focus({ preventScroll: true });
   }, [open]);
 
+  useEffect(() => {
+    if (!opening) return;
+    const revealTimer = window.setTimeout(() => setOpen(true), 340);
+    const finishTimer = window.setTimeout(() => setOpening(false), 850);
+    return () => {
+      window.clearTimeout(revealTimer);
+      window.clearTimeout(finishTimer);
+    };
+  }, [opening]);
+
   function openInvitation() {
+    if (opening || open) return;
     // Keep playback in the user gesture so mobile browsers can allow sound.
     void audioRef.current?.play().catch(() => setMusicPlaying(false));
     window.scrollTo({ top: 0, behavior: "instant" });
-    setOpen(true);
+    if (reduceMotion) setOpen(true);
+    else setOpening(true);
   }
 
   function toggleMusic() {
@@ -57,6 +71,11 @@ export default function BirthdaySpidey({ data }: { data: EventData }) {
 
   return (
     <main className={s.page}>
+      {opening && (
+        <div className={s.openingWipe} aria-hidden="true">
+          <strong>¡ZAS!</strong>
+        </div>
+      )}
       {data.media.music && <audio ref={audioRef} src={data.media.music} preload="none" loop
         onPlay={() => setMusicPlaying(true)} onPause={() => setMusicPlaying(false)}
         onError={() => setMusicPlaying(false)} />}
@@ -84,7 +103,7 @@ export default function BirthdaySpidey({ data }: { data: EventData }) {
             <Zap className={s.artBolt} aria-hidden="true" />
             <Sparkles className={s.artSpark} aria-hidden="true" />
             {open ? (
-              <Image className={s.hero} src={data.media.coverImage} alt="Spidey en pose de acción" width={480} height={638} />
+              <Image className={s.portrait} src={data.media.coverImage} alt={`${event.name} con su traje de Spidey`} width={540} height={717} sizes="(max-width: 480px) 55vw, 220px" />
             ) : (
               <Image className={s.hero} src="/arismael-spidey.webp" alt="Spidey listo para la fiesta" width={221} height={354} preload />
             )}
@@ -122,6 +141,13 @@ export default function BirthdaySpidey({ data }: { data: EventData }) {
             </div>
           </motion.section>
           <ComicLink />
+          {data.media.gallery.length > 0 && (
+            <motion.section {...reveal(0, 0, .96)} aria-labelledby="spidey-gallery">
+              <h2 id="spidey-gallery">Mis fotos de superhéroe</h2>
+              <Gallery images={data.media.gallery} />
+              <p>Desliza para ver mis fotos</p>
+            </motion.section>
+          )}
           <motion.section {...reveal(-24, -2)} className={s.venuePanel}>
             <WebCorner flip />
             <p className={s.comicLabel}>¡Aquí es la misión!</p>
@@ -177,8 +203,8 @@ export default function BirthdaySpidey({ data }: { data: EventData }) {
               <Gift className={s.giftBox} size={66} strokeWidth={1.6} />
               <Star className={s.giftStar} size={20} />
             </div>
-            <h2>{event.giftMessage}</h2>
-            <p>¡Lo mejor será celebrar contigo!</p>
+            <h2>Gracias por acompañarme</h2>
+            <p className={s.invitationLine}>{event.giftMessage}</p>
           </motion.section>
           <ComicLink />
           <motion.section {...reveal(0, 0, .94)} className={s.rsvp}>
